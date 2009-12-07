@@ -1,0 +1,619 @@
+/* GENERAL ******************************************************************************/
+
+html, body, form, select, input, textarea, table, thead, tbody, tfoot, tr, th, td
+{
+  font: 12px "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+
+form, div
+{
+  padding: 0;
+  margin: 0;
+}
+
+/* headers and paragraphs */
+h1
+{
+  margin: 0 0 0.7em 0;
+  font-size: 180%;
+  font-weight: bold;
+}
+
+h2
+{
+  font-size: 135%;
+  font-weight: bold;
+}
+
+h2, h3, h4, h5, h6
+{
+  padding: 0;
+  margin: 1em 0 0.7em 0;
+}
+
+p
+{
+  padding: 0;
+  margin: 0 0 0.7em 0;
+}
+
+/* links */
+a, a:visited
+{
+  color: #3f3fff;
+  text-decoration: none;
+}
+
+a:hover 
+{
+  color: #0000ff; 
+  text-decoration: underline;
+} 
+
+a img
+{
+  border: 0;
+}
+
+/* tables */
+table
+{
+  border-collapse: collapse;
+  border: 1px solid #9f9f9f;
+}
+
+thead
+{
+  background-color: #9f9f9f;
+  font-weight: bold;
+  text-align: left;
+}
+
+td, th
+{
+  padding: 0.5em 1em;
+}
+
+tr.odd
+{
+
+}
+
+tr.even
+{
+  background-color: #efefef;
+}
+
+/* miscellaneous */
+span.separator
+{
+  margin: 0 0.5em;
+}
+
+ul.error
+{
+  color: #ff0000;
+}
+
+.clear
+{
+  clear: both;
+}
+
+.fullWidth
+{
+  width: 100%;
+}
+
+.hidden
+{
+  display: none;
+}
+
+/* LAYOUT ******************************************************************************/
+body
+{
+  margin: 1em;
+  background: #000040;
+  text-align: center;
+  color: #000000;
+}
+
+#wrapper
+{
+  width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#content
+{
+  background: #ffffff url(gfx/content_corner_bottom_left.png) no-repeat  bottom left;
+}
+
+#content form
+{
+  height: 1%; /* holly hack */
+  padding: 2em;
+  background: url(gfx/content_corner_bottom_right.png) no-repeat bottom right;
+}
+
+/* top bar */
+#topbar
+{
+  background: #c7c7ff url(gfx/topbar_corner_top_left.png) no-repeat top left;
+}
+
+#topbar .inner
+{
+  font-size: 80%;
+  background: url(gfx/topbar_corner_top_right.png) no-repeat top right;
+}
+
+#topbar .left
+{
+  position: relative;
+  background: url(gfx/topbar_corner_bottom_left.png) no-repeat bottom left;
+  float: left;
+  padding: 0.5em 1em;
+}
+
+#topbar .right
+{
+  position: relative;
+  background: url(gfx/topbar_corner_bottom_right.png) no-repeat bottom right;
+  float: right;
+  padding: 0.5em 1em;
+}
+
+/* FORM ELEMENTS ******************************************************************************/
+
+form.wide div.container
+{
+  clear: both;
+  position: relative;
+}
+
+form.wide label
+{
+  float: left;
+  position: relative;
+  width: 15em;
+  margin: 0.3em 0 0.9em 0;
+}
+
+form.wide .buttons
+{
+  margin: 1em 0 0 15em;
+}
+
+form.wide textarea
+{
+  position: relative;
+  margin-bottom: 0.5em;
+  height: 8em;
+  width: 35em;
+}
+
+form.wide input.text, form.wide input.password, form.wide select
+{
+  width: 35em;
+}
+
+input.submit
+{
+  border-width: 1px;
+  border-top-color: #9f9f9f;
+  border-bottom-color: #3f3f3f;
+  border-left-color: #9f9f9f;
+  border-right-color: #3f3f3f;
+  padding: 0.2em 1em;
+  margin: 0 1em 0 0;
+  background: #ecebe6 url(gfx/button_background.png) repeat-x;
+}
+
+input.submit:active, input.submit:active:hover 
+{
+  background: #dbdae8 url(gfx/button_background_active.png) repeat-x;
+  background-position: bottom left;
+}
+
+input.submit:hover
+{
+  border-top-color: #3f3f3f;
+  border-bottom-color: #9f9f9f;
+  border-left-color: #3f3f3f;
+  border-right-color: #9f9f9f;
+  background: #dbdae8 url(gfx/button_background_hover.png) repeat-x;
+}
+
+form.wide .tooltip
+{
+  width: 20em;
+}
+
+form.wide h2
+{
+  clear: left;
+  margin: 1.5em 0 0.7em 0;
+  padding-bottom: 0.2em;
+  border-bottom: 1px dashed #7f7f7f;
+}
+
+form.wide h2 + p
+{
+  margin-bottom: 0.7em;
+}
+
+.tooltip
+{
+  border: 1px solid #000000;
+  position: absolute;
+  z-index: 100;
+  background: #ffffdd;
+  padding: 0.5em;
+  right: 0;
+  top: 0;
+  font-size: 80%;
+}
+
+.required
+{
+  color: #ff0000;
+}
+
+/* index.php ******************************************************************************/
+
+#indexBody #content form
+{
+  padding-bottom: 1em;
+}
+
+#intro
+{
+  margin: 0 0 1em 13em; 
+}
+
+#intro h1
+{
+  margin-top: 0;
+}
+
+#logo
+{
+  float: left;
+  margin-bottom: 1.5em;
+  display: block;
+}
+
+#rssIcon
+{
+  float: right;
+  position: relative;
+  z-index: 100;
+}
+
+/* Select category and year bar */
+#selectCategoryAndYear
+{
+  background: #c7c7ff url(gfx/select_category_and_year_corner_top_left.png) no-repeat top left;
+  text-align: center;
+  margin-top: 1em;
+  height: 1%; /* holly hack */
+}
+
+#selectCategoryAndYear .inner1
+{
+  background: url(gfx/select_category_and_year_corner_top_right.png) no-repeat top right;
+}
+
+#selectCategoryAndYear .inner2
+{
+  background: url(gfx/select_category_and_year_corner_bottom_left.png) no-repeat bottom left;
+}
+
+#selectCategoryAndYear .inner3
+{
+  background: url(gfx/select_category_and_year_corner_bottom_right.png) no-repeat bottom right;
+  padding: 0.5em;
+}
+
+#selectCategoryAndYear label
+{
+  margin-left: 1em;
+}
+
+#selectCategoryAndYear select
+{
+  margin-right: 1em;
+}
+
+/* map thumbnail and info */
+.map
+{
+  margin-bottom: 1em;
+  clear: both;
+  background: #efefef url(gfx/map_corner_bottom_left.png) no-repeat bottom left;
+  height: 1%; /* holly hack */
+}
+
+.map .inner
+{
+  background: url(gfx/map_corner_bottom_right.png) no-repeat bottom right;
+  padding-bottom: 1em;
+}
+
+.map .thumbnail
+{
+  padding: 1em 1em 0 1em;
+  margin-right: 1em;
+  float: left;
+  background: url(gfx/map_corner_top_left.png) no-repeat top left;
+  height: 1%; /* holly hack */
+}
+
+.map .thumbnail a
+{
+  display: block;
+}
+
+.map .thumbnail img
+{
+  border: 1px solid #7f7f7f;
+  display: block;
+}
+
+.map .thumbnail img:hover
+{
+  border: 1px solid #0000ff;
+}
+
+.map .info
+{
+  background: url(gfx/map_corner_top_right.png) no-repeat top right;
+  padding: 1em 1em 0 1em;
+}
+
+.map .info .name
+{
+  font-size: 140%;
+  font-weight: bold;
+}
+
+.map .date, .map .category, .map .organiser, .map .discipline, .map.resultListUrl
+{
+
+}
+
+.map .info .admin
+{
+  font-size: 80%;
+}
+
+.map .comment
+{
+  clear: both;
+  padding: 0.5em 1em 0 1em;
+}
+
+.map .bottom
+{
+  clear: both;
+}
+
+/* map comment */
+.indent
+{
+  margin-left: 1em;
+}
+
+img.button
+{
+  float: left;
+  position: relative;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* footer */
+#footer
+{
+  font-size: 80%;
+  color: #7f7f7f;
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+
+#footer a
+{
+  color: #7f7fff;
+}
+
+/* overview map, one single map */
+.singleOverviewMap
+{
+  width: 100%;
+  height: 300px;
+  clear: both;
+  border: 1px solid #7f7f7f;
+}
+
+
+
+/* overview map, all maps */
+#overviewMap
+{
+  width: 100%;
+  height: 500px;
+  clear: both;
+  border: 1px solid #7f7f7f;
+}
+
+.pointer
+{
+  cursor: pointer;  
+}
+
+.gmInfoWindow .mapName
+{
+  font-weight: bold;
+  font-size: 120%;
+  margin-bottom: 0.5em;
+}
+
+.gmInfoWindow .thumbnail a
+{
+  display: block;
+}
+
+.gmInfoWindow .thumbnail img
+{
+  border: 1px solid #7f7f7f;
+  display: block;
+}
+
+.gmInfoWindow .thumbnail img:hover
+{
+  border: 1px solid #0000ff;
+}
+
+/* show_map.php ******************************************************************************/
+
+#showMapBody #content form
+{
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  min-height: 60px;
+}
+
+#showMapBody #mapImage
+{
+  border-width: 0;
+  margin: 1em auto;
+  clear: both;
+  display: block;
+}
+
+#showMapBody #hiddenMapImage
+{
+  display: none;
+}
+
+#showMapBody #name
+{
+  font-size: 130%;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  float: left;
+  width: 62%;
+}
+
+#showMapBody #propertyContainer
+{
+  width: 62%;
+  float: left;
+}
+
+#showMapBody .property
+{
+  float: left;
+  position: relative;
+  margin-bottom: 0.5em;
+  margin-right: 2em;
+}
+
+#showMapBody #comment
+{
+  clear: both;
+  margin: 0.5em 0;
+}
+
+#showMapBody #previousAndNext
+{
+  float: right;
+  font-size: 80%;
+  text-align: right;
+  margin-right: 1em;
+  width: 30%;
+}
+
+#showMapBody #zoomButtonDiv
+{
+  float: right;
+}
+
+.zoomButton
+{
+  cursor: pointer;
+  width: 27px;
+  height: 27px;
+  display: block;
+  margin-bottom: 6px;
+  background-position: 0 0;
+}
+
+#zoomIn
+{
+  background-image: url(gfx/zoom_out.png);
+}
+
+#zoomOut
+{
+  background-image: url(gfx/zoom_in.png);
+}
+
+.zoomButton:hover
+{
+  background-position: 27px 0;
+}
+
+/* edit_user.php *******************************************************************************************************/
+
+#categoryContainer
+{
+  display: inline;
+  float: left;
+  position: relative;
+}
+
+#categoryContainer .category
+{
+  clear: both;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+#categoryContainer input.text
+{
+  width: 15em;
+}
+
+#categoryContainer label
+{
+  width: auto;
+  margin: 0 1em 0 0;
+  float: none;
+}
+
+/* users.php *******************************************************************************************************/
+
+.hoverThumbnailContainer
+{
+  position: relative;
+}
+
+.hoverThumbnail
+{
+  position: absolute;
+  z-index: 100;
+  /*padding: 0.5em; */
+  border: 1px solid #7f7f7f;
+  background: #ffffff;
+  top: 2em;
+}
+
+.hoverThumbnail img
+{
+  display: block;
+}
