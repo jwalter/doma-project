@@ -168,17 +168,21 @@
       $latLonBox = $doc->createElement("LatLonBox");
       $corners = $ed->ImageCornerPositions;
       $e = $doc->createElement("north");
-      $e->appendChild($doc->createTextNode(max($corners["NW"]->Latitude, $corners["NE"]->Latitude)));
+      $e->appendChild($doc->createTextNode((doubleval($corners["NW"]->Latitude)+doubleval($corners["NE"]->Latitude))/2));
       $latLonBox->appendChild($e);
       $e = $doc->createElement("south");
-      $e->appendChild($doc->createTextNode(min($corners["SW"]->Latitude, $corners["SE"]->Latitude)));
+      $e->appendChild($doc->createTextNode((doubleval($corners["SW"]->Latitude)+doubleval($corners["SE"]->Latitude))/2));
       $latLonBox->appendChild($e);
       $e = $doc->createElement("east");
-      $e->appendChild($doc->createTextNode(max($corners["NW"]->Longitude, $corners["SW"]->Longitude)));
+      $e->appendChild($doc->createTextNode((doubleval($corners["NE"]->Longitude)+doubleval($corners["SE"]->Longitude))/2));
       $latLonBox->appendChild($e);
       $e = $doc->createElement("west");
-      $e->appendChild($doc->createTextNode(min($corners["NE"]->Longitude, $corners["SE"]->Longitude)));
+      $e->appendChild($doc->createTextNode((doubleval($corners["NW"]->Longitude)+doubleval($corners["SW"]->Longitude))/2));
       $latLonBox->appendChild($e);
+	  
+      $e = $doc->createElement("rotation");
+      $e->appendChild($doc->createTextNode(self::Rotation($corners)));
+      $latLonBox->appendChild($e); 
       //todo: rotation          <rotation>-0.466708391838466</rotation>
       $groundOverlay->appendChild($latLonBox);
 
@@ -350,6 +354,16 @@
                   cos($this->MapCenterLatitude*$pi180) * cos($latR) * cos($lonR-$this->MapCenterLongitude*$pi180)) *
              6378200;
     }
+	
+	private function Rotation($corner)
+	{
+		$b = doubleval($corner["NW"]->Latitude) - doubleval($corner["SW"]->Latitude);
+		$a = doubleval($corner["NW"]->Longitude) - doubleval($corner["SW"]->Longitude);
+		$alpha = asin($a/(sqrt($a*$a+$b*$b)));
+        Helper::WriteToLog("Rotation: ".rad2deg($alpha));
+		return -1*rad2deg($alpha);
+	}
+	
   }
 
 

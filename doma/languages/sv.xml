@@ -166,9 +166,6 @@
     <string key="NEXT">
       Nästa
     </string>
-    <string key="TOGGLE_IMAGE">
-      Routechoices on/off
-    </string> 
 
     <!-- edit_map.php ****************************************************************************************************** -->
     <string key="ADD_MAP">
@@ -566,5 +563,50 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
     <string key="FORGOT_PASSWORD">
       Jag har glömt mitt lösenord
     </string>
+
+    <!-- new strings in 3.0 -->
+    <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
+      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+    </string> 
+    <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
+      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+    </string> 
+    <string key="BLANK_MAP_IMAGE_FILE">
+      Blank map image file
+    </string> 
+    <string key="MAP_INFO">
+      The map where your route line is drawn.
+    </string> 
+    <string key="BLANK_MAP_INFO">
+      The map without any route lines. Not mandatory.
+    </string> 
+    <string key="SELECT_DISPLAY_MODE">
+      Display mode
+    </string> 
+    <string key="DISPLAY_MODE_LIST">
+      List
+    </string> 
+    <string key="DISPLAY_MODE_OVERVIEW_MAP">
+      Overview map
+    </string> 
+    <string key="INFORMATION">
+      Information
+    </string> 
+    <string key="TOGGLE_IMAGE">
+      Routechoices on/off
+    </string> 
+    <string key="TOGGLE_IMAGE_TOOLTIP">
+      ...or just click somewhere on the map...
+    </string> 
+    <string key="OVERVIEW_MAP">
+      Google map overview
+    </string> 
+    <string key="KML_TOOLTIP">
+      ...for Google Earth...
+    </string> 
+    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
+      Y-m-d
+    </string> 
+
   </nonCustomizable>  
 </strings>

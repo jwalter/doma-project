@@ -90,7 +90,7 @@
     $url = ($u->Visible ? "index.php?". Helper::CreateQuerystring($u) : "");
     $nameLink = Helper::EncapsulateLink(hsc($u->FirstName ." ". $u->LastName), $url);    
 
-    $lastMap = $lastMapForEachUser[$u->ID];
+	$lastMap = $vd["LastMapForEachUser"][$u->ID];
     if($lastMap) 
     {
       $lastMapLink = '<a href="show_map.php?'. Helper::CreateQuerystring($u, $lastMap->ID) .'" class="thumbnailHoverLink">'. 

@@ -164,9 +164,6 @@
     <string key="NEXT">
       Next
     </string> 
-    <string key="TOGGLE_IMAGE">
-      Routechoices on/off
-    </string> 
 
     <!--  edit_map.php ****************************************************************************************************** --> 
     <string key="ADD_MAP">
@@ -569,7 +566,6 @@ Consider the password as being temporary. For security reasons, please change it
       I have forgotten my password
     </string>
     
-    
     <!-- new strings in 3.0 -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
       The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
@@ -598,7 +594,21 @@ Consider the password as being temporary. For security reasons, please change it
     <string key="INFORMATION">
       Information
     </string> 
-    
+    <string key="TOGGLE_IMAGE">
+      Routechoices on/off
+    </string> 
+    <string key="TOGGLE_IMAGE_TOOLTIP">
+      ...or just click somewhere on the map...
+    </string> 
+    <string key="OVERVIEW_MAP">
+      Google map overview
+    </string> 
+    <string key="KML_TOOLTIP">
+      ...for Google Earth...
+    </string> 
+    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
+      Y-m-d
+    </string> 
      
   </nonCustomizable>
 </strings>

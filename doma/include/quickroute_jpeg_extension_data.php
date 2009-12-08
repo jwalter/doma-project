@@ -633,7 +633,14 @@
         {
           // distances is only calculated for lap and stop lap types
           $lap->Distance = $distance - $lastDistance;
-          $lap->StraightLineDistance = $lap->Position->DistanceTo($lastLap->Position);
+		  if (is_object($lastLap)) 
+          {
+		    $lap->StraightLineDistance = $lap->Position->DistanceTo($lastLap->Position);
+		  } 
+		  else 
+		  {
+		    $lap->StraightLineDistance = 0;
+		  }
           $this->StraightLineDistance += $lap->StraightLineDistance;
         }
         $lastDistance = $distance;

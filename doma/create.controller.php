@@ -44,8 +44,8 @@
 			{
 			  foreach($mp as $map)
  			  {
-			    DataAccess::AddGeocoding($map);
-			    $map->Save();
+				  DataAccess::AddGeocoding($map);
+				  if ($map->IsGeocoded) $map->Save();
 			  }
 			}
 		  }

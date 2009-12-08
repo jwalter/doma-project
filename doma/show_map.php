@@ -36,7 +36,7 @@
   <a href="<?php print $vd["BackUrl"]?>"><?php print __("BACK")?></a>
 	<?php if($vd["SecondMapImageName"]) {?>
 	<br />
-	<a href="javascript:ToggleImage();"><?php print __("TOGGLE_IMAGE")?></a>
+	<a href="javascript:ToggleImage();" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("TOGGLE_IMAGE")?></a>
 	<?php }?>
 </div>
 

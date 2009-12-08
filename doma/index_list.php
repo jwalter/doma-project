@@ -24,14 +24,12 @@
           <?php print $mapInfo["MapAreaOrganiserCountry"]; ?>
         </div>
         <?php } ?>
-        <?php if(__("SHOW_DISCIPLINE")) { ?>
         <div class="discipline">
+        <?php if(__("SHOW_DISCIPLINE")) { ?>
           <?php print $map->Discipline; ?><?php if(__("SHOW_RELAY_LEG") && $map->RelayLeg) print ', '. __("RELAY_LEG_LOWERCASE") .' '. $map->RelayLeg; ?>
-        </div>
         <?php } ?>
         <?php if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl()) { ?>
-        <div class="resultListUrl">
-          <a href="<?php print $map->CreateResultListUrl()?>"><?php print __("RESULTS")?></a>
+          , <a href="<?php print $map->CreateResultListUrl()?>"><?php print __("RESULTS")?></a>
         </div>
         <?php } ?>
         <?php if(Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getUser()->ID) { ?>
@@ -42,6 +40,8 @@
             <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser(), $map->ID)?>"><?php print __("EDIT_MAP"); ?></a>
           </div>
         <?php } ?>
+      <?php if($map->IsGeocoded) print '<div class="listOverviewMapLink"><a href="javascript:showListOverviewMap(this);">'. __("OVERVIEW_MAP") .'</a><input type="hidden" value="'. $map->ID .'" />, <a href="export_kml.php?id='. $map->ID .'" title="'. __("KML_TOOLTIP") .'">KML</a></div>'; ?> 
+
       </div>
       <?php 
         if(__("SHOW_COMMENT") && $map->Comment) 
@@ -69,8 +69,6 @@
           }
         }
         ?>
-      <?php if($map->IsGeocoded) print '<div class="listOverviewMapLink"><a href="#">Översiktskarta</a><input type="hidden" value="'. $map->ID .'" /></div>'; ?> 
-      <?php if($map->IsGeocoded) print '<div><a href="export_kml.php?id='. $map->ID .'">KML</a></div>'; ?> 
       <div class="clear"></div>
     </div>
   </div>

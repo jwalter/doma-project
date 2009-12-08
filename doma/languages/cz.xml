@@ -54,7 +54,7 @@
     </string> 
     <!--  month names, semi-colon separated --> 
     <string key="MONTH_NAMES">
-      Leden;Únor;Březen;Duben;Květen;Červen;Červenec;Srpen;Září;Říjen;Listopad;Prosinec
+      leden;únor;březen;duben;květen;červen;červenec;srpen;září;říjen;listopad;prosinec
     </string> 
     <string key="RSS_FEED">
       RSS kanál
@@ -163,9 +163,6 @@
     </string> 
     <string key="NEXT">
       Další
-    </string> 
-    <string key="TOGGLE_IMAGE">
-      Vypnout/Zapnout postupy
     </string> 
 
     <!--  edit_map.php ****************************************************************************************************** --> 
@@ -444,7 +441,7 @@
       Kategorie map
     </string> 
     <string key="DEFAULT_CATEGORY_NAMES">
-      Závod;Trénink
+      Závody;Tréninky
     </string> 
     <string key="DEFAULT_CATEGORY">
       výchozí
@@ -568,5 +565,50 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="FORGOT_PASSWORD">
       Zapomněl jsem své heslo
     </string> 
+
+	<!-- new strings in 3.0 -->
+    <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
+      Formát mapy bez postupů &lt;em&gt;%s&lt;/em&gt; není platný. Pouze formáty jpeg, png a gif jsou podporovány.
+    </string> 
+    <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
+      Mapa bez postupů &lt;em&gt;%s&lt;/em&gt; nemohla být nahrána.
+    </string> 
+    <string key="BLANK_MAP_IMAGE_FILE">
+      Mapa bez postupů
+    </string> 
+    <string key="MAP_INFO">
+      The map where your route line is drawn.
+    </string> 
+    <string key="BLANK_MAP_INFO">
+      Mapa bez postupů. Není povinná.
+    </string> 
+    <string key="SELECT_DISPLAY_MODE">
+      Zobrazení
+    </string> 
+    <string key="DISPLAY_MODE_LIST">
+      Seznam
+    </string> 
+    <string key="DISPLAY_MODE_OVERVIEW_MAP">
+      Google mapy
+    </string> 
+    <string key="INFORMATION">
+      Informace
+    </string> 
+    <string key="TOGGLE_IMAGE">
+      Vypnout/Zapnout postupy
+    </string> 
+    <string key="TOGGLE_IMAGE_TOOLTIP">
+      ...nebo stačí pouze kdekoliv na mapě kliknout myší...
+    </string> 
+    <string key="OVERVIEW_MAP">
+      Náhled na Google mapě
+    </string> 
+    <string key="KML_TOOLTIP">
+      ...pro Google Earth...
+    </string> 
+    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
+      Y-m-d
+    </string> 
+
   </nonCustomizable>
 </strings>

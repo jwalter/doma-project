@@ -19,13 +19,14 @@
 
     public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $count = 0, $orderBy = "date")
     {
-      $startDateString = date(__("DATE_FORMAT"), $startDate);
-      $endDateString = date(__("DATE_FORMAT"), $endDate);
+      $startDateString = date(__("DATE_FORMAT_MYSQL"), $startDate);
+      $endDateString = date(__("DATE_FORMAT_MYSQL"), $endDate);
 
       switch($orderBy)
       {
         case "lastChangedTime": $ob = "M.LastChangedTime DESC"; break;
         case "createdTime": $ob = "M.CreatedTime DESC"; break;
+        case "ID": $ob = "M.ID DESC"; break;
         default: $ob = "M.Date DESC"; break;
       }
 
@@ -46,8 +47,8 @@
 
     public static function GetCloseMaps($latitude, $longitude, $startTime, $endTime, $maxDistance, $orderBy = "closeness")
     {
-      $startTimeString = date(__("DATE_FORMAT"), $startTime);
-      $endTimeString = date(__("DATE_FORMAT"), $endTime);
+      $startTimeString = date(__("DATE_FORMAT_MYSQL"), $startTime);
+      $endTimeString = date(__("DATE_FORMAT_MYSQL"), $endTime);
 
       switch($orderBy)
       {
@@ -298,7 +299,7 @@
     public static function AddGeocoding(&$map)
     {
       $extensionData = new QuickRouteJpegExtensionData(MAP_IMAGE_PATH ."/". $map->MapImage, true);
-      if($extensionData)
+      if($extensionData->IsValid)
       {
         $map->MapCenterLatitude = (
           min($extensionData->MapCornerPositions["SW"]->Latitude, $extensionData->MapCornerPositions["SE"]->Latitude) +

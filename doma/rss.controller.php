@@ -14,7 +14,7 @@
         $mode = "all";
         $count = $_GET["count"];
         if(!$count) $count = 30;
-        $maps = DataAccess::GetMaps(0, 0, 0, 0, $count, "createdTime");
+        $maps = DataAccess::GetMaps(0, 0, 0, 0, $count, "ID");
         $categories = DataAccess::GetCategoriesByUserID();
         $users = DataAccess::GetAllUsers(true);
         $viewData["Title"] = _SITE_TITLE;

@@ -72,7 +72,6 @@
 
       $startDate = ($searchCriteria["selectedYear"] == 0 ? 0 : Helper::StringToTime($searchCriteria["selectedYear"] ."-01-01", true));
       $endDate = ($searchCriteria["selectedYear"] == 0 ? 0 : Helper::StringToTime($searchCriteria["selectedYear"]. "-12-31", true));
-
       $viewData["SearchCriteria"] = $searchCriteria;
       
       // get map data
@@ -103,7 +102,7 @@
         }
         $viewData["MapInfo"][$map->ID] = $mapInfo;
         
-        if($viewData["DisplayMode"] == "overviewMap")
+        if(($viewData["DisplayMode"] == "overviewMap")&&($map->IsGeocoded))
         {
           $corners = $map->GetMapCornerArray();
           $overviewMapData = array();
