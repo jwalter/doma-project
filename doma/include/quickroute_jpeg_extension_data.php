@@ -11,6 +11,7 @@
 
   class QuickRouteJpegExtensionData
   {
+    public $IsValid;
     public $Version;
     public $MapCornerPositions;
     public $ImageCornerPositions;
@@ -49,38 +50,54 @@
     {
       $startTime = microtime(true);
       $fp = fopen($fileName, "r");
+      $data = "";
+
+      // find APP0 QuickRoute marker
       $soi = fread($fp, 2);
       if($soi == "\xff\xd8")
       {
+        // try to find QuickRoute Jpeg Extension Data block
         while(!feof($fp))
         {
-          $quickrouteSegment = false;
-          $marker = fread($fp, 2);
-          $length = 256 * ord(fread($fp, 1)) + ord(fread($fp, 1));
-          if($length >= 12)
+          if (fread($fp, 1) != "\xff") break; // we have reached image data
+          if (fread($fp, 1) == "\xe0") // APP0
           {
-            $stamp = fread($fp, 10);
-            if($stamp == "QuickRoute") 
+            $quickrouteSegment = false;
+            $length = 256 * ord(fread($fp, 1)) + ord(fread($fp, 1));
+            if($length >= 12)
             {
-              $data .= fread($fp, $length - 12);
-              $quickrouteSegment = true;
+              $stamp = fread($fp, 10);
+              if($stamp == "QuickRoute") 
+              {
+                $data .= fread($fp, $length - 12);
+                $quickrouteSegment = true;
+              }
+              else
+              {
+                fseek($fp, $length - 12, SEEK_CUR);
+              }
             }
             else
             {
-              fseek($fp, $length - 12, SEEK_CUR);
+              fseek($fp, $length - 2, SEEK_CUR);
             }
+            if(!$quickrouteSegment && $data) break;
           }
           else
           {
-            fseek($fp, $length - 2, SEEK_CUR);
+            break;
           }
-          if(!$quickrouteSegment && $data) break;
         }
       }
       fclose($fp);
-      $this->Create($data);
       
-      if($calculate) $this->Calculate();
+      $this->IsValid = ($data != "");
+      if($this->IsValid)
+      {
+        // QR data was found in image
+        $this->Create($data);
+        if($calculate) $this->Calculate();
+      }
       $endTime = microtime(true);
       $this->ExecutionTime = $endTime - $startTime;
     }
