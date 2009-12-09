@@ -10,7 +10,7 @@
       Na této stánce budu publikovat mapy, tratě a postupy ze závodů, které jsem absolvoval.
     </string> 
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-    Jsi vlastníkem práv na mapu, která by zde neměla být publikována? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Napiš mi&lt;/a&gt;.
+	  Jsi vlastníkem práv na mapu, která by zde neměla být publikována? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Napiš mi&lt;/a&gt;.
     </string> 
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
       Mapy, tratě a postupy ze závodů, které jsem absolvoval.
@@ -34,6 +34,18 @@
       1
     </string> 
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_MAXHR" description="SHOW_MAXHR_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
       1
     </string> 
   </customizable>
@@ -608,6 +620,30 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
       Y-m-d
+    </string> 
+    <string key="SHOW_DISTANCE_DESCRIPTION">
+      Zda přiřadit délku k mapě; 1 přiřadit, 0 přeskočit.
+    </string> 
+    <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
+      Zda přiřadit čas k mapě; 1 přiřadit, 0 přeskočit.
+    </string> 
+    <string key="SHOW_MAXHR_DESCRIPTION">
+      Zda přiřadit maximální TF k mapě; 1 přiřadit, 0 přeskočit.
+    </string> 
+    <string key="SHOW_AVGHR_DESCRIPTION">
+      Zda přiřadit průměrnou TF k mapě; 1 přiřadit, 0 přeskočit.
+    </string> 
+    <string key="ELAPSEDTIME">
+      Čas
+    </string> 
+    <string key="DISTANCE">
+      Skutečná délka
+    </string> 
+    <string key="AVGHR">
+      Prům. tepy
+    </string> 
+    <string key="MAXHR">
+      Max. tepy
     </string> 
 
   </nonCustomizable>

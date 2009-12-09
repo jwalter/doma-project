@@ -1,5 +1,6 @@
 <?php
   include_once(dirname(__FILE__) ."/show_map.controller.php");
+  include_once("./include/quickroute_jpeg_extension_data.php");
   
   $controller = new ShowMapController();
   $vd = $controller->Execute();
@@ -16,6 +17,8 @@
   <script src="js/show_map.js.php" type="text/javascript"></script>
 </head>
 <body id="showMapBody">
+<center>
+<div id="top_menu">
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
@@ -50,16 +53,86 @@
   if(__("SHOW_DISCIPLINE") && $map->Discipline != "") print '<div class="property">'. __("DISCIPLINE") .': '. $map->Discipline .'</div>';
   if(__("SHOW_RELAY_LEG") && $map->RelayLeg != "") print '<div class="property">'. __("RELAY_LEG") .': '. $map->RelayLeg .'</div>';
   if(__("SHOW_RESULT_LIST_URL") && $map->ResultListUrl != "") print '<div class="property"><a href="'. hsc($map->CreateResultListUrl()) .'">'. __("RESULTS") .'</a></div>';
+
 ?>
 </div>
-<?php
-  if(__("SHOW_COMMENT") && $map->Comment != "") print '<div id="comment">'. nl2br($map->Comment) .'</div>';
+
+<?
+$fileName = "./map_images/".$map->MapImage;
+$QR = new QuickRouteJpegExtensionData($fileName);
+
+if($QR->IsValid)
+{
+	$f = $QR->Sessions["0"]->Route->Segments["0"]->Waypoints;
+	$c1 = 0;
+	$c2 = 0;
+	$max1 = 0;
+	$val = count($f);
+	for ($i = 0; $i < $val; $i++) {
+		$c1 += $QR->Sessions["0"]->Route->Segments["0"]->Waypoints[$i]->HeartRate;
+		$c2 += 1;
+		if ($QR->Sessions["0"]->Route->Segments["0"]->Waypoints[$i]->HeartRate > $max1) 
+		{
+			$max1 = $QR->Sessions["0"]->Route->Segments["0"]->Waypoints[$i]->HeartRate;
+		}
+	}
+	if((__("SHOW_DISTANCE"))||(__("SHOW_ELAPSEDTIME"))) 
+	{
+		print '<div id="propertyContainer">';
+		if(__("SHOW_DISTANCE") && $map->Distance != "") print '<div class="property">'. __("DISTANCE") .': '. round(($map->Distance)/1000,2) .' km</div>';
+		if(__("SHOW_ELAPSEDTIME") && $map->ElapsedTime != "") print '<div class="property">'. __("ELAPSEDTIME") .': '. floor($map->ElapsedTime/60).':'. ($map->ElapsedTime % 60) .'</div>';
+		print '</div>';
+		$gmaph = 156;
+	}
+	if (($c1 != 0)&&((__("SHOW_MAXHR"))||(__("SHOW_AVGHR")))) {
+		print '<div id="propertyContainer">';
+		if(__("SHOW_AVGHR")) print '<div class="property">'. __("AVGHR") .': '. round($c1/$c2,0).'</div>';
+		if(__("SHOW_MAXHR")) print '<div class="property">'. __("MAXHR") .': '. round($max1,0).'</div>';
+		print '</div>';
+	    $gmaph = 174;
+	}
+}
+?>
+<?
+  if(__("SHOW_COMMENT") && $map->Comment != "") {
+	  print '<div id="comment">'. nl2br($map->Comment) .'</div>';
+	  if ($c1 != 0) { //when heart rate is available - Google map height
+		  if (strlen($map->Comment) >  470) {
+			  $gmaph = 262;
+		  } elseif (strlen($map->Comment) >  310) {
+			  $gmaph = 234;
+		  } elseif (strlen($map->Comment) >  160) {
+			  $gmaph = 216;
+		  } else {
+			  $gmaph = 198;
+		  }
+	  } else { //no heart rate - comment length not tested
+		  $gmaph = 174;
+	  }
+	  
+	}
+?>
+<?
+
+
 ?>
 <div class="clear"></div>
 
 </form>
 </div>
 </div>
+<?
+if($map->IsGeocoded)
+{
+	print '<div id="gmap">';
+	?>
+	<img src="http://maps.google.com/staticmap?center=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>&amp;zoom=6&amp;size=170x<?echo($gmaph)?>&amp;maptype=terrain&amp;markers=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>,red&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>&amp;sensor=false">
+	<?
+	print '</div>';
+}
+?>
+</div>
+<div class="clear">&nbsp;</div>
 
 <div>
   <img id="mapImage" src="<?php print $vd["FirstMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>" />
@@ -69,5 +142,6 @@
   <input type="hidden" id="imageWidth" value="<?php print $vd["ImageWidth"] ?>" />
   <input type="hidden" id="imageHeight" value="<?php print $vd["ImageHeight"] ?>" />
 </div>
+</center>
 </body>
 </html>

@@ -490,7 +490,7 @@ img.button
 #showMapBody #mapImage
 {
   border-width: 0;
-  margin: 1em auto;
+  margin: 3em auto;
   clear: both;
   display: block;
 }
@@ -527,6 +527,25 @@ img.button
 {
   clear: both;
   margin: 0.5em 0;
+}
+
+#showMapBody #gmap
+{
+  width: 180px;
+  float: right;
+  position: relative;
+}
+
+#showMapBody #wrapper
+{
+  float: left;
+  position: relative;
+}
+
+#showMapBody #top_menu
+{
+  width: 1080px;
+  position: relative;
 }
 
 #showMapBody #previousAndNext
@@ -616,4 +635,9 @@ img.button
 .hoverThumbnail img
 {
   display: block;
+}
+
+#topmenu
+{
+white-space:nowrap;
 }

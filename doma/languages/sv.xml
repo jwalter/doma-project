@@ -36,7 +36,19 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string>
-  </customizable>
+     <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_MAXHR" description="SHOW_MAXHR_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
+      1
+    </string> 
+ </customizable>
 
   <nonCustomizable>  
     <!-- general ****************************************************************************************************** -->
@@ -607,6 +619,29 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
       Y-m-d
     </string> 
-
+    <string key="SHOW_DISTANCE_DESCRIPTION">
+      Whether to associate distance with a map; 1 to associate, 0 to skip.
+    </string> 
+    <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
+      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+    </string> 
+    <string key="SHOW_MAXHR_DESCRIPTION">
+      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+    </string> 
+    <string key="SHOW_AVGHR_DESCRIPTION">
+      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+    </string> 
+    <string key="ELAPSEDTIME">
+      Time
+    </string> 
+    <string key="DISTANCE">
+      Real distance
+    </string> 
+    <string key="AVGHR">
+      Average HR
+    </string> 
+    <string key="MAXHR">
+      Maximal HR
+    </string> 
   </nonCustomizable>  
 </strings>
