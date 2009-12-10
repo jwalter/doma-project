@@ -149,7 +149,7 @@
             break;
           
           case $tags["MapLocationAndSizeInPixels"]:
-            $this->MapLocationAndSizeInPixels = new Rectangle();
+            $this->MapLocationAndSizeInPixels = new QRRectangle();
             $this->MapLocationAndSizeInPixels->X = self::ReadUInt16(substr($tagData, 0, 2));
             $this->MapLocationAndSizeInPixels->Y = self::ReadUInt16(substr($tagData, 2, 2));
             $this->MapLocationAndSizeInPixels->Width = self::ReadUInt16(substr($tagData, 4, 2));
@@ -193,7 +193,7 @@
     {
       $tags = self::GetTags();
       $waypointAttributes = self::GetWaypointAttributes();
-      $session = new QuickRouteSession();
+      $session = new QRSession();
 
       $pos = 0;
       $dataLength = strlen($data);
@@ -208,7 +208,7 @@
         switch($tag)
         {
           case $tags["Route"]:
-            $session->Route = new Route();
+            $session->Route = new QRRoute();
             $subPos = 0;
             $attributes = self::ReadUInt16(substr($tagData, $subPos, 2));
             $subPos += 2;
@@ -218,12 +218,12 @@
             $subPos += 4;
             for($i=0; $i<$segmentCount; $i++)
             {
-              $segment = new RouteSegment();
+              $segment = new QRRouteSegment();
               $waypointCount = self::ReadUInt32(substr($tagData, $subPos, 4));
               $subPos += 4;
               for($j=0; $j<$waypointCount; $j++)
               {
-                $waypoint = new Waypoint();
+                $waypoint = new QRWaypoint();
                 // position
                 if($attributes & $waypointAttributes["Position"])
                 {
@@ -272,9 +272,9 @@
             $subPos = 4;
             for($i=0; $i<$handleCount; $i++)
             {
-              $handle = new Handle();
+              $handle = new QRHandle();
               // transformation matrix
-              $handle->TransformationMatrix = new Matrix(3, 3);
+              $handle->TransformationMatrix = new QRMatrix(3, 3);
               for($j=0; $j<3; $j++)
               {
                 for($k=0; $k<3; $k++)
@@ -285,13 +285,13 @@
                 }
               }
               // parameterized location
-              $handle->ParameterizedLocation = new ParameterizedLocation();
+              $handle->ParameterizedLocation = new QRParameterizedLocation();
               $handle->ParameterizedLocation->SegmentIndex = self::ReadUInt32(substr($tagData, $subPos, 4));
               $subPos += 4;
               $handle->ParameterizedLocation->Value = self::ReadDouble(substr($tagData, $subPos, 8));
               $subPos += 8;
               // pixel location
-              $handle->PixelLocation = new Point();
+              $handle->PixelLocation = new QRPoint();
               $handle->PixelLocation->X = self::ReadDouble(substr($tagData, $subPos, 8));
               $subPos += 8;
               $handle->PixelLocation->Y = self::ReadDouble(substr($tagData, $subPos, 8));
@@ -312,7 +312,7 @@
             $subPos = 4;
             for($i=0; $i<$lapCount; $i++)
             {
-              $lap = new Lap();
+              $lap = new QRLap();
               $lap->Time = self::ReadDateTime(substr($tagData, $subPos, 8));
               $subPos += 8;
               $lap->Type = self::ReadByte(substr($tagData, $subPos, 1));
@@ -322,8 +322,8 @@
             break;
 
           case $tags["SessionInfo"]:
-            $session->SessionInfo = new SessionInfo();
-            $session->SessionInfo->Person = new Person();
+            $session->SessionInfo = new QRSessionInfo();
+            $session->SessionInfo->Person = new QRPerson();
             // person name
             $length = self::ReadUInt16(substr($tagData, 0, 2));
             $subPos = 2;
@@ -437,7 +437,7 @@
     
     private static function ReadLongLat($data)
     {
-      $longLat = new LongLat();
+      $longLat = new QRLongLat();
       $longLat->Longitude = self::ReadInt32(substr($data, 0, 4)) / 3600000;
       $longLat->Latitude = self::ReadInt32(substr($data, 4, 4)) / 3600000;
       return $longLat;
@@ -592,8 +592,7 @@
          
   }
   
-  
-  class QuickRouteSession
+  class QRSession
   {
     public $Route;
     public $Handles;
@@ -649,20 +648,20 @@
     }
   }
   
-  class SessionInfo
+  class QRSessionInfo
   {
     public $Person;
     public $Description;
   }
   
-  class Person
+  class QRPerson
   {
     public $Name;  
     public $Club;  
     public $Id;  
   }
   
-  class Route
+  class QRRoute
   {
     public $Segments;
     // derived properties
@@ -682,7 +681,7 @@
         {
           $longLats[] = $w->Position;  
         }
-        $distances = LongLat::PolyDistances($longLats);
+        $distances = QRLongLat::PolyDistances($longLats);
         $distance = 0;
         // store these distances and also the elapsed times
         for($i=0; $i<$count; $i++)
@@ -721,7 +720,7 @@
       {
         $middle = (int)(($min+$max)/2);
         $middleTime = $this->Segments[$segmentIndex]->Waypoints[$middle]->Time;
-        if(abs($time - $middleTime) < EPSILON) return new ParameterizedLocation($segmentIndex, $middle);
+        if(abs($time - $middleTime) < EPSILON) return new QRParameterizedLocation($segmentIndex, $middle);
         if($time < $middleTime)
         {
           $max = $middle-1;
@@ -734,7 +733,7 @@
       $t0 = $this->Segments[$segmentIndex]->Waypoints[$max]->Time;
       $t1 = $this->Segments[$segmentIndex]->Waypoints[$min]->Time;
       if($t1 == $t0) return ParameterizedLocation($segmentIndex, $max);
-      return new ParameterizedLocation($segmentIndex, $max + ($time-$t0) / ($t1-$t0)); // $max is now min index
+      return new QRParameterizedLocation($segmentIndex, $max + ($time-$t0) / ($t1-$t0)); // $max is now min index
     }
     
     public function GetDistanceFromParameterizedLocation($parameterizedLocation)
@@ -748,7 +747,7 @@
     {
       if($parameterizedLocation == null) return null;
       list($w0, $w1, $t) = $this->GetWaypointsAndParameterFromParameterizedLocation($parameterizedLocation);
-      return new LongLat(
+      return new QRLongLat(
         $w0->Position->Longitude + $t * ($w1->Position->Longitude - $w0->Position->Longitude),
         $w0->Position->Latitude + $t * ($w1->Position->Latitude - $w0->Position->Latitude)
       );
@@ -802,13 +801,13 @@
     
   }
   
-  class RouteSegment
+  class QRRouteSegment
   {
     public $Waypoints;
     
   }
   
-  class Waypoint
+  class QRWaypoint
   {
     public $Position;
     public $Time;
@@ -820,7 +819,7 @@
     public $ElapsedTime;
   }
   
-  class LongLat
+  class QRLongLat
   {
     const rho = 6378200; // earth radius in metres
     public $Longitude;
@@ -839,7 +838,7 @@
 
       $lambda = $this->Longitude * M_PI / 180;
       $phi = $this->Latitude * M_PI / 180;
-      return new Point(self::rho * cos($phi) * sin($lambda - $lambda0),
+      return new QRPoint(self::rho * cos($phi) * sin($lambda - $lambda0),
                        self::rho * (cos($phi0) * sin($phi) - sin($phi0) * cos($phi) * cos($lambda - $lambda0)));
     }
     
@@ -856,12 +855,12 @@
       $sinTheta1 = sin($other->Longitude / 180 * M_PI);
       $cosTheta1 = cos($other->Longitude / 180 * M_PI);
 
-      $p0 = new Matrix(3, 1);
+      $p0 = new QRMatrix(3, 1);
       $p0->SetElement(0, 0, self::rho * $sinPhi0 * $cosTheta0);
       $p0->SetElement(1, 0, self::rho * $sinPhi0 * $sinTheta0);
       $p0->SetElement(2, 0, self::rho * $cosPhi0);
 
-      $p1 = new Matrix(3, 1);
+      $p1 = new QRMatrix(3, 1);
       $p1->SetElement(0, 0, self::rho * $sinPhi1 * $cosTheta1);
       $p1->SetElement(1, 0, self::rho * $sinPhi1 * $sinTheta1);
       $p1->SetElement(2, 0, self::rho * $cosPhi1);
@@ -879,7 +878,7 @@
       $cosPhi1 = cos(0.5 * M_PI + $longLats[0]->Latitude / 180 * M_PI);
       $sinTheta1 = sin($longLats[0]->Longitude / 180 * M_PI);
       $cosTheta1 = cos($longLats[0]->Longitude / 180 * M_PI);
-      $p1 = new Matrix(3, 1);
+      $p1 = new QRMatrix(3, 1);
       $p1->SetElement(0, 0, self::rho * $sinPhi1 * $cosTheta1);
       $p1->SetElement(1, 0, self::rho * $sinPhi1 * $sinTheta1);
       $p1->SetElement(2, 0, self::rho * $cosPhi1);
@@ -896,7 +895,7 @@
         $cosPhi1 = cos(0.5 * M_PI + $longLats[$i]->Latitude / 180 * M_PI);
         $sinTheta1 = sin($longLats[$i]->Longitude / 180 * M_PI);
         $cosTheta1 = cos($longLats[$i]->Longitude / 180 * M_PI);
-        $p1 = new Matrix(3, 1);
+        $p1 = new QRMatrix(3, 1);
         $p1->SetElement(0, 0, self::rho * $sinPhi1 * $cosTheta1);
         $p1->SetElement(1, 0, self::rho * $sinPhi1 * $sinTheta1);
         $p1->SetElement(2, 0, self::rho * $cosPhi1);
@@ -917,7 +916,7 @@
     
   }
   
-  class Point
+  class QRPoint
   {
     public $X;
     public $Y;
@@ -929,7 +928,7 @@
     }
   }
   
-  class Rectangle
+  class QRRectangle
   {
     public $X;
     public $Y;
@@ -937,7 +936,7 @@
     public $Height;
   }
   
-  class Handle
+  class QRHandle
   {
     public $TransformationMatrix;
     public $ParameterizedLocation;
@@ -945,7 +944,7 @@
     public $Type;
   }
   
-  class Lap
+  class QRLap
   {
     public $Time;
     public $Type;
@@ -955,7 +954,7 @@
     public $StraightLineDistance;
   }
   
-  class ParameterizedLocation
+  class QRParameterizedLocation
   {
     public $SegmentIndex;
     public $Value;  
@@ -967,7 +966,7 @@
     }  
   }
   
-  class Matrix
+  class QRMatrix
   {
     public $Elements;
     private $Rows;
@@ -1008,7 +1007,7 @@
       $r = $this->Rows;  
       $c = $other->GetColumns();
       
-      $result = new Matrix($r, $c);
+      $result = new QRMatrix($r, $c);
       for ($i=0; $i<$r; $i++) 
       {
         for ($j=0; $j<$c; $j++) 

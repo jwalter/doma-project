@@ -106,11 +106,11 @@
         {
           $corners = $map->GetMapCornerArray();
           $overviewMapData = array();
-          $overviewMapData["MapCenter"] = new LongLat($map->MapCenterLongitude, $map->MapCenterLatitude);
-          $overviewMapData["Corners"][] = new LongLat($corners["SW"]["Longitude"], $corners["SW"]["Latitude"]);
-          $overviewMapData["Corners"][] = new LongLat($corners["NW"]["Longitude"], $corners["NW"]["Latitude"]);
-          $overviewMapData["Corners"][] = new LongLat($corners["NE"]["Longitude"], $corners["NE"]["Latitude"]);
-          $overviewMapData["Corners"][] = new LongLat($corners["SE"]["Longitude"], $corners["SE"]["Latitude"]);
+          $overviewMapData["MapCenter"] = new QRLongLat($map->MapCenterLongitude, $map->MapCenterLatitude);
+          $overviewMapData["Corners"][] = new QRLongLat($corners["SW"]["Longitude"], $corners["SW"]["Latitude"]);
+          $overviewMapData["Corners"][] = new QRLongLat($corners["NW"]["Longitude"], $corners["NW"]["Latitude"]);
+          $overviewMapData["Corners"][] = new QRLongLat($corners["NE"]["Longitude"], $corners["NE"]["Latitude"]);
+          $overviewMapData["Corners"][] = new QRLongLat($corners["SE"]["Longitude"], $corners["SE"]["Latitude"]);
           $overviewMapData["BorderColor"] = '#ff0000';
           $overviewMapData["BorderWidth"] = 2;
           $overviewMapData["BorderOpacity"] = 0.8;
