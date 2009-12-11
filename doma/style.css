@@ -538,7 +538,6 @@ img.button
 
 #showMapBody #wrapper
 {
-  float: left;
   position: relative;
 }
 
@@ -546,6 +545,7 @@ img.button
 {
   width: 1080px;
   position: relative;
+  white-space: nowrap;  
 }
 
 #showMapBody #previousAndNext
@@ -635,9 +635,4 @@ img.button
 .hoverThumbnail img
 {
   display: block;
-}
-
-#topmenu
-{
-white-space:nowrap;
 }

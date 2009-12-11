@@ -19,7 +19,7 @@
 <body id="showMapBody">
 <center>
 <div id="top_menu">
-<div id="wrapper">
+<div id="wrapper" <?php if($vd["Map"]->IsGeocoded) {print 'style="float:left"';} else {print 'style="float:center"';}?>>
 <?php Helper::CreateTopbar() ?>
 <div id="content">
 <form method="post" action="<?php print $PHP_SELF?>">
@@ -82,38 +82,17 @@ if($QR->IsValid)
 		if(__("SHOW_DISTANCE") && $map->Distance != "") print '<div class="property">'. __("DISTANCE") .': '. round(($map->Distance)/1000,2) .' km</div>';
 		if(__("SHOW_ELAPSEDTIME") && $map->ElapsedTime != "") print '<div class="property">'. __("ELAPSEDTIME") .': '. floor($map->ElapsedTime/60).':'. ($map->ElapsedTime % 60) .'</div>';
 		print '</div>';
-		$gmaph = 156;
 	}
 	if (($c1 != 0)&&((__("SHOW_MAXHR"))||(__("SHOW_AVGHR")))) {
 		print '<div id="propertyContainer">';
 		if(__("SHOW_AVGHR")) print '<div class="property">'. __("AVGHR") .': '. round($c1/$c2,0).'</div>';
 		if(__("SHOW_MAXHR")) print '<div class="property">'. __("MAXHR") .': '. round($max1,0).'</div>';
 		print '</div>';
-	    $gmaph = 174;
 	}
 }
 ?>
-<?
-  if(__("SHOW_COMMENT") && $map->Comment != "") {
-	  print '<div id="comment">'. nl2br($map->Comment) .'</div>';
-	  if ($c1 != 0) { //when heart rate is available - Google map height
-		  if (strlen($map->Comment) >  470) {
-			  $gmaph = 262;
-		  } elseif (strlen($map->Comment) >  310) {
-			  $gmaph = 234;
-		  } elseif (strlen($map->Comment) >  160) {
-			  $gmaph = 216;
-		  } else {
-			  $gmaph = 198;
-		  }
-	  } else { //no heart rate - comment length not tested
-		  $gmaph = 174;
-	  }
-	  
-	}
-?>
-<?
-
+<?php
+  if(__("SHOW_COMMENT") && $map->Comment != "") print '<div id="comment">'. nl2br($map->Comment) .'</div>';
 
 ?>
 <div class="clear"></div>
@@ -121,13 +100,16 @@ if($QR->IsValid)
 </form>
 </div>
 </div>
-<?
+<?php
 if($map->IsGeocoded)
 {
 	print '<div id="gmap">';
 	?>
-	<img src="http://maps.google.com/staticmap?center=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>&amp;zoom=6&amp;size=170x<?echo($gmaph)?>&amp;maptype=terrain&amp;markers=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>,red&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>&amp;sensor=false">
-	<?
+	<script type="text/javascript">
+	var divh = document.getElementById('wrapper').offsetHeight;
+	document.write('<img src="http://maps.google.com/staticmap?center=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>&amp;zoom=6&amp;size=170x'+divh+'&amp;maptype=terrain&amp;markers=<?php print($map->MapCenterLatitude)?>,<?php print($map->MapCenterLongitude)?>,red&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>&amp;sensor=false">');
+	</script>
+	<?php
 	print '</div>';
 }
 ?>
