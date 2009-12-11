@@ -643,5 +643,8 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
     <string key="MAXHR">
       Maximal HR
     </string> 
-  </nonCustomizable>  
+      <string key="LANGUAGE">
+      Language
+    </string> 
+</nonCustomizable>  
 </strings>

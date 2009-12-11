@@ -52,7 +52,7 @@
     {
       $settings = array();
       $descriptions = array();
-      $languageFileName = self::GetRootUrl(false) ."languages/". LANGUAGE_FILE;
+      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->customizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -70,7 +70,7 @@
     private static function GetNonCustomizableStrings()
     {
       $settings = array();
-      $languageFileName = self::GetRootUrl(false) ."languages/". LANGUAGE_FILE;
+      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->nonCustomizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -190,7 +190,16 @@
     // the user as specified by $_GET["user"] / $_POST["user"]
     public static function SetUser($user)
     {
-      $languageFileName = self::GetRootUrl(false) ."languages/". LANGUAGE_FILE;
+      if($_GET["lang"])
+      {
+        if(strrpos(strtolower(LANGUAGES_AVAILABLE),$_GET["lang"])!==false) Session::SetLanguageFileShort(strtolower($_GET["lang"]).".xml");
+      }
+      else
+      {
+        if(!Session::GetLanguageFileShort()) Session::SetLanguageFileShort(LANGUAGE_FILE);
+      }
+      
+      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
       $languageFileNameAndDate = $languageFileName ."_". filemtime($languageFileName);
      
       // some caching logic for language strings
@@ -386,6 +395,8 @@
           <div class="right">
             <a href="users.php"><?php print __("ALL_USERS")?></a>
             <span class="separator">|</span>
+            <?php Helper::ShowLanguages();?>
+            <span class="separator">|</span>
             <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
           </div>
           <div class="clear"></div>
@@ -412,6 +423,8 @@
             <?php } ?>
           </div>
           <div class="right">
+            <?php Helper::ShowLanguages();?>
+            <span class="separator">|</span>
             <a href="http://www.matstroeng.se/doma/?<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
           </div>
           <div class="clear"></div>
@@ -523,7 +536,21 @@
       fclose($fp); 
       return array("fileName" => $fileName, "error" => $error);
     }
-    
+    public static function ShowLanguages()
+    {
+      $langs = split("\|", LANGUAGES_AVAILABLE);
+      if(is_array($langs))
+      {
+        print __("LANGUAGE").": ";
+        $pos = strrpos($_SERVER['REQUEST_URI'], "?");
+        $a = ($pos === false) ? "?" : "&";
+        foreach ($langs as $lang)
+        {
+          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($lang).'">'.$lang.'</a>&nbsp;&nbsp;';
+        }
+      }
+    }
+  
   }
 
 ?>

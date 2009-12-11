@@ -637,5 +637,8 @@ He olvidado mi contraseña
     <string key="MAXHR">
       Maximal HR
     </string> 
+    <string key="LANGUAGE">
+      Language
+    </string> 
 </nonCustomizable>
 </strings> 

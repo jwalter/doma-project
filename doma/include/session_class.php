@@ -19,6 +19,15 @@
       self::SetValue("LANGUAGE_FILE", $value);
     }    
 
+    public static function GetLanguageFileShort()
+    {
+      return self::GetValue("LANGUAGE_FILE_SHORT");
+    }
+    public static function SetLanguageFileShort($value)
+    {
+      self::SetValue("LANGUAGE_FILE_SHORT", $value);
+    }    
+    
     public static function GetIsLoggedInAdmin()
     {
       return self::GetValue("IS_LOGGED_IN_ADMIN");

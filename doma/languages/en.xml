@@ -645,6 +645,8 @@ Consider the password as being temporary. For security reasons, please change it
     <string key="MAXHR">
       Maximal HR
     </string> 
-   
+    <string key="LANGUAGE">
+      Language
+    </string> 
   </nonCustomizable>
 </strings>

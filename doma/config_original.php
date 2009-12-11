@@ -33,10 +33,6 @@
   // The directory is created during creation. Write access to the directory for the server user account under which PHP runs is required.
   define('MAP_IMAGE_PATH', 'map_images');
 
-  // Path to temporary file storage directory, relative to this file. Don't change unless you have a good reason.
-  // The directory is created during creation. Write access to the directory for the server user account under which PHP runs is required.
-  define('TEMP_FILE_PATH', 'temp');
-
   // The file that contains the text strings to display on the site.
   // Language files are in xml format and located in the 'languages' directory.
   // You may create your own language file by copying and modifying one of the existing files.
@@ -59,10 +55,6 @@
   // Leave the code empty ('') to prevent people to create user accounts theirselves.
   define('PUBLIC_USER_CREATION_CODE', '');
 
-  // The Google Maps API key, required to embed overview maps in the site.
-  // Acquire your key at http://code.google.com/apis/maps/signup.html
-  define('GOOGLE_MAPS_API_KEY', '');
-
   // *********************************************************************************************************
   //   APPEARANCE SETTINGS
   // *********************************************************************************************************
@@ -77,4 +69,17 @@
   define('THUMBNAIL_WIDTH', 400);
   define('THUMBNAIL_HEIGHT', 100);
   define('THUMBNAIL_SCALE', 0.5);
-?>
+
+  //-------------DOMA 3.0 new settings---------------
+  // Path to temporary file storage directory, relative to this file. Don't change unless you have a good reason.
+  // The directory is created during creation. Write access to the directory for the server user account under which PHP runs is required.
+  define('TEMP_FILE_PATH', 'temp');
+
+  // The Google Maps API key, required to embed overview maps in the site.
+  // Acquire your key at http://code.google.com/apis/maps/signup.html
+  define('GOOGLE_MAPS_API_KEY', '');
+  
+  //Visible languages separated by |     sample:EN|SV|CZ     language files in folder must look like en.xml, sv.xml, cz.xml, ...
+  define('LANGUAGES_AVAILABLE','EN|SV|CZ')
+  
+  ?>

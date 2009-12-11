@@ -645,6 +645,8 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="MAXHR">
       Max. tepy
     </string> 
-
+    <string key="LANGUAGE">
+      Jazyk
+    </string> 
   </nonCustomizable>
 </strings>
