@@ -545,7 +545,6 @@ img.button
 {
   width: 1080px;
   position: relative;
-  white-space: nowrap;  
 }
 
 #showMapBody #previousAndNext
