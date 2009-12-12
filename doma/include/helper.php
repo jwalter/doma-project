@@ -52,7 +52,7 @@
     {
       $settings = array();
       $descriptions = array();
-      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->customizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -70,7 +70,7 @@
     private static function GetNonCustomizableStrings()
     {
       $settings = array();
-      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->nonCustomizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -207,7 +207,7 @@
         if(!Session::GetLanguageFileShort()) Session::SetLanguageFileShort(LANGUAGE_FILE);
       }
       
-      $languageFileName = self::GetRootUrl(false) ."languages/". Session::GetLanguageFileShort();
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
       $languageFileNameAndDate = $languageFileName ."_". filemtime($languageFileName);
      
       // some caching logic for language strings
