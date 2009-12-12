@@ -187,7 +187,7 @@
 
     public static function DeleteMap($map)
     {
-      $uploadDir = Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/";
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
       self::DeleteMapImage($map);
       self::DeleteThumbnailImage($map);
       $map->Delete();
@@ -199,7 +199,7 @@
       $inputBlankMapImageFileName = $blankMapImageFileName;
       $inputThumbnailImageFileName = $thumbnailImageFileName;
       $isNewMap = !($map->ID);
-      $uploadDir = Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/";
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
       $thumbnailCreatedSuccessfully = true;
       $map->Save();
       $id = $map->ID;
@@ -221,8 +221,8 @@
           // autc-create thumbnail
           self::DeleteThumbnailImage($map);
           $thumbnailImageName = Helper::CreateThumbnail(
-            Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/$id.$extension",
-            Helper::GetRootUrl(false) . MAP_IMAGE_PATH. "/$id.thumbnail",
+            Helper::LocalPath(MAP_IMAGE_PATH ."/$id.$extension"),
+            Helper::LocalPath(MAP_IMAGE_PATH. "/$id.thumbnail"),
             THUMBNAIL_WIDTH,
             THUMBNAIL_HEIGHT,
             THUMBNAIL_SCALE,
@@ -250,8 +250,8 @@
           // autc-create thumbnail
           self::DeleteThumbnailImage($map);
           $thumbnailImageName = Helper::CreateThumbnail(
-            Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/$id.blank.$extension",
-            Helper::GetRootUrl(false) . MAP_IMAGE_PATH. "/$id.thumbnail",
+            Helper::LocalPath(MAP_IMAGE_PATH ."/$id.blank.$extension"),
+            Helper::LocalPath(MAP_IMAGE_PATH. "/$id.thumbnail"),
             THUMBNAIL_WIDTH,
             THUMBNAIL_HEIGHT,
             THUMBNAIL_SCALE,
@@ -339,19 +339,19 @@
 
     public static function DeleteMapImage($map)
     {
-      $uploadDir = Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/";
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
       if($map->MapImage) @unlink($uploadDir . $map->MapImage);
     }
 
     public static function DeleteBlankMapImage($map)
     {
-      $uploadDir = Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/";
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
       if($map->BlankMapImage) @unlink($uploadDir . $map->BlankMapImage);
     }
 
     public static function DeleteThumbnailImage($map)
     {
-      $uploadDir = Helper::GetRootUrl(false) . MAP_IMAGE_PATH ."/";
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
       if($map->ThumbnailImage) @unlink($uploadDir . $map->ThumbnailImage);
     }
 

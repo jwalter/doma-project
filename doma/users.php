@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
-  <script type="text/javascript" src="js/jquery/jquery-1.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery-1.3.2.min.js"></script>
   <script type="text/javascript" src="js/users.js.php"></script>
 </head>
 

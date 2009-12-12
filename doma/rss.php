@@ -9,7 +9,7 @@
 <rss version="2.0">
    <channel>
       <title><?php print $vd["Title"]?></title>
-      <link><?php print Helper::GetWebsiteUrl()?></link>
+      <link><?php print Helper::GlobalPath("")?></link>
       <description><?php print $vd["Description"]?></description>
       <lastBuildDate><?php print $vd["LastCreatedTime"]?></lastBuildDate>
       <image>

@@ -31,11 +31,11 @@
           // create database
           $result = executeDatabaseScripts();
           $errors = $result["errors"];
-          
-          @mkdir(Helper::GetRootUrl(false) . MAP_IMAGE_PATH);
-          @chmod(Helper::GetRootUrl(false) . MAP_IMAGE_PATH, 0777);
-          @mkdir(Helper::GetRootUrl(false) . TEMP_FILE_PATH);
-          @chmod(Helper::GetRootUrl(false) . TEMP_FILE_PATH, 0777);
+          // chmod only has effext on linux/unix systems
+          @mkdir(Helper::LocalPath(MAP_IMAGE_PATH));
+          @chmod(Helper::LocalPath(MAP_IMAGE_PATH), 0777);
+          @mkdir(Helper::LocalPath(TEMP_FILE_PATH));
+          @chmod(Helper::LocalPath(TEMP_FILE_PATH), 0777);
 
 		  if (version_compare(DataAccess::GetSetting("DATABASE_VERSION", "0.0"),"2.1")>0)
 		  {

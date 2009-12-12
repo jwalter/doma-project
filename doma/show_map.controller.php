@@ -32,9 +32,9 @@
       $next = DataAccess::GetNextMap(getUser()->ID, $map->ID);
       $viewData["NextName"] = $next->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($next->Date, true)) .')';
 
-      $size = getimagesize(Helper::GetMapImage($map, false));
-      $viewData["ImageWidth"] = $size[0];
-      $viewData["ImageHeight"] = $size[1];
+      $size = $map->GetMapImageSize();
+      $viewData["ImageWidth"] = $size["Width"];
+      $viewData["ImageHeight"] = $size["Height"];
       
       DataAccess::IncreaseMapViews($map);
 

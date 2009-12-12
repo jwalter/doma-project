@@ -90,7 +90,7 @@
   </script>
 
 <?php /*********************************************************************************************************************************/ ?>
-    <script src="js/jquery/jquery-1.3.min.js" type="text/javascript"></script>
+    <script src="js/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>"
       type="text/javascript"></script>
     <script type="text/javascript">
@@ -140,7 +140,7 @@
                 $arr[] = "[". $waypoints[$j]["Position"]["Latitude"] .", ". $waypoints[$j]["Position"]["Longitude"] ."]";
               }
               print "routeLines[$i] = [". join(",", $arr). "];\n";
-              print "ic = new GIcon(G_DEFAULT_ICON);  ic.image = '{GetWebsiteUrl()}/gfx/". ($i == 0 ? "red" : "blue") ."_marker.png'; ic.iconSize = new GSize(7,7); ic.iconAnchor=new GPoint(3,3); ic.shadow=null;";
+              print "ic = new GIcon(G_DEFAULT_ICON);  ic.image = '{Helper::GlobalPath(\"\")}gfx/". ($i == 0 ? "red" : "blue") ."_marker.png'; ic.iconSize = new GSize(7,7); ic.iconAnchor=new GPoint(3,3); ic.shadow=null;";
               print "markerOptions = {icon: ic};\n";
               print "currentLocationMarkers[$i] = new GMarker(new GLatLng(". $waypoints[0]["Position"]["Latitude"] .", ". $waypoints[0]["Position"]["Longitude"] ."), markerOptions);\n";
               print "map.addOverlay(currentLocationMarkers[$i]);\n";

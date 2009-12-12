@@ -32,8 +32,8 @@
         
         $fromName = __("DOMA_ADMIN_EMAIL_NAME");
         $subject = __("NEW_PASSWORD_EMAIL_SUBJECT");
-        $baseAddress = Helper::GetWebsiteUrl();
-        $userAddress = Helper::GetWebsiteUrl() ."/index.php?user=". $user->Username;
+        $baseAddress = Helper::GlobalPath("");
+        $userAddress = Helper::GlobalPath("index.php?user=". $user->Username);
         $body = sprintf(__("NEW_PASSWORD_EMAIL_BODY"), $user->FirstName, $baseAddress, $userAddress, $user->Username, $password);  
         $emailSentSuccessfully = Helper::SendEmail($fromName, $user->Email, $subject, $body);
         

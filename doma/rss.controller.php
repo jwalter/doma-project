@@ -20,7 +20,7 @@
         $viewData["Title"] = _SITE_TITLE;
         $viewData["LastCreatedTime"] = date("r", DataAccess::GetLastCreatedTime());
         $viewData["Description"] = _SITE_DESCRIPTION;
-        $viewData["WebsiteUrl"] = Helper::GetWebsiteUrl() ."/index.php";
+        $viewData["WebsiteUrl"] = Helper::GlobalPath("index.php");
       }
       else
       {
@@ -33,7 +33,7 @@
         $viewData["Title"] = __("PAGE_TITLE");
         $viewData["LastCreatedTime"] = date("r", DataAccess::GetLastCreatedTime(getUser()->ID));
         $viewData["Description"] = __("RSS_DESCRIPTION");
-        $viewData["WebsiteUrl"] = Helper::GetWebsiteUrl() ."/index.php?". Helper::CreateQuerystring(getUser());
+        $viewData["WebsiteUrl"] = Helper::GlobalPath("index.php?". Helper::CreateQuerystring(getUser()));
       }
 
       foreach($maps as $map)
@@ -41,7 +41,7 @@
         $item = array();
         $user = $users[$map->UserID];
         $item["Title"] = hsc(Helper::DateToLongString(Helper::StringToTime($map->Date, true)) .": ". $map->Name);
-        $item["URL"] = ($map->MapImage ? Helper::GetWebsiteUrl() .'/show_map.php?user='. urlencode($user->Username) .'&amp;map='. $map->ID : "");
+        $item["URL"] = ($map->MapImage ? Helper::GlobalPath('show_map.php?user='. urlencode($user->Username) .'&amp;map='. $map->ID : ""));
         
         $atoms = array();
         if(__("SHOW_MAP_AREA_NAME") && $map->MapName != "") $atoms[] = $map->MapName;

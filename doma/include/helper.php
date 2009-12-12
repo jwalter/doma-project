@@ -98,26 +98,34 @@
       die();   
     }
     
-    public static function GetRootUrl($webRootMode = true)
+    /**
+    * Creates a url relative to the server root, e g /subdir/index.php.
+    * 
+    */
+    public static function ServerPath($path)
     {
-      if($webRootMode)
-        $dirName = dirname($_SERVER["SCRIPT_NAME"]);
-      else
-        $dirName = dirname($_SERVER["SCRIPT_FILENAME"]);
-      if(substr($dirName, -1) == "/") return $dirName;
-      return $dirName ."/";
+      if(substr($path, 0, 1) == "/") $path = substr($path, 1);
+      return PROJECT_DIRECTORY . $path;
     }
-
-    public static function GetWebsiteUrl()
+    
+    /**
+    * Creates a rooted path on the local machine e g c:\inetpub\wwwroot\subdir/index.php.
+    * 
+    */
+    public static function LocalPath($path)
     {
-      if(isset($_SERVER["SCRIPT_URI"]))
-      {
-        return dirname($_SERVER["SCRIPT_URI"]);
-      }
-      else
-      {
-        return "http://". dirname($_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"]);        
-      }
+      if(substr($path, 0, 1) == "/") $path = substr($path, 1);
+      return ROOT_PATH . $path;
+    }
+    
+    /**
+    * Creates a full url, e g http://www.mymaparchive.com/subdir/index.php.
+    * 
+    */
+    public static function GlobalPath($path)
+    {
+      if(substr($path, 0, 1) == "/") $path = substr($path, 1);
+      return BASE_URL . $path;
     }
 
     public static function LoginAdmin($username, $password)
@@ -216,19 +224,19 @@
       }
     }
 
-    public static function GetThumbnailImage(Map $map, $webRootMode = true)
+    public static function GetThumbnailImage(Map $map)
     {
-      return self::GetRootUrl($webRootMode) . MAP_IMAGE_PATH ."/". $map->ThumbnailImage;
+      return self::ServerPath(MAP_IMAGE_PATH ."/". $map->ThumbnailImage);
     }
 
-    public static function GetMapImage(Map $map, $webRootMode = true)
+    public static function GetMapImage(Map $map)
     {
-      return self::GetRootUrl($webRootMode) . MAP_IMAGE_PATH ."/". $map->MapImage;
+      return self::ServerPath(MAP_IMAGE_PATH ."/". $map->MapImage);
     }
     
-    public static function GetBlankMapImage(Map $map, $webRootMode = true)
+    public static function GetBlankMapImage(Map $map)
     {
-      return self::GetRootUrl($webRootMode) . MAP_IMAGE_PATH ."/". $map->BlankMapImage;
+      return self::ServerPath(MAP_IMAGE_PATH ."/". $map->BlankMapImage);
     }
     
     public static function DatabaseVersionIsValid()
@@ -266,7 +274,7 @@
 
     private static function ImageIsResizable($fileName)
     {
-      $contents = @file_get_contents(self::GetWebsiteUrl() ."/include/image_is_resizable.php?filename=". $fileName);
+      $contents = @file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
       return ($contents == "1");
     }
 
@@ -435,7 +443,7 @@
     
     public static function LogUsage($action, $data)
     {
-      @file(DOMA_SERVER ."?url=". urlencode(self::GetWebsiteUrl()) ."&action=". urlencode($action) ."&data=". urlencode($data));
+      @file(DOMA_SERVER ."?url=". urlencode(self::GlobalPath("")) ."&action=". urlencode($action) ."&data=". urlencode($data));
     }
     
     public static function SendEmail($fromName, $toEmail, $subject, $body)
@@ -514,7 +522,7 @@
     
     public static function SaveTemporaryFileFromUploadedFile($uploadedFile)
     {
-      $temporaryDirectory = Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/";
+      $temporaryDirectory = Helper::LocalPath(TEMP_FILE_PATH ."/");
       if($uploadedFile['name'])
       {
         $extension = Helper::GetExtension($uploadedFile['name']);
@@ -529,7 +537,7 @@
     
     public static function SaveTemporaryFileFromFileData($fileData, $extension)
     {
-      $temporaryDirectory = Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/";
+      $temporaryDirectory = Helper::LocalPath(TEMP_FILE_PATH ."/");
       $fileName = $temporaryDirectory . rand(0, 1000000000) .".". $extension;
       $fp = fopen($fileName, "w");
       fwrite($fp, $fileData);

@@ -307,9 +307,9 @@
 
   function PublishPreUploadedMap($request)
   {
-    if($request["PreUploadedMapImageFileName"]) $mapImageFileName = Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/". $request["PreUploadedMapImageFileName"];
-    if($request["PreUploadedBlankMapImageFileName"]) $blankMapImageFileName = Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/". $request["PreUploadedBlankMapImageFileName"];
-    if($request["PreUploadedThumbnailImageFileName"]) $thumbnailMapImageFileName = Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/". $request["PreUploadedThumbnailImageFileName"];
+    if($request["PreUploadedMapImageFileName"]) $mapImageFileName = Helper::LocalPath(TEMP_FILE_PATH ."/". $request["PreUploadedMapImageFileName"]);
+    if($request["PreUploadedBlankMapImageFileName"]) $blankMapImageFileName = Helper::LocalPath(TEMP_FILE_PATH ."/". $request["PreUploadedBlankMapImageFileName"]);
+    if($request["PreUploadedThumbnailImageFileName"]) $thumbnailMapImageFileName = Helper::LocalPath(TEMP_FILE_PATH ."/". $request["PreUploadedThumbnailImageFileName"]);
     return PublishMapHelper($request["Username"], $request["Password"], $request["MapInfo"], $mapImageFileName, $blankMapImageFileName, $thumbnailMapImageFileName);
   }
 
@@ -326,7 +326,7 @@
     {
       $fileName = $request["FileName"];
       if(!$fileName) $fileName = rand(0, 1000000000) .".tmp";
-      $fp = fopen(Helper::GetRootUrl(false) . TEMP_FILE_PATH ."/". $fileName, "a");
+      $fp = fopen(Helper::LocalPath(TEMP_FILE_PATH ."/". $fileName), "a");
       fwrite($fp, $request["Data"]);
       fclose($fp);  
       $success = true;
@@ -463,7 +463,7 @@
       if(!$mapInfo["ID"]) Helper::LogUsage("addMapWS", "user=". urlencode($user->Username) ."&map=". $map->ID);
       $errorMessage = mysql_error();
       $success = ($errorMessage == "");
-      $url = Helper::GetWebsiteUrl() ."/show_map.php?user=". urlencode($user->Username) ."&map=". $map->ID;
+      $url = Helper::GlobalPath("show_map.php?user=". urlencode($user->Username) ."&map=". $map->ID);
     }
 
     return array(

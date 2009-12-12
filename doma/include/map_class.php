@@ -179,7 +179,7 @@
     
     public function GetMapImageSize()
     {
-      $size = getimagesize(MAP_IMAGE_PATH ."/" . $this->MapImage);
+      $size = getimagesize(Helper::LocalPath(MAP_IMAGE_PATH ."/" . $this->MapImage));
       return array("Width" => $size[0], "Height" => $size[1]);
     }
     

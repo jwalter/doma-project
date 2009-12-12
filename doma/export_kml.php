@@ -8,7 +8,7 @@
   $map = new Map();
   $map->Load($id);
 
-  $data = $map->CreateKmlString(Helper::GetWebsiteUrl() . "/". MAP_IMAGE_PATH);
+  $data = $map->CreateKmlString(Helper::LocalPath(MAP_IMAGE_PATH));
 
   header("Content-Type: application/vnd.google-earth.kml+xml");
   header('Content-Disposition: attachment; filename="map.kml";');
