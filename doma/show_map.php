@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
+  <script type="text/javascript" src="js/jquery/jquery-1.3.2.min.js"></script>  
   <script src="js/show_map.js.php" type="text/javascript"></script>
 </head>
 <body id="showMapBody">
