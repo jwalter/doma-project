@@ -79,7 +79,10 @@
   // Acquire your key at http://code.google.com/apis/maps/signup.html
   define('GOOGLE_MAPS_API_KEY', '');
   
-  //Visible languages separated by |     sample:EN|SV|CZ     language files in folder must look like en.xml, sv.xml, cz.xml, ...
-  define('LANGUAGES_AVAILABLE','EN|SV|CZ')
+  //Show languages in topbar (1 = yes, 0 = no)
+  define('LANGUAGES_SHOW','1');
   
+  //Available languages separated by |     sample:SE|EN|CZ     language files in folder must look like se.xml, en.xml, cz.xml, ...
+  //Flags are stored in /gfx/flag folder in format xx.png
+  define('LANGUAGES_AVAILABLE','CZ|EN|SE');
   ?>

@@ -403,8 +403,12 @@
           <div class="right">
             <a href="users.php"><?php print __("ALL_USERS")?></a>
             <span class="separator">|</span>
-            <?php Helper::ShowLanguages();?>
-            <span class="separator">|</span>
+            <?php 
+            if(LANGUAGES_SHOW=="1") 
+            {
+              Helper::ShowLanguages();?>
+              <span class="separator">|</span>
+            <?php } ?>
             <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
           </div>
           <div class="clear"></div>
@@ -431,8 +435,12 @@
             <?php } ?>
           </div>
           <div class="right">
-            <?php Helper::ShowLanguages();?>
-            <span class="separator">|</span>
+            <?php 
+            if(LANGUAGES_SHOW=="1") 
+            {
+              Helper::ShowLanguages();?>
+              <span class="separator">|</span>
+            <?php } ?>
             <a href="http://www.matstroeng.se/doma/?<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
           </div>
           <div class="clear"></div>
@@ -554,7 +562,7 @@
         $a = ($pos === false) ? "?" : "&";
         foreach ($langs as $lang)
         {
-          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($lang).'">'.$lang.'</a>&nbsp;&nbsp;';
+          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($lang).'"><img src="./gfx/flag/'.strtolower($lang).'.png" border="0" alt="'.$lang.'"></a>&nbsp;&nbsp;';
         }
       }
     }
