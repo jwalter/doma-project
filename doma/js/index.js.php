@@ -1,5 +1,6 @@
 <?php
-  include_once("../include/helper.php");
+include_once("../include/main.php");
+include_once("../include/helper.php");
 ?>
 $(document).ready(function() 
 {
