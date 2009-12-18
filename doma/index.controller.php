@@ -59,11 +59,11 @@
       if(!in_array($searchCriteria["selectedYear"], array_keys($viewData["YearsWithText"]))) $searchCriteria["selectedYear"] = $years[0];
       if(!in_array($searchCriteria["selectedCategoryID"], array_keys($categories))) $searchCriteria["selectedCategoryID"] = $categories[0];
 
-      if(isset($_POST["year"])) $searchCriteria["selectedYear"] = $_POST["year"];
-      if(isset($_POST["categoryID"])) $searchCriteria["selectedCategoryID"] = $_POST["categoryID"];
-      if(isset($_POST["displayMode"])) 
+      if(isset($_GET["year"])) $searchCriteria["selectedYear"] = $_GET["year"];
+      if(isset($_GET["categoryID"])) $searchCriteria["selectedCategoryID"] = $_GET["categoryID"];
+      if(isset($_GET["displayMode"])) 
       {
-        $viewData["DisplayMode"] = $_POST["displayMode"];
+        $viewData["DisplayMode"] = $_GET["displayMode"];
       }
       else
       {

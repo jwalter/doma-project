@@ -1,4 +1,30 @@
 <?php
+
+/*********************************************************************************************************************************
+
+THIS PAGE IS A MESS.
+I think the idea was to present all maps of one user as markers on a large GM map.
+
+New idea: Perform a total makeover. Make this a pluggable script named something like overview_map.php that takes the following input data:
+
+INPUT:
+* User id (null for all users)
+* Start date (optional)
+* End date (optional)
+* Category id (optional)
+* Marker style (normal or clustered)
+
+OUTPUT:
+* A GM overview map is rendered according to the input settings. 
+* When hovering over a marker, the thumbnail image and some info about the map is displayed in some sort of popup (maybe use the cluetip jQuery plugin, http://plugins.learningjquery.com/cluetip/. 
+* When clicking the marker, the show_map.php page for the map is shown.
+
+
+**********************************************************************************************************************************/
+
+
+
+
   include_once(dirname(__FILE__) ."/include/main.php");
   include_once(dirname(__FILE__) ."/include/json.php");
 
@@ -74,25 +100,11 @@
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
-  <!--<script type="text/javascript" src="js/prototype/prototype_1.6.0.3.js"></script>-->
-  <script type="text/javascript">
-    function toggleComment(id)
-    {
-      $('shortComment_' + id).toggleClassName('hidden');
-      $('longComment_' + id).toggleClassName('hidden');
-    }
-
-    function submitForm()
-    {
-      document.forms[0].submit();
-    }
-
-  </script>
+  <script src="js/index.googlemaps.js" type="text/javascript"></script>
 
 <?php /*********************************************************************************************************************************/ ?>
     <script src="js/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>"
-      type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>" type="text/javascript"></script>
     <script type="text/javascript">
 
     //<![CDATA[
@@ -232,7 +244,7 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
+<form method="get" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
 <?php if(count($errors) > 0) { ?>
 <ul class="error">
 <?php
@@ -265,7 +277,7 @@
   {
   ?>
   <label for="categoryID"><?php print __("SELECT_CATEGORY")?>:</label>
-  <select name="categoryID" id="categoryID" onchange="submitForm();">
+  <select name="categoryID" id="categoryID">
   <?php
     foreach($categoriesWithText as $category)
     {
@@ -389,11 +401,11 @@
     {
       ?>
       <div class="comment" id="shortComment_<?php print $map->ID?>">
-        <img src="gfx/plus.png" class="button" onclick="toggleComment(<?php print $map->ID?>);" alt="" />
+        <img src="gfx/plus.png" class="button" alt="" />
         <div class="indent"><?php print substr($strippedComment, 0, $maxLength)?>...</div>
       </div>
       <div class="comment hidden" id="longComment_<?php print $map->ID?>">
-        <img src="gfx/minus.png" class="button" onclick="toggleComment(<?php print $map->ID?>);" alt="" />
+        <img src="gfx/minus.png" class="button" alt="" />
         <div class="indent"><?php print nl2br($map->Comment)?></div>
       </div>
       <?php
