@@ -615,8 +615,8 @@ Consider the password as being temporary. For security reasons, please change it
     <string key="OVERVIEW_MAP">
       Google map overview
     </string> 
-    <string key="KML_TOOLTIP">
-      ...for Google Earth...
+    <string key="OPEN_IN_GOOGLE_EARTH">
+      Open in Google Earth
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
       Y-m-d

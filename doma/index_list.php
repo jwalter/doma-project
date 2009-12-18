@@ -32,6 +32,21 @@
           , <a href="<?php print $map->CreateResultListUrl()?>"><?php print __("RESULTS")?></a>
         </div>
         <?php } ?>
+
+        <?php
+          if($map->IsGeocoded) 
+          {
+            ?>
+            <div class="listOverviewMapLink">
+              <input type="hidden" value="<?php print $map->ID; ?>" />
+              <a href="#"><?php print __("OVERVIEW_MAP"); ?></a>
+              <span class="separator">|</span> 
+              <a href="export_kml.php?id='<?php print $map->ID; ?>"><?php print __("OPEN_IN_GOOGLE_EARTH"); ?></a>
+            </div>
+            <?php
+          }
+        ?>
+
         <?php if(Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getUser()->ID) { ?>
           <div class="admin">
             <?php print $map->Views?> 
@@ -40,10 +55,9 @@
             <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser(), $map->ID)?>"><?php print __("EDIT_MAP"); ?></a>
           </div>
         <?php } ?>
-      <?php if($map->IsGeocoded) print '<div class="listOverviewMapLink"><a href="javascript:showListOverviewMap(this);">'. __("OVERVIEW_MAP") .'</a><input type="hidden" value="'. $map->ID .'" />, <a href="export_kml.php?id='. $map->ID .'" title="'. __("KML_TOOLTIP") .'">KML</a></div>'; ?> 
-
       </div>
-      <?php 
+
+      <?php
         if(__("SHOW_COMMENT") && $map->Comment) 
         {
           if(!$mapInfo["IsExpandableComment"])
@@ -69,7 +83,7 @@
           }
         }
         ?>
-      <div class="clear"></div>
+      <div class="googleMapsContainer clear"></div>
     </div>
   </div>
 

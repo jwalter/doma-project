@@ -14,7 +14,7 @@
 <title><?php print (_SITE_TITLE ." :: ". $title)?></title>
 <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <script type="text/javascript" src="js/jquery/jquery-1.3.2.min.js"></script>
-  <script type="text/javascript" src="js/edit_user.js.php"></script>
+  <script type="text/javascript" src="js/edit_user.js"></script>
 </head>
 
 <body id="editUserBody">

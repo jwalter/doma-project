@@ -1,7 +1,3 @@
-<?php
-include_once("../include/main.php");
-include_once("../include/helper.php");
-?>
 $(document).ready(function() 
 {
   $(".toggleComment").click(function() 
@@ -18,10 +14,9 @@ $(document).ready(function()
   $("#year").change(function() { submitForm()});
   $("#displayMode").change(function() { submitForm(); });
   $(".listOverviewMapLink a").click(function() { showListOverviewMap(this); });
- 
-  <?php if($_GET["displayMode"] == "overviewMap") { ?>
-    initOverviewMap();
-  <?php } ?>
+
+  // init overview map, but only if we are in overview map mode 
+  if($("#overviewMap").length > 0) initOverviewMap();
 });
 
 $(window).unload( function () { GUnload(); } );
@@ -82,7 +77,7 @@ function initOverviewMap()
 		var icon_x = new GIcon(G_DEFAULT_ICON);
 		icon_x.iconSize = new GSize(12, 12);
 		icon_x.iconAnchor = new GPoint(0, 12);
-		icon_x.image = "<?php print(Helper::GlobalPath("gfx/o-sign.png"));?>";
+		icon_x.image = "../gfx/o-sign.png";
 		icon_x.shadow = null;
 		markerOptions_x = { icon:icon_x };
 
@@ -139,11 +134,14 @@ Diven ska gå att dölja med klick på samma länk (som nu heter "- Översiktska
 */
 function showListOverviewMap(obj)
 {
-  var id = $(obj).next().val();
+  var div = $(obj).closest(".listOverviewMapLink");
+  var id = $("input[type='hidden']", div).val();
+  var googleMapsContainer = $(".googleMapsContainer", $(obj).closest(".map"));
+  var mapExists = $(".singleOverviewMap", googleMapsContainer).length > 0;
   
-  if($(obj).siblings().is("div"))
+  if(mapExists)
   {
-    $(obj).next().next().remove();
+    $(".singleOverviewMap", googleMapsContainer).remove();
   }
   else
   {
@@ -157,9 +155,10 @@ function showListOverviewMap(obj)
 
       var mapDiv = $('<div class="singleOverviewMap"></div>');
       
-                  $('input[value=' + id + ']').after(mapDiv);
+      googleMapsContainer.append(mapDiv);
+      
       var map = new GMap2(mapDiv.get(0));
-                  map.addControl(new GLargeMapControl());
+                  map.addControl(new GLargeMapControl3D());
                   map.addControl(new GMapTypeControl());
                   map.addControl(new GOverviewMapControl());
                   map.enableScrollWheelZoom();

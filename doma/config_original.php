@@ -82,7 +82,11 @@
   //Show languages in topbar (1 = yes, 0 = no)
   define('LANGUAGES_SHOW','1');
   
-  //Available languages separated by |     sample:SE|EN|CZ     language files in folder must look like se.xml, en.xml, cz.xml, ...
-  //Flags are stored in /gfx/flag folder in format xx.png
-  define('LANGUAGES_AVAILABLE','CZ|EN|SE');
-  ?>
+  // Available languages, as language name / language file name / flag file name triples separated by semicolons. Each triple is separated by a | character. 
+  // The first value in each triple is the language name.
+  // The second value is the language file name (stored in /languages directory).
+  // The third value is the flag image file name (stored in /gfx/flag directory).
+  // Example: "English;en;en|svenska;sv;se" makes English and Swedish available, and shows English and Swedish flags in topbar.
+  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no;no');
+
+?>

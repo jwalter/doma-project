@@ -14,7 +14,7 @@
 <title><?php print __("PAGE_TITLE")?> :: <?php print $title?></title>
 <link rel="icon" type="image/png" href="gfx/favicon.png" />
 <script type="text/javascript" src="js/jquery/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="js/edit_map.js.php"></script>
+<script type="text/javascript" src="js/edit_map.js"></script>
 </head>
 
 <body id="editMapBody">

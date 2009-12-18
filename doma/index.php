@@ -24,7 +24,7 @@
     -->
   </script>
   <?php } ?>
-  <script src="js/index.js.php?displayMode=<?php print $vd["DisplayMode"]; ?>" type="text/javascript"></script>
+  <script src="js/index.js" type="text/javascript"></script>
 </head>
 
 <body id="indexBody">

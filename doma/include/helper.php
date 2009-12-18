@@ -200,7 +200,7 @@
     {
       if($_GET["lang"])
       {
-        if(strrpos(strtolower(LANGUAGES_AVAILABLE),$_GET["lang"])!==false) Session::SetLanguageFileShort(strtolower($_GET["lang"]).".xml");
+        if(strrpos(strtolower(LANGUAGES_AVAILABLE), ";". $_GET["lang"] .";") !== false) Session::SetLanguageFileShort(strtolower($_GET["lang"]).".xml");
       }
       else
       {
@@ -552,6 +552,7 @@
       fclose($fp); 
       return array("fileName" => $fileName, "error" => $error);
     }
+    
     public static function ShowLanguages()
     {
       $langs = split("\|", LANGUAGES_AVAILABLE);
@@ -562,7 +563,8 @@
         $a = ($pos === false) ? "?" : "&";
         foreach ($langs as $lang)
         {
-          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($lang).'"><img src="./gfx/flag/'.strtolower($lang).'.png" border="0" alt="'.$lang.'"></a>&nbsp;&nbsp;';
+          list($languageName, $languageFile, $flagFile) = split(";", $lang);
+          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($languageFile).'"><img src="./gfx/flag/'.strtolower($flagFile).'.png" border="0" alt="'.$languageName.'" title="'.$languageName.'"></a>&nbsp;&nbsp;';
         }
       }
     }
