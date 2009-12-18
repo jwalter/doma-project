@@ -77,7 +77,7 @@ function initOverviewMap()
 		var icon_x = new GIcon(G_DEFAULT_ICON);
 		icon_x.iconSize = new GSize(12, 12);
 		icon_x.iconAnchor = new GPoint(0, 12);
-		icon_x.image = "../gfx/o-sign.png";
+		icon_x.image = "gfx/o-sign.png";
 		icon_x.shadow = null;
 		markerOptions_x = { icon:icon_x };
 

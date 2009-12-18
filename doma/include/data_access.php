@@ -1,6 +1,5 @@
 <?php
   include_once(dirname(__FILE__) ."/helper.php");
-  include_once(dirname(__FILE__) ."/quickroute_jpeg_extension_data.php");
 
   class DataAccess
   {
@@ -211,14 +210,14 @@
         $uploadFileName = $uploadDir . $id . "." . $extension;
         self::DeleteMapImage($map);
 
-        chmod($uploadDir, 0777);
+        @chmod($uploadDir, 0777);
         copy($inputMapImageFileName, $uploadFileName);
-        chmod($uploadFileName, 0777);
+        @chmod($uploadFileName, 0777);
 
         $map->MapImage = "$id.$extension";
         if(!$inputThumbnailImageFileName)
         {
-          // autc-create thumbnail
+          // auto-create thumbnail
           self::DeleteThumbnailImage($map);
           $thumbnailImageName = Helper::CreateThumbnail(
             Helper::LocalPath(MAP_IMAGE_PATH ."/$id.$extension"),
@@ -230,7 +229,7 @@
           $map->ThumbnailImage = basename($thumbnailImageName);
         }
 
-        self::AddGeocoding($map);
+        $map->AddGeocoding();
       }
 
       if($inputBlankMapImageFileName)
@@ -240,9 +239,9 @@
         $uploadFileName = $uploadDir . $id . ".blank." . $extension;
         self::DeleteBlankMapImage($map);
 
-        chmod($uploadDir, 0777);
+        @chmod($uploadDir, 0777);
         copy($inputBlankMapImageFileName, $uploadFileName);
-        chmod($uploadFileName, 0777);
+        @chmod($uploadFileName, 0777);
 
         $map->BlankMapImage = "$id.blank.$extension";
         if(!$inputThumbnailImageFileName && !$thumbnailImageName)
@@ -261,7 +260,8 @@
 
         if(!$map->IsGeocoded)
         {
-          self::AddGeocoding($map);
+          // add geocoding if it didn't exist in map image
+          $map->AddGeocoding();
         }
       }
 
@@ -273,15 +273,16 @@
         $uploadFileName = $uploadDir . $id . ".thumbnail." . $extension;
         self::DeleteThumbnailImage($map);
 
-        chmod($uploadDir, 0777);
+        @chmod($uploadDir, 0777);
         copy($inputThumbnailImageFileName, $uploadFileName);
-        chmod($uploadFileName, 0777);
+        @chmod($uploadFileName, 0777);
         $map->ThumbnailImage = "$id.thumbnail.$extension";
       }
 
       $map->LastChangedTime = gmdate("Y-m-d H:i:s");
       if($isNewMap) $map->CreatedTime = gmdate("Y-m-d H:i:s");
 
+      self::SaveMapWaypoints($map);
       $map->Save();
       return true;
 
@@ -295,47 +296,33 @@
         Helper::LogUsage("addMap", $data);
       }
     }
-
-    public static function AddGeocoding(&$map)
+    
+    public static function SaveMapWaypoints($map)
     {
-      $extensionData = new QuickRouteJpegExtensionData(MAP_IMAGE_PATH ."/". $map->MapImage, true);
-      if($extensionData->IsValid)
+      $ed = $map->GetQuickRouteJpegExtensionData();
+      
+      // first delete all existing waypoints
+      $sql = "DELETE FROM `". DB_WAYPOINT_TABLE ."` WHERE MapID=". $map->ID; 
+      self::Query($sql);
+      if($ed->IsValid)
       {
-        $map->MapCenterLatitude = (
-          min($extensionData->MapCornerPositions["SW"]->Latitude, $extensionData->MapCornerPositions["SE"]->Latitude) +
-          max($extensionData->MapCornerPositions["NW"]->Latitude, $extensionData->MapCornerPositions["NE"]->Latitude)) / 2;
-        $map->MapCenterLongitude = (
-          min($extensionData->MapCornerPositions["SW"]->Longitude, $extensionData->MapCornerPositions["NW"]->Longitude) +
-          max($extensionData->MapCornerPositions["SE"]->Longitude, $extensionData->MapCornerPositions["NE"]->Longitude)) / 2;
-        $map->MapCorners =
-          $extensionData->MapCornerPositions["SW"]->Longitude .",".
-          $extensionData->MapCornerPositions["SW"]->Latitude .",".
-          $extensionData->MapCornerPositions["NW"]->Longitude .",".
-          $extensionData->MapCornerPositions["NW"]->Latitude .",".
-          $extensionData->MapCornerPositions["NE"]->Longitude .",".
-          $extensionData->MapCornerPositions["NE"]->Latitude .",".
-          $extensionData->MapCornerPositions["SE"]->Longitude .",".
-          $extensionData->MapCornerPositions["SE"]->Latitude;
-        $map->SessionStartTime = gmdate("Y-m-d H:i:s", $extensionData->Sessions[0]->GetStartTime());
-        $map->SessionEndTime = gmdate("Y-m-d H:i:s", $extensionData->Sessions[0]->GetEndTime());
-        $map->Distance = $extensionData->Sessions[0]->Route->Distance;
-        $map->StraightLineDistance = $extensionData->Sessions[0]->StraightLineDistance;
-        $map->ElapsedTime = $extensionData->Sessions[0]->Route->ElapsedTime;
-        $map->IsGeocoded = 1;
-      }
-      else
-      {
-        $map->MapCenterLatitude = null;
-        $map->MapCenterLongitude = null;
-        $map->MapCorners = null;
-        $map->SessionStartTime = null;
-        $map->SessionEndTime = null;
-        $map->Distance = null;
-        $map->StraightLineDistance = null;
-        $map->ElapsedTime = null;
-        $map->IsGeocoded = 0;
+        $waypoints = array();
+        foreach($ed->Sessions[0]->Route->Segments as $segment)
+        {
+          foreach($segment->Waypoints as $w)
+          {
+            $values = array($map->ID, $w->Time, round($w->Position->Latitude * 3600000), round($w->Position->Longitude * 3600000));
+            $waypoints[] = "(" . join(",", $values) . ")";
+          }
+        }
+        if(count($waypoints) > 0)
+        {
+          $sql = "INSERT INTO `". DB_WAYPOINT_TABLE ."` (`MapID`, `Time`, `Latitude`, `Longitude`) VALUES ". join(",", $waypoints);
+          self::Query($sql);
+        }
       }
     }
+    
 
     public static function DeleteMapImage($map)
     {

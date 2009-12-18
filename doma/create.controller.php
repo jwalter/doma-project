@@ -37,18 +37,19 @@
           @mkdir(Helper::LocalPath(TEMP_FILE_PATH));
           @chmod(Helper::LocalPath(TEMP_FILE_PATH), 0777);
 
-		  if (version_compare(DataAccess::GetSetting("DATABASE_VERSION", "0.0"),"2.1")>0)
-		  {
-			$mp = DataAccess::GetAllMaps(0);
-			if(count($mp) > 0)
-			{
-			  foreach($mp as $map)
- 			  {
-				DataAccess::AddGeocoding($map);
-				$map->Save();
-			  }
-			}
-		  }
+		      if (version_compare(DataAccess::GetSetting("DATABASE_VERSION", "0.0"),"2.1")>0)
+		      {
+			      $mp = DataAccess::GetAllMaps(0);
+			      if(count($mp) > 0)
+			      {
+			        foreach($mp as $map)
+ 			        {
+                $map->AddGeocoding();
+                Helper::SaveMapWaypoints($map);
+				        $map->Save();
+			        }
+			      }
+          }
 
           if($previousDatabaseVersion == "0.0")
           {

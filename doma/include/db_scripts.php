@@ -33,18 +33,22 @@
       
       // 3.0
       // adding map position
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `MapCenterLatitude` double NULL, ADD `MapCenterLongitude` double NULL, ADD `MapCorners` text character set utf8 collate $collation NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `MapCenterLatitude` double NULL, ADD `MapCenterLongitude` double NULL, ADD `MapCorners` text character set utf8 collate $collation NULL"),
       // changing last changed and created time to nullable fields
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` CHANGE `LastChangedTime` `LastChangedTime` datetime NULL, CHANGE `CreatedTime` `CreatedTime` datetime NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` CHANGE `LastChangedTime` `LastChangedTime` datetime NULL, CHANGE `CreatedTime` `CreatedTime` datetime NULL"),
       // adding file name for blank map image
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `BlankMapImage` varchar(100) character set utf8 collate $collation NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `BlankMapImage` varchar(100) character set utf8 collate $collation NULL"),
       // adding flag for IsGeocoded
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `IsGeocoded` tinyint NOT NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `IsGeocoded` tinyint NOT NULL"),
       // adding parameters (geocoded) session
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `SessionStartTime` datetime NULL, ADD `SessionEndTime` datetime NULL"),
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `Distance` double NULL, ADD `StraightLineDistance` double NULL, ADD `ElapsedTime` double NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `SessionStartTime` datetime NULL, ADD `SessionEndTime` datetime NULL"),
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `Distance` double NULL, ADD `StraightLineDistance` double NULL, ADD `ElapsedTime` double NULL"),
       // longer name
-      array("version" => "3.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` CHANGE `Name` `Name` VARCHAR(100) character set utf8 collate $collation NOT NULL")
+      array("version" => "2.99.0", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` CHANGE `Name` `Name` VARCHAR(100) character set utf8 collate $collation NOT NULL"),
+      // create waypoint table
+      array("version" => "2.99.1", "script" => "CREATE TABLE `". DB_WAYPOINT_TABLE ."` (`MapID` INTEGER UNSIGNED NOT NULL, `Latitude` INTEGER UNSIGNED NOT NULL, `Longitude` INTEGER UNSIGNED NOT NULL, `Time` INTEGER UNSIGNED NOT NULL) ENGINE = MyISAM DEFAULT CHARSET=utf8"),
+      // add an index to MapID
+      array("version" => "2.99.1", "script" => "ALTER TABLE `". DB_WAYPOINT_TABLE ."` ADD INDEX `Index_MapID`(`MapID`)")
     );
     return array_filter($allScripts, "filter");
   }

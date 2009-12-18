@@ -18,12 +18,14 @@
   define('DB_PASSWORD', 'yourDatabasePassword');
   // The name of the database where the map information is stored. The database must exist prior to creation of the site.
   define('DB_DATABASE_NAME', 'yourDatabaseName');
-  // The names of the database tables where user and map information is stored. Do not change unless you have a reason. The database tables must _not_ exist before creation of the site.
+  // The names of the database tables where user and map information is stored. 
+  // Do not change unless you have a reason. The database tables must _not_ exist before creation of the site.
   define('DB_MAP_TABLE', 'doma_maps');
   define('DB_SETTING_TABLE', 'doma_settings');
   define('DB_USER_TABLE', 'doma_users');
   define('DB_USER_SETTING_TABLE', 'doma_userSettings');
   define('DB_CATEGORY_TABLE', 'doma_categories');
+  define('DB_WAYPOINT_TABLE', 'doma_waypoints');
 
   // The user name and password for administration (e g adding and editing users).
   define('ADMIN_USERNAME', 'yourAdminUsername');

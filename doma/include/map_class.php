@@ -2,6 +2,7 @@
   require_once(dirname(__FILE__) ."/database_object.php");
   require_once(dirname(__FILE__) ."/data_access.php");
   require_once(dirname(__FILE__) ."/../entities/GeocodedMap.php");
+  require_once(dirname(__FILE__) ."/../include/quickroute_jpeg_extension_data.php");
   require_once(dirname(__FILE__) ."/../lib/Matrix.php");
   require_once(dirname(__FILE__) ."/../entities/LatLng.php");
   require_once(dirname(__FILE__) ."/../entities/Point.php");
@@ -96,15 +97,15 @@
       return null;
     }
 
-    public function GetQuickRouteJpegExtensionData($calculate = true)
+    public function GetQuickRouteJpegExtensionData($calculate = true, $forceFetch = false)
     {
-      if(!$this->IsGeocoded) $this->QuickRouteJpegExtensionDataNotPresent = true;
+      if(!$this->IsGeocoded && !$forceFetch) $this->QuickRouteJpegExtensionDataNotPresent = true;
       if($this->QuickRouteJpegExtensionDataNotPresent) return null;
       
       // is there a cached value?
       if($this->QuickRouteJpegExtensionData != null) return $this->QuickRouteJpegExtensionData; // yes, use it
       // no cached value, get it
-      $this->QuickRouteJpegExtensionData = new QuickRouteJpegExtensionData(MAP_IMAGE_PATH ."/" . $this->MapImage);
+      $this->QuickRouteJpegExtensionData = new QuickRouteJpegExtensionData(Helper::LocalPath(MAP_IMAGE_PATH ."/" . $this->MapImage));
       if($this->QuickRouteJpegExtensionData->IsValid) 
       {
         if($calculate) $this->QuickRouteJpegExtensionData->Calculate();
@@ -156,6 +157,48 @@
       return null;
     }
 
+    public function AddGeocoding()
+    {
+      $ed = $this->GetQuickRouteJpegExtensionData(true, true);
+      if($ed->IsValid)
+      {
+        $this->MapCenterLatitude = (
+          min($ed->MapCornerPositions["SW"]->Latitude, $ed->MapCornerPositions["SE"]->Latitude) +
+          max($ed->MapCornerPositions["NW"]->Latitude, $ed->MapCornerPositions["NE"]->Latitude)) / 2;
+        $this->MapCenterLongitude = (
+          min($ed->MapCornerPositions["SW"]->Longitude, $ed->MapCornerPositions["NW"]->Longitude) +
+          max($ed->MapCornerPositions["SE"]->Longitude, $ed->MapCornerPositions["NE"]->Longitude)) / 2;
+        $this->MapCorners =
+          $ed->MapCornerPositions["SW"]->Longitude .",".
+          $ed->MapCornerPositions["SW"]->Latitude .",".
+          $ed->MapCornerPositions["NW"]->Longitude .",".
+          $ed->MapCornerPositions["NW"]->Latitude .",".
+          $ed->MapCornerPositions["NE"]->Longitude .",".
+          $ed->MapCornerPositions["NE"]->Latitude .",".
+          $ed->MapCornerPositions["SE"]->Longitude .",".
+          $ed->MapCornerPositions["SE"]->Latitude;
+        $this->SessionStartTime = gmdate("Y-m-d H:i:s", $ed->Sessions[0]->GetStartTime());
+        $this->SessionEndTime = gmdate("Y-m-d H:i:s", $ed->Sessions[0]->GetEndTime());
+        $this->Distance = $ed->Sessions[0]->Route->Distance;
+        $this->StraightLineDistance = $ed->Sessions[0]->StraightLineDistance;
+        $this->ElapsedTime = $ed->Sessions[0]->Route->ElapsedTime;
+        $this->IsGeocoded = 1;
+      }
+      else
+      {
+        $this->MapCenterLatitude = null;
+        $this->MapCenterLongitude = null;
+        $this->MapCorners = null;
+        $this->SessionStartTime = null;
+        $this->SessionEndTime = null;
+        $this->Distance = null;
+        $this->StraightLineDistance = null;
+        $this->ElapsedTime = null;
+        $this->IsGeocoded = 0;
+      }
+    }
+
+
     public function CreateKmlString($mapImagePath = null)
     {
       if(!$this->IsGeocoded) return null;
@@ -183,127 +226,6 @@
       return array("Width" => $size[0], "Height" => $size[1]);
     }
     
-    /*
-    public function CreateKml($mapImagePath, $includeRouteLine = false)
-    {
-      $ed = $this->GetQuickRouteJpegExtensionData();
-      if(!$ed->IsValid) return null;
-
-      $doc = new DOMDocument("1.0", "utf-8");
-      $doc->formatOutput = true;
-
-      $kml = $doc->createElement("kml");
-      // todo: add xmlns
-      $doc->appendChild($kml);
-      $folder = $doc->createElement("Folder");
-      $kml->appendChild($folder);
-      // todo: name element
-
-      $groundOverlay = $doc->createElement("GroundOverlay");
-      $folder->appendChild($groundOverlay);
-      $e = $doc->createElement("name");
-      $e->appendChild($doc->createTextNode("Map")); // todo: language
-      $groundOverlay->appendChild($e);
-
-      $href = $doc->createElement("href");
-      $href->appendChild($doc->createTextNode($mapImagePath . "/". $this->MapImage));
-      $icon = $doc->createElement("Icon");
-      $icon->appendChild($href);
-      $groundOverlay->appendChild($icon);
-
-      // todo: algorithm
-      $latLonBox = $doc->createElement("LatLonBox");
-      $corners = $ed->ImageCornerPositions;
-      $e = $doc->createElement("north");
-      $e->appendChild($doc->createTextNode((doubleval($corners["NW"]->Latitude)+doubleval($corners["NE"]->Latitude))/2));
-      $latLonBox->appendChild($e);
-      $e = $doc->createElement("south");
-      $e->appendChild($doc->createTextNode((doubleval($corners["SW"]->Latitude)+doubleval($corners["SE"]->Latitude))/2));
-      $latLonBox->appendChild($e);
-      $e = $doc->createElement("east");
-      $e->appendChild($doc->createTextNode((doubleval($corners["NE"]->Longitude)+doubleval($corners["SE"]->Longitude))/2));
-      $latLonBox->appendChild($e);
-      $e = $doc->createElement("west");
-      $e->appendChild($doc->createTextNode((doubleval($corners["NW"]->Longitude)+doubleval($corners["SW"]->Longitude))/2));
-      $latLonBox->appendChild($e);
-	  
-      $e = $doc->createElement("rotation");
-      $e->appendChild($doc->createTextNode(self::Rotation($corners)));
-      $latLonBox->appendChild($e); 
-      //todo: rotation          <rotation>-0.466708391838466</rotation>
-      $groundOverlay->appendChild($latLonBox);
-
-      if($includeRouteLine)
-      {
-        // draw the route line
-        $style = $doc->createElement("Style");
-        $attr = $doc->createAttribute("id");
-        $attr->appendChild($doc->createTextNode("lineStyle"));
-        $style->appendChild($attr);
-
-        $lineStyle = $doc->createElement("LineStyle");
-
-        $e = $doc->createElement("color");
-        $e->appendChild($doc->createTextNode("7f0000ff"));
-        $lineStyle->appendChild($e);
-
-        $e = $doc->createElement("width");
-        $e->appendChild($doc->createTextNode("4"));
-        $lineStyle->appendChild($e);
-
-        $style->appendChild($lineStyle);
-        $folder->appendChild($style);
-
-        foreach($ed->Sessions[0]->Route->Segments as $segment)
-        {
-          $placemark = $doc->createElement("Placemark");
-
-          $e = $doc->createElement("name");
-          $e->appendChild($doc->createTextNode("Route")); // todo: language
-          $placemark->appendChild($e);
-
-          $e = $doc->createElement("styleUrl");
-          $e->appendChild($doc->createTextNode("#lineStyle"));
-          $placemark->appendChild($e);
-
-          $lineString = $doc->createElement("LineString");
-
-          $e = $doc->createElement("extrude");
-          $e->appendChild($doc->createTextNode("1"));
-          $lineString->appendChild($e);
-
-          $e = $doc->createElement("tessellate");
-          $e->appendChild($doc->createTextNode("1"));
-          $lineString->appendChild($e);
-
-          $coords = array();
-          foreach($segment->Waypoints as $waypoint)
-          {
-            $coords[] = $waypoint->Position->Longitude .",". $waypoint->Position->Latitude;
-          }
-          $e = $doc->createElement("coordinates");
-          $e->appendChild($doc->createTextNode(join(" ", $coords)));
-          $lineString->appendChild($e);
-
-          $placemark->appendChild($lineString);
-          $folder->appendChild($placemark);
-        }
-      }
-      
-      return $doc->saveXML();
-    }
-
-    private function Rotation($corner)
-    {
-      $b = doubleval($corner["NW"]->Latitude) - doubleval($corner["SW"]->Latitude);
-      $a = doubleval($corner["NW"]->Longitude) - doubleval($corner["SW"]->Longitude);
-      $alpha = asin($a/(sqrt($a*$a+$b*$b)));
-          Helper::WriteToLog("Rotation: ".rad2deg($alpha));
-      return -1*rad2deg($alpha);
-    }
-    
-    */
-
     public function GetDistanceToLongLat($longitude, $latitude)
     {
       if(!$this->IsGeocoded) return null;
