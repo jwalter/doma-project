@@ -6,7 +6,7 @@
   define("LAP_TYPE_START", 0);
   define("LAP_TYPE_LAP", 1);
   define("LAP_TYPE_STOP", 2);
-  
+
   define("EPSILON", 0.001);
 
   class QuickRouteJpegExtensionData
@@ -18,7 +18,7 @@
     public $MapLocationAndSizeInPixels;
     public $Sessions;
     public $ExecutionTime;
-    
+
     private static function GetTags()
     {
       return array(
@@ -32,10 +32,11 @@
         "Handles" => 8,
         "ProjectionOrigin" => 9,
         "Laps" => 10,
-        "SessionInfo" => 11
+        "SessionInfo" => 11,
+        "MapReadingInfo" => 12
       );
     }
-      
+
     private static function GetWaypointAttributes()
     {
       return array(
@@ -67,7 +68,7 @@
             if($length >= 12)
             {
               $stamp = fread($fp, 10);
-              if($stamp == "QuickRoute") 
+              if($stamp == "QuickRoute")
               {
                 $data .= fread($fp, $length - 12);
                 $quickrouteSegment = true;
@@ -90,7 +91,7 @@
         }
       }
       fclose($fp);
-      
+
       $this->IsValid = ($data != "");
       if($this->IsValid)
       {
@@ -101,20 +102,20 @@
       $endTime = microtime(true);
       $this->ExecutionTime = $endTime - $startTime;
     }
-    
+
     public function Calculate()
     {
       foreach($this->Sessions as $s)
       {
         $s->Calculate();
-      }  
+      }
     }
-    
+
     private function Create($data)
     {
       if(!$data) return null;
       $dataLength = strlen($data);
-      
+
       $tags = self::GetTags();
       $pos = 0;
       while($pos < $dataLength)
@@ -133,7 +134,7 @@
                              self::ReadByte(substr($tagData, 2, 1)) .".".
                              self::ReadByte(substr($tagData, 3, 1));
             break;
-          
+
           case $tags["MapCornerPositions"]:
             $this->MapCornerPositions["SW"] = self::ReadLongLat(substr($tagData, 0, 8));
             $this->MapCornerPositions["NW"] = self::ReadLongLat(substr($tagData, 8, 8));
@@ -147,7 +148,7 @@
             $this->ImageCornerPositions["NE"] = self::ReadLongLat(substr($tagData, 16, 8));
             $this->ImageCornerPositions["SE"] = self::ReadLongLat(substr($tagData, 24, 8));
             break;
-          
+
           case $tags["MapLocationAndSizeInPixels"]:
             $this->MapLocationAndSizeInPixels = new QRRectangle();
             $this->MapLocationAndSizeInPixels->X = self::ReadUInt16(substr($tagData, 0, 2));
@@ -155,14 +156,14 @@
             $this->MapLocationAndSizeInPixels->Width = self::ReadUInt16(substr($tagData, 4, 2));
             $this->MapLocationAndSizeInPixels->Height = self::ReadUInt16(substr($tagData, 6, 2));
             break;
-          
+
           case $tags["Sessions"]:
             $this->Sessions = self::ReadSessions($tagData);
             break;
         }
       }
-    }  
-    
+    }
+
     private static function ReadSessions($data)
     {
       $tags = self::GetTags();
@@ -188,7 +189,7 @@
       }
       return $sessions;
     }
-    
+
     private static function ReadSession($data)
     {
       $tags = self::GetTags();
@@ -266,7 +267,7 @@
               $session->Route->Segments[] = $segment;
             }
             break;
-            
+
           case $tags["Handles"]:
             $handleCount = self::ReadUInt32(substr($tagData, 0, 4));
             $subPos = 4;
@@ -302,11 +303,11 @@
               $session->Handles[] = $handle;
             }
             break;
-            
+
           case $tags["ProjectionOrigin"]:
              $session->ProjectionOrigin = self::ReadLongLat(substr($tagData, 0, 8));
             break;
-            
+
           case $tags["Laps"]:
             $lapCount = self::ReadUInt32(substr($tagData, 0, 4));
             $subPos = 4;
@@ -318,7 +319,7 @@
               $lap->Type = self::ReadByte(substr($tagData, $subPos, 1));
               $subPos += 1;
               $session->Laps[] = $lap;
-            }          
+            }
             break;
 
           case $tags["SessionInfo"]:
@@ -342,13 +343,43 @@
             $subPos += 2;
             $session->SessionInfo->Description = self::ReadUtf8String(substr($tagData, $subPos, $length));
             $subPos += $length;
-            // if there are more fields added in the future, make sure that we are not 
+            // if there are more fields added in the future, make sure that we are not
+            break;
+
+          case $tags["MapReadingInfo"]:
+            $session->MapReadingInfo = array();
+            $subPos = 0;
+            $count = 0;
+            while($subPos < $tagDataLength)
+            {
+              $timeType = self::ReadByte(substr($tagData, $subPos, 1));
+              $subPos += 1;
+              if($timeType == 0)
+              {
+                $time = self::ReadDateTime(substr($tagData, $subPos, 8));
+                $subPos += 8;
+              }
+              else
+              {
+                $time = $lastTime + self::ReadUInt16(substr($tagData, $subPos, 2)) / 1000;
+                $subPos += 2;
+              }
+              $count++;
+              if($count % 2 == 0) 
+              {
+                $mapReading = new QRMapReading();
+                $mapReading->StartTime = $lastTime;
+                $mapReading->EndTime = $time;
+                $session->MapReadingInfo[] = $mapReading;
+              }
+              $lastTime = $time;
+            }
             break;
         }
       }
       return $session;
     }
-    
+
     private static function ReadIntegerValue($data, $byteCount, $signed)
     {
       $bitCount = $byteCount * 8;
@@ -365,7 +396,7 @@
       }
       return $value;
     }
-    
+
     private static function ReadByte($data)
     {
       return self::ReadIntegerValue($data, 1, false);
@@ -385,7 +416,7 @@
     {
       return self::ReadIntegerValue($data, 2, true);
     }
-    
+
     private static function ReadUInt32($data)
     {
       return self::ReadIntegerValue($data, 4, false);
@@ -406,25 +437,25 @@
       return self::ReadIntegerValue($data, 8, true);
     }
 
-    private static function ReadDouble($data) 
+    private static function ReadDouble($data)
     {
       if($data == "\x00\x00\x00\x00\x00\x00\x00\x00") return 0;
       if($data == "\x80\x00\x00\x00\x00\x00\x00\x00") return -0;
-      
+
       $sign = (ord($data[7]) >> 7 == 0 ? 1 : -1);
       $exponent=-1023;
       $exponent += (ord($data[7]) % 64) << 4;
       $exponent += ord($data[6]) >> 4;
-     
+
       $base=1.0;
       for($i=4; $i<8; $i++) $base += ((ord($data[6]) >> (7-$i)) % 2) * pow(0.5, $i-3);
-      for($i=5; $i>=0; $i--) 
+      for($i=5; $i>=0; $i--)
         for($j=0; $j<8; $j++) $base += ((ord($data[$i]) >> (7-$j)) % 2) * pow(0.5, (5-$i)*8+$j+5);
 
       $double = (float)$sign*pow(2,$exponent)*$base;
       return $double;
     }
-    
+
     private static function ReadDateTime($data)
     {
       // converts a .NET datetime (1 unit = 100 nanoseconds, starts at 0000-01-01 00:00:00 UTC) to a PHP time (1 unit = 1 second, starts at 1970-01-01 00:00:00 UTC)
@@ -434,7 +465,7 @@
       if($val >= 4611686018427387904) $val -= 4611686018427387904; // (2^62)
       return ($val - 621355968000000000) / 10000000;
     }
-    
+
     private static function ReadLongLat($data)
     {
       $longLat = new QRLongLat();
@@ -442,12 +473,12 @@
       $longLat->Latitude = self::ReadInt32(substr($data, 4, 4)) / 3600000;
       return $longLat;
     }
-    
+
     private static function ReadUtf8String($data)
     {
-      return utf8_decode($data);  
+      return utf8_decode($data);
     }
-    
+
     private static function WriteIntegerValue($fp, $value, $byteCount, $signed)
     {
       $bitCount = $byteCount  * 8;
@@ -461,7 +492,7 @@
         if($value < 0) $value = 0;
         if($value > pow(2, $bitCount)-1) $value = pow(2, $bitCount-1);
       }
-      
+
       if($signed && $value < 0) $value = pow(2, $bitCount) + $value;
       for($i=0; $i<$byteCount; $i++)
       {
@@ -469,7 +500,7 @@
         $value = $value >> 8;
       }
     }
-    
+
     private static function WriteByte($fp, $data)
     {
       return self::WriteIntegerValue($fp, $data, 1, false);
@@ -479,7 +510,7 @@
     {
       return self::WriteIntegerValue($fp, $data, 1, true);
     }
-    
+
     private static function WriteUInt16($fp, $data)
     {
       return self::WriteIntegerValue($fp, $data, 2, false);
@@ -511,12 +542,12 @@
     }
 
     // TODO: php doesn't handle doubles internally, what shall I do?
-    private static function WriteDouble($fp, $data) 
+    private static function WriteDouble($fp, $data)
     {
       $precisionBits = 52;
       $exponentBits = 11;
       $bigEndian = false;
-      
+
       $bias = pow( 2, $exponentBits - 1 ) - 1;
       $minExp = -$bias + 1;
       $maxExp = $bias;
@@ -583,15 +614,15 @@
       if($val >= 4611686018427387904) $val -= 4611686018427387904; // (2^62)
       self::WriteUInt64($fp, $val);
     }
-    
+
     private static function WriteLongLat($fp, $longLat)
     {
       self::WriteInt32($fp, round($longLat->Longitude * 3600000));
       self::WriteInt32($fp, round($longLat->Latitude * 3600000));
     }
-         
+
   }
-  
+
   class QRSession
   {
     public $Route;
@@ -599,26 +630,27 @@
     public $ProjectionOrigin;
     public $Laps;
     public $SessionInfo;
+    public $MapReadingInfo;
     // derived properties
-    public $StraightLineDistance = null;   
-    
+    public $StraightLineDistance = null;
+
     public function GetStartTime()
     {
       return $this->Route->Segments[0]->Waypoints[0]->Time;
     }
-    
+
     public function GetEndTime()
     {
       $segment = $this->Route->Segments[count($this->Route->Segments)-1];
       return $segment->Waypoints[count($segment->Waypoints)-1]->Time;
     }
-    
+
     public function Calculate()
     {
       $this->Route->CalculateParameters();
       $this->CalculateLaps();
     }
-    
+
     private function CalculateLaps()
     {
       $this->StraightLineDistance = 0;
@@ -628,15 +660,15 @@
         $pl = $this->Route->GetParameterizedLocationFromTime($lap->Time);
         $lap->Position = $this->Route->GetPositionFromParameterizedLocation($pl);
         $distance = $this->Route->GetDistanceFromParameterizedLocation($pl);
-        if(in_array($lap->Type, array(LAP_TYPE_LAP, LAP_TYPE_STOP))) 
+        if(in_array($lap->Type, array(LAP_TYPE_LAP, LAP_TYPE_STOP)))
         {
           // distances is only calculated for lap and stop lap types
           $lap->Distance = $distance - $lastDistance;
-		  if (is_object($lastLap)) 
+		  if (is_object($lastLap))
           {
 		    $lap->StraightLineDistance = $lap->Position->DistanceTo($lastLap->Position);
-		  } 
-		  else 
+		  }
+		  else
 		  {
 		    $lap->StraightLineDistance = 0;
 		  }
@@ -647,27 +679,27 @@
       }
     }
   }
-  
+
   class QRSessionInfo
   {
     public $Person;
     public $Description;
   }
-  
+
   class QRPerson
   {
-    public $Name;  
-    public $Club;  
-    public $Id;  
+    public $Name;
+    public $Club;
+    public $Id;
   }
-  
+
   class QRRoute
   {
     public $Segments;
     // derived properties
     public $Distance = null;
     public $ElapsedTime = null;
-    
+
     public function CalculateParameters()
     {
       $this->Distance = 0;
@@ -679,7 +711,7 @@
         $longLats = array();
         foreach($s->Waypoints as $w)
         {
-          $longLats[] = $w->Position;  
+          $longLats[] = $w->Position;
         }
         $distances = QRLongLat::PolyDistances($longLats);
         $distance = 0;
@@ -696,7 +728,7 @@
         $this->ElapsedTime += $s->Waypoints[$count-1]->Time - $s->Waypoints[0]->Time;
       }
     }
-    
+
     public function GetParameterizedLocationFromTime($time)
     {
       // which segment?
@@ -712,7 +744,7 @@
         }
       }
       if($segmentIndex == -1) return null; // outside the session
-      
+
       // perform binary search in this segment index
       $min = 0;
       $max = count($this->Segments[$segmentIndex]->Waypoints)-1;
@@ -735,14 +767,14 @@
       if($t1 == $t0) return ParameterizedLocation($segmentIndex, $max);
       return new QRParameterizedLocation($segmentIndex, $max + ($time-$t0) / ($t1-$t0)); // $max is now min index
     }
-    
+
     public function GetDistanceFromParameterizedLocation($parameterizedLocation)
     {
       if($parameterizedLocation == null) return null;
       list($w0, $w1, $t) = $this->GetWaypointsAndParameterFromParameterizedLocation($parameterizedLocation);
-      return $w0->Distance + $t * ($w1->Distance - $w0->Distance);      
+      return $w0->Distance + $t * ($w1->Distance - $w0->Distance);
     }
-    
+
     public function GetPositionFromParameterizedLocation($parameterizedLocation)
     {
       if($parameterizedLocation == null) return null;
@@ -759,21 +791,21 @@
       $segment = $this->Segments[$parameterizedLocation->SegmentIndex];
       if(!$segment) return null;
       $waypoints = $segment->Waypoints;
-      
+
       $i = (int)$parameterizedLocation->Value;
       if($i >= count($waypoints) - 1) $i = count($waypoints) - 2;
       if(count($waypoints) < 2) return array($waypoints[0], $waypoints[0], 0);
       $t = $parameterizedLocation->Value - $i;
-      
+
       return array($waypoints[$i], $waypoints[$i + 1], $t);
     }
-    
+
     public function GetDistanceFromTime($time)
     {
       $pl = $this->GetParameterizedLocationFromTime($time);
       return $this->GetDistanceFromParameterizedLocation($pl);
     }
-    
+
     public function GetWaypointPositionsAsArray($samplingInterval, $positionDecimalPlaces = -1)
     {
       $segments = array();
@@ -783,12 +815,12 @@
         for($i=0; $i<count($s->Waypoints); $i++)
         {
           $w = $s->Waypoints[$i];
-          if($i == 0 || 
+          if($i == 0 ||
              $i == count($s->Waypoints) -1 ||
              $w->Time >= $lastWaypoint->Time + $samplingInterval)
           {
-            $longLat = ($positionDecimalPlaces == -1 ? 
-              array($w->Position->Longitude, $w->Position->Latitude) : 
+            $longLat = ($positionDecimalPlaces == -1 ?
+              array($w->Position->Longitude, $w->Position->Latitude) :
               array(round($w->Position->Longitude, $positionDecimalPlaces), round($w->Position->Latitude, $positionDecimalPlaces)));
             $segment[] = $longLat;
             $lastWaypoint = $w;
@@ -798,15 +830,15 @@
       }
       return $segments;
     }
-    
+
   }
-  
+
   class QRRouteSegment
   {
     public $Waypoints;
-    
+
   }
-  
+
   class QRWaypoint
   {
     public $Position;
@@ -818,19 +850,19 @@
     public $Distance;
     public $ElapsedTime;
   }
-  
+
   class QRLongLat
   {
     const rho = 6378200; // earth radius in metres
     public $Longitude;
     public $Latitude;
-    
+
     public function __construct($longitude = 0, $latitude = 0)
     {
       $this->Longitude = $longitude;
       $this->Latitude = $latitude;
     }
-    
+
     public function Project($projectionOrigin)
     {
       $lambda0 = $projectionOrigin->Longitude * M_PI / 180;
@@ -841,7 +873,7 @@
       return new QRPoint(self::rho * cos($phi) * sin($lambda - $lambda0),
                        self::rho * (cos($phi0) * sin($phi) - sin($phi0) * cos($phi) * cos($lambda - $lambda0)));
     }
-    
+
     public function DistanceTo($other)
     {
       // use spherical coordinates: self::rho, phi, theta
@@ -868,12 +900,12 @@
       $distance = self::DistancePointToPoint($p0, $p1);
       return $distance;
     }
-    
+
     public static function PolyDistances($longLats)
     {
       if(count($longLats) < 2) return 0;
       $distances = array(0);
-      
+
       $sinPhi1 = sin(0.5 * M_PI + $longLats[0]->Latitude / 180 * M_PI);
       $cosPhi1 = cos(0.5 * M_PI + $longLats[0]->Latitude / 180 * M_PI);
       $sinTheta1 = sin($longLats[0]->Longitude / 180 * M_PI);
@@ -899,12 +931,12 @@
         $p1->SetElement(0, 0, self::rho * $sinPhi1 * $cosTheta1);
         $p1->SetElement(1, 0, self::rho * $sinPhi1 * $sinTheta1);
         $p1->SetElement(2, 0, self::rho * $cosPhi1);
-        
+
         $distances[] = self::DistancePointToPoint($p0, $p1);
-      }  
+      }
       return $distances;
     }
-    
+
     private static function DistancePointToPoint($p0, $p1)
     {
       $sum = 0;
@@ -912,10 +944,10 @@
         $sum += ($p1->GetElement($i, 0) - $p0->GetElement($i, 0)) * ($p1->GetElement($i, 0) - $p0->GetElement($i, 0));
       return sqrt($sum);
     }
-    
-    
+
+
   }
-  
+
   class QRPoint
   {
     public $X;
@@ -927,7 +959,7 @@
       $this->Y = $y;
     }
   }
-  
+
   class QRRectangle
   {
     public $X;
@@ -935,7 +967,7 @@
     public $Width;
     public $Height;
   }
-  
+
   class QRHandle
   {
     public $TransformationMatrix;
@@ -943,7 +975,7 @@
     public $PixelLocation;
     public $Type;
   }
-  
+
   class QRLap
   {
     public $Time;
@@ -953,19 +985,19 @@
     public $Distance;
     public $StraightLineDistance;
   }
-  
+
   class QRParameterizedLocation
   {
     public $SegmentIndex;
-    public $Value;  
+    public $Value;
 
     public function __construct($segmentIndex = 0, $value = 0)
     {
       $this->SegmentIndex = $segmentIndex;
       $this->Value = $value;
-    }  
+    }
   }
-  
+
   class QRMatrix
   {
     public $Elements;
@@ -987,7 +1019,7 @@
     {
       return $this->Columns;
     }
-    
+
     public function SetElement($i, $j, $value)
     {
       if($i < 0 || $i > $this->Rows-1 || $j < 0 || $j > $this->Columns-1) return;
@@ -999,21 +1031,21 @@
       if($i < 0 || $i > $this->Rows-1 || $j < 0 || $j > $this->Columns-1) return null;
       return $this->Elements[$this->Columns*$i + $j];
     }
-    
+
     // $this * $other
     public function Multiply($other)
     {
       if($this->Columns != $other->GetRows()) return null;
-      $r = $this->Rows;  
+      $r = $this->Rows;
       $c = $other->GetColumns();
-      
+
       $result = new QRMatrix($r, $c);
-      for ($i=0; $i<$r; $i++) 
+      for ($i=0; $i<$r; $i++)
       {
-        for ($j=0; $j<$c; $j++) 
+        for ($j=0; $j<$c; $j++)
         {
           $sum = 0;
-          for ($k=0; $k<$this->Columns; $k++) 
+          for ($k=0; $k<$this->Columns; $k++)
           {
             $sum += $this->GetElement($i, $k) * $other->GetElement($k, $j);
           }
@@ -1023,5 +1055,11 @@
       return $result;
     }
   }
-  
+
+  class QRMapReading
+  {
+    public $StartTime;
+    public $EndTime;
+  }
+
 ?>
