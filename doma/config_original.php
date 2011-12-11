@@ -18,7 +18,7 @@
   define('DB_PASSWORD', 'yourDatabasePassword');
   // The name of the database where the map information is stored. The database must exist prior to creation of the site.
   define('DB_DATABASE_NAME', 'yourDatabaseName');
-  // The names of the database tables where user and map information is stored. 
+  // The names of the database tables where user and map information is stored.
   // Do not change unless you have a reason. The database tables must _not_ exist before creation of the site.
   define('DB_MAP_TABLE', 'doma_maps');
   define('DB_SETTING_TABLE', 'doma_settings');
@@ -38,11 +38,23 @@
   // The file that contains the text strings to display on the site.
   // Language files are in xml format and located in the 'languages' directory.
   // You may create your own language file by copying and modifying one of the existing files.
-  // Current language files include en.xml (English), sv.xml (Swedish) adn no_nb.xml (Norwegian Bokmål).
+  // Current language files include
+  //   en.xml     (English, credits to Boris Granovskiy)
+  //   sv.xml     (Swedish)
+  //   no_NB.xml  (Norwegian Bokmål, credits to Bjørge Solli)
+  //   cz.xml     (Czech, credits to Michal Besta)
+  //   de_AT.xml  (German/Austria, credits to Markus Plohn)
+  //   es.xml     (Spanish, credits to Iñaki Larena)
+  //   dk.xml     (Danish, credits to Michael Leth Jess)
+  //   hu.xml     (Hungarian, credits to Csaba Gösswein)
+  //   ee.xml     (Estonian, credits to Margus L)
+  //   it.xml     (Italian, credits to Davide Miori)
+  //   fr.xml     (French, credits to François Coulier)
+  //   pt.xml     (Portugese, credits to Rui Tavares)
   define('LANGUAGE_FILE', 'en.xml');
 
   // The MySQL text sorting order, known as 'collation'.
-  // Use utf8_general_ci for English, utf8_swedish_ci for Swedish, and utf8_danish_ci for Norwegian Bokmål.
+  // Use utf8_general_ci for English, utf8_swedish_ci for Swedish, and utf8_danish_ci for Norwegian BokmÃ¥l.
   // Other collations can be found at the MySQL website, http://dev.mysql.com
   // NOTE: this setting only has effect when creating the site. Changing this setting after the site has been created will not have any effect.
   define('DB_COLLATION', 'utf8_general_ci');
@@ -80,15 +92,15 @@
   // The Google Maps API key, required to embed overview maps in the site.
   // Acquire your key at http://code.google.com/apis/maps/signup.html
   define('GOOGLE_MAPS_API_KEY', '');
-  
+
   //Show languages in topbar (1 = yes, 0 = no)
   define('LANGUAGES_SHOW','1');
-  
-  // Available languages, as language name / language file name / flag file name triples separated by semicolons. Each triple is separated by a | character. 
+
+  // Available languages, as language name / language file name / flag file name triples separated by semicolons. Each triple is separated by a | character.
   // The first value in each triple is the language name.
   // The second value is the language file name (stored in /languages directory).
   // The third value is the flag image file name (stored in /gfx/flag directory).
   // Example: "English;en;en|svenska;sv;se" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no;no');
+  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no_NB;no');
 
 ?>
