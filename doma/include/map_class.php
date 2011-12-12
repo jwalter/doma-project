@@ -87,8 +87,8 @@
     {
       if($this->IsGeocoded)
       {
-        $ed = $this->GetQuickRouteJpegExtensionData();
-        $arr = split(",", $this->MapCorners);
+        //$ed = $this->GetQuickRouteJpegExtensionData();
+        $arr = explode(",", $this->MapCorners);
         return array("SW" => array("Longitude" => $arr[0], "Latitude" => $arr[1]),
                      "NW" => array("Longitude" => $arr[2], "Latitude" => $arr[3]),
                      "NE" => array("Longitude" => $arr[4], "Latitude" => $arr[5]),
@@ -135,18 +135,18 @@
       if($exif["GPS"])
       {
         $coord = $exif["GPS"]["GPSLongitude"];
-        $ds = split("/", $coord[0]);
-        $ms = split("/", $coord[1]);
-        $ss = split("/", $coord[2]);
+        $ds = explode("/", $coord[0]);
+        $ms = explode("/", $coord[1]);
+        $ss = explode("/", $coord[2]);
         $lon = $ds[0] / $ds[1] +
                $ms[0] / $ms[1] / 60 +
                $ss[0] / $ss[1] / 3600;
         if($exif["GPS"]["GPSLongitudeRef"] == "W") $lon = -$lon;
 
         $coord = $exif["GPS"]["GPSLatitude"];
-        $ds = split("/", $coord[0]);
-        $ms = split("/", $coord[1]);
-        $ss = split("/", $coord[2]);
+        $ds = explode("/", $coord[0]);
+        $ms = explode("/", $coord[1]);
+        $ss = explode("/", $coord[2]);
         $lat = $ds[0] / $ds[1] +
                $ms[0] / $ms[1] / 60 +
                $ss[0] / $ss[1] / 3600;

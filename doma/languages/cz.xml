@@ -48,6 +48,15 @@
     <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
       1
     </string> 
+    <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
   </customizable>
 
   <nonCustomizable>
@@ -127,6 +136,27 @@
     </string> 
     <string key="NO">
       Ne
+    </string> 
+    <string key="REALAVG">
+      Průměr
+    </string> 
+    <string key="PROJECTEDDISTANCE">
+      Délka
+    </string> 
+    <string key="PROJECTEDDISTANCEFORMAT">
+      Pouze číslo, formát čísla: x.xx (např. 7.95)
+    </string> 
+    <string key="CLIMBING">
+      Převýšení
+    </string> 
+    <string key="CLIMBINGFORMAT">
+      Pouze číslo: xxx (např. 395)
+    </string> 
+    <string key="FIXDISTANCE">
+      Hodnota v poli Délka neodpovídá požadovanému formátu. Formát čísla: x.xx (např. 7.95) - požadována je desetinná tečka
+    </string> 
+    <string key="FIXCLIMBING">
+      Hodnota v poli Převýšení neodpovídá požadovanému formátu. Formát čísla: xxx (např. 395)
     </string> 
 
     <!--  topbar ****************************************************************************************************** --> 
@@ -519,7 +549,7 @@
       DOMA Administrator
     </string> 
     <string key="NEW_USER_EMAIL_SUBJECT">
-      Tvúj digitální archív orienťáckých map byl vytvořen!
+      Tvůj digitální archív orienťáckých map byl vytvořen!
     </string> 
     <string key="NEW_USER_EMAIL_BODY">
       
@@ -609,6 +639,9 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="TOGGLE_IMAGE">
       Vypnout/Zapnout postupy
     </string> 
+    <string key="TOGGLE_IMAGE_CLICK">
+      Klikni na mapu pro zapnutí/vypnutí postupů
+    </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
       ...nebo stačí pouze kdekoliv na mapě kliknout myší...
     </string> 
@@ -648,5 +681,69 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="LANGUAGE">
       Jazyk
     </string> 
+    <string key="SHOW">
+      Zobrazit
+    </string> 
+    <string key="HIDE">
+      Skrýt
+    </string> 
+    <string key="COMMENTS">
+      Komentáře
+    </string> 
+    <string key="POST_COMMENTS">
+      Napiš komentář
+    </string> 
+    <string key="NAME">
+      Jméno
+    </string> 
+    <string key="MISSING_COMMENT">
+      Pole Jméno a samotný text komentáře je nutno vyplnit!
+    </string> 
+    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      Povolit návštěvníkům vytvářet komentáře
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      Zobrazit komentáře automaticky sbalené
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      Dostávat komentáře emailem
+    </string> 
+    <string key="COMMENT_DELETE_CONFIRMATION">
+      Opravdu chcete smazat tento komentář?
+    </string> 
+    <string key="NEW_COMMENT_EMAIL_SUBJECT">
+      Digitalni archiv orientackych map - novy komentar
+    </string> 
+    <string key="NEW_COMMENT_EMAIL_BODY">
+      
+Ahoj, 
+
+K mapam ve Tvem archivu byl vlozen novy komentar.
+
+Mapa:  %s 
+Odkaz: %s
+
+Obsah komentare
+Jmeno:  %s 
+Email:  %s
+Text:   %s
+
+    </string>     
+    <string key="EDIT_USER_PROFILE_INFO">
+      
+    </string> 
+    <string key="LAST_COMMENTS">
+      Naposledy komentované mapy
+    </string> 
+    <string key="COMMENTS_COUNT">
+      Počet komentářů
+    </string> 
+    <string key="COMMENT_FROM">
+      Poslední komentář od
+    </string> 
+    <string key="OPEN_IN_GOOGLE_EARTH">
+      Otevřít v Google Earth
+    </string> 
+    
   </nonCustomizable>
 </strings>

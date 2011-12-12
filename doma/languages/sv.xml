@@ -48,6 +48,16 @@
     <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
       1
     </string> 
+    <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    
  </customizable>
 
   <nonCustomizable>  
@@ -607,6 +617,9 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
     <string key="TOGGLE_IMAGE">
       Routechoices on/off
     </string> 
+    <string key="TOGGLE_IMAGE_CLICK">
+      Click on map to turn routechoices on/off
+    </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
       ...or just click somewhere on the map...
     </string> 
@@ -646,5 +659,69 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
       <string key="LANGUAGE">
       Language
     </string> 
+    <string key="SHOW">
+      Show
+    </string> 
+    <string key="HIDE">
+      Hide
+    </string> 
+    <string key="COMMENTS">
+      Comments
+    </string> 
+    <string key="POST_COMMENTS">
+      Post new comment
+    </string> 
+    <string key="NAME">
+      Name
+    </string> 
+    <string key="MISSING_COMMENT">
+      Field Name and comment area must be filled!
+    </string> 
+    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      Allow visitors to post comments
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      Show comments collapsed on map page 
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      Get comments by email
+    </string> 
+    <string key="COMMENT_DELETE_CONFIRMATION">
+      Do you really want to delete this comment?
+    </string> 
+    <string key="NEW_COMMENT_EMAIL_SUBJECT">
+      DOMA - new comment
+    </string> 
+    <string key="NEW_COMMENT_EMAIL_BODY">
+      
+Hi, 
+
+A new comment was created in your map archive.
+
+Map:  %s 
+Link: %s
+
+Comment's content
+Name:   %s 
+Email:  %s
+Text:   %s
+
+    </string>     
+    <string key="EDIT_USER_PROFILE_INFO">
+      
+    </string>     
+    <string key="LAST_COMMENTS">
+      Last commented maps
+    </string> 
+    <string key="COMMENTS_COUNT">
+      Comments
+    </string> 
+    <string key="COMMENT_FROM">
+      Last comment by
+    </string> 
+    <string key="OPEN_IN_GOOGLE_EARTH">
+      Open in Google Earth
+    </string> 
+        
 </nonCustomizable>  
 </strings>

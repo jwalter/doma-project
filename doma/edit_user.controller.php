@@ -126,7 +126,7 @@
         {
           $noOfCategoriesAdded = 0;
           if($isAdmin) $_POST["sendEmail"] = 1;
-          $defaultCategoryNames = @split(";", __("DEFAULT_CATEGORY_NAMES"));
+          $defaultCategoryNames = @explode(";", __("DEFAULT_CATEGORY_NAMES"));
           sort($defaultCategoryNames);
           $categories = array();
           foreach($defaultCategoryNames as $dcn)

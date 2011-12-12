@@ -668,5 +668,58 @@
       if(mysql_error()) Helper::WriteToLog("MYSQL ERROR: ". mysql_error());
       return $result;
     }
+    
+    public static function GetCommentsByMapId($mapId)
+    {
+      $sql = "SELECT C.* ".
+             "FROM `". DB_COMMENT_TABLE ."` C ".
+             "WHERE C.MapID=".$mapId." ".
+             "ORDER BY C.DateCreated";
+
+      $rs = self::Query($sql);
+
+      $comments = array();
+      while($r = mysql_fetch_assoc($rs))
+      {
+        $comment = new Comment();
+        $comment->LoadFromArray($r);
+        $comments[$comment->ID] = $comment;
+      }
+
+      return $comments;
+    }
+    public static function GetLastComments()
+    {
+      $sql = "select distinct m.ID, m.UserID, m.Name, ".
+      "(select concat(FirstName,' ',LastName) from `". DB_USER_TABLE ."` where id=m.userid) as user_flname, ".
+      "(select UserName from `". DB_USER_TABLE ."` where id=m.userid) as user_name, ".
+      "(select count(*) from `". DB_COMMENT_TABLE ."` where mapid=m.id) as comments_count, ".
+      "(select name from `". DB_COMMENT_TABLE ."` where mapid=m.id order by datecreated desc limit 0,1) as comment_name, ".
+      "(select datecreated from `". DB_COMMENT_TABLE ."` where mapid=m.id order by datecreated desc limit 0,1) as comment_date ".
+      "from `". DB_MAP_TABLE ."` as m ".
+      "inner join `". DB_COMMENT_TABLE ."` as c on m.id=c.mapid ".
+      "order by comment_date desc ".
+      "limit 0,10 ";
+
+      $rs = self::Query($sql);
+
+      $last_comments = array();
+      
+      while($r = mysql_fetch_assoc($rs))
+      {
+        $last_comment = array();
+        $last_comment["ID"]=$r["ID"];
+        $last_comment["UserID"]=$r["UserID"];
+        $last_comment["UserName"]=$r["user_name"];
+        $last_comment["UserFLName"]=$r["user_flname"];
+        $last_comment["Name"]=$r["Name"];
+        $last_comment["CommentsCount"]=$r["comments_count"];
+        $last_comment["CommentName"]=$r["comment_name"];
+        $last_comment["CommentDate"]=$r["comment_date"];
+        $last_comments[$last_comment["ID"]] = $last_comment;
+      }
+
+      return $last_comments;
+    }
   }
 ?>

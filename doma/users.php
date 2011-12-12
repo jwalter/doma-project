@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
-  <script type="text/javascript" src="js/jquery/jquery-1.3.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/users.js"></script>
 </head>
 
@@ -179,6 +179,53 @@
           </td>
           <td><?php print $date?></td>
           <td><?php print $map->getCategory()->Name?></td>
+          <td><?php print $updated?></td>
+        </tr>
+        <?php          
+      }
+    }
+    ?>
+</tbody>
+</table>
+
+<?php
+    if(count($vd["LastComments"]) > 0)
+    {
+      ?>
+<h2><?php print __("LAST_COMMENTS")?></h2>      
+<table class="fullWidth">
+<thead>
+  <tr>
+    <th><?php print __("NAME")?></th>
+    <th><?php print __("MAP")?></th>
+    <th><?php print __("COMMENTS_COUNT")?></th>
+    <th><?php print __("COMMENT_FROM")?></th>
+    <th><?php print __("UPDATED")?></th>
+  </tr>
+</thead>
+<tbody>
+      <?php
+      $count = 0;
+      foreach($vd["LastComments"] as $last_comment)
+      {
+        $count++;
+        $url = "index.php?user=". $last_comment["UserName"];
+        $nameLink = Helper::EncapsulateLink(hsc($last_comment["UserFLName"]), $url);    
+        $mapLink = '<a href="show_map.php?user='.$last_comment["UserName"].'&map='.$last_comment["ID"] .'" class="thumbnailHoverLink">'. 
+                   hsc($last_comment["Name"]).
+                   '</a>'; 
+        
+        $updated = date(__("DATETIME_FORMAT"), Helper::StringToTime($last_comment["CommentDate"], true));
+
+       
+        ?>
+        <tr class="<?php print ($count % 2 == 1 ? "odd" : "even")?>">
+          <td><?php print $nameLink?></td>
+          <td>
+            <?php print $mapLink?>
+          </td>
+          <td><?php print $last_comment["CommentsCount"]?></td>
+          <td><?php print $last_comment["CommentName"]?></td>
           <td><?php print $updated?></td>
         </tr>
         <?php          

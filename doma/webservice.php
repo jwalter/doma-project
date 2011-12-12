@@ -3,7 +3,7 @@
   include_once(dirname(__FILE__) ."/include/definitions.php");
   include_once(dirname(__FILE__) ."/include/nusoap.php");
 
-  define("NAMESPACE", 'http://www.matstroeng.se/doma');
+  define("NAMESPACE1", 'http://www.matstroeng.se/doma');
 
   $server = createServer();
 
@@ -19,7 +19,7 @@
     $server = new soap_server();
     $server->xml_encoding = "UTF-8";
     $server->decode_utf8 = false;
-    $server->configureWSDL('DOMAService', NAMESPACE);
+    $server->configureWSDL('DOMAService', NAMESPACE1);
 
     // *************************************************************************************
     // define complex types
@@ -254,42 +254,42 @@
         'PublishMap',
         array('request' => 'tns:PublishMapRequest'),        // input parameters
         array('response' => 'tns:PublishMapResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     $server->register(
         'PublishPreUploadedMap',
         array('request' => 'tns:PublishPreUploadedMapRequest'),        // input parameters
         array('response' => 'tns:PublishPreUploadedMapResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     $server->register(
         'UploadPartialFile',
         array('request' => 'tns:UploadPartialFileRequest'),        // input parameters
         array('response' => 'tns:UploadPartialFileResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     $server->register(
         'GetAllMaps',
         array('request' => 'tns:GetAllMapsRequest'),        // input parameters
         array('response' => 'tns:GetAllMapsResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     $server->register(
         'GetAllCategories',
         array('request' => 'tns:GetAllCategoriesRequest'),        // input parameters
         array('response' => 'tns:GetAllCategoriesResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     $server->register(
         'Connect',
         array('request' => 'tns:ConnectRequest'),        // input parameters
         array('response' => 'tns:ConnectResponse'),      // output parameters
-        NAMESPACE
+        NAMESPACE1
     );
 
     return $server;

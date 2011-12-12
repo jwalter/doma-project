@@ -1,8 +1,58 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /* GENERAL ******************************************************************************/
 
 html, body, form, select, input, textarea, table, thead, tbody, tfoot, tr, th, td
 {
-  font: 12px "Trebuchet MS", Verdana, Helvetica, sans-serif;
+  font-family: "Trebuchet MS", Verdana, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
 form, div
@@ -35,6 +85,12 @@ p
 {
   padding: 0;
   margin: 0 0 0.7em 0;
+  line-height: 19px;
+}
+
+i
+{
+  font-style: italic;
 }
 
 /* links */
@@ -72,6 +128,10 @@ thead
 td, th
 {
   padding: 0.5em 1em;
+  text-align: left;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
 }
 
 tr.odd
@@ -133,7 +193,6 @@ body
 
 #content form
 {
-  height: 1%; /* holly hack */
   padding: 2em;
   background: url(gfx/content_corner_bottom_right.png) no-repeat bottom right;
 }
@@ -156,6 +215,7 @@ body
   background: url(gfx/topbar_corner_bottom_left.png) no-repeat bottom left;
   float: left;
   padding: 0.5em 1em;
+  line-height: 15px;
 }
 
 #topbar .right
@@ -164,6 +224,7 @@ body
   background: url(gfx/topbar_corner_bottom_right.png) no-repeat bottom right;
   float: right;
   padding: 0.5em 1em;
+  line-height: 15px;
 }
 
 /* FORM ELEMENTS ******************************************************************************/
@@ -374,6 +435,11 @@ form.wide h2 + p
   padding: 1em 1em 0 1em;
 }
 
+.info 
+{
+  line-height: 18px;
+}
+
 .map .info .name
 {
   font-size: 140%;
@@ -405,6 +471,7 @@ form.wide h2 + p
 .indent
 {
   margin-left: 1em;
+  line-height: 18px;
 }
 
 img.button
@@ -431,7 +498,7 @@ img.button
 
 .map .googleMapsContainer
 {
-  margin: 1em 1em 0 1em;
+  margin: 0.1em 1em 0 1em;
 }
 
 /* overview map, one single map */
@@ -524,12 +591,14 @@ img.button
   position: relative;
   margin-bottom: 0.5em;
   margin-right: 2em;
+  line-height: 20px;
 }
 
 #showMapBody #comment
 {
   clear: both;
   margin: 0.5em 0;
+  line-height: 19px;
 }
 
 #showMapBody #gmap
@@ -557,6 +626,7 @@ img.button
   text-align: right;
   margin-right: 1em;
   width: 30%;
+  line-height: 15px;
 }
 
 #showMapBody #zoomButtonDiv
@@ -637,4 +707,50 @@ img.button
 .hoverThumbnail img
 {
   display: block;
+}
+
+/* comments *******************************************************************************************************/
+.commentBox
+{
+	width:800px; padding:3px; 
+	background:#ECEFF5;
+	margin-left:18px;
+	margin-top:3px;
+}
+.commentPanel	
+{
+	width:800px; padding:3px; 
+	background:#ECEFF5;
+	margin-left:18px;
+	margin-top:2px;
+  font-size: 11px;
+  line-height: 15px;
+}
+.postedComments 
+{
+  float:left; 
+  margin-left:6px; 
+  text-align:justify;
+}
+.postedTime 
+{
+  color:#666666;
+  margin-left:6px; 
+}
+.commentBox input
+{
+	height: 12px;
+  border: 1px solid #cccccc;
+  font-size: 11px;
+}
+.commentBox textarea
+{
+	line-height: 11px;
+  border: 1px solid #cccccc;
+  overflow: auto;
+}
+.commentName 
+{
+  color: #3f3fff;
+  font-weight: bold;
 }

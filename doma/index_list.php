@@ -41,7 +41,7 @@
               <input type="hidden" value="<?php print $map->ID; ?>" />
               <a href="#"><?php print __("OVERVIEW_MAP"); ?></a>
               <span class="separator">|</span> 
-              <a href="export_kml.php?id='<?php print $map->ID; ?>"><?php print __("OPEN_IN_GOOGLE_EARTH"); ?></a>
+              <a href="export_kml.php?id=<?php print $map->ID; ?>"><?php print __("OPEN_IN_GOOGLE_EARTH"); ?></a>
             </div>
             <?php
           }

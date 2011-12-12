@@ -15,8 +15,9 @@
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
-  <script src="js/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
+  <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>" type="text/javascript"></script>
+  <script src="js/markerclusterer.js" type="text/javascript"></script>
   <?php if($vd["DisplayMode"] == "overviewMap") { ?>
   <script type="text/javascript">
     <!--
@@ -32,6 +33,7 @@
 <?php Helper::CreateTopbar() ?>
 <div id="content">
 <form method="get" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
+<input type="hidden" name="user" value="<?php print getUser()->Username;?>"/>
 <?php if(count($vd["Errors"]) > 0) { ?>
 <ul class="error">
 <?php

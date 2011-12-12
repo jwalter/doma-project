@@ -1,14 +1,15 @@
 <?php
-  define('DOMA_VERSION', '2.99.1');
+  define('DOMA_VERSION', '3.01');
   define('DOMA_SERVER', 'http://www.matstroeng.se/doma/domaserver.php');
-
+  
   $rootPath =  dirname(dirname(__FILE__));
-  if ($rootPath[strlen($projectDir)-1] != '/') 
+  if ($rootPath[strlen($rootPath)-1] != '/') 
   {
     $rootPath .= '/';
   }
+  
   $projectDirectory = implode('/', array_intersect(explode('/', $_SERVER["REQUEST_URI"]), explode('/', str_replace('\\', '/', $rootPath))));
-  if ($projectDirectory[strlen($projectDir)-1] != '/') 
+  if ($projectDirectory[strlen($projectDirectory)-1] != '/') 
   {
     $projectDirectory .= '/';
   }
@@ -24,4 +25,5 @@
   include_once(dirname(__FILE__) ."/user_class.php");
   include_once(dirname(__FILE__) ."/session_class.php");
   include_once(dirname(__FILE__) ."/category_class.php");
+  include_once(dirname(__FILE__) ."/comment_class.php");
 ?>

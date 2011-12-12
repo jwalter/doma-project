@@ -26,6 +26,7 @@
   define('DB_USER_SETTING_TABLE', 'doma_userSettings');
   define('DB_CATEGORY_TABLE', 'doma_categories');
   define('DB_WAYPOINT_TABLE', 'doma_waypoints');
+  define('DB_COMMENT_TABLE', 'doma_comments');
 
   // The user name and password for administration (e g adding and editing users).
   define('ADMIN_USERNAME', 'yourAdminUsername');

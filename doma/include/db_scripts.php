@@ -48,7 +48,11 @@
       // create waypoint table
       array("version" => "2.99.1", "script" => "CREATE TABLE `". DB_WAYPOINT_TABLE ."` (`MapID` INTEGER UNSIGNED NOT NULL, `Latitude` INTEGER UNSIGNED NOT NULL, `Longitude` INTEGER UNSIGNED NOT NULL, `Time` INTEGER UNSIGNED NOT NULL) ENGINE = MyISAM DEFAULT CHARSET=utf8"),
       // add an index to MapID
-      array("version" => "2.99.1", "script" => "ALTER TABLE `". DB_WAYPOINT_TABLE ."` ADD INDEX `Index_MapID`(`MapID`)")
+      array("version" => "2.99.1", "script" => "ALTER TABLE `". DB_WAYPOINT_TABLE ."` ADD INDEX `Index_MapID`(`MapID`)"),
+      //comments
+      array("version" => "3.01", "script" => "CREATE TABLE `". DB_COMMENT_TABLE ."` (  `ID` int(10) NOT NULL AUTO_INCREMENT,  `MapID` int(10) NOT NULL,  `Name` varchar(200) CHARACTER SET utf8 NOT NULL,  `Email` varchar(200) CHARACTER SET utf8 DEFAULT NULL,  `Comment` text CHARACTER SET utf8 NOT NULL,  `DateCreated` datetime NOT NULL,  `UserIP` varchar(200) CHARACTER SET utf8 NOT NULL,  PRIMARY KEY (`ID`)) ENGINE = MYISAM DEFAULT CHARSET=utf8")
+
+
     );
     return array_filter($allScripts, "filter");
   }

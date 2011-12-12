@@ -24,6 +24,7 @@
       
       // last 10 maps
       $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, 10, "date");
+      $viewData["LastComments"] = DataAccess::GetLastComments();
 
       if($_GET["error"] == "email") $errors[] = sprintf(__("ADMIN_EMAIL_ERROR"), ADMIN_EMAIL);
       

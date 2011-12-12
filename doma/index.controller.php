@@ -7,6 +7,7 @@
     {
       $viewData = array();
       // no user specified - redirect to user list page
+      
       if(!getUser()) 
       {
         $singleUserID = DataAccess::GetSingleUserID();
@@ -125,8 +126,8 @@
           $overviewMapData["MapInfoCaption"] = __("INFORMATION");
           
           //******************************
-          $ed = $map->GetQuickrouteJpegExtensionData();
-          $overviewMapData["RouteSegments"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
+          //$ed = $map->GetQuickrouteJpegExtensionData();
+          //$overviewMapData["RouteSegments"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
           //******************************
           
           $info = '<div class="gmInfoWindow">';

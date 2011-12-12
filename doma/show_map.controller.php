@@ -21,6 +21,8 @@
       if(!$map->ID) die("The map has been removed.");
       
       if($map->UserID != getUser()->ID) die();
+      
+      $viewData["Comments"] = DataAccess::GetCommentsByMapId($map->ID);
 
       $viewData["Name"] = $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')';
 
@@ -52,10 +54,10 @@
       
       //***********************
       $viewData["QuickRouteJpegExtensionData"] = $map->GetQuickRouteJpegExtensionData();
-      echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->ElapsedTime ."**";
-      echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->Distance ."**";
-      echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->StraightLineDistance ."**";
-      echo $viewData["QuickRouteJpegExtensionData"]->ExecutionTime;
+      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->ElapsedTime ."**";
+      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->Distance ."**";
+      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->StraightLineDistance ."**";
+      //echo $viewData["QuickRouteJpegExtensionData"]->ExecutionTime;
       //***********************
       
       return $viewData;

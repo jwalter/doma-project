@@ -1,4 +1,4 @@
-$(function()
+$(document).ready(function() 
 {
   $(".toggleComment").click(function() 
   {
@@ -40,12 +40,14 @@ function initOverviewMap()
     var map = new GMap2($("#overviewMap").get(0));
 
     // set map properties
-    map.addControl(new GLargeMapControl());
+    map.addControl(new GLargeMapControl3D());
     map.addControl(new GMapTypeControl());
     map.addControl(new GOverviewMapControl());
     map.enableScrollWheelZoom();
 
     var mapBounds = new GLatLngBounds();
+    var markers = [];
+    var mZoom = 8;
     
     for(var i in overviewMapData)
     {
@@ -72,7 +74,10 @@ function initOverviewMap()
         data.FillColor, 
         data.FillOpacity
       );
+      if (map.getZoom() >= mZoom)
+      {
       map.addOverlay(polygon);
+      }
 
 		var icon_x = new GIcon(G_DEFAULT_ICON);
 		icon_x.iconSize = new GSize(12, 12);
@@ -83,10 +88,10 @@ function initOverviewMap()
 
 		var point_x = new GLatLng(data.Corners[1].Latitude, data.Corners[1].Longitude);
 		var marker_x = new GMarker(point_x, markerOptions_x);
-		map.addOverlay(marker_x);
+      //map.addOverlay(marker_x);
 		marker_x.Map = map;
 		marker_x.Data = data;
-
+      markers.push(marker_x);
       
       polygon.Map = map;
       polygon.Data = data;
@@ -99,7 +104,7 @@ function initOverviewMap()
           latlngs[k] = new GLatLng(data.RouteSegments[j][k][1], data.RouteSegments[j][k][0]);
         }
         var routeSegmentLine = new GPolyline(latlngs, '#ff0000', 2, 0.8);
-        map.addOverlay(routeSegmentLine);
+        //map.addOverlay(routeSegmentLine);
       }
       
       GEvent.addListener(
@@ -118,6 +123,9 @@ function initOverviewMap()
     
     map.setCenter(mapBounds.getCenter());
     map.setZoom(map.getBoundsZoomLevel(mapBounds)); // need to set zoom after center is set
+    var mcOptions = { gridSize: 50, maxZoom: mZoom};
+    var markerCluster = new MarkerClusterer(map, markers, mcOptions);
+
   }
 }
 

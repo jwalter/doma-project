@@ -23,6 +23,7 @@
       $ls = Session::GetLanguageStrings();
       $value = $ls[$key];
       if($htmlSpecialChars) return hsc($value);
+      if (!isset($value)) $value = "#".$key."#";
       return $value;
     }
 
@@ -259,8 +260,8 @@
 
     public static function DateToLongString($d)
     {
-      $dayNames = split(";", __("DAY_NAMES"));
-      $monthNames = split(";", __("MONTH_NAMES"));
+      $dayNames = explode(";", __("DAY_NAMES"));
+      $monthNames = explode(";", __("MONTH_NAMES"));
       return $dayNames[date("w", $d)] ." ".
              date("j", $d) ." ".
              $monthNames[date("n", $d) - 1] ." ".
@@ -274,8 +275,9 @@
 
     private static function ImageIsResizable($fileName)
     {
-      $contents = @file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
-      return ($contents == "1");
+      return (GetImageSize($fileName) !== false);
+      //$contents = @file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
+      //return ($contents == "1");
     }
 
     public static function ImageCreateFromGeneral($fileName)
@@ -465,7 +467,7 @@
     
     public static function IsValidEmailAddress($emailAddress)
     {
-      return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $emailAddress);
+      return preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/', $emailAddress);
     }
     
     public static function CreatePassword($length)
@@ -483,9 +485,9 @@
     {
       if(defined("LOG"))
       {
-        $microtime = split(" ", microtime());
+        $microtime = explode(" ", microtime());
         $timeString = date("Y-m-d H:i:s") . substr($microtime[0], 1, 4);
-        $fp = fopen(LOG_FILE_NAME, "a");
+        $fp = fopen(self::LocalPath(LOG_FILE_NAME), "a");
         fwrite($fp, $timeString ." ". $message ."\n");
         fclose($fp);
       }
@@ -555,7 +557,7 @@
     
     public static function ShowLanguages()
     {
-      $langs = split("\|", LANGUAGES_AVAILABLE);
+      $langs = explode("|", LANGUAGES_AVAILABLE);
       if(is_array($langs))
       {
         print __("LANGUAGE").": ";
@@ -563,10 +565,43 @@
         $a = ($pos === false) ? "?" : "&";
         foreach ($langs as $lang)
         {
-          list($languageName, $languageFile, $flagFile) = split(";", $lang);
+          list($languageName, $languageFile, $flagFile) = explode(";", $lang);
           print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($languageFile).'"><img src="./gfx/flag/'.strtolower($flagFile).'.png" border="0" alt="'.$languageName.'" title="'.$languageName.'"></a>&nbsp;&nbsp;';
         }
       }
+    }
+    
+    public static function ConvertToTime($value, $format)
+    {
+      if($format=="MM:SS")
+      {
+        if(is_numeric($value))
+        {
+          if($value%60<10) $leading = "0";
+          return intval($value/60).":".$leading.$value%60;
+        }
+      }
+      if($format=="HH:MM:SS")
+      {
+        if(is_numeric($value))
+        {
+          if($value%60<10) $leading = "0";
+          if((intval($value/60)%60)<10) $leading1 = "0";
+          return intval($value/3600) .":". $leading1 . intval($value/60)%60 .":". $leading . $value%60 ; //result as HH:MM:SS
+        }
+      }
+    }
+    
+    public static function ClickableLink($text = '')
+    {
+      $text = preg_replace('#(script|about|applet|activex|chrome):#is', "\\1:", $text);
+      $ret = ' ' . $text;
+      $ret = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" target=\"_blank\">\\2</a>", $ret);
+      
+      $ret = preg_replace("#(^|[\n ])((www|ftp)\.[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>", $ret);
+      $ret = preg_replace("#(^|[\n ])([a-z0-9&\-_.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
+      $ret = substr($ret, 1);
+      return $ret;
     }
   
   }
