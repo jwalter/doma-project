@@ -45,7 +45,7 @@
 			        foreach($mp as $map)
  			        {
                 $map->AddGeocoding();
-                Helper::SaveMapWaypoints($map);
+                DataAccess::SaveMapWaypoints($map);
 				        $map->Save();
 			        }
 			      }
