@@ -30,8 +30,8 @@
         <?php } ?>
         <?php if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl()) { ?>
           , <a href="<?php print $map->CreateResultListUrl()?>"><?php print __("RESULTS")?></a>
-        </div>
         <?php } ?>
+        </div>
 
         <?php
           if($map->IsGeocoded) 

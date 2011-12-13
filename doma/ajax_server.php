@@ -16,11 +16,11 @@
   {
     $map = new Map();
     $map->Load($id);
-    $ed = $map->GetQuickRouteJpegExtensionData(false);
+    //$ed = $map->GetQuickRouteJpegExtensionData(false);
     return array(
       "ID" => $id,
-      "MapCornerPositions" => $ed->MapCornerPositions, 
-      "RouteCoordinates" => $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6),
+      "MapCornerPositions" => $map->GetMapCornerArray(), 
+      "RouteCoordinates" => DataAccess::GetWaypointPositionsAsArray($id,5, 6),
       "BorderColor" => '#ff0000',
       "BorderWidth" => 2,
       "BorderOpacity" => 0.8,

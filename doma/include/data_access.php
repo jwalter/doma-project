@@ -323,6 +323,30 @@
       }
     }
     
+    public function GetWaypointPositionsAsArray($mapID, $samplingInterval, $positionDecimalPlaces = -1)
+    {
+      $sql = "select * FROM `". DB_WAYPOINT_TABLE ."` WHERE MapID=". $mapID." ORDER by `Time`"; 
+      $rs = self::Query($sql);
+      
+      $segments = array();
+      $segment = array();
+      $i=0;
+      while($r = mysql_fetch_assoc($rs))
+      {
+        if($i == 0 || $r["Time"] >= $lastWaypoint["Time"] + $samplingInterval)
+        {
+          $longLat = ($positionDecimalPlaces == -1 ?
+            array($r["Longitude"]/3600000, $r["Latitude"]/3600000) :
+            array(round($r["Longitude"]/3600000, $positionDecimalPlaces), round($r["Latitude"]/3600000, $positionDecimalPlaces)));
+          $segment[] = $longLat;
+          $lastWaypoint = $r;
+        }
+        $i++;
+      }
+      $segments[] = $segment;
+      return $segments;
+    }    
+    
 
     public static function DeleteMapImage($map)
     {

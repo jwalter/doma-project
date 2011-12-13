@@ -73,8 +73,7 @@
 </div>
 
 <?php
-$fileName = "./map_images/".$map->MapImage;
-$QR = new QuickRouteJpegExtensionData($fileName);
+$QR = $map->GetQuickRouteJpegExtensionData();
 
 if($QR->IsValid)
 {

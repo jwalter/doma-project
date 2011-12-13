@@ -195,7 +195,17 @@ function showListOverviewMap(obj)
                     data.FillColor, 
                     data.FillOpacity
                   );
-                  map.addOverlay(polygon);                  
+                  map.addOverlay(polygon);    
+                  for(var j in data.RouteCoordinates)
+                  {
+                    var latlngs = new Array();
+                    for(var k in data.RouteCoordinates[j])
+                    {
+                      latlngs[k] = new GLatLng(data.RouteCoordinates[j][k][1], data.RouteCoordinates[j][k][0]);
+                    }
+                    var routeSegmentLine = new GPolyline(latlngs, '#ff0000', 2, 0.8);
+                    map.addOverlay(routeSegmentLine);
+                  }                  
                   
                   map.setCenter(mapBounds.getCenter());
                   map.setZoom(map.getBoundsZoomLevel(mapBounds)); // need to set zoom after center is set                

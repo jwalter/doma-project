@@ -126,8 +126,8 @@
           $overviewMapData["MapInfoCaption"] = __("INFORMATION");
           
           //******************************
-          //$ed = $map->GetQuickrouteJpegExtensionData();
-          //$overviewMapData["RouteSegments"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
+          //not used right now to avoid mess with icons in displaying on google maps
+          //$overviewMapData["RouteSegments"] =  DataAccess::GetWaypointPositionsAsArray($map->ID,5, 6);
           //******************************
           
           $info = '<div class="gmInfoWindow">';
