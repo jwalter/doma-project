@@ -39,7 +39,7 @@
             ?>
             <div class="listOverviewMapLink">
               <input type="hidden" value="<?php print $map->ID; ?>" />
-              <a href="#"><?php print __("OVERVIEW_MAP"); ?></a>
+              <a class="o_map" href="#"><?php print __("OVERVIEW_MAP"); ?></a>
               <span class="separator">|</span> 
               <a href="export_kml.php?id=<?php print $map->ID; ?>"><?php print __("OPEN_IN_GOOGLE_EARTH"); ?></a>
             </div>

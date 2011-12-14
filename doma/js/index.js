@@ -13,7 +13,11 @@ $(document).ready(function()
   $("#categoryID").change(function() { submitForm(); });
   $("#year").change(function() { submitForm()});
   $("#displayMode").change(function() { submitForm(); });
-  $(".listOverviewMapLink a").click(function() { showListOverviewMap(this); });
+  $(".o_map").click(function(e) 
+  { 
+    e.preventDefault();
+    showListOverviewMap(this); 
+ });
 
   // init overview map, but only if we are in overview map mode 
   if($("#overviewMap").length > 0) initOverviewMap();
