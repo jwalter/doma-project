@@ -15,13 +15,13 @@
       // no user specified - redirect to user list page
       if($_GET["comment_text"]) 
       {
-        $comment->Comment = strip_tags($_GET["comment_text"]);
+        $comment->Comment = strip_tags(urldecode($_GET["comment_text"]));
       } else {
         die("No comment text");
       }
       if($_GET["user_name"]) 
       {
-        $comment->Name = strip_tags($_GET["user_name"]);
+        $comment->Name = strip_tags(urldecode($_GET["user_name"]));
       } else {
         die("No user name");
       }

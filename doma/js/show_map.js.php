@@ -67,7 +67,7 @@ $(document).ready(function()
     }
     if(passed=="yes")
     {
-      $.post("add_comment.php?comment_text="+comment_text+"&map_id="+map_id+"&user_name="+user_name+"&user_email="+user_email+"&user="+map_user, {
+      $.post("add_comment.php?comment_text="+encodeURIComponent(comment_text)+"&map_id="+map_id+"&user_name="+encodeURIComponent(user_name)+"&user_email="+user_email+"&user="+map_user, {
 
       }, function(response){
         
