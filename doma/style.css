@@ -524,6 +524,11 @@ img.button
   cursor: pointer;  
 }
 
+.gmInfoWindow
+{
+  line-height: 20px;
+}
+
 .gmInfoWindow .mapName
 {
   font-weight: bold;
