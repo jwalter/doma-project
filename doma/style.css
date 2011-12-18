@@ -781,6 +781,15 @@ img.button
   display: block;
 }
 
+.selectNumber
+{
+  float: right; 
+  font-size: 75%; 
+  font-weight: normal; 
+  vertical-align: bottom; 
+  padding-top: 0.5em;  
+}
+
 /* comments *******************************************************************************************************/
 .commentBox
 {
@@ -841,4 +850,40 @@ img.button
 .commentName 
 {
   font-weight: bold;
+}
+
+
+/* tooltip for overview maps *******************************************************************************************************/
+#tt 
+{ 
+  position:absolute; 
+  display:block; 
+  background-color:#666; 
+  border-top: 1px solid #888; 
+  border-left: 1px solid #888; 
+  border-right: 1px solid #444; 
+  border-bottom: 1px solid #444; 
+  color:#fff; 
+  padding: 1em; 
+  border-radius: 5px; 
+}
+
+#tt > div 
+{ 
+  text-align: left; 
+  line-height: 130%; 
+}
+
+#tt > div + div 
+{ 
+  margin-top: 0.5em; 
+}
+
+#tt img 
+{ 
+  border-radius: 5px;
+  border-top: 1px solid #444;
+  border-left: 1px solid #444;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888; 
 }

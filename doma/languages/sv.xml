@@ -37,6 +37,29 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string>
+    <!-- BEGIN new customizable strings in version 3.0 ******************************************************************* -->
+    <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_MAXHR" description="SHOW_MAXHR_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
+      1
+    </string> 
+    <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      1
+    </string> 
+    <!-- END new customizable strings in version 3.0 ********************************************************************* -->
   </customizable>
 
   <nonCustomizable>  
@@ -561,7 +584,7 @@ Ditt nya lösenord: %s
       Jag har glömt mitt lösenord
     </string>
 
-    <!-- new strings in 3.0 -->
+    <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
       Filförmatet för den blanka kartfilen &lt;em&gt;%s&lt;/em&gt; är felaktigt. Endast jpeg, png och gif stöds.
     </string> 
@@ -569,7 +592,7 @@ Ditt nya lösenord: %s
       Den blanka kartfilen &lt;em&gt;%s&lt;/em&gt; kunde inte laddas upp.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      kartfil
+      Bildfil för blank karta
     </string> 
     <string key="MAP_INFO">
       Karta med vägval.
@@ -617,10 +640,19 @@ Ditt nya lösenord: %s
       Huruvida avverkad tid ska kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Huruvida maxpuls kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
+      Huruvida maxpuls kunna ska kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Huruvida genomsnittlig puls kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
+      Huruvida genomsnittlig ska puls kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
+    </string> 
+    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      Huruvida besökare ska kunna kommentera kartor; 1 för att tillåta, 0 för att neka.
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      Huruvida besökarnas kommentarer ska döljas som standard; 1 för att dölja, 0 för att visa.
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      Huruvida nya besökarkommentarer ska skickas med e-post; 1 för att skicka, 0 för att inte skicka.
     </string> 
     <string key="ELAPSEDTIME">
       Tid
@@ -652,15 +684,6 @@ Ditt nya lösenord: %s
     <string key="MISSING_COMMENT">
       Textfälten för namn och kommentar måste fyllas i!
     </string> 
-    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Tillåt besökare att kommentera kartor
-    </string> 
-    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Dölj besökarnas kommentarer som standard
-    </string> 
-    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Ta emot kommentarer med e-post
-    </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
       Vill du ta bort den här kommentaren?
     </string> 
@@ -670,7 +693,7 @@ Ditt nya lösenord: %s
     <string key="NEW_COMMENT_EMAIL_BODY">
 Hej, 
 
-En ny kommentar har lagts till ui din digitala kartpärm.
+En ny kommentar har lagts till i din digitala kartpärm.
 
 Karta:     %s 
 Länk:      %s
@@ -678,9 +701,6 @@ Länk:      %s
 Namn:      %s 
 E-post:    %s
 Kommentar: %s
-    </string>     
-    <string key="EDIT_USER_PROFILE_INFO">
-      
     </string>     
     <string key="LAST_COMMENTS">
       Senast kommenterade kartorna
@@ -704,7 +724,11 @@ Kommentar: %s
       Tidpunkten att dölja kartan till är felaktig. Skriv in en tidpunkt på formen åååå-mm-dd tt:mm:ss eller lämna fältet tomt.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      Kartan är dold för övriga användare till %s.
+      Kartan är dold för andra till och med %s.
     </string>
+    <string key="SHOW_ALL">
+      alla
+    </string>
+    <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>  
 </strings>

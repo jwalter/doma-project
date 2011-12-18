@@ -147,7 +147,18 @@
     if(count($vd["LastMaps"]) > 0)
     {
       ?>
-<h2><?php print __("LAST_MAPS")?></h2>      
+<h2>
+  <?php print __("LAST_MAPS")?>
+  <span class="selectNumber">
+    <a href="users.php?lastMaps=10">10</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastMaps=20">20</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastMaps=50">50</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastMaps=all"><?php print __("SHOW_ALL")?></a>
+  </span>
+</h2>      
 <table class="fullWidth">
 <thead>
   <tr>
@@ -208,7 +219,18 @@
     if(count($vd["LastComments"]) > 0)
     {
       ?>
-<h2><?php print __("LAST_COMMENTS")?></h2>      
+<h2>
+  <?php print __("LAST_COMMENTS")?>
+  <span class="selectNumber">
+    <a href="users.php?lastComments=10">10</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastComments=20">20</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastComments=50">50</a>
+    <span class="separator">|</span>
+    <a href="users.php?lastComments=all"><?php print __("SHOW_ALL")?></a>
+  </span>
+</h2>      
 <table class="fullWidth">
 <thead>
   <tr>

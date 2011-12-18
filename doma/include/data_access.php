@@ -748,7 +748,7 @@
 
       return $comments;
     }
-    public static function GetLastComments($requestingUserID = 0)
+    public static function GetLastComments($numberOfComments, $requestingUserID = 0)
     {
       $sql = "select distinct m.ID, m.UserID, m.Name, ".
       "(select concat(FirstName,' ',LastName) from `". DB_USER_TABLE ."` where id=m.userid) as user_flname, ".
@@ -760,7 +760,7 @@
       "inner join `". DB_COMMENT_TABLE ."` as c on m.id=c.mapid ".
       "WHERE (m.ProtectedUntil IS NULL OR m.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR m.UserID=$requestingUserID) ".
       "order by comment_date desc ".
-      "limit 0,10";
+      "limit 0,$numberOfComments";
 
       $rs = self::Query($sql);
 

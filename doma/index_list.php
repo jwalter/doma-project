@@ -26,15 +26,17 @@
       <div class="discipline">
       <?php
         $atoms = array();
-        if(__("SHOW_DISCIPLINE"))
+        $d = (__("SHOW_DISCIPLINE") && $map->Discipline) ? $map->Discipline : null;
+        $rl = (__("SHOW_RELAY_LEG") && $map->RelayLeg) ? ($d != null ?  " ,". __("RELAY_LEG_LOWERCASE") : __("RELAY_LEG")) ." ". $map->RelayLeg : null;
+        if($d != null || $rl != null)
         {
-          $atoms[] = $map->Discipline . (__("SHOW_RELAY_LEG") && $map->RelayLeg ? ', '. __("RELAY_LEG_LOWERCASE") .' '. $map->RelayLeg : "");          
+          $atoms[] = $d . $rl;
         }
         if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl())
         {
           $atoms[] = '<a href="'. $map->CreateResultListUrl() .'">' . __("RESULTS") .'</a>';
         }
-        print join('<span class="separator">|</span>', $atoms);
+        print @implode('<span class="separator">|</span>', $atoms);
       ?>
       </div>
       <?php

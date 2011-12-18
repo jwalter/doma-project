@@ -61,7 +61,7 @@
       if($viewData["QuickRouteJpegExtensionData"]->IsValid)
       {
         $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
-        $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, $categories);
+        $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, false, false, $categories);
       }
       return $viewData;
     }

@@ -133,7 +133,7 @@
 <div class="container">
 <?php
   $protectedUntil = $map->ProtectedUntil;
-  $protectedUntilTime = Helper::StringToTime($protectedUntil, true);
+  $protectedUntilTime = $protectedUntil != null ? Helper::StringToTime($protectedUntil, true) : null;
   if($protectedUntilTime != null) $protectedUntil = date("Y-m-d H:i:s", $protectedUntilTime);
 ?>
 <label for="protectedUntil"><?php print __("PROTECTED_UNTIL")?></label>

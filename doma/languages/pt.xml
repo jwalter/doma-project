@@ -37,7 +37,8 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string> 
-     <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
+    <!-- BEGIN new customizable strings in version 3.0 ******************************************************************* -->
+    <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
       1
     </string> 
     <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
@@ -49,7 +50,7 @@
     <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
       1
     </string> 
-     <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+    <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
       1
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
@@ -58,6 +59,7 @@
     <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
       1
     </string> 
+    <!-- END new customizable strings in version 3.0 ********************************************************************* -->
   </customizable>
 
   <nonCustomizable>
@@ -513,7 +515,7 @@
       Tente outra vez
     </string> 
 
-    <!--  enter_public_creation_code.php ****************************************************************************************************** --> 
+    <!--  enter_public_creation_code.php ******************************************************************************************** --> 
     <string key="PUBLIC_CREATION_CODE">
       Introduzir código de acesso
     </string> 
@@ -579,7 +581,7 @@ Password:   %s
     <string key="FORGOT_PASSWORD">
       Esqueci-me da password
     </string> 
-    <!-- new strings in 3.0 -->
+    <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
       The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
     </string> 
@@ -640,17 +642,26 @@ Password:   %s
     <string key="SHOW_AVGHR_DESCRIPTION">
       Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
     </string> 
+    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+    </string> 
     <string key="ELAPSEDTIME">
       Time
     </string> 
     <string key="DISTANCE">
-      Real distance
+      Distance
     </string> 
     <string key="AVGHR">
       Average HR
     </string> 
     <string key="MAXHR">
-      Maximal HR
+      Maximum HR
     </string> 
     <string key="LANGUAGE">
       Language
@@ -668,16 +679,7 @@ Password:   %s
       Name
     </string> 
     <string key="MISSING_COMMENT">
-      Field Name and comment area must be filled!
-    </string> 
-    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Allow visitors to post comments
-    </string> 
-    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Show comments collapsed on map page 
-    </string> 
-    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Get comments by email
+      Name and comment must be entered!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
       Do you really want to delete this comment?
@@ -686,7 +688,6 @@ Password:   %s
       DOMA - new comment
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-      
 Hi, 
 
 A new comment was created in your map archive.
@@ -698,10 +699,6 @@ Comment's content
 Name:   %s 
 Email:  %s
 Text:   %s
-
-    </string>     
-    <string key="EDIT_USER_PROFILE_INFO">
-      
     </string>     
     <string key="LAST_COMMENTS">
       Last commented maps
@@ -715,6 +712,21 @@ Text:   %s
     <string key="KMZ">
       KMZ
     </string> 
-        
+    <string key="PROTECTED_UNTIL">
+      Hidden until
+    </string>
+    <string key="PROTECTED_UNTIL_INFO">
+      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+    </string>
+    <string key="INVALID_PROTECTED_UNTIL">
+      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+    </string>
+    <string key="MAP_IS_PROTECTED_UNTIL_X">
+      The map is hidden for others until %s.
+    </string>
+    <string key="SHOW_ALL">
+      all
+    </string>
+    <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

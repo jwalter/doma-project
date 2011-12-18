@@ -58,6 +58,7 @@
         {
           $map = new Map();
           $map->Load($mapID);
+          if($map->UserID != getUser()->ID) die("Access denied");    
           $isNewMap = false;
         }
         else

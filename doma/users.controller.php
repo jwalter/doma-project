@@ -22,14 +22,23 @@
       
       $viewData["LastMapForEachUser"] = DataAccess::GetLastMapsForUsers("date");
       
-      // last 10 maps
-      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, 10, "date", Helper::GetLoggedInUserID());
-      $viewData["LastComments"] = DataAccess::GetLastComments(Helper::GetLoggedInUserID());
+      // last x maps
+      $numberOfMaps = isset($_GET["lastMaps"]) && is_numeric($_GET["lastMaps"]) 
+        ? (int)$_GET["lastMaps"] 
+        : ($_GET["lastMaps"] == "all" ? 999999 : 10);
+      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, $numberOfMaps, "date", Helper::GetLoggedInUserID());
+      
+      // last x comments
+      $numberOfComments = isset($_GET["lastComments"]) && is_numeric($_GET["lastComments"]) 
+        ? (int)$_GET["lastComments"] 
+        : ($_GET["lastComments"] == "all" ? 999999 : 10);
+      $viewData["LastComments"] = DataAccess::GetLastComments($numberOfComments, Helper::GetLoggedInUserID());
+      
       $viewData["OverviewMapData"] = null;
       $categories = DataAccess::GetCategoriesByUserID();
       foreach($viewData["LastMaps"] as $map)
       {
-        $data = Helper::GetOverviewMapData($map, false, $categories);
+        $data = Helper::GetOverviewMapData($map, false, true, true, $categories);
         if($data != null) $viewData["OverviewMapData"][] = $data;
       }
 

@@ -36,6 +36,7 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string> 
+    <!-- BEGIN new customizable strings in version 3.0 ******************************************************************* -->
     <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
       1
     </string> 
@@ -57,6 +58,7 @@
     <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
       1
     </string> 
+    <!-- END new customizable strings in version 3.0 ********************************************************************* -->
   </customizable>
 
   <nonCustomizable>
@@ -533,7 +535,7 @@
       Zkus znovu
     </string> 
 
-    <!--  enter_public_creation_code.php ****************************************************************************************************** --> 
+    <!--  enter_public_creation_code.php ******************************************************************************************** --> 
     <string key="PUBLIC_CREATION_CODE">
       Zadej přístupový kód
     </string> 
@@ -608,7 +610,7 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
       Zapomněl jsem své heslo
     </string> 
 
-	<!-- new strings in 3.0 -->
+	<!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
       Formát mapy bez postupů &lt;em&gt;%s&lt;/em&gt; není platný. Pouze formáty jpeg, png a gif jsou podporovány.
     </string> 
@@ -715,7 +717,6 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
       Digitalni archiv orientackych map - novy komentar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-      
 Ahoj, 
 
 K mapam ve Tvem archivu byl vlozen novy komentar.
@@ -727,11 +728,7 @@ Obsah komentare
 Jmeno:  %s 
 Email:  %s
 Text:   %s
-
     </string>     
-    <string key="EDIT_USER_PROFILE_INFO">
-      
-    </string> 
     <string key="LAST_COMMENTS">
       Naposledy komentované mapy
     </string> 
@@ -743,7 +740,10 @@ Text:   %s
     </string> 
     <string key="KMZ">
       Otevřít v Google Earth
-    </string> 
-    
+    </string>
+    <string key="SHOW_ALL">
+      all
+    </string>
+    <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

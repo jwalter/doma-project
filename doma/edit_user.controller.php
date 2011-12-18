@@ -262,7 +262,7 @@
       else
       {
         $viewData["Title"] = ($isNewUser ? __("ADD_USER_PROFILE_TITLE") : __("EDIT_USER_PROFILE_TITLE"));
-        $viewData["Info"] = __("EDIT_USER_PROFILE_INFO") ." ". sprintf(__("REQUIRED_FIELDS_INFO"), '<span class="required">*</span>');
+        $viewData["Info"] = sprintf(__("REQUIRED_FIELDS_INFO"), '<span class="required">*</span>');
       }
       $atoms = array();
       if($isAdmin) $atoms[] = "mode=admin";

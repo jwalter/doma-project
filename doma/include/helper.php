@@ -662,14 +662,12 @@
       return $string;
     }    
     
-    public static function GetOverviewMapData(Map $map, $includeRouteCoordinates, $categories, $selectedCategoryId = 0)
+    public static function GetOverviewMapData(Map $map, $includeRouteCoordinates, $includeTooltipMarkup, $includePersonName, $categories, $selectedCategoryId = 0)
     {
       if(!$map->IsGeocoded) return null;
-      $nameAndDate = $map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')';
-      $url = $map->MapImage ? 'show_map.php?'. self::CreateQuerystring(getUser(), $map->ID) : "";
-      $thumbnailMarkup = self::EncapsulateLink('<img src="'. self::GetThumbnailImage($map) .'" alt="'. hsc($nameAndDate) .'" height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />', $url);
       $corners = $map->GetMapCornerArray();
       $data = array();
+      $data["MapId"] = $map->ID;
       $data["MapCenter"] = new QRLongLat($map->MapCenterLongitude, $map->MapCenterLatitude);
       $data["Corners"][] = new QRLongLat($corners["SW"]["Longitude"], $corners["SW"]["Latitude"]);
       $data["Corners"][] = new QRLongLat($corners["NW"]["Longitude"], $corners["NW"]["Latitude"]);
@@ -683,46 +681,49 @@
       $data["RouteColor"] = '#ff0000';
       $data["RouteWidth"] = 3;
       $data["RouteOpacity"] = 1;
+      $data["SelectedBorderColor"] = '#0000ff';
+      $data["SelectedFillColor"] = '#0000ff';
       if($includeRouteCoordinates) 
       {
         $ed = $map->GetQuickRouteJpegExtensionData(false);
         $data["RouteCoordinates"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
       }
-      $data["MapThumbnailImageCaption"] = __("MAP");
-      $data["Name"] = $map->Name;
-      $data["Date"] = date(__("DATE_FORMAT"), self::StringToTime($map->Date, true));
-      $data["MapThumbnailImage"] = 
-        '<div class="gmInfoWindow">'.
-        '<div class="mapName">'. hsc($nameAndDate) .')</div>'.
-        '<div class="thumbnail">'. $thumbnailMarkup .'</div>'.
-        '</div>';
-      $data["MapInfoCaption"] = __("INFORMATION");
 
-      $atoms = array();
-      if(__("SHOW_MAP_AREA_NAME") && $map->MapName) $atoms[] = $map->MapName;
-      if(__("SHOW_ORGANISER") && $map->Organiser) $atoms[] = $map->Organiser;
-      if(__("SHOW_COUNTRY") && $map->Country) $atoms[] = $map->Country;
-      $mapAreaOrganiserCountry = join(", ", $atoms);
-      
-      $info = '<div class="gmInfoWindow">';
-      $info .= '<div class="mapName">'. hsc($nameAndDate) .'</div>';
-      if($selectedCategoryId == 0) $info .= __("CATEGORY") .": ". $categories[$map->CategoryID]->Name ."<br/>";
+      $info = "";
+
       if(__("SHOW_MAP_AREA_NAME") || __("SHOW_ORGANISER") || __("SHOW_COUNTRY"))
       {
-        $info.= hsc($mapAreaOrganiserCountry) ."<br/>";
+        $atoms = array();
+        if(__("SHOW_MAP_AREA_NAME") && $map->MapName) $atoms[] = $map->MapName;
+        if(__("SHOW_ORGANISER") && $map->Organiser) $atoms[] = $map->Organiser;
+        if(__("SHOW_COUNTRY") && $map->Country) $atoms[] = $map->Country;
+        $mapAreaOrganiserCountry = @implode(", ", $atoms);
+        $info .= "<br/>". hsc($mapAreaOrganiserCountry);
       }
+
+      if($selectedCategoryId == 0) $info .= "<br/>". __("CATEGORY") .": ". $categories[$map->CategoryID]->Name;
+
       if(__("SHOW_DISCIPLINE"))
       {
-         $info .= hsc($map->Discipline);
-         if(__("SHOW_RELAY_LEG") && $map->RelayLeg) $info .= ', '. __("RELAY_LEG_LOWERCASE") .' '. hsc($map->RelayLeg);
-         $info .= "<br/>";
+         $info .= "<br/>" . hsc($map->Discipline);
+         if(__("SHOW_RELAY_LEG") && $map->RelayLeg) $disciplineAndRelayLeg .= ', '. __("RELAY_LEG_LOWERCASE") .' '. hsc($map->RelayLeg);
       }
-      if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl()) 
+
+      if($includeTooltipMarkup)
       {
-        $info .= '<a href="'. $map->CreateResultListUrl() .'">'. __("RESULTS") .'</a><br/>';
-      }          
-      $info .= '</div>';
-      $data["MapInfo"] = $info;
+        $data["TooltipMarkup"] = 
+          '<div>'.
+            '<img src="'. self::GetThumbnailImage($map) .'" alt="'. hsc($nameAndDate) .'" '.
+                 'height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />'.
+          '</div>'.
+          '<div>'.
+            hsc($includePersonName ? $map->GetUser()->FirstName ." ". $map->GetUser()->LastName .", " : "").
+            hsc($map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')').
+            $info.
+          '</div>';
+          
+        $data["Url"] = $map->MapImage ? 'show_map.php?'. self::CreateQuerystring($map->GetUser(), $map->ID) : "";
+      }
       return $data;      
     }  
   }

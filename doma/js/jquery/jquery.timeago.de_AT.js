@@ -16,4 +16,3 @@ jQuery.timeago.settings.strings = {
   year: "etwa einem Jahr",
   years: "%d Jahren"
 };
-
