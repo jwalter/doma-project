@@ -14,6 +14,15 @@
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+  <?php if($vd["OverviewMapData"] != null) { ?>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="js/overview_map.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      <!--
+        var overviewMapData = <?php print json_encode($vd["OverviewMapData"]); ?>;        
+      -->
+    </script>
+  <?php } ?>  
   <script type="text/javascript" src="js/users.js"></script>
 </head>
 
@@ -187,6 +196,13 @@
     ?>
 </tbody>
 </table>
+
+<?php if($vd["OverviewMapData"] != null) { ?>
+  <div id="overviewMapContainer">
+    <a id="showOverviewMap" href="#"><?php print __("SHOW_OVERVIEW_MAP"); ?></a>
+    <a id="hideOverviewMap" href="#"><?php print __("HIDE_OVERVIEW_MAP"); ?></a>
+  </div>
+<?php } ?>
 
 <?php
     if(count($vd["LastComments"]) > 0)

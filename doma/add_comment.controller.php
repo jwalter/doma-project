@@ -5,7 +5,7 @@
   {
     public function Execute()
     {
-
+      
       $viewData = array();  
   
       $errors = array();
@@ -13,26 +13,26 @@
       $comment = new Comment();
       
       // no user specified - redirect to user list page
-      if($_GET["comment_text"]) 
+      if($_POST["comment_text"]) 
       {
-        $comment->Comment = strip_tags(urldecode($_GET["comment_text"]));
+        $comment->Comment = strip_tags(urldecode($_POST["comment_text"]));
       } else {
         die("No comment text");
       }
-      if($_GET["user_name"]) 
+      if($_POST["user_name"]) 
       {
-        $comment->Name = strip_tags(urldecode($_GET["user_name"]));
+        $comment->Name = strip_tags(urldecode($_POST["user_name"]));
       } else {
         die("No user name");
       }
       
-      if(($_GET["map_id"])&&(is_numeric($_GET["map_id"])))
+      if(($_POST["map_id"])&&(is_numeric($_POST["map_id"])))
       {
-        $comment->MapID = $_GET["map_id"];
+        $comment->MapID = $_POST["map_id"];
       } else {
         die("No valid map ID");
       }
-      if($_GET["user_email"]) $comment->Email = strip_tags($_GET["user_email"]);
+      if($_POST["user_email"]) $comment->Email = strip_tags($_POST["user_email"]);
       $comment->UserIP = $_SERVER['REMOTE_ADDR'];
       $comment->DateCreated = date("Y-m-d H:i:s");
       
@@ -51,11 +51,12 @@
         $body = sprintf(__("NEW_COMMENT_EMAIL_BODY"), $map->Name, $mapAddress, $comment->Name, $comment->Email, $comment->Comment);  
         $emailSentSuccessfully = Helper::SendEmail($fromName, $user->Email, $subject, $body);
         
-        $errors[] = __("EMAIL_ERROR");
+        if(!$emailSentSuccessfully) $errors[] = __("EMAIL_ERROR");
       }
 
       $viewData["Errors"] = $errors;
       $viewData["Comment"] = $comment;
+      $viewData["Map"] = $map;
 
       return $viewData;
     }

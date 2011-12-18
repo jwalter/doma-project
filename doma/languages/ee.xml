@@ -178,7 +178,7 @@
 
     <!--  show_map.php ****************************************************************************************************** --> 
     <string key="BACK">
-      &lt;&lt; Tagasi
+      Tagasi
     </string> 
     <string key="PREVIOUS">
       Eelmine
@@ -607,8 +607,11 @@ Sinu parool:   %s
     <string key="INFORMATION">
       Information
     </string> 
-    <string key="TOGGLE_IMAGE">
-      Routechoices on/off
+    <string key="SHOW_ROUTE_ON_MAP">
+      Show routechoices
+    </string> 
+    <string key="HIDE_ROUTE_ON_MAP">
+      Hide routechoices
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
       Click on map to turn routechoices on/off
@@ -616,10 +619,13 @@ Sinu parool:   %s
     <string key="TOGGLE_IMAGE_TOOLTIP">
       ...or just click somewhere on the map...
     </string> 
-    <string key="OVERVIEW_MAP">
-      Google map overview
+    <string key="SHOW_OVERVIEW_MAP">
+      Show overview map
     </string> 
-    <string key="KML_TOOLTIP">
+    <string key="HIDE_OVERVIEW_MAP">
+      Hide overview map
+    </string> 
+    <string key="KMZ_TOOLTIP">
       ...for Google Earth...
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
@@ -652,14 +658,11 @@ Sinu parool:   %s
     <string key="LANGUAGE">
       Language
     </string> 
-    <string key="SHOW">
-      Show
+    <string key="SHOW_COMMENTS">
+      Show comments
     </string> 
-    <string key="HIDE">
-      Hide
-    </string> 
-    <string key="COMMENTS">
-      Comments
+    <string key="HIDE_COMMENTS">
+      Hide comments
     </string> 
     <string key="POST_COMMENTS">
       Post new comment
@@ -712,8 +715,8 @@ Text:   %s
     <string key="COMMENT_FROM">
       Last comment by
     </string> 
-    <string key="OPEN_IN_GOOGLE_EARTH">
-      Open in Google Earth
+    <string key="KMZ">
+      KMZ
     </string> 
         
   </nonCustomizable>

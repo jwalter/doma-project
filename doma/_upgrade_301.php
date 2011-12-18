@@ -16,15 +16,14 @@
   <script type="text/javascript">
     $(document).ready(function() 
     {
-      $('a.upgrade').livequery("click", function(e){
-        if(confirm('Do you want to add geocoding and waypoints to database? \n\nDo it only after you already upgraded to version 3.0.1 and later. \n\n(This action will not affect your current core data. It will just add/update gps data from maps to db)')==false)
+      $('a.upgrade').click(function(){
+        if(!confirm('Do you want to add geocoding and waypoints to database? \n\nDo it only after you already upgraded to version 3.0.1 and later. \n\n(This action will not affect your current core data. It will just add/update gps data from maps to db)'))
         return false;
-        e.preventDefault();
         $('#total').text(0);
         var c=0;
         var t="";
         $("#maps").children().each(function() {
-          var id = $(this).attr('id');
+          var id = $(this).text();
           if(c==1) 
             {
             t = ", ";
@@ -48,16 +47,14 @@
 <body>
 <div id="wrapper">
  <div id="topbar">
-  <div class="inner">
-    <div class="left">
-       Admin tool: Upgrade DOMA to version 3.0.1
-    </div>
-    <div class="right">
-    <a href="users.php">Back to DOMA homepage</a>
-    </div>
-    <div class="clear"></div>
+  <div class="left">
+     Admin tool: Upgrade DOMA to version 3.0.1 or later
   </div>
+  <div class="right">
+  <a href="users.php">Back to DOMA homepage</a>
   </div>
+  <div class="clear"></div>
+</div>
 
 <div id="content">
 <form>
@@ -67,13 +64,13 @@
 <h3>List of available maps:</h3> 
 <div id="maps">
 <?php
- $c=0;
- $mp = DataAccess::GetAllMaps(0);
-  if(count($mp) > 0)
+  $c=0;
+  $ids = DataAccess::GetAllMapIds();
+  if(count($ids) > 0)
   {
-    foreach($mp as $map)
+    foreach($ids as $id)
     {
-      print "<span id='".$map->ID."'>".$map->ID."</span>, ";
+      print '<span>'. $id ."</span>, ";
       $c++;
     }
   }

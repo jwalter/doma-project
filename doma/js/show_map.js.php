@@ -3,10 +3,7 @@
 ?>
 $(document).ready(function() 
 {
-  $("#comments_count").text( $("#CommentPosted > div").size());
-  
-  <?php if(!__("COLLAPSE_VISITOR_COMMENTS")) print '$("#CommentPosted").show();' ?>
-  
+
   $("#zoomIn").click(function() 
   {
     ZoomIn();
@@ -17,71 +14,72 @@ $(document).ready(function()
     ZoomOut();
   });
 
-  $("#mapImage").click(function() 
+  $("#showSecondImage,#hideSecondImage,#mapImage").click(function() 
   {
     ToggleImage();
   });
   
-  //showCommentBox
-  $('a.showCommentBox').livequery("click", function(e){
-    $("#CommentPosted").show();
-    $("#commentBox").css('display','');
-    $("#commentMark").focus();
-    $("#commentBox").children("a#SubmitComment").show();		
-  });	
-  
-  //hideCommentPosted
-  $('a.hideCommentPosted').livequery("click", function(e){
-   $("#CommentPosted").hide();
-   $("#commentBox").hide();
+  $('#hidePostedComments').click(function() {
+    $("#postedComments").hide();
+    $("#commentBox").hide();
+    $('#hidePostedComments').toggle();
+    $('#showPostedComments').toggle();
+    return false;
   });	
 
-  //showCommentPosted
-  $('a.showCommentPosted').livequery("click", function(e){
-    $("#CommentPosted").show();
+  $('#showPostedComments').click(function() {
+    $("#postedComments").show();
+    $("#commentBox").show();
+    $("#commentMark").focus();
+    $("#commentBox").children("a#submitComment").show();    
+    $('#showPostedComments').toggle();
+    $('#hidePostedComments').toggle();
+    return false;
   });	
   
-  jQuery("abbr.timeago").timeago();
+  $("abbr.timeago").timeago();
   
   //SubmitComment
-  $('a.comment').livequery("click", function(e){
-    var map_id =  $("#map_id").val();	
+  $('a.comment').click(function() {
+    var id =  $("#id").val();	
     var comment_text = $("#commentMark").val();
     var user_name = $("#user_name").val();
     var user_email = $("#user_email").val();
     var map_user = $("#map_user").val();
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-    var passed = "no";
+    var passed = false;
     if((comment_text == "")||(user_name == ""))
     {
       alert("<?php print __("MISSING_COMMENT")?>");
     }
     else
     {
-      passed = "yes";
+      passed = true;
     }
     if((user_email != "")&&(!emailReg.test(user_email)))
     {
       alert("<?php print __("INVALID_EMAIL")?>");
-      passed = "no";
+      passed = false;
     }
-    if(passed=="yes")
+    if(passed)
     {
-      $.post("add_comment.php?comment_text="+encodeURIComponent(comment_text)+"&map_id="+map_id+"&user_name="+encodeURIComponent(user_name)+"&user_email="+user_email+"&user="+map_user, {
-
-      }, function(response){
-        
-        $('#CommentPosted').append($(response).fadeIn('slow'));
-        jQuery("abbr.timeago").timeago();
-        $("#comments_count").text( $("#CommentPosted > div").size());
-        $("#commentMark").val("");
-      });
+      $.post(
+        "add_comment.php", 
+        { comment_text: comment_text, map_id: id, user_name: user_name, user_email: user_email, user: map_user },
+        function(response)
+        {
+          $('#postedComments').append($(response).fadeIn('slow'));
+          $("abbr.timeago").timeago();
+          $("#comments_count").text( $("#postedComments > div").size());
+          $("#commentMark").val("");
+        }
+      );
     }
     
   });
   
   	//deleteComment
-		$('a.c_delete').livequery("click", function(e){
+		$('a.c_delete').live("click", function(e){
 			if(confirm('<?php print __("COMMENT_DELETE_CONFIRMATION")?>')==false)
 			return false;
 			e.preventDefault();
@@ -130,6 +128,40 @@ function ToggleImage()
     var hiddenMapImage = hiddenMapImageControl.get(0).src;
     $("#mapImage").get(0).src = hiddenMapImage;
     $("#hiddenMapImage").get(0).src = mapImage;
+    $("#showSecondImage").toggle();
+    $("#hideSecondImage").toggle();
   }
 }
+
+function toggleOverviewMap(mapContainer)
+{
+  var id = $("#id").val();
+  var mapExists = $(".overviewMap", mapContainer).length > 0;
+  
+  if(mapExists)
+  {
+    $(".overviewMap").toggle();
+  }
+  else
+  {
+    $.getJSON(
+      'ajax_server.php', 
+      { action: 'getMapCornerPositionsAndRouteCoordinates', id: id }, 
+      function(data)
+      { 
+        var mapDiv = $('<div class="overviewMap"/>');
+        mapContainer.append(mapDiv);
+        mapDiv.overviewMap({ data: [data] });
+      });
+  }
+  $("#showOverviewMap").toggle();
+  $("#hideOverviewMap").toggle();
+}
+
+$(function() {
+  $("#showOverviewMap,#hideOverviewMap").click(function() {
+    toggleOverviewMap($("#overviewMapContainer"));
+    return false;
+  });
+});
 

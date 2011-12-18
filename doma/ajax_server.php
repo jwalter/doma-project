@@ -16,17 +16,8 @@
   {
     $map = new Map();
     $map->Load($id);
-    //$ed = $map->GetQuickRouteJpegExtensionData(false);
-    return array(
-      "ID" => $id,
-      "MapCornerPositions" => $map->GetMapCornerArray(), 
-      "RouteCoordinates" => DataAccess::GetWaypointPositionsAsArray($id,5, 6),
-      "BorderColor" => '#ff0000',
-      "BorderWidth" => 2,
-      "BorderOpacity" => 0.8,
-      "FillColor" => '#ff0000',
-      "FillOpacity" => 0.3
-    );
+    
+    $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+    return Helper::GetOverviewMapData($map, true, $categories);
   }
-  
 ?>

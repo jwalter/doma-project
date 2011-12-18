@@ -188,31 +188,26 @@ body
 
 #content
 {
-  background: #ffffff url(gfx/content_corner_bottom_left.png) no-repeat  bottom left;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
 }
 
 #content form
 {
   padding: 2em;
-  background: url(gfx/content_corner_bottom_right.png) no-repeat bottom right;
 }
 
 /* top bar */
 #topbar
 {
-  background: #c7c7ff url(gfx/topbar_corner_top_left.png) no-repeat top left;
-}
-
-#topbar .inner
-{
+  background-color: #c7c7ff;
+  border-radius: 5px 5px 0 0;
   font-size: 80%;
-  background: url(gfx/topbar_corner_top_right.png) no-repeat top right;
 }
 
 #topbar .left
 {
   position: relative;
-  background: url(gfx/topbar_corner_bottom_left.png) no-repeat bottom left;
   float: left;
   padding: 0.5em 1em;
   line-height: 15px;
@@ -221,7 +216,6 @@ body
 #topbar .right
 {
   position: relative;
-  background: url(gfx/topbar_corner_bottom_right.png) no-repeat bottom right;
   float: right;
   padding: 0.5em 1em;
   line-height: 15px;
@@ -357,25 +351,11 @@ form.wide h2 + p
 /* Select category and year bar */
 #selectCategoryAndYear
 {
-  background: #c7c7ff url(gfx/select_category_and_year_corner_top_left.png) no-repeat top left;
+  background-color: #c7c7ff;
+  border-radius: 5px;
   text-align: center;
   margin-top: 1em;
   height: 1%; /* holly hack */
-}
-
-#selectCategoryAndYear .inner1
-{
-  background: url(gfx/select_category_and_year_corner_top_right.png) no-repeat top right;
-}
-
-#selectCategoryAndYear .inner2
-{
-  background: url(gfx/select_category_and_year_corner_bottom_left.png) no-repeat bottom left;
-}
-
-#selectCategoryAndYear .inner3
-{
-  background: url(gfx/select_category_and_year_corner_bottom_right.png) no-repeat bottom right;
   padding: 0.5em;
 }
 
@@ -389,27 +369,27 @@ form.wide h2 + p
   margin-right: 1em;
 }
 
+#indexBody .hideOverviewMap
+{
+  display: none;
+}
+
 /* map thumbnail and info */
 .map
 {
   margin-bottom: 1em;
   clear: both;
-  background: #efefef url(gfx/map_corner_bottom_left.png) no-repeat bottom left;
+  background-color: #efefef;
+  border: 1px solid #eaeaea;
   height: 1%; /* holly hack */
-}
-
-.map .inner
-{
-  background: url(gfx/map_corner_bottom_right.png) no-repeat bottom right;
-  padding-bottom: 1em;
+  border-radius: 5px;
+  padding: 1em;
 }
 
 .map .thumbnail
 {
-  padding: 1em 1em 0 1em;
-  margin-right: 1em;
+  margin-right: 2em;
   float: left;
-  background: url(gfx/map_corner_top_left.png) no-repeat top left;
   height: 1%; /* holly hack */
 }
 
@@ -422,17 +402,12 @@ form.wide h2 + p
 {
   border: 1px solid #7f7f7f;
   display: block;
+  border-radius: 5px;
 }
 
 .map .thumbnail img:hover
 {
   border: 1px solid #0000ff;
-}
-
-.map .info
-{
-  background: url(gfx/map_corner_top_right.png) no-repeat top right;
-  padding: 1em 1em 0 1em;
 }
 
 .info 
@@ -459,7 +434,7 @@ form.wide h2 + p
 .map .comment
 {
   clear: both;
-  padding: 0.5em 1em 0 1em;
+  padding-top: 0.5em;
 }
 
 .map .bottom
@@ -498,7 +473,8 @@ img.button
 
 .map .googleMapsContainer
 {
-  margin: 0.1em 1em 0 1em;
+  padding-top: 1em;
+  display: none;
 }
 
 /* overview map, one single map */
@@ -508,6 +484,7 @@ img.button
   height: 300px;
   clear: both;
   border: 1px solid #7f7f7f;
+  border-radius: 5px;
 }
 
 /* overview map, all maps */
@@ -517,6 +494,33 @@ img.button
   height: 500px;
   clear: both;
   border: 1px solid #7f7f7f;
+  border-radius: 5px;
+}
+
+/* overview map, show map page */
+#showMapBody #overviewMapContainer > div
+{
+  width: 1080px;
+  height: 500px;
+  clear: both;
+  border: 1px solid #7f7f7f;
+  border-radius: 5px;
+}
+
+/* overview map, show map page */
+#usersBody #overviewMapContainer
+{
+  margin-top: 1em;
+}
+
+#usersBody #overviewMap
+{
+  margin-top: 1em;
+}
+
+#usersBody #hideOverviewMap
+{
+  display: none;
 }
 
 .pointer
@@ -556,11 +560,25 @@ img.button
 
 #showMapBody #content form
 {
-  padding-top: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
+  padding: 0;
   min-height: 60px;
 }
+
+#showMapBody #content #mapInfo
+{
+  padding: 1em 1em 1em 2em;
+}
+
+#showMapBody #navigation
+{
+  background-color: #e7e7ff;
+  border-top: 1px solid #a7a7ff;
+  border-bottom: 1px solid #c7c7ff;
+  font-size: 80%;
+  padding: 0.5em 1em;
+  line-height: 15px;
+}
+
 
 #showMapBody #mapImage
 {
@@ -586,8 +604,9 @@ img.button
 
 #showMapBody #propertyContainer
 {
-  width: 62%;
+  width: 90%;
   float: left;
+  margin-bottom: 0.5em;
 }
 
 #showMapBody .property
@@ -597,6 +616,11 @@ img.button
   margin-bottom: 0.5em;
   margin-right: 2em;
   line-height: 20px;
+}
+
+#showMapBody .property .caption
+{
+  font-weight: normal;
 }
 
 #showMapBody #comment
@@ -611,6 +635,12 @@ img.button
   width: 180px;
   float: right;
   position: relative;
+  text-align: right;
+}
+
+#showMapBody #gmap img
+{
+  border-radius: 5px;
 }
 
 #showMapBody #wrapper
@@ -637,6 +667,16 @@ img.button
 #showMapBody #zoomButtonDiv
 {
   float: right;
+}
+
+#showMapBody #showSecondImage
+{
+  display: none;
+}
+
+#showMapBody #hideOverviewMap
+{
+  display: none;
 }
 
 .zoomButton
@@ -707,6 +747,7 @@ img.button
   border: 1px solid #7f7f7f;
   background: #ffffff;
   top: 2em;
+  border-radius: 5px;
 }
 
 .hoverThumbnail img
@@ -717,45 +758,61 @@ img.button
 /* comments *******************************************************************************************************/
 .commentBox
 {
-	width:800px; padding:3px; 
-	background:#ECEFF5;
-	margin-left:18px;
-	margin-top:3px;
+  background-color: #e7e7ff;
+  border-top: 1px solid #a7a7ff;
+  padding: 1em 2em;
+  line-height: 15px;
+  border-radius: 0 0 5px 5px;
 }
+
+.commentBox #commentBoxHeader
+{
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
+.commentBox input
+{
+  border: 1px solid #cccccc;
+}
+
+.commentBox input
+{
+  width: 20em;
+}
+
+.commentBox  #userEmailLabel
+{
+  padding-left: 2em;  
+}
+
+.commentBox #userDetails
+{
+  margin-bottom: 0.5em;
+}
+
+.commentBox textarea
+{
+  width: 100%;
+  height: 4em;
+  border: 1px solid #cccccc;
+  margin-bottom: 0.5em;
+}
+
 .commentPanel	
 {
-	width:800px; padding:3px; 
-	background:#ECEFF5;
-	margin-left:18px;
-	margin-top:2px;
-  font-size: 11px;
-  line-height: 15px;
+	background-color: #e7e7ff;
+  border-top: 1px solid #a7a7ff;
+  padding: 1em 2em;
 }
-.postedComments 
-{
-  float:left; 
-  margin-left:6px; 
-  text-align:justify;
-}
+
 .postedTime 
 {
   color:#666666;
-  margin-left:6px; 
+  padding-top: 0.5em;
 }
-.commentBox input
-{
-	height: 12px;
-  border: 1px solid #cccccc;
-  font-size: 11px;
-}
-.commentBox textarea
-{
-	line-height: 11px;
-  border: 1px solid #cccccc;
-  overflow: auto;
-}
+
 .commentName 
 {
-  color: #3f3fff;
   font-weight: bold;
 }

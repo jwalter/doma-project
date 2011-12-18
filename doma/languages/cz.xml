@@ -198,7 +198,7 @@
 
     <!--  show_map.php ****************************************************************************************************** --> 
     <string key="BACK">
-      &lt;&lt; Zpět
+      Zpět
     </string> 
     <string key="PREVIOUS">
       Předchozí
@@ -636,8 +636,11 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="INFORMATION">
       Informace
     </string> 
-    <string key="TOGGLE_IMAGE">
+    <string key="SHOW_ROUTE_ON_MAP">
       Vypnout/Zapnout postupy
+    </string> 
+    <string key="HIDE_ROUTE_ON_MAP">
+      Hide routechoices
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
       Klikni na mapu pro zapnutí/vypnutí postupů
@@ -645,10 +648,13 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="TOGGLE_IMAGE_TOOLTIP">
       ...nebo stačí pouze kdekoliv na mapě kliknout myší...
     </string> 
-    <string key="OVERVIEW_MAP">
+    <string key="SHOW_OVERVIEW_MAP">
       Náhled na Google mapě
     </string> 
-    <string key="KML_TOOLTIP">
+    <string key="HIDE_OVERVIEW_MAP">
+      Hide overview map
+    </string> 
+    <string key="KMZ_TOOLTIP">
       ...pro Google Earth...
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
@@ -681,14 +687,11 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="LANGUAGE">
       Jazyk
     </string> 
-    <string key="SHOW">
-      Zobrazit
+    <string key="SHOW_COMMENTS">
+      Zobrazit komentáře
     </string> 
-    <string key="HIDE">
-      Skrýt
-    </string> 
-    <string key="COMMENTS">
-      Komentáře
+    <string key="HIDE_COMMENTS">
+      Skrýt komentáře
     </string> 
     <string key="POST_COMMENTS">
       Napiš komentář
@@ -741,7 +744,7 @@ Text:   %s
     <string key="COMMENT_FROM">
       Poslední komentář od
     </string> 
-    <string key="OPEN_IN_GOOGLE_EARTH">
+    <string key="KMZ">
       Otevřít v Google Earth
     </string> 
     

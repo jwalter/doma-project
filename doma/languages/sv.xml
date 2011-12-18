@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <strings>
   <customizable>
     <string key="PAGE_TITLE" description="PAGE_TITLE_DESCRIPTION">
@@ -10,7 +11,7 @@
       På denna sida lägger jag in kartor, banor och vägval från mina orienteringslopp.
     </string>
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-      Är du upphovsrättsinnehavare till en karta som inte borde publiceras här? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Skicka e-post&lt;/a&gt;.
+      Är du upphovsrättsinnehavare till en karta som inte borde publiceras här? &lt;a href="mailto:%userEmail%"&gt;Skicka e-post&lt;/a&gt;.
     </string>
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
       Kartor, banor och vägval från mina orienteringslopp.
@@ -36,29 +37,7 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string>
-     <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_MAXHR" description="SHOW_MAXHR_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-    <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-    <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-    
- </customizable>
+  </customizable>
 
   <nonCustomizable>  
     <!-- general ****************************************************************************************************** -->
@@ -180,7 +159,7 @@
 
     <!-- show_map.php ****************************************************************************************************** -->
     <string key="BACK">
-      &amp;lt;&amp;lt; Tillbaka
+      Tillbaka
     </string>
     <string key="PREVIOUS">
       Föregående
@@ -304,7 +283,7 @@
       Senaste kartorna
     </string>
     <string key="PUBLIC_CREATE_USER_INFO">
-      Du kan &lt;a href=&quot;edit_user.php&quot;&gt;skapa ditt eget digitala kartarkiv&lt;/a&gt; genom att ange åtkomstkoden som du får av &lt;a href=&quot;mailto:%adminEmail%&quot;&gt;administratören&lt;/a&gt;.
+      Du kan &lt;a href="enter_public_creation_code.php"&gt;skapa ditt eget digitala kartarkiv&lt;/a&gt; genom att ange åtkomstkoden som du får av &lt;a href="mailto:%adminEmail%"&gt;administratören&lt;/a&gt;.
     </string>
 
     <!-- edit_user.php ****************************************************************************************************** -->
@@ -541,8 +520,6 @@ Detta är ett automatgenererat e-postmeddelande som bekräftar att ett digitalt 
 Din startsida:     %s
 Ditt användarnamn: %s
 Ditt lösenord:     %s
-
-Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till ett annat lösenord.
     </string>
     <string key="SEND_CONFIRMATION_EMAIL">
       E-postbekräftelse
@@ -575,9 +552,7 @@ Detta är ett automatgenererat e-postmeddelande som innehåller ny lösenordsinf
 
 Din startsida:     %s
 Ditt användarnamn: %s
-Ditt nya lösenord:     %s
-
-Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till ett annat lösenord.
+Ditt nya lösenord: %s
     </string>
     <string key="NEW_PASSWORD_SENT">
       Ett nytt lösenord har skickats till %s.
@@ -588,140 +563,139 @@ Betrakta lösenordet som temporärt. Av säkerhetsskäl bör du byta det till et
 
     <!-- new strings in 3.0 -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Filförmatet för den blanka kartfilen &lt;em&gt;%s&lt;/em&gt; är felaktigt. Endast jpeg, png och gif stöds.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Den blanka kartfilen &lt;em&gt;%s&lt;/em&gt; kunde inte laddas upp.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Blank kartfil
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Karta med vägval.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      Karta utan vägval. Ej obligatorisk.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Visningsläge
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Lista
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Översiktskarta
     </string> 
     <string key="INFORMATION">
       Information
     </string> 
-    <string key="TOGGLE_IMAGE">
-      Routechoices on/off
+    <string key="SHOW_ROUTE_ON_MAP">
+      Visa vägval
+    </string> 
+    <string key="HIDE_ROUTE_ON_MAP">
+      Dölj vägval
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Klicka på kartan för att visa/dölja vägval
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...eller klicka någonstans på kartan...
     </string> 
-    <string key="OVERVIEW_MAP">
-      Google map overview
+    <string key="SHOW_OVERVIEW_MAP">
+      Visa översiktskarta
     </string> 
-    <string key="KML_TOOLTIP">
-      ...for Google Earth...
+    <string key="HIDE_OVERVIEW_MAP">
+      Dölj översiktskarta
+    </string> 
+    <string key="KMZ_TOOLTIP">
+      ...för Google Earth...
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
       Y-m-d
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Huruvida avverkad sträcka ska kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Huruvida avverkad tid ska kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Huruvida maxpuls kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Huruvida genomsnittlig puls kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Tid
     </string> 
     <string key="DISTANCE">
-      Real distance
+      Sträcka
     </string> 
     <string key="AVGHR">
-      Average HR
+      Genomsnittlig puls
     </string> 
     <string key="MAXHR">
-      Maximal HR
+      Maxpuls
+    </string>   
+    <string key="LANGUAGE">
+      Språk
     </string> 
-      <string key="LANGUAGE">
-      Language
+    <string key="SHOW_COMMENTS">
+      Visa kommentarer
     </string> 
-    <string key="SHOW">
-      Show
-    </string> 
-    <string key="HIDE">
-      Hide
-    </string> 
-    <string key="COMMENTS">
-      Comments
+    <string key="HIDE_COMMENTS">
+      Dölj kommentarer
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Lägg till kommentar
     </string> 
     <string key="NAME">
-      Name
+      Namn
     </string> 
     <string key="MISSING_COMMENT">
-      Field Name and comment area must be filled!
+      Textfälten för namn och kommentar måste fyllas i!
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Allow visitors to post comments
+      Tillåt besökare att kommentera kartor
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Show comments collapsed on map page 
+      Dölj besökarnas kommentarer som standard
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Get comments by email
+      Ta emot kommentarer med e-post
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Vill du ta bort den här kommentaren?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - ny kommentar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-      
-Hi, 
+Hej, 
 
-A new comment was created in your map archive.
+En ny kommentar har lagts till ui din digitala kartpärm.
 
-Map:  %s 
-Link: %s
+Karta:     %s 
+Länk:      %s
 
-Comment's content
-Name:   %s 
-Email:  %s
-Text:   %s
-
+Namn:      %s 
+E-post:    %s
+Kommentar: %s
     </string>     
     <string key="EDIT_USER_PROFILE_INFO">
       
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Senast kommenterade kartorna
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Kommentarer
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Senast kommentarad av 
     </string> 
-    <string key="OPEN_IN_GOOGLE_EARTH">
-      Open in Google Earth
+    <string key="KMZ">
+      KMZ
     </string> 
-        
-</nonCustomizable>  
+  </nonCustomizable>  
 </strings>

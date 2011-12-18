@@ -237,6 +237,7 @@
                   cos($this->MapCenterLatitude*$pi180) * cos($latR) * cos($lonR-$this->MapCenterLongitude*$pi180)) *
              6378200;
     }
+
   }
 
 

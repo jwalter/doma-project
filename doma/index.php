@@ -16,14 +16,17 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
   <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print GOOGLE_MAPS_API_KEY; ?>" type="text/javascript"></script>
-  <script src="js/markerclusterer.js" type="text/javascript"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="js/overview_map.js" type="text/javascript"></script>
   <?php if($vd["DisplayMode"] == "overviewMap") { ?>
-  <script type="text/javascript">
-    <!--
-    var overviewMapData = <?php print json_encode($vd["OverviewMapData"]); ?>;  
-    -->
-  </script>
+    <script type="text/javascript">
+      <!--
+      $(function() { 
+        var overviewMapData = <?php print json_encode($vd["OverviewMapData"]); ?>;        
+        $("#overviewMap").overviewMap({ data: overviewMapData });
+      });
+      -->
+    </script>
   <?php } ?>
   <script src="js/index.js" type="text/javascript"></script>
 </head>
@@ -55,7 +58,7 @@
 <h1><?php print __("CAPTION")?></h1>
 <p><?php print nl2br(__("INTRO"))?></p>
 
-<div id="selectCategoryAndYear"><div class="inner1"><div class="inner2"><div class="inner3">
+<div id="selectCategoryAndYear">
 <?php 
   if(count($vd["YearsWithText"]) < 2)
   {
@@ -91,7 +94,7 @@
     </select>
   <?php } ?>
 <?php } ?>
-</div></div></div></div>
+</div>
 </div>
 
 <div id="maps">

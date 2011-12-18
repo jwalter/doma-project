@@ -105,51 +105,7 @@
         
         if(($viewData["DisplayMode"] == "overviewMap")&&($map->IsGeocoded))
         {
-          $corners = $map->GetMapCornerArray();
-          $overviewMapData = array();
-          $overviewMapData["MapCenter"] = new QRLongLat($map->MapCenterLongitude, $map->MapCenterLatitude);
-          $overviewMapData["Corners"][] = new QRLongLat($corners["SW"]["Longitude"], $corners["SW"]["Latitude"]);
-          $overviewMapData["Corners"][] = new QRLongLat($corners["NW"]["Longitude"], $corners["NW"]["Latitude"]);
-          $overviewMapData["Corners"][] = new QRLongLat($corners["NE"]["Longitude"], $corners["NE"]["Latitude"]);
-          $overviewMapData["Corners"][] = new QRLongLat($corners["SE"]["Longitude"], $corners["SE"]["Latitude"]);
-          $overviewMapData["BorderColor"] = '#ff0000';
-          $overviewMapData["BorderWidth"] = 2;
-          $overviewMapData["BorderOpacity"] = 0.8;
-          $overviewMapData["FillColor"] = '#ff0000';
-          $overviewMapData["FillOpacity"] = 0.3;
-          $overviewMapData["MapThumbnailImageCaption"] = __("MAP");
-          $overviewMapData["MapThumbnailImage"] = 
-            '<div class="gmInfoWindow">'.
-            '<div class="mapName">'. $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')</div>'.
-            '<div class="thumbnail">'. $mapInfo["MapThumbnailHtml"] .'</div>'.
-            '</div>';
-          $overviewMapData["MapInfoCaption"] = __("INFORMATION");
-          
-          //******************************
-          //not used right now to avoid mess with icons in displaying on google maps
-          //$overviewMapData["RouteSegments"] =  DataAccess::GetWaypointPositionsAsArray($map->ID,5, 6);
-          //******************************
-          
-          $info = '<div class="gmInfoWindow">';
-          $info .= '<div class="mapName">'. $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')</div>';
-          if($viewData["SearchCriteria"]["selectedCategoryID"] == 0) $info .= __("CATEGORY") .": ". $viewData["Categories"][$map->CategoryID]->Name ."<br/>";
-          if(__("SHOW_MAP_AREA_NAME") || __("SHOW_ORGANISER") || __("SHOW_COUNTRY"))
-          {
-            $info.= $mapInfo["MapAreaOrganiserCountry"] ."<br/>";
-          }
-          if(__("SHOW_DISCIPLINE"))
-          {
-             $info .= $map->Discipline;
-             if(__("SHOW_RELAY_LEG") && $map->RelayLeg) $info .= ', '. __("RELAY_LEG_LOWERCASE") .' '. $map->RelayLeg;
-             $info .= "<br/>";
-          }
-          if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl()) 
-          {
-            $info .= '<a href="'. $map->CreateResultListUrl() .'">'. __("RESULTS") .'</a><br/>';
-          }          
-          $info .= '</div>';
-          $overviewMapData["MapInfo"] = $info;
-          $viewData["OverviewMapData"][] = $overviewMapData;
+          $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, false, $categories, $searchCriteria["selectedCategoryID"]);
         }
         if($map->IsGeocoded) $viewData["GeocodedMapsExist"] = true;
       }

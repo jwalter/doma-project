@@ -52,14 +52,13 @@
       $viewData["FirstMapImageName"] = Helper::GetMapImage($map);
       if($map->BlankMapImage) $viewData["SecondMapImageName"] = Helper::GetBlankMapImage($map);
       
-      //***********************
       $viewData["QuickRouteJpegExtensionData"] = $map->GetQuickRouteJpegExtensionData();
-      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->ElapsedTime ."**";
-      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->Route->Distance ."**";
-      //echo $viewData["QuickRouteJpegExtensionData"]->Sessions[0]->StraightLineDistance ."**";
-      //echo $viewData["QuickRouteJpegExtensionData"]->ExecutionTime;
-      //***********************
       
+      if($viewData["QuickRouteJpegExtensionData"]->IsValid)
+      {
+        $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+        $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, $categories);
+      }
       return $viewData;
     }
   }

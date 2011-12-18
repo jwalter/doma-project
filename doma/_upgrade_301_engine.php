@@ -7,11 +7,19 @@
   {
     $map = new Map();
     $map->Load($_GET["id"]);
-    
-    $map->AddGeocoding();
-    DataAccess::SaveMapWaypoints($map);
-    $map->Save();
-    Helper::WriteToLog("Upgrading map: ". $_GET["id"]);
+    if(!$map->IsGeocoded)
+    {
+      $map->AddGeocoding();
+      if($map->IsGeocoded)
+      {
+        $map->Save();
+        Helper::WriteToLog("Added geocoding data to database for map with id ". $_GET["id"] .".");
+      }
+      else
+      {
+        Helper::WriteToLog("Failed to add geocoding data to database for map with id ". $_GET["id"] .". Probably no QuickRoute jpeg file.");
+      }
+    }
   }
   
 ?>

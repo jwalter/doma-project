@@ -25,6 +25,13 @@
       // last 10 maps
       $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, 10, "date");
       $viewData["LastComments"] = DataAccess::GetLastComments();
+      $viewData["OverviewMapData"] = null;
+      $categories = DataAccess::GetCategoriesByUserID();
+      foreach($viewData["LastMaps"] as $map)
+      {
+        $data = Helper::GetOverviewMapData($map, false, $categories);
+        if($data != null) $viewData["OverviewMapData"][] = $data;
+      }
 
       if($_GET["error"] == "email") $errors[] = sprintf(__("ADMIN_EMAIL_ERROR"), ADMIN_EMAIL);
       

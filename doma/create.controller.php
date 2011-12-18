@@ -37,22 +37,6 @@
           @mkdir(Helper::LocalPath(TEMP_FILE_PATH));
           @chmod(Helper::LocalPath(TEMP_FILE_PATH), 0777);
 
-		      /* processed by external page _upgrade_301.php - avoiding memory limit errors and php timeouts
-          if (version_compare(DataAccess::GetSetting("DATABASE_VERSION", "0.0"),"2.1")>0)
-		      {
-			      $mp = DataAccess::GetAllMaps(0);
-			      if(count($mp) > 0)
-			      {
-			        foreach($mp as $map)
- 			        {
-                $map->AddGeocoding();
-                DataAccess::SaveMapWaypoints($map);
-				        $map->Save();
-			        }
-			      }
-          }
-          */
-
           if($previousDatabaseVersion == "0.0")
           {
             Helper::LogUsage("createSite", "version=". DOMA_VERSION);

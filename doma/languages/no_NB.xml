@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <strings>
   <customizable>
     <string key="PAGE_TITLE" description="PAGE_TITLE_DESCRIPTION">
@@ -10,7 +11,7 @@
       På denne siden vil jeg prøve å legge ut kart, løyper og veivalg fra orienteringsløp jeg har deltatt i.
     </string>
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-      Er du rettighetshaver av et kart som ikke burde vært publisert her? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Send en e-post&lt;/a&gt;.
+      Er du rettighetshaver av et kart som ikke burde vært publisert her? &lt;a href="mailto:%userEmail%"&gt;Send en e-post&lt;/a&gt;.
     </string>
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
       Kart, løyper og veivalg fra mine orienteringsløp.
@@ -36,28 +37,7 @@
     <string key="SHOW_COMMENT" description="SHOW_COMMENT_DESCRIPTION">
       1
     </string>
-     <string key="SHOW_DISTANCE" description="SHOW_DISTANCE_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_ELAPSEDTIME" description="SHOW_ELAPSEDTIME_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_MAXHR" description="SHOW_MAXHR_DESCRIPTION">
-      1
-    </string> 
-    <string key="SHOW_AVGHR" description="SHOW_AVGHR_DESCRIPTION">
-      1
-    </string> 
-     <string key="SHOW_VISITOR_COMMENTS" description="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-    <string key="COLLAPSE_VISITOR_COMMENTS" description="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-    <string key="EMAIL_VISITOR_COMMENTS" description="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      1
-    </string> 
-</customizable>
+  </customizable>
 
   <nonCustomizable>  
     <!-- general ****************************************************************************************************** -->
@@ -303,7 +283,7 @@
       De siste kartene
     </string>
     <string key="PUBLIC_CREATE_USER_INFO">
-      Du kan &lt;a href=&quot;edit_user.php&quot;&gt;lage ditt eget digitale kartarkiv&lt;/a&gt; ved å angi tilgangskoden som du får av &lt;a href=&quot;mailto:%adminEmail%&quot;&gt;administratoren&lt;/a&gt;.
+      Du kan &lt;a href="enter_public_creation_code.php"&gt;lage ditt eget digitale kartarkiv&lt;/a&gt; ved å angi tilgangskoden som du får av &lt;a href="mailto:%adminEmail%"&gt;administratoren&lt;/a&gt;.
     </string>
 
     <!-- edit_user.php ****************************************************************************************************** -->
@@ -540,8 +520,6 @@ Dette er en automatisk genert e-postmelding som bekrefter at et digitalt kartark
 Din startside:     %s
 Ditt brukernavn:   %s
 Ditt passord:      %s
-
-Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du bytte det til et annet passord.
     </string>
     <string key="SEND_CONFIRMATION_EMAIL">
       E-postbekreftelse
@@ -575,8 +553,6 @@ Dette er en autmatisk generert e-postmelding som inneholder ny informasjon for d
 Din startside:     %s
 Ditt brukernavn:   %s
 Ditt nye passord:  %s
-
-Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du byte det til et annet passord..
     </string>
     <string key="NEW_PASSWORD_SENT">
       Et nytt passord er sendt til %s.
@@ -584,7 +560,7 @@ Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du byte det til et a
     <string key="FORGOT_PASSWORD">
       Jeg har glemt mitt passord
     </string>
-
+    
     <!-- new strings in 3.0 -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
       The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
@@ -613,8 +589,14 @@ Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du byte det til et a
     <string key="INFORMATION">
       Information
     </string> 
-    <string key="TOGGLE_IMAGE">
-      Routechoices on/off
+    <string key="SHOW_ROUTE_ON_MAP">
+      Show routechoices
+    </string> 
+    <string key="HIDE_ROUTE_ON_MAP">
+      Hide routechoices
+    </string> 
+    <string key="HIDE_ROUTE_ON_MAP">
+      Hide routechoices
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
       Click on map to turn routechoices on/off
@@ -622,10 +604,13 @@ Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du byte det til et a
     <string key="TOGGLE_IMAGE_TOOLTIP">
       ...or just click somewhere on the map...
     </string> 
-    <string key="OVERVIEW_MAP">
-      Google map overview
+    <string key="SHOW_OVERVIEW_MAP">
+      Show overview map
     </string> 
-    <string key="KML_TOOLTIP">
+    <string key="HIDE_OVERVIEW_MAP">
+      Hide overview map
+    </string> 
+    <string key="KMZ_TOOLTIP">
       ...for Google Earth...
     </string> 
     <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
@@ -658,14 +643,11 @@ Betrakt passordet som midlertidig. Av sikkerhetshensyn bør du byte det til et a
     <string key="LANGUAGE">
       Language
     </string> 
-    <string key="SHOW">
-      Show
+    <string key="SHOW_COMMENTS">
+      Show comments
     </string> 
-    <string key="HIDE">
-      Hide
-    </string> 
-    <string key="COMMENTS">
-      Comments
+    <string key="HIDE_COMMENTS">
+      Hide comments
     </string> 
     <string key="POST_COMMENTS">
       Post new comment
@@ -718,9 +700,9 @@ Text:   %s
     <string key="COMMENT_FROM">
       Last comment by
     </string> 
-    <string key="OPEN_IN_GOOGLE_EARTH">
-      Open in Google Earth
+    <string key="KMZ">
+      KMZ
     </string> 
     
-  </nonCustomizable>  
+  </nonCustomizable>
 </strings>

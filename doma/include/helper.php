@@ -388,33 +388,31 @@
       $isLoggedIn = (Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getUser()->ID);
       ?>
       <div id="topbar">
-        <div class="inner">
-          <div class="left">
-            <a href="index.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php printf(__("DOMA_FOR_X"), getUser()->FirstName ." ". getUser()->LastName); ?></a>
+        <div class="left">
+          <a href="index.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php printf(__("DOMA_FOR_X"), getUser()->FirstName ." ". getUser()->LastName); ?></a>
+          <span class="separator">|</span>
+          <?php if(!$isLoggedIn) { ?>
+            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("LOGIN")?></a>
+          <?php } else { ?>
+            <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("ADD_MAP")?></a>
             <span class="separator">|</span>
-            <?php if(!$isLoggedIn) { ?>
-              <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("LOGIN")?></a>
-            <?php } else { ?>
-              <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("ADD_MAP")?></a>
-              <span class="separator">|</span>
-              <a href="edit_user.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("USER_PROFILE")?></a>
-              <span class="separator">|</span>
-              <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>&amp;action=logout"><?php print __("LOGOUT")?></a>
-            <?php } ?>
-          </div>
-          <div class="right">
-            <a href="users.php"><?php print __("ALL_USERS")?></a>
+            <a href="edit_user.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("USER_PROFILE")?></a>
             <span class="separator">|</span>
-            <?php 
-            if(LANGUAGES_SHOW=="1") 
-            {
-              Helper::ShowLanguages();?>
-              <span class="separator">|</span>
-            <?php } ?>
-            <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
-          </div>
-          <div class="clear"></div>
+            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>&amp;action=logout"><?php print __("LOGOUT")?></a>
+          <?php } ?>
         </div>
+        <div class="right">
+          <a href="users.php"><?php print __("ALL_USERS")?></a>
+          <span class="separator">|</span>
+          <?php 
+          if(SHOW_LANGUAGES_IN_TOPBAR=="1") 
+          {
+            Helper::ShowLanguages();?>
+            <span class="separator">|</span>
+          <?php } ?>
+          <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
+        </div>
+        <div class="clear"></div>
       </div>
       <?php
     }
@@ -424,29 +422,27 @@
       $isLoggedIn = Helper::IsLoggedInAdmin();
       ?>
       <div id="topbar">
-        <div class="inner">
-          <div class="left">
-            <a href="users.php"><?php print _SITE_TITLE?></a>
+        <div class="left">
+          <a href="users.php"><?php print _SITE_TITLE?></a>
+          <span class="separator">|</span>
+          <?php if(!$isLoggedIn) { ?>
+            <a href="admin_login.php"><?php print __("ADMIN_LOGIN")?></a>
+          <?php } else { ?>
+            <a href="edit_user.php?mode=admin"><?php print __("ADD_USER")?></a>
             <span class="separator">|</span>
-            <?php if(!$isLoggedIn) { ?>
-              <a href="admin_login.php"><?php print __("ADMIN_LOGIN")?></a>
-            <?php } else { ?>
-              <a href="edit_user.php?mode=admin"><?php print __("ADD_USER")?></a>
-              <span class="separator">|</span>
-              <a href="admin_login.php?action=logout"><?php print __("ADMIN_LOGOUT")?></a>
-            <?php } ?>
-          </div>
-          <div class="right">
-            <?php 
-            if(LANGUAGES_SHOW=="1") 
-            {
-              Helper::ShowLanguages();?>
-              <span class="separator">|</span>
-            <?php } ?>
-            <a href="http://www.matstroeng.se/doma/?<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
-          </div>
-          <div class="clear"></div>
+            <a href="admin_login.php?action=logout"><?php print __("ADMIN_LOGOUT")?></a>
+          <?php } ?>
         </div>
+        <div class="right">
+          <?php 
+          if(SHOW_LANGUAGES_IN_TOPBAR=="1") 
+          {
+            Helper::ShowLanguages();?>
+            <span class="separator">|</span>
+          <?php } ?>
+          <a href="http://www.matstroeng.se/doma/?<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
+        </div>
+        <div class="clear"></div>
       </div>
       <?php
     }
@@ -461,7 +457,7 @@
       if(ADMIN_EMAIL == "email@yourdomain.com") return false; // the address is the default one, don't send
       $header = "From: ". utf8_decode($fromName) . " <" . ADMIN_EMAIL . ">\r\n";
       ini_set('sendmail_from', ADMIN_EMAIL);
-      $result = mail($toEmail, utf8_decode($subject), utf8_decode($body), $header);
+      $result = @mail($toEmail, utf8_decode($subject), utf8_decode($body), $header);
       return $result;
     }
     
@@ -603,7 +599,70 @@
       $ret = substr($ret, 1);
       return $ret;
     }
-  
+    
+    public static function GetOverviewMapData(Map $map, $includeRouteCoordinates, $categories, $selectedCategoryId = 0)
+    {
+      if(!$map->IsGeocoded) return null;
+      $nameAndDate = $map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')';
+      $url = $map->MapImage ? 'show_map.php?'. self::CreateQuerystring(getUser(), $map->ID) : "";
+      $thumbnailMarkup = self::EncapsulateLink('<img src="'. self::GetThumbnailImage($map) .'" alt="'. hsc($nameAndDate) .'" height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />', $url);
+      $corners = $map->GetMapCornerArray();
+      $data = array();
+      $data["MapCenter"] = new QRLongLat($map->MapCenterLongitude, $map->MapCenterLatitude);
+      $data["Corners"][] = new QRLongLat($corners["SW"]["Longitude"], $corners["SW"]["Latitude"]);
+      $data["Corners"][] = new QRLongLat($corners["NW"]["Longitude"], $corners["NW"]["Latitude"]);
+      $data["Corners"][] = new QRLongLat($corners["NE"]["Longitude"], $corners["NE"]["Latitude"]);
+      $data["Corners"][] = new QRLongLat($corners["SE"]["Longitude"], $corners["SE"]["Latitude"]);
+      $data["BorderColor"] = '#ff0000';
+      $data["BorderWidth"] = 2;
+      $data["BorderOpacity"] = 0.8;
+      $data["FillColor"] = '#ff0000';
+      $data["FillOpacity"] = 0.3;
+      $data["RouteColor"] = '#ff0000';
+      $data["RouteWidth"] = 3;
+      $data["RouteOpacity"] = 1;
+      if($includeRouteCoordinates) 
+      {
+        $ed = $map->GetQuickRouteJpegExtensionData(false);
+        $data["RouteCoordinates"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
+      }
+      $data["MapThumbnailImageCaption"] = __("MAP");
+      $data["Name"] = $map->Name;
+      $data["Date"] = date(__("DATE_FORMAT"), self::StringToTime($map->Date, true));
+      $data["MapThumbnailImage"] = 
+        '<div class="gmInfoWindow">'.
+        '<div class="mapName">'. hsc($nameAndDate) .')</div>'.
+        '<div class="thumbnail">'. $thumbnailMarkup .'</div>'.
+        '</div>';
+      $data["MapInfoCaption"] = __("INFORMATION");
+
+      $atoms = array();
+      if(__("SHOW_MAP_AREA_NAME") && $map->MapName) $atoms[] = $map->MapName;
+      if(__("SHOW_ORGANISER") && $map->Organiser) $atoms[] = $map->Organiser;
+      if(__("SHOW_COUNTRY") && $map->Country) $atoms[] = $map->Country;
+      $mapAreaOrganiserCountry = join(", ", $atoms);
+      
+      $info = '<div class="gmInfoWindow">';
+      $info .= '<div class="mapName">'. hsc($nameAndDate) .'</div>';
+      if($selectedCategoryId == 0) $info .= __("CATEGORY") .": ". $categories[$map->CategoryID]->Name ."<br/>";
+      if(__("SHOW_MAP_AREA_NAME") || __("SHOW_ORGANISER") || __("SHOW_COUNTRY"))
+      {
+        $info.= hsc($mapAreaOrganiserCountry) ."<br/>";
+      }
+      if(__("SHOW_DISCIPLINE"))
+      {
+         $info .= hsc($map->Discipline);
+         if(__("SHOW_RELAY_LEG") && $map->RelayLeg) $info .= ', '. __("RELAY_LEG_LOWERCASE") .' '. hsc($map->RelayLeg);
+         $info .= "<br/>";
+      }
+      if(__("SHOW_RESULT_LIST_URL") && $map->CreateResultListUrl()) 
+      {
+        $info .= '<a href="'. $map->CreateResultListUrl() .'">'. __("RESULTS") .'</a><br/>';
+      }          
+      $info .= '</div>';
+      $data["MapInfo"] = $info;
+      return $data;      
+    }  
   }
 
 ?>

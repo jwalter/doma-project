@@ -16,6 +16,18 @@
       return self::GetMapsUsersAndCategoriesFromSql($sql);
     }
 
+    public static function GetAllMapIds()
+    {
+      $sql = "SELECT ID FROM `". DB_MAP_TABLE ."`";
+      $rs = self::Query($sql);
+      $ids = array();
+      while($r = mysql_fetch_assoc($rs))
+      {
+        $ids[] = $r["ID"];
+      }
+      return $ids;
+    }
+    
     public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $count = 0, $orderBy = "date")
     {
       $startDateString = date(__("DATE_FORMAT_MYSQL"), $startDate);
@@ -282,7 +294,6 @@
       $map->LastChangedTime = gmdate("Y-m-d H:i:s");
       if($isNewMap) $map->CreatedTime = gmdate("Y-m-d H:i:s");
 
-      self::SaveMapWaypoints($map);
       $map->Save();
       return true;
 
@@ -297,57 +308,6 @@
       }
     }
     
-    public static function SaveMapWaypoints($map)
-    {
-      $ed = $map->GetQuickRouteJpegExtensionData();
-      
-      // first delete all existing waypoints
-      $sql = "DELETE FROM `". DB_WAYPOINT_TABLE ."` WHERE MapID=". $map->ID; 
-      self::Query($sql);
-      if($ed->IsValid)
-      {
-        $waypoints = array();
-        foreach($ed->Sessions[0]->Route->Segments as $segment)
-        {
-          foreach($segment->Waypoints as $w)
-          {
-            $values = array($map->ID, $w->Time, round($w->Position->Latitude * 3600000), round($w->Position->Longitude * 3600000));
-            $waypoints[] = "(" . join(",", $values) . ")";
-          }
-        }
-        if(count($waypoints) > 0)
-        {
-          $sql = "INSERT INTO `". DB_WAYPOINT_TABLE ."` (`MapID`, `Time`, `Latitude`, `Longitude`) VALUES ". join(",", $waypoints);
-          self::Query($sql);
-        }
-      }
-    }
-    
-    public function GetWaypointPositionsAsArray($mapID, $samplingInterval, $positionDecimalPlaces = -1)
-    {
-      $sql = "select * FROM `". DB_WAYPOINT_TABLE ."` WHERE MapID=". $mapID." ORDER by `Time`"; 
-      $rs = self::Query($sql);
-      
-      $segments = array();
-      $segment = array();
-      $i=0;
-      while($r = mysql_fetch_assoc($rs))
-      {
-        if($i == 0 || $r["Time"] >= $lastWaypoint["Time"] + $samplingInterval)
-        {
-          $longLat = ($positionDecimalPlaces == -1 ?
-            array($r["Longitude"]/3600000, $r["Latitude"]/3600000) :
-            array(round($r["Longitude"]/3600000, $positionDecimalPlaces), round($r["Latitude"]/3600000, $positionDecimalPlaces)));
-          $segment[] = $longLat;
-          $lastWaypoint = $r;
-        }
-        $i++;
-      }
-      $segments[] = $segment;
-      return $segments;
-    }    
-    
-
     public static function DeleteMapImage($map)
     {
       $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
