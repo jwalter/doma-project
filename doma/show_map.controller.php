@@ -32,7 +32,7 @@
 
       // previous map in archive
       $previous = DataAccess::GetPreviousMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
-      $viewData["PreviousName"] = $previous->Name .' ('. date(__("DATE_TIME_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
+      $viewData["PreviousName"] = $previous->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
 
       // next map in archive
       $next = DataAccess::GetNextMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
