@@ -657,9 +657,6 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="KMZ_TOOLTIP">
       ...pro Google Earth...
     </string> 
-    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
-      Y-m-d
-    </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
       Zda přiřadit délku k mapě; 1 přiřadit, 0 přeskočit.
     </string> 

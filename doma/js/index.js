@@ -45,14 +45,17 @@ function toggleSingleOverviewMap(mapContainer)
   }
   else
   {
+    googleMapsContainer.show();
+    var mapDiv = $('<div class="singleOverviewMap"/>');
+    googleMapsContainer.append(mapDiv);
+    var loadingIcon = $('<div class="loadingIcon"/>');
+    mapDiv.append(loadingIcon);
     $.getJSON(
       'ajax_server.php', 
       { action: 'getMapCornerPositionsAndRouteCoordinates', id: id }, 
       function(data)
       { 
-        googleMapsContainer.show();
-        var mapDiv = $('<div class="singleOverviewMap"/>');
-        googleMapsContainer.append(mapDiv);
+        loadingIcon.remove();
         mapDiv.overviewMap({ data: [data] });
       });
   }

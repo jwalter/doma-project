@@ -11,7 +11,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title><?php print (_SITE_TITLE ." :: ". $title)?></title>
+<title><?php print _SITE_TITLE ." :: ". $vd["Title"]; ?></title>
 <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/edit_user.js"></script>

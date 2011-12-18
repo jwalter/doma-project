@@ -48,7 +48,9 @@
       //comments
       array("version" => "3.0.1", "script" => "CREATE TABLE `". DB_COMMENT_TABLE ."` (`ID` int(10) NOT NULL AUTO_INCREMENT, `MapID` int(10) NOT NULL, `Name` varchar(200) CHARACTER SET utf8 NOT NULL, `Email` varchar(200) CHARACTER SET utf8 DEFAULT NULL, `Comment` text CHARACTER SET utf8 NOT NULL, `DateCreated` datetime NOT NULL, `UserIP` varchar(200) CHARACTER SET utf8 NOT NULL, PRIMARY KEY (`ID`)) ENGINE = MYISAM DEFAULT CHARSET=utf8"),
       //some indices
-      array("version" => "3.0.1", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD INDEX `Maps_UserID` (`UserID`), ADD INDEX `Maps_Date` (`Date`), ADD INDEX `Maps_CreatedTime` (`CreatedTime`), ADD INDEX `Maps_LastChangedTime` (`LastChangedTime`)")
+      array("version" => "3.0.2", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD INDEX `Maps_UserID` (`UserID`), ADD INDEX `Maps_Date` (`Date`), ADD INDEX `Maps_CreatedTime` (`CreatedTime`), ADD INDEX `Maps_LastChangedTime` (`LastChangedTime`)"),
+      // protected maps
+      array("version" => "3.0.2", "script" => "ALTER TABLE `". DB_MAP_TABLE ."` ADD `ProtectedUntil` DATETIME NULL")
     );
     return array_filter($allScripts, "filter");
   }

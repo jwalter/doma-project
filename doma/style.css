@@ -153,6 +153,7 @@ span.separator
 ul.error
 {
   color: #ff0000;
+  margin-bottom: 1em;
 }
 
 .clear
@@ -168,6 +169,17 @@ ul.error
 .hidden
 {
   display: none;
+}
+
+.loadingIcon
+{
+  margin: 4em auto;
+  text-align: center;
+  background-image: url(gfx/loading_icon.gif);
+  height: 32px;
+  width: 32px;
+  display: block;
+  text-align: center;
 }
 
 /* LAYOUT ******************************************************************************/
@@ -421,6 +433,13 @@ form.wide h2 + p
   font-weight: bold;
 }
 
+.map .info .protected
+{
+  font-size: 80%;
+  font-style: italic;
+  color: #7f7f7f;
+}
+
 .map .date, .map .category, .map .organiser, .map .discipline, .map.resultListUrl
 {
 
@@ -485,6 +504,7 @@ img.button
   clear: both;
   border: 1px solid #7f7f7f;
   border-radius: 5px;
+  background-color: #ffffff;
 }
 
 /* overview map, all maps */
@@ -505,6 +525,7 @@ img.button
   clear: both;
   border: 1px solid #7f7f7f;
   border-radius: 5px;
+  background-color: #ffffff;
 }
 
 /* overview map, show map page */
@@ -586,6 +607,11 @@ img.button
   margin: 3em auto;
   clear: both;
   display: block;
+}
+
+#showMapBody #mapImage.toggleable
+{
+  cursor: pointer;
 }
 
 #showMapBody #hiddenMapImage

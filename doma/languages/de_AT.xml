@@ -628,9 +628,6 @@ Dein neues Passwort: %s
     <string key="KMZ_TOOLTIP">
       ...for Google Earth...
     </string> 
-    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
-      Y-m-d
-    </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
       Whether to associate distance with a map; 1 to associate, 0 to skip.
     </string> 

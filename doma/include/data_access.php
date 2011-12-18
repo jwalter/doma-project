@@ -3,10 +3,11 @@
 
   class DataAccess
   {
-    public static function GetAllMaps($userID = 0)
+    public static function GetAllMaps($userID = 0, $requestingUserID = 0)
     {
       $where[] = "U.Visible=1";
       if($userID) $where[] = "M.UserID=$userID";
+      $where[] = "(M.ProtectedUntil IS NULL OR M.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR U.ID=$requestingUserID)";
 
       $sql = "SELECT M.*, M.ID AS MapID, M.Name AS Map_Name, C.*, C.Name AS CategoryName FROM `". DB_MAP_TABLE ."` M ".
              "LEFT JOIN `". DB_CATEGORY_TABLE ."` C ON C.ID=M.CategoryID ".
@@ -28,10 +29,10 @@
       return $ids;
     }
     
-    public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $count = 0, $orderBy = "date")
+    public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $count = 0, $orderBy = "date", $requestingUserID = 0)
     {
-      $startDateString = date(__("DATE_FORMAT_MYSQL"), $startDate);
-      $endDateString = date(__("DATE_FORMAT_MYSQL"), $endDate);
+      $startDateString = date("Y-m-d", $startDate);
+      $endDateString = date("Y-m-d", $endDate);
 
       switch($orderBy)
       {
@@ -46,6 +47,7 @@
       if($startDate) $where[] = "DATE(M.Date)>='$startDateString'";
       if($endDate) $where[] = "DATE(M.Date)<='$endDateString'";
       if($categoryID) $where[] = "M.CategoryID=$categoryID";
+      $where[] = "(M.ProtectedUntil IS NULL OR M.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR M.UserID=$requestingUserID)";
 
       $sql = "SELECT M.*, M.ID AS MapID, M.Name AS Map_Name, C.*, C.Name AS CategoryName, U.* FROM `". DB_MAP_TABLE ."` M ".
              "LEFT JOIN `". DB_CATEGORY_TABLE ."` C ON C.ID=M.CategoryID ".
@@ -56,10 +58,10 @@
       return self::GetMapsUsersAndCategoriesFromSql($sql);
     }
 
-    public static function GetCloseMaps($latitude, $longitude, $startTime, $endTime, $maxDistance, $orderBy = "closeness")
+    public static function GetCloseMaps($latitude, $longitude, $startTime, $endTime, $maxDistance, $orderBy = "closeness", $requestingUserID = 0)
     {
-      $startTimeString = date(__("DATE_FORMAT_MYSQL"), $startTime);
-      $endTimeString = date(__("DATE_FORMAT_MYSQL"), $endTime);
+      $startTimeString = date("Y-m-d", $startTime);
+      $endTimeString = date("Y-m-d", $endTime);
 
       switch($orderBy)
       {
@@ -74,6 +76,7 @@
 
       $where[] = "IsGeocoded=1";
       $where[] = "$closenessSql < $maxDistance";
+      $where[] = "(M.ProtectedUntil IS NULL OR M.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR M.UserID=$requestingUserID)";
       if($startTime) $where[] = "M.SessionEndTime>='$startTimeString'";
       if($endTime) $where[] = "M.SessionStartTime<='$endTimeString'";
 
@@ -112,11 +115,12 @@
       return $maps;
     }
 
-    public static function GetMapByID($id)
+    public static function GetMapByID($id, $requestingUserID = 0)
     {
       $sql = "SELECT M.*, M.ID AS MapID, M.Name AS MapName, C.*, C.Name AS CategoryName FROM `". DB_MAP_TABLE ."` M ".
              "LEFT JOIN `". DB_CATEGORY_TABLE ."` C ON C.ID=M.CategoryID ".
-             "WHERE M.ID=$id";
+             "WHERE M.ID=$id AND ".
+             "(M.ProtectedUntil IS NULL OR M.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR M.UserID=$requestingUserID)";
       $rs = self::Query($sql);
 
       if($r = mysql_fetch_assoc($rs))
@@ -135,10 +139,12 @@
       return null;
     }
 
-    public static function GetYearsByUserIDAndCategoryID($userID, $categoryID)
+    public static function GetYearsByUserIDAndCategoryID($userID, $categoryID, $requestingUserID = 0)
     {
       $sql = "SELECT DISTINCT YEAR(Date) AS Year FROM `". DB_MAP_TABLE ."` ".
-             "WHERE UserID=$userID ". ($categoryID ? "AND CategoryID=$categoryID " : "").
+             "WHERE UserID=$userID AND ". 
+             "(ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID) ".
+             ($categoryID ? "AND CategoryID=$categoryID " : "").
              "ORDER BY Date ASC";
       $rs = self::Query($sql);
 
@@ -150,30 +156,35 @@
       return $years;
     }
 
-    public static function GetYearsByUserID($userID)
+    public static function GetYearsByUserID($userID, $requestingUserID = 0)
     {
-      return self::GetYearsByUserIDAndCategoryID($userID, 0);
+      return self::GetYearsByUserIDAndCategoryID($userID, 0, $requestingUserID);
     }
 
-    public static function GetLastChangedTime($userID = 0)
+    public static function GetLastChangedTime($userID = 0, $requestingUserID = 0)
     {
       $sql = "SELECT MAX(LastChangedTime) AS LastChangedTime FROM `". DB_MAP_TABLE ."` ".
-             ($userID ? "WHERE UserID=$userID" : "");
+             "WHERE (ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID)".
+             ($userID ? " AND UserID=$userID" : "");
       $r = mysql_fetch_assoc(self::Query($sql));
       return Helper::StringToTime($r["LastChangedTime"], true);
     }
 
-    public static function GetLastCreatedTime($userID = 0)
+    public static function GetLastCreatedTime($userID = 0, $requestingUserID = 0)
     {
       $sql = "SELECT MAX(CreatedTime) AS LastCreatedTime FROM `". DB_MAP_TABLE ."` ".
-             ($userID ? "WHERE UserID=$userID" : "");
+             "WHERE (ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID)".
+             ($userID ? " AND UserID=$userID" : "");
       $r = mysql_fetch_assoc(self::Query($sql));
       return Helper::StringToTime($r["LastCreatedTime"], true);
     }
 
-    public static function GetPreviousMap($userID, $mapID)
+    public static function GetPreviousMap($userID, $mapID, $requestingUserID = 0)
     {
-      $sql = "SELECT * FROM `". DB_MAP_TABLE ."` WHERE (Date<(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) OR (Date=(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) AND ID<$mapID)) AND UserID=$userID ORDER BY Date DESC, ID DESC";
+      $sql = "SELECT * FROM `". DB_MAP_TABLE ."` WHERE (Date<(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) OR (Date=(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) AND ID<$mapID)) AND ".
+             "UserID=$userID AND ".
+             "(ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID) ".
+             "ORDER BY Date DESC, ID DESC";
       if($r = mysql_fetch_assoc(self::Query($sql)))
       {
         $map = new Map();
@@ -183,9 +194,12 @@
       return null;
     }
 
-    public static function GetNextMap($userID, $mapID)
+    public static function GetNextMap($userID, $mapID, $requestingUserID = 0)
     {
-      $sql = "SELECT * FROM `". DB_MAP_TABLE ."` WHERE (Date>(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) OR (Date=(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) AND ID>$mapID)) AND UserID=$userID ORDER BY Date ASC, ID ASC";
+      $sql = "SELECT * FROM `". DB_MAP_TABLE ."` WHERE (Date>(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) OR (Date=(SELECT Date FROM `". DB_MAP_TABLE ."` WHERE ID=$mapID) AND ID>$mapID)) AND ".
+             "UserID=$userID AND ".
+             "(ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID) ".
+             "ORDER BY Date ASC, ID ASC";
       $r = mysql_fetch_assoc(self::Query($sql));
       if($r = mysql_fetch_assoc(self::Query($sql)))
       {
@@ -215,25 +229,28 @@
       $map->Save();
       $id = $map->ID;
 
+      $baseFileName = $id;
+
       if($inputMapImageFileName)
       {
         // map image
         $extension = Helper::GetExtension($inputMapImageFileName);
-        $uploadFileName = $uploadDir . $id . "." . $extension;
+        $uploadFileName = $uploadDir . $baseFileName . "." . $extension;
         self::DeleteMapImage($map);
 
         @chmod($uploadDir, 0777);
         copy($inputMapImageFileName, $uploadFileName);
         @chmod($uploadFileName, 0777);
 
-        $map->MapImage = "$id.$extension";
+        $map->MapImage = "$baseFileName.$extension";
+        
         if(!$inputThumbnailImageFileName)
         {
           // auto-create thumbnail
           self::DeleteThumbnailImage($map);
           $thumbnailImageName = Helper::CreateThumbnail(
-            Helper::LocalPath(MAP_IMAGE_PATH ."/$id.$extension"),
-            Helper::LocalPath(MAP_IMAGE_PATH. "/$id.thumbnail"),
+            Helper::LocalPath(MAP_IMAGE_PATH ."/$baseFileName.$extension"),
+            Helper::LocalPath(MAP_IMAGE_PATH. "/$baseFileName.thumbnail"),
             THUMBNAIL_WIDTH,
             THUMBNAIL_HEIGHT,
             THUMBNAIL_SCALE,
@@ -248,21 +265,21 @@
       {
         // blank map image
         $extension = Helper::GetExtension($inputBlankMapImageFileName);
-        $uploadFileName = $uploadDir . $id . ".blank." . $extension;
+        $uploadFileName = $uploadDir . $baseFileName . ".blank." . $extension;
         self::DeleteBlankMapImage($map);
 
         @chmod($uploadDir, 0777);
         copy($inputBlankMapImageFileName, $uploadFileName);
         @chmod($uploadFileName, 0777);
 
-        $map->BlankMapImage = "$id.blank.$extension";
+        $map->BlankMapImage = "$baseFileName.blank.$extension";
         if(!$inputThumbnailImageFileName && !$thumbnailImageName)
         {
           // autc-create thumbnail
           self::DeleteThumbnailImage($map);
           $thumbnailImageName = Helper::CreateThumbnail(
-            Helper::LocalPath(MAP_IMAGE_PATH ."/$id.blank.$extension"),
-            Helper::LocalPath(MAP_IMAGE_PATH. "/$id.thumbnail"),
+            Helper::LocalPath(MAP_IMAGE_PATH ."/$baseFileName.blank.$extension"),
+            Helper::LocalPath(MAP_IMAGE_PATH. "/$baseFileName.thumbnail"),
             THUMBNAIL_WIDTH,
             THUMBNAIL_HEIGHT,
             THUMBNAIL_SCALE,
@@ -282,19 +299,23 @@
       {
         // custom thumbnail image
         $extension = Helper::GetExtension($inputThumbnailImageFileName);
-        $uploadFileName = $uploadDir . $id . ".thumbnail." . $extension;
+        $uploadFileName = $uploadDir . $baseFileName . ".thumbnail." . $extension;
         self::DeleteThumbnailImage($map);
 
         @chmod($uploadDir, 0777);
         copy($inputThumbnailImageFileName, $uploadFileName);
         @chmod($uploadFileName, 0777);
-        $map->ThumbnailImage = "$id.thumbnail.$extension";
+        $map->ThumbnailImage = "$baseFileName.thumbnail.$extension";
       }
 
       $map->LastChangedTime = gmdate("Y-m-d H:i:s");
       if($isNewMap) $map->CreatedTime = gmdate("Y-m-d H:i:s");
 
       $map->Save();
+      
+      self::UnprotectMapIfNeeded($map);
+      self::ProtectMapIfNeeded($map);
+      
       return true;
 
       if($isNewMap)
@@ -305,6 +326,61 @@
                 "&map=". $map->ID.
                 ($gpsData ? "&longitude=". $gpsData["Longitude"] ."&latitude=". $gpsData["Latitude"] : "");
         Helper::LogUsage("addMap", $data);
+      }
+    }
+    
+    public static function ProtectMapIfNeeded($map)
+    {
+      if($map->ProtectedUntil != null && 
+         $map->ProtectedUntil > gmdate("Y-m-d H:i:s") &&
+         strpos($map->MapImage, "_") === false)
+      {
+        // taking a tiny tiny risk here by not checking if file actually exists
+        $randomString = Helper::CreateRandomString(32);  
+        $newMapImage = Helper::GetProtectedFileName($map->MapImage, $randomString);
+        $newThumbnailImage = Helper::GetProtectedFileName($map->ThumbnailImage, $randomString);
+        $newBlankMapImage = Helper::GetProtectedFileName($map->BlankMapImage, $randomString);
+        self::RenameMapImageFiles($map, $newMapImage, $newThumbnailImage, $newBlankMapImage);
+        $map->Save();
+      }
+    }    
+    
+    public static function UnprotectMapIfNeeded($map)
+    {
+      if($map->ProtectedUntil != null && 
+         $map->ProtectedUntil <= gmdate("Y-m-d H:i:s") &&
+         strpos($map->MapImage, "_") !== false)
+      {
+        $newMapImage = Helper::GetUnprotectedFileName($map->MapImage);
+        $newThumbnailImage = Helper::GetUnprotectedFileName($map->ThumbnailImage);
+        $newBlankMapImage = Helper::GetUnprotectedFileName($map->BlankMapImage);
+        echo $newMapImage;
+        self::RenameMapImageFiles($map, $newMapImage, $newThumbnailImage, $newBlankMapImage);
+        $map->Save();
+      }
+    }
+    
+    private static function RenameMapImageFiles($map, $newMapImage, $newThumbnailImage, $newBlankMapImage)
+    {
+      $uploadDir = Helper::LocalPath(MAP_IMAGE_PATH ."/");
+      @chmod($uploadDir, 0777);
+      if($map->MapImage != null) 
+      {
+        @chmod($uploadDir . $map->MapImage, 0777);
+        @chmod($uploadDir . $newMapImage, 0777);
+        if(@rename($uploadDir . $map->MapImage, $uploadDir . $newMapImage)) $map->MapImage = $newMapImage; 
+      }
+      if($map->ThumbnailImage != null) 
+      {
+        @chmod($uploadDir . $map->ThumbnailImage, 0777);
+        @chmod($uploadDir . $newThumbnailImage, 0777);
+        if(@rename($uploadDir . $map->ThumbnailImage, $uploadDir . $newThumbnailImage)) $map->ThumbnailImage = $newThumbnailImage;
+      }
+      if($map->BlankMapImage != null) 
+      {
+        @chmod($uploadDir . $map->BlankMapImage, 0777);
+        @chmod($uploadDir . $newBlankMapImage, 0777);
+        if(@rename($uploadDir . $map->BlankMapImage, $uploadDir . $newBlankMapImage)) $map->BlankMapImage = $newBlankMapImage;
       }
     }
     
@@ -447,7 +523,7 @@
     public static function DeleteUserByID($id)
     {
       // delete all map images
-      $maps = self::GetAllMaps($id);
+      $maps = self::GetAllMaps($id, $id);
       foreach($maps as $m)
       {
         self::DeleteMapImage($m);
@@ -461,7 +537,7 @@
       self::Query($sql);
     }
 
-    public static function GetLastMapsForUsers($param = "date")
+    public static function GetLastMapsForUsers($param = "date", $requestingUserID = 0)
     {
       switch($param)
       {
@@ -474,7 +550,7 @@
       $sql = "SELECT * FROM `". DB_MAP_TABLE ."` a ".
              "INNER JOIN `". DB_MAP_TABLE ."` b ".
              "ON a.ID=b.ID ".
-             "WHERE a.`$field`=(SELECT MAX(`$field`) from `". DB_MAP_TABLE ."` WHERE UserID=b.UserID)";
+             "WHERE a.`$field`=(SELECT MAX(`$field`) from `". DB_MAP_TABLE ."` WHERE UserID=b.UserID AND (ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID))";
       $rs = self::Query($sql);
       while($r = mysql_fetch_assoc($rs))
       {
@@ -578,12 +654,12 @@
       return $categories;
     }
 
-    public static function GetCategoriesByUserIDAndYear($userID, $year)
+    public static function GetCategoriesByUserIDAndYear($userID, $year, $requestingUserID = 0)
     {
       if($year == 0) return self::GetCategoriesByUserID($userID);
 
       $sql = "SELECT * FROM `". DB_CATEGORY_TABLE ."` ".
-             "WHERE ID IN(SELECT DISTINCT(CategoryID) FROM `". DB_MAP_TABLE ."` WHERE UserID=$userID AND YEAR(Date)=$year) ".
+             "WHERE ID IN(SELECT DISTINCT(CategoryID) FROM `". DB_MAP_TABLE ."` WHERE UserID=$userID AND YEAR(Date)=$year AND (ProtectedUntil IS NULL OR ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR UserID=$requestingUserID)) ".
              "ORDER BY ID";
       $rs = self::Query($sql);
 
@@ -672,7 +748,7 @@
 
       return $comments;
     }
-    public static function GetLastComments()
+    public static function GetLastComments($requestingUserID = 0)
     {
       $sql = "select distinct m.ID, m.UserID, m.Name, ".
       "(select concat(FirstName,' ',LastName) from `". DB_USER_TABLE ."` where id=m.userid) as user_flname, ".
@@ -682,8 +758,9 @@
       "(select datecreated from `". DB_COMMENT_TABLE ."` where mapid=m.id order by datecreated desc limit 0,1) as comment_date ".
       "from `". DB_MAP_TABLE ."` as m ".
       "inner join `". DB_COMMENT_TABLE ."` as c on m.id=c.mapid ".
+      "WHERE (m.ProtectedUntil IS NULL OR m.ProtectedUntil<='". gmdate("Y-m-d H:i:s")  ."' OR m.UserID=$requestingUserID) ".
       "order by comment_date desc ".
-      "limit 0,10 ";
+      "limit 0,10";
 
       $rs = self::Query($sql);
 

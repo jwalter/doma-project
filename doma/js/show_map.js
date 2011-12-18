@@ -1,6 +1,3 @@
-<?php
-  include_once(dirname(__FILE__) ."/../include/main.php");
-?>
 $(document).ready(function() 
 {
 
@@ -50,7 +47,7 @@ $(document).ready(function()
     var passed = false;
     if((comment_text == "")||(user_name == ""))
     {
-      alert("<?php print __("MISSING_COMMENT")?>");
+      alert($("#missingCommentText").val());
     }
     else
     {
@@ -58,7 +55,7 @@ $(document).ready(function()
     }
     if((user_email != "")&&(!emailReg.test(user_email)))
     {
-      alert("<?php print __("INVALID_EMAIL")?>");
+      alert($("#invalidEmailText").val());
       passed = false;
     }
     if(passed)
@@ -80,7 +77,7 @@ $(document).ready(function()
   
   	//deleteComment
 		$('a.c_delete').live("click", function(e){
-			if(confirm('<?php print __("COMMENT_DELETE_CONFIRMATION")?>')==false)
+			if(confirm($("#commentDeleteConfirmationText").val())==false)
 			return false;
 			e.preventDefault();
 			var parent  = $('a.c_delete').parent();
@@ -144,13 +141,16 @@ function toggleOverviewMap(mapContainer)
   }
   else
   {
+    var mapDiv = $('<div class="overviewMap"/>');
+    var loadingIcon = $('<div class="loadingIcon"/>');
+    mapDiv.append(loadingIcon);
+    mapContainer.append(mapDiv);
     $.getJSON(
       'ajax_server.php', 
       { action: 'getMapCornerPositionsAndRouteCoordinates', id: id }, 
       function(data)
       { 
-        var mapDiv = $('<div class="overviewMap"/>');
-        mapContainer.append(mapDiv);
+        loadingIcon.remove();
         mapDiv.overviewMap({ data: [data] });
       });
   }

@@ -190,6 +190,13 @@
       return Session::GetLoggedInUser();
     }
     
+    public static function GetLoggedInUserID()
+    {
+      $user = self::GetLoggedInUser();
+      if(!isset($user)) return 0;
+      return $user-ID;
+    }
+    
     // the user as specified by $_GET["user"] / $_POST["user"]
     public static function GetUser()
     {
@@ -275,9 +282,16 @@
 
     private static function ImageIsResizable($fileName)
     {
-      return (GetImageSize($fileName) !== false);
-      //$contents = @file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
-      //return ($contents == "1");
+      if(IMAGE_RESIZING_METHOD == "2") return true;
+      try 
+      {
+        $contents = file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
+        return ($contents == "1");
+      } 
+      catch(Exception $e) 
+      {
+        return false;
+      }
     }
 
     public static function ImageCreateFromGeneral($fileName)
@@ -599,6 +613,54 @@
       $ret = substr($ret, 1);
       return $ret;
     }
+
+    public static function MapIsProtected(Map $map)
+    {
+      return !($map->ProtectedUntil == null || $map->ProtectedUntil <= gmdate("Y-m-d H:i:s") || $map->UserID == self::GetLoggedInUserID());  
+    }
+
+    public static function GetProtectedFileName($unprotectedFileName, $randomString)
+    {
+      if($unprotectedFileName == null || strlen($unprotectedFileName) == 0) return $unprotectedFileName;
+      $atoms = explode(".", $unprotectedFileName);
+      $resultAtoms = array();
+      for($i=0; $i<count($atoms); $i++)
+      {
+        $resultAtoms[] = $atoms[$i] . ($i == 0 ? "_". $randomString : "");
+      }
+      return implode(".", $resultAtoms);
+    }
+    
+    public static function GetUnprotectedFileName($unprotectedFileName)
+    {
+      if($unprotectedFileName == null || strlen($unprotectedFileName) == 0) return $unprotectedFileName;
+      $atoms = explode(".", $unprotectedFileName);
+      $resultAtoms = array();
+      foreach($atoms as $atom)
+      {
+        $pos = strpos($atom, "_");
+        if($pos !== false)
+        {
+          $resultAtoms[] = substr($atom, 0, $pos);
+        }
+        else
+        {
+          $resultAtoms[] = $atom;  
+        }
+      }
+      return implode(".", $resultAtoms);
+    }
+
+    public static function CreateRandomString($length, $characters = "0123456789abcdef")
+    {
+      $numberOfCharacters = strlen($characters);
+      $string = "";    
+      for ($i = 0; $i < $length; $i++) 
+      {
+        $string .= $characters[mt_rand(0, $numberOfCharacters)];
+      }
+      return $string;
+    }    
     
     public static function GetOverviewMapData(Map $map, $includeRouteCoordinates, $categories, $selectedCategoryId = 0)
     {

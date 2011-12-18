@@ -5,6 +5,7 @@
   {
     public function Execute()
     {
+
       $viewData = array();  
   
       $errors = array();
@@ -47,7 +48,8 @@
         $map->RelayLeg = $relayLeg;     
         $map->MapName = $mapName;
         $map->ResultListUrl = $resultListUrl;
-        $map->Comment = $comment;   
+        $map->Comment = $comment;
+        $map->ProtectedUntil = $protectedUntil;
       }
       else
       {
@@ -74,7 +76,7 @@
         if(trim($map->Name) == "") $errors[] = __("NO_MAP_NAME_ENTERED");
         // date
         if(trim($map->Date) == "") $errors[] = __("NO_DATE_ENTERED");
-        if(!Helper::StringToTime($map->Date, true)) 
+        if(!Helper::StringToTime($map->Date, false)) 
         {
           $errors[] = __("INVALID_DATE");
         }
@@ -83,6 +85,20 @@
           $map->Date = gmdate("Y-m-d H:i:s", Helper::StringToTime($map->Date, false));
         }
 
+        // protected until
+        if(trim($map->ProtectedUntil) == "")
+        {
+          $map->ProtectedUntil = null; 
+        }
+        else if(!Helper::StringToTime($map->ProtectedUntil, false)) 
+        {
+          $errors[] = __("INVALID_PROTECTED_UNTIL");
+        }
+        else
+        {
+          $map->ProtectedUntil = gmdate("Y-m-d H:i:s", Helper::StringToTime($map->ProtectedUntil, false));
+        }
+        
         // images
         $validMimeTypes = array("image/jpeg", "image/gif", "image/png");
         // map image

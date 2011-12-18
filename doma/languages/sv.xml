@@ -569,7 +569,7 @@ Ditt nya lösenord: %s
       Den blanka kartfilen &lt;em&gt;%s&lt;/em&gt; kunde inte laddas upp.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank kartfil
+      kartfil
     </string> 
     <string key="MAP_INFO">
       Karta med vägval.
@@ -609,9 +609,6 @@ Ditt nya lösenord: %s
     </string> 
     <string key="KMZ_TOOLTIP">
       ...för Google Earth...
-    </string> 
-    <string key="DATE_FORMAT_MYSQL"> <!-- Date format for MySQL queries, change only if you know why! -->
-      Y-m-d
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
       Huruvida avverkad sträcka ska kunna kopplas till en karta; 1 för att koppla, 0 för att inte koppla.
@@ -696,6 +693,18 @@ Kommentar: %s
     </string> 
     <string key="KMZ">
       KMZ
-    </string> 
+    </string>
+    <string key="PROTECTED_UNTIL">
+      Dold till
+    </string>
+    <string key="PROTECTED_UNTIL_INFO">
+      Tidpunkt då kartan är tillgänglig för andra än dig på formatet åååå-mm-dd tt:mm:ss. Lämna tomt för att inte skydda kartan. Denna funktion kan till exempel användas för att ladda upp kartor för en träning i förväg och göra dem tillgängliga för träningsdeltagarna direkt efter att träningen är genomförd.
+    </string>
+    <string key="INVALID_PROTECTED_UNTIL">
+      Tidpunkten att dölja kartan till är felaktig. Skriv in en tidpunkt på formen åååå-mm-dd tt:mm:ss eller lämna fältet tomt.
+    </string>
+    <string key="MAP_IS_PROTECTED_UNTIL_X">
+      Kartan är dold för övriga användare till %s.
+    </string>
   </nonCustomizable>  
 </strings>

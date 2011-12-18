@@ -60,6 +60,13 @@
           <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser(), $map->ID)?>"><?php print __("EDIT_MAP"); ?></a>
         </div>
       <?php } ?>
+      
+      <?php if($map->ProtectedUntil != null && $map->ProtectedUntil > gmdate("Y-m-d H:i:s")) { ?>
+        <div class="protected">
+          <?php print sprintf(__("MAP_IS_PROTECTED_UNTIL_X"), date(__("DATETIME_FORMAT"), Helper::StringToTime($map->ProtectedUntil, true))); ?>
+        </div>
+      <?php } ?>
+
     </div>
 
     <?php

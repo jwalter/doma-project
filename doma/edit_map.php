@@ -11,7 +11,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title><?php print __("PAGE_TITLE")?> :: <?php print $title?></title>
+<title><?php print __("PAGE_TITLE")?> :: <?php print $vd["Title"]; ?></title>
 <link rel="icon" type="image/png" href="gfx/favicon.png" />
 <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="js/edit_map.js"></script>
@@ -54,7 +54,7 @@
 <?php
   if(date("H:i:s", Helper::StringToTime($map->Date, true)) == "00:00:00") $map->Date = date("Y-m-d", Helper::StringToTime($map->Date, true));
 ?>
-<input type="text" class="text tooltipControl" name="date" value="<?php print hsc($map->Date)?>" />
+<input type="text" class="text tooltipControl" name="date" id="date" value="<?php print hsc($map->Date)?>" />
 <div class="tooltip hidden"><?php print __("MAP_DATE_FORMAT")?></div> 
 </div>
 
@@ -114,20 +114,31 @@
 
 <div class="container">
 <label for="mapImage"><?php print __("MAP_IMAGE_FILE")?></label>
-<input type="file" name="mapImage" class="tooltipControl" />
+<input type="file" id="mapImage" name="mapImage" class="tooltipControl" />
 <div class="tooltip hidden"><?php print __("MAP_INFO"); if($vd["MapID"]) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
 </div>
 
 <div class="container">
 <label for="blankMapImage"><?php print __("BLANK_MAP_IMAGE_FILE")?></label>
-<input type="file" name="blankMapImage" class="tooltipControl" />
+<input type="file" id="blankMapImage" name="blankMapImage" class="tooltipControl" />
 <div class="tooltip hidden"><?php print __("BLANK_MAP_INFO"); if($vd["MapID"]) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
 </div>
 
 <div class="container">
 <label for="thumbnailImage"><?php print __("THUMBNAIL_IMAGE_FILE")?></label>
-<input type="file" name="thumbnailImage" class="tooltipControl" />
+<input type="file" id="thumbnailImage" name="thumbnailImage" class="tooltipControl" />
 <div class="tooltip hidden"><?php printf(__("THUMBNAIL_INFO"), THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT); ?></div> 
+</div>
+
+<div class="container">
+<?php
+  $protectedUntil = $map->ProtectedUntil;
+  $protectedUntilTime = Helper::StringToTime($protectedUntil, true);
+  if($protectedUntilTime != null) $protectedUntil = date("Y-m-d H:i:s", $protectedUntilTime);
+?>
+<label for="protectedUntil"><?php print __("PROTECTED_UNTIL")?></label>
+<input type="text" id="protectedUntil" class="text tooltipControl" name="protectedUntil" value="<?php print hsc($protectedUntil); ?>" />
+<div class="tooltip hidden"><?php print __("PROTECTED_UNTIL_INFO")?></div> 
 </div>
 
 <div class="buttons">

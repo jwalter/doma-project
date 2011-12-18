@@ -104,4 +104,11 @@
   // Example: "English;en;en|svenska;sv;se" makes English and Swedish available, and shows English and Swedish flags in topbar.
   define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no_NB;no');
 
+  // The image resizing method to use when generating thumbnails for map images.
+  // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.
+  // Available methods:
+  // 1. Use file_get_contents() to dynamically check if an image is resizable using the GD library, and if successful resize using GD.
+  // 2. Always treat the image as resizable, and resize using GD. If memory problems occur, the upload will probably hang or crash.
+  define('IMAGE_RESIZING_METHOD', '1');
+  
 ?>

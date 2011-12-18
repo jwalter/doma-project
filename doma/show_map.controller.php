@@ -20,6 +20,10 @@
       
       if(!$map->ID) die("The map has been removed.");
       
+      DataAccess::UnprotectMapIfNeeded($map);
+      
+      if(Helper::MapIsProtected($map)) die("The map is protected until ". date("Y-m-d H:i:s", Helper::StringToTime($map->ProtectedUntil, true)) .".");
+            
       if($map->UserID != getUser()->ID) die();
       
       $viewData["Comments"] = DataAccess::GetCommentsByMapId($map->ID);
@@ -27,11 +31,11 @@
       $viewData["Name"] = $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')';
 
       // previous map in archive
-      $previous = DataAccess::GetPreviousMap(getUser()->ID, $map->ID);
-      $viewData["PreviousName"] = $previous->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
+      $previous = DataAccess::GetPreviousMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
+      $viewData["PreviousName"] = $previous->Name .' ('. date(__("DATE_TIME_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
 
       // next map in archive
-      $next = DataAccess::GetNextMap(getUser()->ID, $map->ID);
+      $next = DataAccess::GetNextMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
       $viewData["NextName"] = $next->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($next->Date, true)) .')';
 
       $size = $map->GetMapImageSize();

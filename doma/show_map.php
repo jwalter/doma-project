@@ -16,10 +16,7 @@
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>  
-  <script type="text/javascript" src="js/show_map.js.php?<?php print Helper::CreateQuerystring(getUser())?>"></script>
-  <script type="text/javascript" src="js/jquery/jquery.livequery.js"></script>
-  <script type="text/javascript" src="js/jquery/jquery.elastic.js" charset="utf-8"></script>
-  <script type="text/javascript" src="js/jquery/jquery.watermarkinput.js"></script>
+  <script type="text/javascript" src="js/show_map.js"></script>
   <script type="text/javascript" src="js/jquery/jquery.timeago.js"></script>
   <?php 
     $lang = Session::GetLanguageFileShort();
@@ -56,6 +53,11 @@
 <div id="navigation">
   <?php if($vd["Previous"]) { ?><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Previous"]->ID)?>"><?php print "&lt;&lt; ". $vd["PreviousName"]; ?></a><span class="separator">|</span><?php } ?>
   <?php if($vd["Next"]) { ?><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Next"]->ID)?>"><?php print $vd["NextName"] ." &gt;&gt;"; ?></a><span class="separator">|</span><?php } ?>
+  <?php if($vd["SecondMapImageName"]) {?>
+    <a href="#" id="showSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("SHOW_ROUTE_ON_MAP")?></a>
+    <a href="#" id="hideSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("HIDE_ROUTE_ON_MAP")?></a>
+    <span class="separator">|</span>
+  <?php }?>
   <?php if($QR->IsValid) { ?>
     <a id="showOverviewMap" href="#"><?php print __("SHOW_OVERVIEW_MAP"); ?></a>
     <a id="hideOverviewMap" href="#"><?php print __("HIDE_OVERVIEW_MAP"); ?></a>
@@ -63,11 +65,6 @@
     <a href="export_kml.php?id=<?php print $map->ID; ?>" title="<?php print __("KMZ_TOOLTIP"); ?>"><?php print __("KMZ"); ?></a>
     <span class="separator">|</span>
   <?php } ?>
-  <?php if($vd["SecondMapImageName"]) {?>
-    <a href="#" id="showSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("SHOW_ROUTE_ON_MAP")?></a>
-    <a href="#" id="hideSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("HIDE_ROUTE_ON_MAP")?></a>
-    <span class="separator">|</span>
-  <?php }?>
   <a href="<?php print $vd["BackUrl"]?>"><?php print __("BACK")?></a>
 </div>
 
@@ -153,7 +150,10 @@ if($QR->IsValid)
   </div>
   <textarea id="commentMark" name="commentMark"></textarea>
   <a id="submitComment" href="#" class="small button comment"><?php print __("SAVE") ?></a>
-</div>
+  <input type="hidden" id="missingCommentText" value="<?php print hsc(__("MISSING_COMMENT")); ?>"/>
+  <input type="hidden" id="invalidEmailText" value="<?php print hsc(__("INVALID_EMAIL")); ?>"/>
+  <input type="hidden" id="commentDeleteConfirmationText" value="<?php print hsc(__("COMMENT_DELETE_CONFIRMATION")); ?>"/>
+  </div>
 
 <?php 
 }
@@ -188,7 +188,7 @@ if($map->IsGeocoded)
 <div id="overviewMapContainer"></div>
 
 <div>
-  <img id="mapImage" src="<?php print $vd["FirstMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>" <?php if($vd["SecondMapImageName"]) {?>title="<?php print __("TOGGLE_IMAGE_CLICK")?>"<?php }?>/>
+  <img id="mapImage" src="<?php print $vd["FirstMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>"<?php if($vd["SecondMapImageName"]) print ' title="'. __("TOGGLE_IMAGE_CLICK") .'" class="toggleable"'; ?>/>
   <?php if($vd["SecondMapImageName"]) { ?>
   <img id="hiddenMapImage" src="<?php print $vd["SecondMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>" <?php if($vd["SecondMapImageName"]) {?>title="<?php print __("TOGGLE_IMAGE_CLICK")?>"<?php }?>/>
   <?php } ?>

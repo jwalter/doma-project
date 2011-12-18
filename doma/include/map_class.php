@@ -38,7 +38,8 @@
       "SessionEndTime" => null,
       "Distance" => null,
       "StraightLineDistance" => null,
-      "ElapsedTime" => null
+      "ElapsedTime" => null,
+      "ProtectedUntil" => null
     );
     private $User;
     private $Category;

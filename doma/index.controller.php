@@ -50,7 +50,7 @@
       $viewData["CategoriesWithText"] = array_merge(array(0 => $allCategoriesItem), $categories);
 
       // get all years
-      $years = DataAccess::GetYearsByUserID(getUser()->ID);
+      $years = DataAccess::GetYearsByUserID(getUser()->ID, Helper::GetLoggedInUserID());
       $years = array_reverse($years);
       $viewData["YearsWithText"][0] = array("value" => 0, "text" => __("ALL_YEARS"));
       foreach($years as $year)
@@ -76,8 +76,9 @@
       $viewData["SearchCriteria"] = $searchCriteria;
       
       // get map data
-      $viewData["Maps"] = DataAccess::GetMaps(getUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"]);  
+      $viewData["Maps"] = DataAccess::GetMaps(getUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"], 0, "date", Helper::GetLoggedInUserID());  
       $viewData["GeocodedMapsExist"] = false;
+      
       foreach($viewData["Maps"] as $map)
       {
         $mapInfo = array();

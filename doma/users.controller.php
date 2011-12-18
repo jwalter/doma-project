@@ -23,8 +23,8 @@
       $viewData["LastMapForEachUser"] = DataAccess::GetLastMapsForUsers("date");
       
       // last 10 maps
-      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, 10, "date");
-      $viewData["LastComments"] = DataAccess::GetLastComments();
+      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, 10, "date", Helper::GetLoggedInUserID());
+      $viewData["LastComments"] = DataAccess::GetLastComments(Helper::GetLoggedInUserID());
       $viewData["OverviewMapData"] = null;
       $categories = DataAccess::GetCategoriesByUserID();
       foreach($viewData["LastMaps"] as $map)
