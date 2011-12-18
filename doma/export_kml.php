@@ -13,7 +13,7 @@
 
   if($format == "kml")
   {
-    header("Content-Type: application/vnd.google-earth.kml+xml");
+    header("Content-Type: application/vnd.google-earth.kml+xml; charset=UTF-8");
     header('Content-Disposition: attachment; filename="map_'. $id .'.kml";');
   }
   else

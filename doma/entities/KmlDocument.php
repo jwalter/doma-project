@@ -65,7 +65,7 @@ class KmlDocument
 
   public function saveToString()
   {
-    return utf8_encode(
+    return 
       '<?xml version="1.0" encoding="utf-8"?>' ."\r\n".
       '<kml xmlns="http://www.opengis.net/kml/2.2">' ."\r\n".
       '  <Document>' ."\r\n".
@@ -85,8 +85,8 @@ class KmlDocument
       '      </GroundOverlay>' ."\r\n".
       '    </Folder>' ."\r\n".
       '  </Document>' ."\r\n".
-      '</kml>' ."\r\n"
-      );
+      '</kml>' ."\r\n";
+      
   }
   
   public function getImageCornerLatLngs()
