@@ -113,11 +113,10 @@ class GeocodedMap
    * @param string name of kmz file
    * @access public
    */  
-  // TODO: include route line
-  public function saveToFile($fileName, $fileFormat = "kmz")
+  public function saveToFile($fileName, $title, $fileFormat = "kmz")
   {
     $fp = fopen($fileName, "w+");  
-    fwrite($fp, $this->saveToString($fileFormat));
+    fwrite($fp, $this->saveToString($title, $fileFormat));
     fclose($fp);    
   }
   
@@ -125,12 +124,12 @@ class GeocodedMap
    * Returns the geocoded map as a kmz string
    * @access public
    */  
-  // TODO: include route line
-  public function saveToString($fileFormat = "kmz")
+  public function saveToString($title, $fileFormat = "kmz")
   {
     $box = $this->getKmlLatLonBox($this->getPixelImageCorners(), $this->projectionOrigin, $this->inverseTransformationMatrix);
 
     $kml = new KmlDocument();
+    $kml->title = $title;
     $kml->north = $box->north;
     $kml->south = $box->south;
     $kml->west = $box->west;

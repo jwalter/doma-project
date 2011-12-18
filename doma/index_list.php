@@ -48,7 +48,7 @@
             <a class="showOverviewMap" href="#"><?php print __("SHOW_OVERVIEW_MAP"); ?></a>
             <a class="hideOverviewMap" href="#"><?php print __("HIDE_OVERVIEW_MAP"); ?></a>
             <span class="separator">|</span> 
-            <a href="export_kml.php?id=<?php print $map->ID; ?>" title="<?php print __("KMZ_TOOLTIP"); ?>"><?php print __("KMZ"); ?></a>
+            <a href="export_kml.php?id=<?php print $map->ID; ?>&amp;format=kml" title="<?php print __("KMZ_TOOLTIP"); ?>"><?php print __("KMZ"); ?></a>
           </div>
           <?php
         }

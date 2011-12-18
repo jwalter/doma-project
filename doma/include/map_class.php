@@ -200,7 +200,7 @@
     }
 
 
-    public function CreateKmlString($mapImagePath = null)
+    public function CreateKmlString($mapImagePath = null, $format = "kmz")
     {
       if(!$this->IsGeocoded) return null;
 
@@ -215,10 +215,10 @@
       $points = array(
         new Point(0, 0),
         new Point($size["Width"]-1, $size["Height"]-1));
-      
       $geocodedMap = new GeocodedMap();
       $geocodedMap->createFromCoordinatePairs($latLngs, $points, $mapImagePath ."/". $this->MapImage);
-      return $geocodedMap->saveToString("kml");
+      $title = $this->GetUser()->FirstName ." ". $this->GetUser()->LastName .": " . $this->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($this->Date, true)) .")";
+      return $geocodedMap->saveToString($title, $format);
     }
     
     public function GetMapImageSize()

@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) ."/../util/LinearAlgebraUtil.php");
 
 class KmlDocument
 {
+  public $title;  
   public $north;  
   public $south;  
   public $east;  
@@ -67,21 +68,22 @@ class KmlDocument
     return utf8_encode(
       '<?xml version="1.0" encoding="utf-8"?>' ."\r\n".
       '<kml xmlns="http://www.opengis.net/kml/2.2">' ."\r\n".
-      '<Document>' ."\r\n".
-      '  <Folder>' ."\r\n".
-      '    <GroundOverlay>' ."\r\n".
-      '      <Icon>' ."\r\n".
-      '        <href>'. $this->imageFileName .'</href>' ."\r\n".
-      '      </Icon>' ."\r\n".
-      '      <LatLonBox>' ."\r\n".
-      '        <north>'. $this->north .'</north>' ."\r\n".
-      '        <south>'. $this->south .'</south>' ."\r\n".
-      '        <east>'. $this->east .'</east>' ."\r\n".
-      '        <west>'. $this->west .'</west>' ."\r\n".
-      '        <rotation>'. ($this->rotation / M_PI * 180.0) .'</rotation>' ."\r\n". // rotation is in degrees
-      '      </LatLonBox>' ."\r\n".
-      '    </GroundOverlay>' ."\r\n".
-      '  </Folder>' ."\r\n".
+      '  <Document>' ."\r\n".
+      ($this->title != null ? '  <name>'. self::xmlEntities($this->title) .'</name>' : '') ."\r\n".
+      '    <Folder>' ."\r\n".
+      '      <GroundOverlay>' ."\r\n".
+      '        <Icon>' ."\r\n".
+      '          <href>'. $this->imageFileName .'</href>' ."\r\n".
+      '        </Icon>' ."\r\n".
+      '        <LatLonBox>' ."\r\n".
+      '          <north>'. $this->north .'</north>' ."\r\n".
+      '          <south>'. $this->south .'</south>' ."\r\n".
+      '          <east>'. $this->east .'</east>' ."\r\n".
+      '          <west>'. $this->west .'</west>' ."\r\n".
+      '          <rotation>'. ($this->rotation / M_PI * 180.0) .'</rotation>' ."\r\n". // rotation is in degrees
+      '        </LatLonBox>' ."\r\n".
+      '      </GroundOverlay>' ."\r\n".
+      '    </Folder>' ."\r\n".
       '  </Document>' ."\r\n".
       '</kml>' ."\r\n"
       );
@@ -132,5 +134,10 @@ class KmlDocument
   {
     return $doc->documentElement->getAttribute("xmlns");
   }  
+  
+  private static function xmlEntities($string) 
+  {
+    return str_replace(array("<", ">", "\"", "'", "&"), array("&lt;", "&gt;", "&quot;", "&apos;", "&amp;"), $string);
+  }
 }
 ?>

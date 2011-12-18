@@ -2,10 +2,10 @@
 <strings>
   <customizable>
     <string key="PAGE_TITLE" description="PAGE_TITLE_DESCRIPTION">
-      Meu arquivo de mapas de orientação digital
+      Meu arquivo digital de mapas de orientação
     </string> 
     <string key="CAPTION" description="CAPTION_DESCRIPTION">
-      Benvindo ao meu arquivo de mapas de orientação digital!
+      Benvindo ao meu arquivo digital de mapas de orientação!
     </string> 
     <string key="INTRO" description="INTRO_DESCRIPTION">
       Nesta página eu vou publicar mapas e percursos de eventos de orientação em que eu participei.
@@ -14,7 +14,7 @@
       Você é o dono do copyright de algum dos maps que não deveria estar publicado aqui? &lt;a href="mailto:%userEmail%"&gt;Envie-me um email&lt;/a&gt;.
     </string> 
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
-      Mapas, percursos e rotas de eventos de orientação em que eu participei..
+      Mapas e percursos de eventos de orientação em que eu participei.
     </string> 
     <string key="SHOW_ORGANISER" description="SHOW_ORGANISER_DESCRIPTION">
       1
@@ -102,13 +102,13 @@
       Disciplina
     </string> 
     <string key="RELAY_LEG">
-      Pernada
+      Percurso de estafeta
     </string> 
     <string key="RELAY_LEG_LONG">
-      Relay leg
+      Percurso de estafeta
     </string> 
     <string key="RELAY_LEG_LOWERCASE">
-      pernada
+      percurso de estafeta
     </string> 
     <string key="MAP_AREA_NAME">
       Mapa/Área
@@ -143,7 +143,7 @@
 
     <!--  topbar ****************************************************************************************************** --> 
     <string key="DOMA_FOR_X">
-      Arquivo de mapas digitais de orientação de %s
+      Arquivo digital de mapas de orientação de %s
     </string> 
     <string key="ALL_USERS">
       Todos utilizadores
@@ -157,7 +157,7 @@
 
     <!--  index.php ****************************************************************************************************** --> 
     <string key="NO_MAPS">
-      Não há mapas publicadosd.
+      Não há mapas publicados.
     </string> 
     <string key="SELECT_YEAR">
       Ano
@@ -583,149 +583,149 @@ Password:   %s
     </string> 
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      O formato do ficheiro de imagem &lt;em&gt;%s&lt;/em&gt; é inválido. Apenas formatos jpeg, png and gif são suportados.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Ocorreram problemas ao carregar o ficheiro de imagem &lt;em&gt;%s&lt;/em&gt;.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Ficheiro de imagem para novo mapa
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      O mapa onde o percurso é desenhado.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      O mapa sem percurso. Não obrigatório.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Modo de visualização
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Lista
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Mapa Geral
     </string> 
     <string key="INFORMATION">
-      Information
+      Informação
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Mostrar escolhas de percursos
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Esconder escolhas de percursos
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Clicar no mapa para ligar/desligar as escolhas de percursos
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...ou clique em qualquer área do mapa...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Mostrar mapa geral
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Esconder mapa geral
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...para Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Associar distâncias com o mapa; 1 para associar, 0 para ignorar.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Associar tempos ao mapa; 1 para associar, 0 para ignorar.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Associar máxima pulsação cardíaca ao mapa; 1 para associar, 0 para ignorar.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Associar pulsação cardíaca média com o mapa; 1 para associar, 0 para ignorar.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Permitir que pessoas possam comentar o mapa; 1 para permitir, 0 para não permitir.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Mostrar comentários em formato compacto por defeito na página do mapa; 1 para compactar, 0 para mostrar.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      Se comentários novos devem ser enviados por email; 1 para enviar, 0 para não enviar.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Tempo
     </string> 
     <string key="DISTANCE">
-      Distance
+      Distância
     </string> 
     <string key="AVGHR">
-      Average HR
+      Pulsação média
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Pulsação máxima
     </string> 
     <string key="LANGUAGE">
-      Language
+      Língua
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Mostrar comentários
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Esconder comentários
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Criar novo comentário
     </string> 
     <string key="NAME">
-      Name
+      Nome
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Nome e comentário são obrigatórios!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Tem a certeza que deseja apagar este comentário?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - Novo comentário
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Olá, 
 
-A new comment was created in your map archive.
+Foi criado um novo comentário no teu arquivo de mapas.
 
-Map:  %s 
+Mapa:  %s 
 Link: %s
 
-Comment's content
-Name:   %s 
+Conteúdo do comentário
+Nome:   %s 
 Email:  %s
-Text:   %s
+Texto:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Últimos mapas comentados
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Comentários
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Último comentário por
     </string> 
     <string key="KMZ">
-      KMZ
+      KML
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Protegido até
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Data/Hora em que o mapa vai estar disponível para outros visitantes, dado o formato aaaa-mm-dd hh:mm:ss. Deixar vazio para não proteger o mapa. Esta funcionalidade pode ser usada para carregar mapas antes do evento ocorrer, e torná-los disponíveis para todos os participantes assim que o evento estiver completo.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      Data/hora para proteger o mapa é inválida. Introduzir a data/hora no formato aaaa-mm-dd hh:mm:ss format ou deixar vazio.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      O mapa vai estar protegido até %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      todos
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
