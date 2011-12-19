@@ -27,7 +27,7 @@ $(document).ready(function()
   $('#showPostedComments').click(function() {
     $("#postedComments").show();
     $("#commentBox").show();
-    $("#commentMark").focus();
+    //$("#commentMark").focus();
     $("#commentBox").children("a#submitComment").show();    
     $('#showPostedComments').toggle();
     $('#hidePostedComments').toggle();
