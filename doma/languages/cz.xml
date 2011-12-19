@@ -741,6 +741,18 @@ Text:   %s
     <string key="KMZ">
       Otevřít v Google Earth
     </string>
+    <string key="PROTECTED_UNTIL">
+      Skryto do
+    </string>
+    <string key="PROTECTED_UNTIL_INFO">
+      Datum a čas, odkdy bude mapa dostupná ostatním uživatelům, zadej ve formátu rrrr-mm-dd hh:mm:ss. Ponech prázdné, pokud nechceš mapu skrýt. Tato vlastnost může být použita pro nahrání mapy před závodem tak, aby byla v určitý čas ihned dostupná všem účastníkům.
+    </string>
+    <string key="INVALID_PROTECTED_UNTIL">
+      Datum a čas, dokdy má být mapa skryta není platný. Zadej hodnotu ve formátu rrrr-mm-dd hh:mm:ss nebo ponechej pole prázdné.
+    </string>
+    <string key="MAP_IS_PROTECTED_UNTIL_X">
+      Mapa je pro ostatní skryta do %s.
+    </string>    
     <string key="SHOW_ALL">
       vše
     </string>
