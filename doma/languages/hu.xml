@@ -8,13 +8,13 @@
       Üdv a digitális tájfutó térképtáramban!
     </string>
     <string key="INTRO" description="INTRO_DESCRIPTION">
-      Térképek, pályák és útvonalak tájfutó versenyeimrol.
+      Térképek, pályák és útvonalak tájfutó versenyeimről.
     </string>
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
       Tulajdonosa vagy valamely térképnek melynek közléséhez nem járultál hozzá? &lt;a href="mailto:%userEmail%"&gt;Küldj e-mailt!&lt;/a&gt;.
     </string>
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
-      Térképek, pályák és útvonalak tájfutó versenyeimrol.
+      Térképek, pályák és útvonalak tájfutó versenyeimről.
     </string>
     <string key="SHOW_ORGANISER" description="SHOW_ORGANISER_DESCRIPTION">
       1
@@ -73,7 +73,7 @@
     </string>
     <!--  day names, semi-colon separated -->
     <string key="DAY_NAMES">
-      Vasárnap;Hétfo;Kedd;Szerda;Csütörtök;Péntek;Szombat;
+      Vasárnap;Hétfő;Kedd;Szerda;Csütörtök;Péntek;Szombat;
     </string>
     <!--  month names, semi-colon separated -->
     <string key="MONTH_NAMES">
@@ -92,7 +92,7 @@
       Dátum
     </string>
     <string key="ORGANISER">
-      Rendezo
+      Rendező
     </string>
     <string key="COUNTRY">
       Ország
@@ -167,7 +167,7 @@
       [összes típus]
     </string>
     <string key="NO_MATCHING_MAPS">
-      Nincs a szelekciónak megfelelo térkép.
+      Nincs a szelekciónak megfelelő térkép.
     </string>
     <string key="VIEWS">
       megtekintés
@@ -177,10 +177,10 @@
       Vissza
     </string>
     <string key="PREVIOUS">
-      Elozo
+      Előző
     </string>
     <string key="NEXT">
-      Következo
+      Következő
     </string>
     <!--  edit_map.php ****************************************************************************************************** -->
     <string key="ADD_MAP">
@@ -202,9 +202,9 @@
     <string key="LEAVE_EMPTY_TO_KEEP_EXISTING_MAP">Hagyd üresen a jelenlegi térkép megtartásához</string>
     <string key="THUMBNAIL_IMAGE_FILE">Minta térkép file</string>
     <string key="THUMBNAIL_INFO">
-      Méret: %d x %d pixel, automatikus generáláshoz hagyd üresen. Nagy file-oknál elképzelheto, hogy a szerver memória korlátai miatt nem lesz sikered az automatikus generálás.
+      Méret: %d x %d pixel, automatikus generáláshoz hagyd üresen. Nagy file-oknál elképzelhető, hogy a szerver memória korlátai miatt nem lesz sikeres az automatikus generálás.
     </string>
-    <string key="CONFIRM_DELETION">Törlés megerosítése</string>
+    <string key="CONFIRM_DELETION">Törlés megerősítése</string>
     <string key="SAVE">Mentés</string>
     <string key="DELETE">Törlés</string>
     <string key="CANCEL">Mégsem</string>
@@ -233,7 +233,7 @@
       A kategória amihez a térkép tartozik. Új kategóriákat a felhasználói profilodban hozhatsz létre.
     </string>
     <string key="THUMBNAIL_CREATION_FAILURE">
-      A mintatérkép automatikus étrehozása nem sikerült. Valószínuleg nincs lég memória a szerveren. Tölts fel mintatérképet manuálisan, vagy tölds fel újra a térképet kisebb felbontásban.
+      A mintatérkép automatikus létrehozása nem sikerült. Valószínuleg nincs elég memória a szerveren. Tölts fel mintatérképet manuálisan, vagy tölds fel újra a térképet kisebb felbontásban.
     </string>
     <!--  users.php ****************************************************************************************************** -->
     <string key="NO_OF_MAPS">
@@ -243,7 +243,7 @@
       Szerkeszt
     </string>
     <string key="ADMIN_LOGIN_INFO">
-      A config.php file-ban szereplo jelszó és felhasználónév.
+      A config.php file-ban szereplő jelszó és felhasználónév.
     </string>
     <string key="VISIBLE">Nyílvános</string>
     <string key="LOGIN_AS">
@@ -256,7 +256,7 @@
       Utolsó térkép
     </string>
     <string key="NO_USERS_CREATED">Nincs még felhasznló.</string>
-    <string key="CREATE_THE_FIRST_USER">Kattints ide az elso felhasználó létrehozásához.</string>
+    <string key="CREATE_THE_FIRST_USER">Kattints ide az első felhasználó létrehozásához.</string>
     <string key="MAP">
       Térkép
     </string>
@@ -302,34 +302,34 @@
       Add meg a regisztrációhoz szükséges kódot.
     </string>
     <string key="SHOW_ORGANISER_DESCRIPTION">
-      Rendezo társítása a térképhez; 1 társítás, 0 kihagyás.
+      Rendező megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_COUNTRY_DESCRIPTION">
-      Ország társítása a térképhez; 1 társítás, 0 kihagyás.
+      Ország megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_DISCIPLINE_DESCRIPTION">
-      Versenyforma társítása a térképhez; 1 társítás, 0 kihagyás.
+      Versenyforma megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_RELAY_LEG_DESCRIPTION">
-      Váltó pálya társítása a térképhez; 1 társítás, 0 kihagyás.
+      Váltó pálya megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_MAP_AREA_NAME_DESCRIPTION">
-      Helyszín társítása a térképhez; 1 társítás, 0 kihagyás.
+      Helyszín megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_RESULT_LIST_URL_DESCRIPTION">
-      Eredményre mutató hivatkozás társítása a térképhez; 1 társítás, 0 kihagyás.
+      Eredményre mutató hivatkozás megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="SHOW_COMMENT_DESCRIPTION">
-      Hozzászólások társítása a térképhez; 1 társítás, 0 kihagyás.
+      Hozzászólások megjelenítése; 1 megjelenítés, 0 kihagyás.
     </string>
     <string key="PAGE_TITLE_DESCRIPTION">
-      Az oldalad címe a böngészo címsorában és az RSS feed-ben.
+      Az oldalad címe a böngésző címsorában és az RSS feed-ben.
     </string>
-    <string key="CAPTION_DESCRIPTION">A nyitóoldal tetején megjelenítendo cím.</string>
-    <string key="INTRO_DESCRIPTION">A cím alatt megjelenítendo szöveg.</string>
-    <string key="FOOTER_DESCRIPTION">A lap alján megjelenítendo szöveg.</string>
+    <string key="CAPTION_DESCRIPTION">A nyitóoldal tetején megjelenítendő cím.</string>
+    <string key="INTRO_DESCRIPTION">A cím alatt megjelenítendő szöveg.</string>
+    <string key="FOOTER_DESCRIPTION">A lap alján megjelenítendő szöveg.</string>
     <string key="RSS_DESCRIPTION_DESCRIPTION">
-      Az RSS feed-ben megjeleno oldalleírás.
+      Az RSS feed-ben megjelenő oldalleírás.
     </string>
     <string key="USERNAME_DESCRIPTION">A felhasználó neved, amely a jelszavaddal együtt azonosít téged.</string>
     <string key="ADMIN_USERNAME_DESCRIPTION">Egyedi felhsználóinév.</string>
@@ -352,8 +352,8 @@
     <string key="EDIT_USER_PROFILE_TITLE">Felhasználói profilod szerkesztése</string>
     <string key="ADD_USER_PROFILE_TITLE">Felhasználói profil létrehozása</string>
     <string key="PERSONAL_DETAILS_TITLE">Személyes adatok</string>
-    <string key="PERSONAL_DETAILS_INFO">Add meg a következo adatokat</string>
-    <string key="ADMIN_PERSONAL_DETAILS_INFO">Add meg a következo adatokat</string>
+    <string key="PERSONAL_DETAILS_INFO">Add meg a következő adatokat</string>
+    <string key="ADMIN_PERSONAL_DETAILS_INFO">Add meg a következő adatokat</string>
     <string key="MAP_CATEGORIES_TITLE">Kategóriák</string>
     <string key="ADMIN_MAP_CATEGORIES_INFO">
       Azon kategóriák meghatározása melyekbe a felhasználók térképei szortírozva lesznek.
@@ -372,7 +372,7 @@ Felireatok és beállítások    </string>
     <string key="USER_PROFILE">
       Felhasználói profil
     </string>
-    <string key="REQUIRED_FIELDS_INFO">A %s-al jelölt mezok kitöltése kötelezo.    </string>
+    <string key="REQUIRED_FIELDS_INFO">A %s-al jelölt mezők kitöltése kötelező.    </string>
     <string key="MAP_CATEGORIES">Térkép kategóriák</string>
     <string key="DEFAULT_CATEGORY_NAMES">
       Verseny;Edzés
@@ -381,7 +381,7 @@ Felireatok és beállítások    </string>
     <string key="ADD_CATEGORY">Új kategória létrehozása</string>
     <string key="DELETE_CATEGORY">Kategória törlése</string>
     <string key="CAN_NOT_DELETE_NONEMPTY_CATEGORY">
-      A %s kategória nem törölheto, mivel az még %d térképet tartalmaz. A kategória törléséhez eloször ezeket távolítsd el.
+      A %s kategória nem törölhető, mivel az még %d térképet tartalmaz. A kategória törléséhez eloször ezeket távolítsd el.
     </string>
     <string key="CAN_NOT_DELETE_ALL_CATEGORIES">
       Legalább egy kategóriának léteznie kell.
@@ -395,7 +395,7 @@ Felireatok és beállítások    </string>
      A honlapnak 5.0.0 vagy magasabb verziójú PHP-re van szüksége. A jelenlegi verzió: %s.
     </string>
     <string key="MYSQL_ERROR_X">
-      MySQL error: %s
+      MySQL hiba: %s
     </string>
     <string key="SITE_SUCCESSFULLY_CREATED_TITLE">Az oldal sikeresen létrehozva!</string>
     <string key="SITE_SUCCESSFULLY_CREATED_MESSAGE">
@@ -406,7 +406,7 @@ Felireatok és beállítások    </string>
      Hiba tötént az oldal létrehozásakor
     </string>
     <string key="ERRORS_WHEN_CREATING_SITE_MESSAGE">
-      Az oldalt nem sikerült létrehozni. Check the error messages below and make necessary adjustments in the config.php file and/or in the database.
+      Az oldalt nem sikerült létrehozni. Ellenőrizd a hiba forrását az alábbi hibaüzenetben, és hajtsd végre a szükséges módosításokat a config.php fileban és/vagy az adatbázisban.
     </string>
     <string key="ERRORS_TRY_AGAIN">
       Próbáld újra
@@ -435,7 +435,7 @@ Ez egy automatikusan generált e-mail, mely igazolja, hogy a digitális tájfut�
 
 
 
-A kezdolapod: %s 
+A kezdőlapod: %s 
 
 Felhasználó neved:  %s 
 
@@ -454,10 +454,10 @@ Biztonsági okokból érdemes a jelszót gyakran változtatni.
     </string>
     <string key="SEND_NEW_PASSWORD_TITLE">Jelszó küldése</string>
     <string key="SEND_NEW_PASSWORD_INFO">
-      Elfelejtetted a jelszavad? Semmi pánik, a felhasználói profilodban megadott e-mail címre (%s)új jelszó küldheto.
+      Elfelejtetted a jelszavad? Semmi pánik, a felhasználói profilodban megadott e-mail címre (%s)új jelszó küldhető.
     </string>
     <string key="SEND_NEW_PASSWORD">Új jelszó küldése</string>
-    <string key="EMAIL_ERROR">Az e-mailt nem sikerült alküldeni. Kérlek vedd fel a kapcsolatot az adminisztrátorral!</string>
+    <string key="EMAIL_ERROR">Az e-mailt nem sikerült elküldeni. Kérlek vedd fel a kapcsolatot az adminisztrátorral!</string>
     <string key="NEW_PASSWORD_EMAIL_SUBJECT">
       Új jelszó a digitális tájfutó térképtáradhoz
     </string>
@@ -472,7 +472,7 @@ Ez egy automatikusan generált e-mail, mely igazolja, hogy a digitális tájfut�
 
 
 
-A kezdolapod: %s 
+A kezdőlapod: %s 
 
 Felhasználó neved:  %s 
 
@@ -492,149 +492,149 @@ Biztonsági okokból érdemes a jelszót gyakran változtatni.
     </string>
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Az üres térkép &lt;em&gt;%s&lt;/em&gt; fileformátuma hibás. Csak a jpeg, png és gif formátumok támogatottak.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Az üres térképfilet &lt;em&gt;%s&lt;/em&gt; nem sikerült feltölteni.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Üres térképfile
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Útvonallal ellátott térkép.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      Útvonalak nélküli térkép. Nem kötelező.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Megjelenítési mód
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Lista
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Áttekintő térkép
     </string> 
     <string key="INFORMATION">
-      Information
+      Informácó
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Útvonalak megjelenítése
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Útvonalak elrejtése
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Kattints a térképre az útvonalak elrejtéséhez/megjelenítéséhez
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...vagy csak kattints valahova a térképre...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Áttekintő térkép mutatása
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Áttekintő térkép elrejtése
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...Google Earth-ben történő megjelenítéshez...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Futott távolság megjelenítése; 1 igen, 0 kihagyás.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Időtartam megjelenítése; 1 igen, 0 kihagyás.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Maximális pulzus megjelenítése; 1 igen, 0 kihagyás.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Átlagos pulzus megjelenítése; 1 igen, 0 kihagyás.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Hozzászólások engedélyezése; 1 engedélyezés, 0 tiltás.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Hozzászólások alapértelmezett megjelenítési módja; 1 elrejtve, 0 mutatva.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      E-mail küldése új hozzászólás esetén; 1 igen, 0 nem.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Idő
     </string> 
     <string key="DISTANCE">
-      Distance
+      Táv
     </string> 
     <string key="AVGHR">
-      Average HR
+      Átlag pulzus
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Maximális pulzus
     </string> 
     <string key="LANGUAGE">
-      Language
+      Nyelv
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Hozzászólások mutatása
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Hozzászólások mutatása/elrejtése
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Hozzásszólás küldése
     </string> 
     <string key="NAME">
-      Name
+      Név
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      A név és a hozzászólás mező kitöltése kötelező!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Biztosan ki akarod törölni ezt a hozzászólást?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - új tartalom
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Szia! 
 
-A new comment was created in your map archive.
+Új hozzászólás érkezett a digitális térképtárad egy térképéhez.
 
-Map:  %s 
+Térkép:  %s 
 Link: %s
 
-Comment's content
-Name:   %s 
-Email:  %s
-Text:   %s
+A hozzászólás tartalma
+Név:   %s 
+E-mail:  %s
+Hozzászólás:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Utoljára kommentált térképek
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Hozzászólások
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Utolsó hozzászóló
     </string> 
     <string key="KMZ">
-      KMZ
+      KML
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Térkép elrejtése
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Az az időpont, amikor a térkép láthatóvá válik a látogatók számára, éééé-hh-nn óó:pp:mm formátumban meghatározva. Hagyd üresen a térkép azonnali megjelenítéséhez.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      A térkép elrejtés időpontja hibás. éééé-hh-nn óó:pp:mm formátumban add meg, vagy hagyd üresen.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      A térkép el van rejtve a látogatók elől a következő időpontig: %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      mindenki
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

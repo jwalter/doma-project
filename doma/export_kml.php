@@ -9,7 +9,7 @@
   $map = new Map();
   $map->Load($id);
 
-  $data = $map->CreateKmlString(Helper::GlobalPath(MAP_IMAGE_PATH), $format);
+  $data = $map->CreateKmlString(Helper::LocalPath(MAP_IMAGE_PATH), Helper::GlobalPath(MAP_IMAGE_PATH), $format);
 
   if($format == "kml")
   {

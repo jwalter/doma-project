@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <strings>
   <customizable>
     <string key="PAGE_TITLE" description="PAGE_TITLE_DESCRIPTION">
-      Il mio archivio di carte da orienteering
+      La mia raccolta di carte da orienteering
     </string> 
     <string key="CAPTION" description="CAPTION_DESCRIPTION">
-      Benvenuto nel mio archivio di carte da orienteering!
+      Benvenuto nella mia raccolta di carte da orienteering!
     </string> 
     <string key="INTRO" description="INTRO_DESCRIPTION">
       Su questo sito, voglio pubblicare carte, percorsi e scelte di percorso delle gare di orienteering a cui ho partecipato.
@@ -66,7 +66,7 @@
     <!--  general ****************************************************************************************************** --> 
     <!--  date format to use, PHP format string --> 
     <string key="DATE_FORMAT">
-      Y-m-d
+      Anno-Mese-Giorno
     </string> 
     <!--  date and time format to use, PHP format string --> 
     <string key="DATETIME_FORMAT">
@@ -102,22 +102,22 @@
       Disciplina
     </string> 
     <string key="RELAY_LEG">
-      Leg
+      Frazione della staffetta
     </string> 
     <string key="RELAY_LEG_LONG">
-      Relay leg
+      Frazione della staffetta
     </string> 
     <string key="RELAY_LEG_LOWERCASE">
-      leg
+      frazione
     </string> 
     <string key="MAP_AREA_NAME">
-      Mappa/area
+      Nome della mappa
     </string> 
     <string key="RESULTS">
       Risultati
     </string> 
     <string key="COMMENT">
-      Commento
+      Commenti
     </string> 
     <string key="LOGIN">
       Accedi
@@ -175,7 +175,7 @@
       Non ci sono mappe che corrispondono ai criteri di ricerca.
     </string> 
     <string key="VIEWS">
-      guarda
+      Visualizza
     </string> 
 
     <!--  show_map.php ****************************************************************************************************** --> 
@@ -206,7 +206,7 @@
       Collegamento ai risultati
     </string> 
     <string key="MAP_IMAGE_FILE">
-      File dell'immagine della mappa
+      Immagine della mappa
     </string> 
     <string key="LEAVE_EMPTY_TO_KEEP_EXISTING_MAP">
       Lascia vuoto per mantenere la mappa esistente.
@@ -227,8 +227,7 @@
       Elimina
     </string> 
     <string key="CANCEL">
-      Cancel
-la
+      Cancella
     </string> 
     <string key="NO_MAP_FILE_ENTERED">
       Non hai specificato nessuna mappa.
@@ -261,7 +260,7 @@ la
       La categoria appartiene alla mappa. E' possibile creare la nuova categoria nel profilo utente.
     </string> 
     <string key="THUMBNAIL_CREATION_FAILURE">
-      L'immagine per la miniatura non può essere creata. La ragione potrebbe essere che non c'era abbastanza memoria del server disponibili. Su questo server, le miniature non possono essere generate automaticamente per immagini più grandi di circa %s pixels. Prego aumentare il valore del parametro memory_limit nel file php.ini.&lt;br /&gt;A miniature standard vengono create automaticamente. Prova ad usare una mappa più piccola o caricare manualmente la miniaturara.
+      Creazione della miniatura fallita. La ragione potrebbe essere che non c'era abbastanza memoria del server disponibili. Su questo server, le miniature non possono essere generate automaticamente per immagini più grandi di circa %s pixels. Prego aumentare il valore del parametro memory_limit nel file php.ini.&lt;br /&gt;A miniature standard vengono create automaticamente. Prova ad usare una mappa più piccola o caricare manualmente la miniaturara.
     </string> 
 
     <!--  users.php ****************************************************************************************************** --> 
@@ -367,7 +366,7 @@ la
       Inserisci 1 per visualizzare i commenti, 0 per non visualizzarli.
     </string> 
     <string key="PAGE_TITLE_DESCRIPTION">
-      Il titolo della tua pagina. Compare nella finestra del browser e negli RSS feed.
+      Il titolo della tua pagina. Compare nella finestra del browser e nel canale RSS.
     </string> 
     <string key="CAPTION_DESCRIPTION">
       La didascalia, visualizzata nella parte superiore della pagina iniziale.
@@ -379,7 +378,7 @@ la
       Il testo visualizzato nella parte inferiore della pagina.
     </string> 
     <string key="RSS_DESCRIPTION_DESCRIPTION">
-      La descrizione della pagina come visualizzato nell' RSS feed.
+      La descrizione della pagina come visualizzato nei canali RSS.
     </string> 
     <string key="USERNAME_DESCRIPTION">
       Il tuo nome utente che assieme alla password ti identifica.
@@ -493,7 +492,7 @@ la
       Il sito è stato creato.
     </string> 
     <string key="TOO_OLD_PHP_VERSION">
-      Ha ibisogno della versione PHP 5.0.0 o successiva. La versione attuale è %s.
+      Hai bisogno della versione PHP 5.0.0 o successiva. La versione attuale è %s.
     </string> 
     <string key="MYSQL_ERROR_X">
       MySQL error: %s
@@ -505,7 +504,7 @@ la
       Il sito è stato creato con successo. Modifica il file config.php per cambiare le impostazioni del sito.
     </string> 
     <string key="GOTO_START_PAGE">
-      Vai alla pagina si start
+      Vai alla pagina iniziale
     </string> 
     <string key="ERRORS_WHEN_CREATING_SITE_TITLE">
       Errore nella creazione del sito
@@ -538,7 +537,7 @@ la
     <string key="NEW_USER_EMAIL_BODY">
 Ciao %s, 
 
-Tquesta è un'email automatica di conferma che il tuo archivio digiale di mappe d'orientamento è stato creato per tè a %s.
+questa è un'email automatica di conferma che il tuo archivio digiale di mappe d'orientamento è stato creato per tè a %s.
 
 la tua pagina iniziale: %s 
 il tuo nome utente:  %s 
@@ -585,149 +584,149 @@ la tua password: %s
     </string> 
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Il formato del file della carta &lt;em&gt;%s&lt;/em&gt; non è valido. Solo supportati solamente i formati jpeg, png e gif.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      L'immagine della carta &lt;em&gt;%s&lt;/em&gt; non può essere caricato.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      File immagine della carta
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      La carta dove è disegnato il tuo percorso.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      La carta senza percorso. Non obbligatorio.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Modalità Display
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Lista
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Anteprima mappa
     </string> 
     <string key="INFORMATION">
-      Information
+      Informazioni
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Mostra le scelte di percorso
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Nascondi le scelte di percorso
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Click sulla mappa per visuzlizzare/nascondere le scelte di percorso
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...o semplicemente click sulla carta...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Mostra anteprima della carta
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Nascondi anteprima della carta
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...per Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Se vuoi associare distanza con la carta; 1 per associate, 0 per tralasciare.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Se vuoi associare il tempo trascorso con la carta; 1 per associate, 0 per tralasciare.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Se vuoi associare la frequenza cardiaca massima con la carta; 1 per associate, 0 per tralasciare.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Se vuoi associare la frequenza cardiaca media con la carta; 1 per associate, 0 per tralasciare.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Se vuoi permettere ai visitatori di lasciare commenti; 1 per permettere, 0 per tralasciare.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Se vuoi visualizzare i commenti sulla pagina della mappa; 1 per visualizzarli, 0 per tralasciare.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      Se vuoi che i commenti dei visitatori siano inviati per email; 1 per inviarli, 0 per non inviarli.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Tempo
     </string> 
     <string key="DISTANCE">
-      Distance
+      Distanza
     </string> 
     <string key="AVGHR">
-      Average HR
+      Media HR
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Massimo HR
     </string> 
     <string key="LANGUAGE">
-      Language
+      Lingua
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Visualizza commenti
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Nascondi commenti
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Pubblica il nuovo commento
     </string> 
     <string key="NAME">
-      Name
+      Nome
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Devi inserire nome e commento!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Sei sicuro che vuoi eliminare il commento?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - nuovo commento
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Ciao, 
 
-A new comment was created in your map archive.
+E' stato creto un nuovo commento nella tua raccolta di carte da orienteering.
 
-Map:  %s 
-Link: %s
+Carta:  %s 
+Collegamento: %s
 
-Comment's content
-Name:   %s 
+Contenuto del commento
+Nome:   %s 
 Email:  %s
-Text:   %s
+Contenuto:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      L'ultimo commento della carta
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Commenti
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Ultimo commento di
     </string> 
     <string key="KMZ">
-      KMZ
+      KML
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Nascosto fino a quando
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Momento in cui la mappa sarà disponibile per gli altri visitatori, data nel formato yyyy-mm-dd hh:mm:ss . Lascia vuoto per non nascondere la carta. Questa funzione può essere usata per caricare in anticipo le carte per un evento, e renderla disponibile ai partecipanti una volta concluso l'evento.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      La data per nascondere la carta è sbagliato. Inserisci una data con il formato yyyy-mm-dd hh:mm:ss o lascia il campo vuoto.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      La carta è nascosta fino al %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      tutti
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

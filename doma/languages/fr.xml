@@ -11,10 +11,10 @@
       Je publie sur ce site les cartes et tracés des courses d'orientation auxquelles j'ai participé.
     </string> 
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-		Êtes-vous le possesseur du droit de copie d'une carte qui ne devrait pas être publiée ici ? &lt;a href="mailto:%userEmail%"&gt;Email me&lt;/a&gt;.
+      Êtes-vous le possesseur du droit de copie d'une carte qui ne devrait pas être publiée ici ? &lt;a href="mailto:%userEmail%"&gt;Email me&lt;/a&gt;.
     </string> 
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
-		Cartes et tracés des courses d'orientation auxquelles j'ai participé.
+      Cartes et tracés des courses d'orientation auxquelles j'ai participé.
     </string> 
     <string key="SHOW_ORGANISER" description="SHOW_ORGANISER_DESCRIPTION">
       1
@@ -78,7 +78,7 @@
     </string> 
     <!--  month names, semi-colon separated --> 
     <string key="MONTH_NAMES">
-		Janvier;Février;Mars;Avril;Mai;Juin;Juillet;Août;Septembre;Octobre;Novembre;Décembre
+    Janvier;Février;Mars;Avril;Mai;Juin;Juillet;Août;Septembre;Octobre;Novembre;Décembre
     </string> 
     <string key="RSS_FEED">
       RSS feed
@@ -143,7 +143,7 @@
 
     <!--  topbar ****************************************************************************************************** --> 
     <string key="DOMA_FOR_X">
-		Archive numérique de cartes d'orientation de %s
+    Archive numérique de cartes d'orientation de %s
     </string> 
     <string key="ALL_USERS">
       Tous les utilisateurs
@@ -172,7 +172,7 @@
       [toutes catégories]
     </string> 
     <string key="NO_MATCHING_MAPS">
-		Il n'y a pas de cartes répondant aux critères de recherche.
+    Il n'y a pas de cartes répondant aux critères de recherche.
     </string> 
     <string key="VIEWS">
       vues
@@ -215,7 +215,7 @@
       Vignette
     </string> 
     <string key="THUMBNAIL_INFO">
-      Taillee %d x %d pixels, laisser vide pour génération automatique. Les vignettes des grandes images de carte peuvent ne pas être réalisées à cause de restriction de mémoire sur le serveur.
+      Taille %d x %d pixels, laisser vide pour génération automatique. Les vignettes des grandes images de carte peuvent ne pas être réalisées à cause de restriction de mémoire sur le serveur.
     </string> 
     <string key="CONFIRM_DELETION">
       Confirmer la suppression
@@ -248,7 +248,7 @@
       Aucun nom de carte n'a été saisi.
     </string> 
     <string key="NO_DATE_ENTERED">
-      Aucuen date n'a été saisie.
+      Aucune date n'a été saisie.
     </string> 
     <string key="INVALID_DATE">
       La date n'est pas valide. Merci d'entrer une date au format jj/mm/aaaa.
@@ -260,7 +260,7 @@
       La catégorie de la carte. Vous pouvez créer de nouvelles catégories dans votre profil.
     </string> 
     <string key="THUMBNAIL_CREATION_FAILURE">
-      La vignette n'a pas pu être créée. La raison pourrait être qu'il n'y avait pas assez de mémoire disponible sur le serveur. Sur ce serveur, les vignettes ne peuvent pas être auto-générées pour des images plus grande qu'aproximativement %s pixels. Augmneter la valeur du paramètre memory_limit dans le fichier php.ini.&lt;br /&gt;Une vignette standard a été créée à la place. Essayer d'utiliser une image de carte plus petite, ou de télécharger manuellement une vignette.
+      La vignette n'a pas pu être créée. La raison pourrait être qu'il n'y avait pas assez de mémoire disponible sur le serveur. Sur ce serveur, les vignettes ne peuvent pas être auto-générées pour des images plus grande qu'aproximativement %s pixels. Augmenter la valeur du paramètre memory_limit dans le fichier php.ini.&lt;br /&gt;Une vignette standard a été créée à la place. Essayer d'utiliser une image de carte plus petite, ou de télécharger manuellement une vignette.
     </string> 
 
     <!--  users.php ****************************************************************************************************** --> 
@@ -304,7 +304,7 @@
       Dernières cartes
     </string> 
     <string key="PUBLIC_CREATE_USER_INFO">
-		cVous pouvez &lt;a href="enter_public_creation_code.php"&gt;créer votre propre archive numérique de cartes d'orientation&lt;/a&gt; en saisissant le code d'accès fournit par l'&lt;a href="mailto:%adminEmail%"&gt;administrateur&lt;/a&gt;.
+    Vous pouvez &lt;a href="enter_public_creation_code.php"&gt;créer votre propre archive numérique de cartes d'orientation&lt;/a&gt; en saisissant le code d'accès fournit par l'&lt;a href="mailto:%adminEmail%"&gt;administrateur&lt;/a&gt;.
     </string> 
 
     <!--  edit_user.php ****************************************************************************************************** --> 
@@ -348,10 +348,10 @@
       Pour associer un organisateur avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_COUNTRY_DESCRIPTION">
-	  Pour associer un pays avec une carte; 1 pour associer, 0 pour laisser tel quel.
+    Pour associer un pays avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_DISCIPLINE_DESCRIPTION">
-	  Pour associer une discipline avec une carte; 1 pour associer, 0 pour laisser tel quel.
+    Pour associer une discipline avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_RELAY_LEG_DESCRIPTION">
       Pour associer un parcours de relais avec une carte; 1 pour associer, 0 pour laisser tel quel.
@@ -393,7 +393,7 @@
       Laisser vide pour conserver le mot de passe actuel.
     </string> 
     <string key="PASSWORD_DESCRIPTION">
-	  Votre mot de passe, qui, avec votre nom d'utilisateur, vous identifie. Laisser vide pour conserver le mot de passe actuel.
+    Votre mot de passe, qui, avec votre nom d'utilisateur, vous identifie. Laisser vide pour conserver le mot de passe actuel.
     </string> 
     <string key="FIRST_NAME_DESCRIPTION">
       Votre prénom.
@@ -491,7 +491,7 @@
       Le site a déjà été créé.
     </string> 
     <string key="TOO_OLD_PHP_VERSION">
-      Vous aves besoin de PHP version 5.0.0 ou supérieur. La version actuelle est %s.
+      Vous avez besoin de PHP version 5.0.0 ou supérieur. La version actuelle est %s.
     </string> 
     <string key="MYSQL_ERROR_X">
       Erreur MySQL : %s
@@ -520,7 +520,7 @@
       Saisir le code d'accès
     </string> 
     <string key="PROCEED">
-      COntinuer
+      Continuer
     </string> 
     <string key="INVALID_CODE">
       Code non-valide.
@@ -561,7 +561,7 @@ Votre mot de passe :   %s
        Envoyer un nouveau mot de passe
     </string> 
     <string key="EMAIL_ERROR">
-      Le courriel n'a pas pu être nevoyé. Contacter l'administrateur.
+      Le courriel n'a pas pu être envoyé. Contacter l'administrateur.
     </string> 
     <string key="NEW_PASSWORD_EMAIL_SUBJECT">
       Nouveau mot de passe pour votre archive numérique de cartes d'orientation
@@ -583,146 +583,146 @@ Votre nouveau mot de passe : %s
     </string> 
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Le format du fichier de la carte vierge &lt;em&gt;%s&lt;/em&gt; n'est pas valide. Seuls les formats jpeg, png et gif sont acceptés.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Le fichier image de la carte vierge &lt;em&gt;%s&lt;/em&gt; n'a pas pu être téléchargé.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Fichier image de la carte vierge
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      La carte avec votre itinéraire.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      La carte sans itinéraire. Pas obligatoire.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Mode d'affichage
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Liste
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Vue générale de la carte
     </string> 
     <string key="INFORMATION">
       Information
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Montrer les choix d'itinéraires
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Cacher les choix d'itinéraires
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Cliquer sur la carte pour afficher/cacher les choix d'itinéraires
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...ou cliquer quelque part sur la carte...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Montrer la vue générale de la carte
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Cacher la vue générale de la carte
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...pour Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Associer la distance à une carte, ou pas; 1 pour associer, 0 pour ne pas associer.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Associer la durée de course à une carte, ou pas; 1 pour associer, 0 pour ne pas associer.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Associer le rythme cardiaque maximum à une carte, ou pas; 1 pour associer, 0 pour ne pas associer.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Associer le rythme cardiaque moyen à une carte, ou pas; 1 pour associer, 0 pour ne pas associer.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Autoriser les visiteurs à laisser des commentaires sur une carte, ou pas; 1 pour autoriser, 0 pour interdire.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Montrer ou réduire les commentaires par défaut sur la page de la carte; 1 pour réduire, 0 pour montrer.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+  Les commentaires des nouveaux visiteurs sont envoyés ou pas par courriel ?; 1 pour envoyer, 0 pour ne pas envoyer.      
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Temps
     </string> 
     <string key="DISTANCE">
       Distance
     </string> 
     <string key="AVGHR">
-      Average HR
+      HR moyen
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      HR maximum
     </string> 
     <string key="LANGUAGE">
-      Language
+      Langue
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Montrer les commenatires
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Cacher les commentaires
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Poster un nouveau commentaire
     </string> 
     <string key="NAME">
-      Name
+      Nom
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Le nom et le commentaire doivent être saisis !
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Voulez-vous réellement supprimer ce commentaire ?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - nouveau commentaire
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Bonjour, 
 
-A new comment was created in your map archive.
+Un nouveau commentaire vient d'être créé dans votre archive de cartes.
 
-Map:  %s 
-Link: %s
+Carte:  %s 
+Lien: %s
 
-Comment's content
-Name:   %s 
-Email:  %s
-Text:   %s
+Contenu du commentaire
+Nom:   %s 
+Courriel:  %s
+Texte:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Dernières cartes commentées
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Commentaires
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Dernier commentaire par
     </string> 
     <string key="KMZ">
-      KMZ
+      KML
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Cachée jusqu'au
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      La date à laquelle la carte sera disponible aux autres visiteurs, saisie au format yyyy-mm-dd hh:mm:ss. Laisser vide pour ne pas cacher la carte. Cette propriété peut être utilisée pour télécharger des cartes avant une compétition, et la rendre disponible aux participants dès la fin de la compétition.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      La date jusqu'à quand cacher la carte est invalide. Saisir une date au format yyyy-mm-dd hh:mm:ss ou laisser le champ vide.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      La carte est cachée aux autres jusqu'au %s.
     </string>
     <string key="SHOW_ALL">
       all

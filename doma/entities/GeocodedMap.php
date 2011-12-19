@@ -31,6 +31,11 @@ class GeocodedMap
   public $imageFileName;
 
   /**
+   *  The image url when exporting to a kml/kmz file. If null, $this->imageFileName name will be used.
+   */ 
+  public $imageUrl;
+  
+  /**
    *  The image file data. Can be null. In this case refer to $this->imageFileName.
    */ 
   public $imageFileData;
@@ -138,7 +143,7 @@ class GeocodedMap
     
     if(strtolower($fileFormat) == "kml")
     {
-      $kml->imageFileName = $this->imageFileName;
+      $kml->imageFileName = $this->imageUrl != null ? $this->imageUrl : $this->imageFileName;
       return $kml->saveToString();
     }
     else // kmz
@@ -167,11 +172,12 @@ class GeocodedMap
   // TODO: extend to more than two coordinate pairs
   // use algorithm in QuickRoute.BusinessEntities.SessionCollection.CalculateAverageTransformationMatrix
   // started implementing in CalculateAverageTransformationMatrix below
-  public function createFromCoordinatePairs($latLngs, $points, $imageFileName) 
+  public function createFromCoordinatePairs($latLngs, $points, $imageFileName, $imageUrl = null) 
   {
     if(count($latLngs) != 2 || count($points) != 2) die("Wrong number of latlngs / points");
     
     $this->imageFileName = $imageFileName;
+    $this->imageUrl = $imageUrl;
 
     // FIRST PASS
     // calculate projection origin as an average of $latLngs
@@ -193,7 +199,7 @@ class GeocodedMap
     $this->calculateTransformationMatrix($latLngs, $points, $this->projectionOrigin);
   }
 
-  public function CalculateAverageTransformationMatrix($latLngs, $points, $imageFileName)
+  public function CalculateAverageTransformationMatrix($latLngs, $points)
   {
     $m = count($latLngs);
     if ($m == 0) return null;

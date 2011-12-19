@@ -596,11 +596,26 @@ img.button
   border-top: 1px solid #a7a7ff;
   border-bottom: 1px solid #c7c7ff;
   font-size: 80%;
-  padding: 0.5em 1em;
+  padding: 0.5em 0;
   line-height: 15px;
   height: 15px;
+  width: 100%;
+  display: table;
 }
 
+#showMapBody #actions
+{
+  display: table-cell;
+  text-align: left;
+  padding: 0 1em;
+}
+
+#showMapBody #previousAndNextMaps
+{
+  display: table-cell;
+  text-align: right;
+  padding: 0 1em;
+}
 
 #showMapBody #mapImage
 {

@@ -194,7 +194,7 @@
     {
       $user = self::GetLoggedInUser();
       if(!isset($user)) return 0;
-      return $user-ID;
+      return $user->ID;
     }
     
     // the user as specified by $_GET["user"] / $_POST["user"]
