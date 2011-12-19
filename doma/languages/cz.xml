@@ -621,7 +621,7 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
       Mapa bez postupů
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Mapa s postupy.
     </string> 
     <string key="BLANK_MAP_INFO">
       Mapa bez postupů. Není povinná.
@@ -639,10 +639,10 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
       Informace
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Vypnout/Zapnout postupy
+      Zobrazit postupy
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Skrýt postupy
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
       Klikni na mapu pro zapnutí/vypnutí postupů
@@ -651,10 +651,10 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
       ...nebo stačí pouze kdekoliv na mapě kliknout myší...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Náhled na Google mapě
+      Zobrazit náhled na Google mapě
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Skýt náhled na Google mapě
     </string> 
     <string key="KMZ_TOOLTIP">
       ...pro Google Earth...
@@ -742,7 +742,7 @@ Text:   %s
       Otevřít v Google Earth
     </string>
     <string key="SHOW_ALL">
-      all
+      vše
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
