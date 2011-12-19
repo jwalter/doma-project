@@ -215,7 +215,6 @@
         new Point($size["Width"]-1, $size["Height"]-1));
       $geocodedMap = new GeocodedMap();
       $geocodedMap->createFromCoordinatePairs($latLngs, $points, $localMapImagePath ."/". $this->MapImage);
-      $geocodedMap->
       $title = $this->GetUser()->FirstName ." ". $this->GetUser()->LastName .": " . $this->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($this->Date, true)) .")";
       return $geocodedMap->saveToString($title, $format);
     }
