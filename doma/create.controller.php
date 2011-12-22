@@ -45,7 +45,9 @@
           else
           {
             Helper::LogUsage("updateSite", "version=". DOMA_VERSION);
-            Helper::Redirect("users.php");
+            $redirectUrl = $_GET["redirectUrl"];
+            if(!isset($redirectUrl)) $redirectUrl = "users.php";
+            Helper::Redirect($redirectUrl);
           }
         }
       }

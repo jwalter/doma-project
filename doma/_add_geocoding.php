@@ -1,6 +1,5 @@
 <?php
-  include_once(dirname(__FILE__) ."/config.php");
-  include_once(dirname(__FILE__) ."/include/definitions.php");
+  include_once(dirname(__FILE__) ."/include/main.php");
   $ids = DataAccess::GetAllMapIds();
 ?>
 

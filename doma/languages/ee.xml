@@ -74,7 +74,7 @@
     </string> 
     <!--  day names, semi-colon separated --> 
     <string key="DAY_NAMES">
-      esmaspäev;teisipäev;kolmapäev;neljapäev;reede;laupäev;pühapäev
+      pühapäev;esmaspäev;teisipäev;kolmapäev;neljapäev;reede;laupäev
     </string> 
     <!--  month names, semi-colon separated --> 
     <string key="MONTH_NAMES">
@@ -140,6 +140,28 @@
     <string key="NO">
       Ei
     </string> 
+    <string key="REALAVG">
+      Tempo
+    </string> 
+    <string key="PROJECTEDDISTANCE">
+      Hinnanguline distants
+    </string> 
+    <string key="PROJECTEDDISTANCEFORMAT">
+      Arvuna, formaat: x.xx (näiteks 7.95)
+    </string> 
+    <string key="CLIMBING">
+      Tõus
+    </string> 
+    <string key="CLIMBINGFORMAT">
+      Arvuna: xxx (näiteks 395)
+    </string> 
+    <string key="FIXDISTANCE">
+      Hinnangulise distantsi vorming ei vasta soovitule. Formaat: x.xx (näiteks 7.95) - peab sisaldama punkti
+    </string> 
+    <string key="FIXCLIMBING">
+      Value in field Climbing does not fit to requested format. Format: xxx (for example 395)
+      Tõusu vorming ei vasta soovitule. Formaat: xxx (näiteks 395)
+    </string> 
 
     <!--  topbar ****************************************************************************************************** --> 
     <string key="DOMA_FOR_X">
@@ -200,7 +222,7 @@
       Muuda kaarti: %s
     </string> 
     <string key="MAP_DATE_FORMAT">
-      AAAA-KK-PP, lisaks võib ka tt:mm:ss
+      aaaa-kk-pp, lisaks võib ka tt:mm:ss
     </string> 
     <string key="LINK_TO_RESULT_LIST">
       Viide tulemustele
@@ -251,7 +273,7 @@
       Puudub kuupäev.
     </string> 
     <string key="INVALID_DATE">
-      Sisestatud kuupäev ei sobi, palun kasuta vormingut: AAAA-KK-PP.
+      Sisestatud kuupäev ei sobi, palun kasuta vormingut: aaa-kk-pp.
     </string> 
     <string key="CATEGORY">
       Kategooria
@@ -280,7 +302,7 @@
       Sisene kui
     </string> 
     <string key="LOGIN_AS_X">
-      Sisene kuui %s
+      Sisene kui %s
     </string> 
     <string key="LAST_MAP">
       Viimane kaart
@@ -289,7 +311,7 @@
       Kasutajaid ei ole veel loodud.
     </string> 
     <string key="CREATE_THE_FIRST_USER">
-      Vajuta siia esimene kasutaja loomiseks.
+      Vajuta siia esimese kasutaja loomiseks.
     </string> 
     <string key="MAP">
       Kaart
@@ -312,7 +334,7 @@
       Loo uus kasutaja
     </string> 
     <string key="EDIT_USER_X">
-      Muuda kasutajat : %s
+      Muuda kasutajat: %s
     </string> 
     <string key="FIRST_NAME">
       Eesnimi
@@ -408,7 +430,7 @@
       Kasutaja perenimi.
     </string> 
     <string key="EMAIL_DESCRIPTION">
-      SInu e-posti aadress.
+      Sinu e-posti aadress.
     </string> 
     <string key="ADMIN_EMAIL_DESCRIPTION">
       Kasutaja e-posti aadress.
@@ -583,149 +605,149 @@ Sinu parool:   %s
     </string> 
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Tühja kaardifaili &lt;em&gt;%s&lt;/em&gt; formaat ei sobi. Toetatud on jpeg-, png- ja gif-vormingus pildid. 
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Tühja kaardifaili &lt;em&gt;%s&lt;/em&gt; ei õnnestunud üles laadida.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Tühi kaardifail
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Kaart, millele joonistatakse sinu rada.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      Radadeta kaart. Ei ole kohstuslik.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Kuvamisviis
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Nimekiri
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Ülevaatekaart
     </string> 
     <string key="INFORMATION">
-      Information
+      Info
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Kuva teevalikud
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Peida teevalikud
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Klõpsa kaardil teevalikute sisse/välja lülitamiseks
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...või lihtsalt vajuta kaardil...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Kuva ülevaatlik kaart
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Peida ülevaatlik kaart
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...Google Earth tarbeks...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Kas siduda distants kaardiga; 1 - jah, 0 - ei.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Kas siduda kulunud aeg kaardiga; 1 - jah, 0 - ei. 
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Kas siduda maksimaalne pulsisagedus kaardiga; 1 - jah, 0 - ei.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Kas siduda keskmine pulsisagedus kaardiga; 1 - jah, 0 - ei.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Kas lubada külastajail kaarte kommenteerida; 1 - jah, 0 - ei.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Kas kaardilehel on kommentaarid vaikimisi kokku keritult; 1 - jah, 0 - ei.      
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      Kas külastajate kommentaarid tuleks saata e-postitsi; 1 - jah, 0 - ei.      
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Aeg
     </string> 
     <string key="DISTANCE">
-      Distance
+      Distants
     </string> 
     <string key="AVGHR">
-      Average HR
+      Keskmine pulss
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Maksimaalne pulss
     </string> 
     <string key="LANGUAGE">
-      Language
+      Keel
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Kuva kommentaarid
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Peida kommentaarid
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Lisa kommentaar
     </string> 
     <string key="NAME">
-      Name
+      Nimi
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Nimi ning kommentaar ei tohi jääda tühjaks!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Oled kindel, et soovid selle kommetaari kustutada?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - uus kommentaar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Tere, 
 
-A new comment was created in your map archive.
+Sinu kaardikogus lisati uus kommentaar.
 
-Map:  %s 
-Link: %s
+Kaart:  %s 
+Viide: %s
 
-Comment's content
-Name:   %s 
-Email:  %s
-Text:   %s
+Kommentaar
+Nimi:   %s 
+E-post:  %s
+Sisu:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Viimased kommenteeritud kaardid
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Kommentaarid
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Viimane kommenteerija: 
     </string> 
     <string key="KMZ">
       KMZ
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Varjatud kuni
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Aeg, millal kaart muutub ähtavaks teistele külalistele, formaadiks on aaaa-kk-pp tt:mm:ss. Tühjaks jättes kaarti ei peideta. Võimalust saab kasutada kaartide üles laadimisel enne üritust, nii, et nähtavaks muutuvad need alles peale ürituse lõppu.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      Aeg, milleni kaart on peidetud, ei sobi. Sisesta aeg kujul kujul aaaa-kk-pp tt:mm:ss või jäta väli tühjaks.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      See kaart on teistele varjatud kuni %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      kõik
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

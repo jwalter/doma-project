@@ -51,7 +51,7 @@
 <?php Helper::CreateTopbar() ?>
 
 <div id="navigation">
-  <div id="actions">
+  <div class="left">
   <?php if($vd["SecondMapImageName"]) {?>
     <a href="#" id="showSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("SHOW_ROUTE_ON_MAP")?></a>
     <a href="#" id="hideSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("HIDE_ROUTE_ON_MAP")?></a>
@@ -66,12 +66,13 @@
   <?php } ?>
   <a href="<?php print $vd["BackUrl"]?>"><?php print __("BACK")?></a>
   </div>
-  <div id="previousAndNextMaps">
+  <div class="right">
   <?php if($vd["Previous"]) { ?><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Previous"]->ID)?>"><?php print "&lt;&lt; ". $vd["PreviousName"]; ?></a><?php } ?>
   <?php if($vd["Next"]) { ?><span class="separator">|</span><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Next"]->ID)?>"><?php print $vd["NextName"] ." &gt;&gt;"; ?></a>
   
   <?php } ?>
   </div>
+  <div class="clear"></div>
 </div>
 
 <div id="content">

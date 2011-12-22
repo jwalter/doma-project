@@ -583,149 +583,149 @@ Dein neues Passwort: %s
     </string> 
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Das Dateiformat der leeren Karte &lt;em&gt;%s&lt;/em&gt; ist ungültig. Nur JPEG, PNG und GIF werden unterstützt.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Die Datei der leeren Karte &lt;em&gt;%s&lt;/em&gt; konnte nicht hochgeladen werden.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Datei der leeren Karte
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Karte, auf der deine Route eingezeichnet ist.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      Karte ohne Route. Nicht verpflichtend.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Anzeigemodus
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Liste
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Übersichtskarte
     </string> 
     <string key="INFORMATION">
       Information
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Routenwahlen zeigen
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Routenwahlen verstecken
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Klicke auf die Karte um Routenwahlen ein/-auszuschalten
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...oder klicke irgendwo auf die Karte...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Übersichtskarte anzeigen
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Übersichtskarte verstecken
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...for Google Earth...
+      ...für Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Distanz mit der Karte verknüpfen; 1 = ja, 0 = nein.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Laufzeit mit der Karte verknüpfen; 1 = ja, 0 = nein.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Maximalpuls mit der Karte verknüpfen; 1 = ja, 0 = nein.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Durchschnittspuls mit der Karte verknüpfen; 1 = ja, 0 = nein.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Kommentare von Besuchern erlauben; 1 = ja, 0 = nein.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Kommentare standardmäßig eingeklappt auf der Kartenseite anzeigen; 1 = ja, 0 = nein.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      Besucherkommentare per E-Mail senden; 1 = ja, 0 = nein.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Zeit
     </string> 
     <string key="DISTANCE">
-      Distance
+      Distanz
     </string> 
     <string key="AVGHR">
-      Average HR
+      Durchschnittspuls
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Maximalpuls
     </string> 
     <string key="LANGUAGE">
-      Language
+      Sprache
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Kommentare zeigen
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Kommentare verstecken
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Kommentar veröffentlichen
     </string> 
     <string key="NAME">
       Name
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Name und Kommentar müssen eingegeben werden!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Kommentar wirklich löschen?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - Neues Kommentar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Hallo, 
 
-A new comment was created in your map archive.
+In deinem Kartenarchiv wurde ein neues Kommentar veröffentlicht.
 
-Map:  %s 
-Link: %s
+Karte: %s 
+Link:  %s
 
-Comment's content
+Kommentar
 Name:   %s 
-Email:  %s
+E-Mail: %s
 Text:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Zuletzt kommentierte Karten
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Kommentare
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Letztes Kommentar von
     </string> 
     <string key="KMZ">
       KMZ
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Verstecken bis
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Zeitpunkt im Format yyyy-mm-dd hh:mm:ss, an dem die Karte für Besucher angezeigt werden soll. Leer lassen um die Karte sofort anzuzeigen. Diese Funktion kann dazu verwendet werden um Karten einer Veranstaltung im Vorhinein hochzuladen und diese direkt nach der Veranstaltung den Teilnehmern zur Verfügung zu stellen.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      Der angegebene Zeitpunkt, bis zu dem die Karte versteckt bleiben soll, ist ungültig. Gib einen Zeitpunkt im Format yyyy-mm-dd hh:mm:ss an oder lass das Feld leer.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      Die Karte ist bis %s für Besucher versteckt.
     </string>
     <string key="SHOW_ALL">
-      all
+      alle
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

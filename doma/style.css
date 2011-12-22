@@ -596,25 +596,22 @@ img.button
   border-top: 1px solid #a7a7ff;
   border-bottom: 1px solid #c7c7ff;
   font-size: 80%;
-  padding: 0.5em 0;
+}
+
+#showMapBody #navigation .left
+{
+  position: relative;
+  float: left;
+  padding: 0.5em 1em;
   line-height: 15px;
-  height: 15px;
-  width: 100%;
-  display: table;
 }
 
-#showMapBody #actions
+#showMapBody #navigation .right
 {
-  display: table-cell;
-  text-align: left;
-  padding: 0 1em;
-}
-
-#showMapBody #previousAndNextMaps
-{
-  display: table-cell;
-  text-align: right;
-  padding: 0 1em;
+  position: relative;
+  float: right;
+  padding: 0.5em 1em;
+  line-height: 15px;
 }
 
 #showMapBody #mapImage

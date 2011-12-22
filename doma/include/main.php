@@ -9,7 +9,7 @@
   session_start();
   
   // create database if it does not exist
-  if(!Helper::DatabaseVersionIsValid()) Helper::Redirect("create.php");
+  if(!Helper::DatabaseVersionIsValid()) Helper::Redirect("create.php?redirectUrl=". urlencode($_SERVER["REQUEST_URI"]));
   
   // extract current user from querystring
   if($_GET["user"])
