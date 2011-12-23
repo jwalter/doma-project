@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <strings>
   <customizable>
     <string key="PAGE_TITLE" description="PAGE_TITLE_DESCRIPTION">
-      Minu orienteerumiskaartide digi-arhiiv
+      Můj digitální archív orienťáckých map
     </string> 
     <string key="CAPTION" description="CAPTION_DESCRIPTION">
-      Tere tulemast minu orienteerumiskaartide digi-arhiivi!
+      Vítejte v mém digitálním archívu orienťáckých map!
     </string> 
     <string key="INTRO" description="INTRO_DESCRIPTION">
-      Siin lehel on kaardid, rajad ja rajavalikud o-jooksudelt, millest olen osa võtnud.
+      Na této stánce budu publikovat mapy, tratě a postupy ze závodů, které jsem absolvoval.
     </string> 
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-      Kas omad autoriõigusi mõnele kaardile, mis ei tohiks siin avaldatud olla? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Saada mulle e-kiri&lt;/a&gt;.
+	  Jsi vlastníkem práv na mapu, která by zde neměla být publikována? &lt;a href=&quot;mailto:%userEmail%&quot;&gt;Napiš mi&lt;/a&gt;.
     </string> 
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
-      Kaardid, rajad ja rajavalikud o-jooksudelt, millest olen osa võtnud.
+      Mapy, tratě a postupy ze závodů, které jsem absolvoval.
     </string> 
     <string key="SHOW_ORGANISER" description="SHOW_ORGANISER_DESCRIPTION">
       1
@@ -64,690 +63,698 @@
 
   <nonCustomizable>
     <!--  general ****************************************************************************************************** --> 
-    <!--  date format to use, PHP format string --> 
+    <!--  date format to use, PHP format string (Y, m, d, H, i, s can be used) --> 
     <string key="DATE_FORMAT">
-      Y-m-d
+      d.m.Y
     </string> 
-    <!--  date and time format to use, PHP format string --> 
+    <!--  date and time format to use, PHP format string (Y, m, d, H, i, s can be used) --> 
     <string key="DATETIME_FORMAT">
-      Y-m-d H:i
+      d.m.Y H:i
     </string> 
     <!--  day names, semi-colon separated --> 
     <string key="DAY_NAMES">
-      pühapäev;esmaspäev;teisipäev;kolmapäev;neljapäev;reede;laupäev
+      Neděle;Pondělí;Úterý;Středa;Čtvrtek;Pátek;Sobota
     </string> 
     <!--  month names, semi-colon separated --> 
     <string key="MONTH_NAMES">
-      jaanuar;veebruar;märts;aprill;mai;juuni;juuli;august;september;oktoober;november;detsember
+      leden;únor;březen;duben;květen;červen;červenec;srpen;září;říjen;listopad;prosinec
     </string> 
     <string key="RSS_FEED">
-      RSS voog
+      RSS kanál
     </string> 
     <string key="DOMA_VERSION_X">
       DOMA %s
     </string> 
     <string key="NAME">
-      Nimi
+      Jméno
     </string> 
     <string key="DATE">
-      Kuupäev
+      Datum
     </string> 
     <string key="ORGANISER">
-      Korraldaja
+      Pořadatel
     </string> 
     <string key="COUNTRY">
-      Riik
+      Země
     </string> 
     <string key="DISCIPLINE">
-      Ala
+      Disciplína
     </string> 
     <string key="RELAY_LEG">
-      Vahetus
+      Úsek
     </string> 
     <string key="RELAY_LEG_LONG">
-      Teate vahetus
+      Úsek štafet
     </string> 
     <string key="RELAY_LEG_LOWERCASE">
-      vahetus
+      úsek
     </string> 
     <string key="MAP_AREA_NAME">
-      Kaart/piirkond
+      Mapa/oblast
     </string> 
     <string key="RESULTS">
-      Tulemused
+      Výsledky
     </string> 
     <string key="COMMENT">
-      Kommentaar
+      Komentář
     </string> 
     <string key="LOGIN">
-      Sisene
+      Přihlásit
     </string> 
     <string key="LOGOUT">
-      Välju
+      Odhlásit
     </string> 
     <string key="INVALID_USERNAME_OR_PASSWORD">
-      Vigane kasutaja ja/või parool.
+      Špatné jméno a/nebo heslo.
     </string> 
     <string key="USERNAME">
-      Kasutaja
+      Jméno
     </string> 
     <string key="PASSWORD">
-      Parool
+      Heslo
     </string> 
     <string key="YES">
-      Jah
+      Ano
     </string> 
     <string key="NO">
-      Ei
+      Ne
     </string> 
     <string key="REALAVG">
-      Tempo
+      Průměr
     </string> 
     <string key="PROJECTEDDISTANCE">
-      Hinnanguline distants
+      Délka
     </string> 
     <string key="PROJECTEDDISTANCEFORMAT">
-      Arvuna, formaat: x.xx (näiteks 7.95)
+      Pouze číslo, formát čísla: x.xx (např. 7.95)
     </string> 
     <string key="CLIMBING">
-      Tõus
+      Převýšení
     </string> 
     <string key="CLIMBINGFORMAT">
-      Arvuna: xxx (näiteks 395)
+      Pouze číslo: xxx (např. 395)
     </string> 
     <string key="FIXDISTANCE">
-      Hinnangulise distantsi vorming ei vasta soovitule. Formaat: x.xx (näiteks 7.95) - peab sisaldama punkti
+      Hodnota v poli Délka neodpovídá požadovanému formátu. Formát čísla: x.xx (např. 7.95) - požadována je desetinná tečka
     </string> 
     <string key="FIXCLIMBING">
-      Value in field Climbing does not fit to requested format. Format: xxx (for example 395)
-      Tõusu vorming ei vasta soovitule. Formaat: xxx (näiteks 395)
+      Hodnota v poli Převýšení neodpovídá požadovanému formátu. Formát čísla: xxx (např. 395)
     </string> 
 
     <!--  topbar ****************************************************************************************************** --> 
     <string key="DOMA_FOR_X">
-      %s orienteerumiskaartide digi-kogu
+      Digitalní archív orienťáckých map pro %s
     </string> 
     <string key="ALL_USERS">
-      Kõik kasutajad
+      Všichni uživatelé
     </string> 
     <string key="ADMIN_LOGIN">
-      Sisene administraatorina
+      Přihlášení administrátora
     </string> 
     <string key="ADMIN_LOGOUT">
-      Administraator välja
+      Odhlášení administrátora
     </string> 
 
     <!--  index.php ****************************************************************************************************** --> 
     <string key="NO_MAPS">
-      Kaarte ei ole lisatud.
+      Žádná mapa nebyla publikována.
     </string> 
     <string key="SELECT_YEAR">
-      Aasta
+      Rok
     </string> 
     <string key="SELECT_CATEGORY">
-      Kategooria
+      Kategorie
     </string> 
     <string key="ALL_YEARS">
-      [kõik aastad]
+      [všechny]
     </string> 
     <string key="ALL_CATEGORIES">
-      [kõik kategooriad]
+      [všechny]
     </string> 
     <string key="NO_MATCHING_MAPS">
-      Otsingule vastavaid kaarte ei leitud.
+      Žádné mapy nevyhovují podmínkám vyhledávání.
     </string> 
     <string key="VIEWS">
-      Vaatamisi
+      pohledy
     </string> 
 
     <!--  show_map.php ****************************************************************************************************** --> 
     <string key="BACK">
-      Tagasi
+      Zpět
     </string> 
     <string key="PREVIOUS">
-      Eelmine
+      Předchozí
     </string> 
     <string key="NEXT">
-      Järgmine
+      Další
     </string> 
 
     <!--  edit_map.php ****************************************************************************************************** --> 
     <string key="ADD_MAP">
-      Lisa kaart
+      Přidej mapu
     </string> 
     <string key="EDIT_MAP">
-      Muuda kaarti
+      Edituj mapu
     </string> 
     <string key="EDIT_MAP_X">
-      Muuda kaarti: %s
+      Edituj mapu: %s
     </string> 
     <string key="MAP_DATE_FORMAT">
-      aaaa-kk-pp, lisaks võib ka tt:mm:ss
+      dd.mm.rrrr, a nepovinně hh:mm:ss
     </string> 
     <string key="LINK_TO_RESULT_LIST">
-      Viide tulemustele
+      Odkaz na výsledky
     </string> 
     <string key="MAP_IMAGE_FILE">
-      Kaardifail
+      Soubor obrázku mapy
     </string> 
     <string key="LEAVE_EMPTY_TO_KEEP_EXISTING_MAP">
-      Kui kaart on sama, jäta tühjaks.
+      Nech prázdné pro ponechání existující mapy.
     </string> 
     <string key="THUMBNAIL_IMAGE_FILE">
-      Pisipilt
+      Soubor obrázku náhledu
     </string> 
     <string key="THUMBNAIL_INFO">
-      Suurus %d x %d pikselit, automaatseks loomiseks jäta tühjaks. Suurtest failidest pispildi tekitamine ei pruugi serveri mälupiirangute tõttu õnnestuda.
+      Velikost %d x %d pixelů, nech prázdné pro automatické vygenerování. Velké mapy nemusí mít vygenrován náhled kvůli paměťovým omezením serveru.
     </string> 
     <string key="CONFIRM_DELETION">
-      Kinnita kustutamine
+      Potvrď smazání
     </string> 
     <string key="SAVE">
-      Salvesta
+      Ulož
     </string> 
     <string key="DELETE">
-      Kustuta
+      Smaž
     </string> 
     <string key="CANCEL">
-      Katkesta
+      Zrušit
     </string> 
     <string key="NO_MAP_FILE_ENTERED">
-      Kaardifail ei olnud määratud.
+      Žádný soufor obrázku mapy nebyl specifikován.
     </string> 
     <string key="INVALID_MAP_IMAGE_FORMAT">
-      Kaardifaili formaat &lt;em&gt;%s&lt;/em&gt; ei sobi. Toetatud on ainult jpeg, png ja gif vormingud.
+      Formát souboru obrázku mapy &lt;em&gt;%s&lt;/em&gt; je neplatný. Pouze jpeg, png a gif formáty jsou podporovány.
     </string> 
     <string key="INVALID_THUMBNAIL_IMAGE_FORMAT">
-      Pisipildi formaat &lt;em&gt;%s&lt;/em&gt; ei sobi. Toetatud on ainult jpeg, png ja gif vormingud.
+      Formát souboru obrázku náhledu &lt;em&gt;%s&lt;/em&gt; je neplatný. Pouze jpeg, png a gif formáty jsou podporovány.
     </string> 
     <string key="MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      Kaardifaili &lt;em&gt;%s&lt;/em&gt; üles laadimine nurjus.
+      Soubor obrázku mapy &lt;em&gt;%s&lt;/em&gt; nemohl být nahrán.
     </string> 
     <string key="THUMBNAIL_IMAGE_COULD_NOT_BE_UPLOADED">
-      Pisipildi &lt;em&gt;%s&lt;/em&gt; üles laadimine nurjus.
+      Soubor obrázku náhledu &lt;em&gt;%s&lt;/em&gt; nemohl být nahrán.
     </string> 
     <string key="NO_MAP_NAME_ENTERED">
-      Puudub kaardi nimi.
+      Nebylo zadán název mapy.
     </string> 
     <string key="NO_DATE_ENTERED">
-      Puudub kuupäev.
+      Nebylo zadáno datum.
     </string> 
     <string key="INVALID_DATE">
-      Sisestatud kuupäev ei sobi, palun kasuta vormingut: aaa-kk-pp.
+      Datum je neplatné. Zadejte datum ve formátu rrrr-mm-dd.
     </string> 
     <string key="CATEGORY">
-      Kategooria
+      Kategorie
     </string> 
     <string key="CATEGORY_TOOLTIP">
-      Kategooria, kuhu kaart kuulub. Kategooriaid saab lisada enda kasutaja sätete alt.
+      Kategorie, do které mapa patří. Nové kategorie můžete vytvořit ve svém profilu.
     </string> 
     <string key="THUMBNAIL_CREATION_FAILURE">
-	    Pisipilti loomine nurjus. Võimalikuks põhjuseks on vähene vaba mälu serveril. ~ %s pikselist laiemate/kõrgemate  piltide korral sellel serveril pisipilte automaatne loomine võib ebaõnnestuda. Võimalusel suurenda php.ini failis memory_limit parameetrit. &lt;br /&gt; Loodi vaikimisi-pisipilt. Proovi väiksemat kaardifaili või lae pisipilt ise üles.
+      Náhled nemohl být vytvořen. Důvodem mohl být nedostatek paměti na serveru. Na tomto serveru nemohou být automaticky vygenerovány náhledy pro obrázky větší než přibližně %s pixelů. Prosím zvyšte hodnotu parametru memory_limit v php.ini.&lt;br /&gt;Místo toho byl vytvořen Standardní náhled. Zkus použít menší obrázek mapy nebo nahrát náhled ručně.
     </string> 
 
     <!--  users.php ****************************************************************************************************** --> 
     <string key="NO_OF_MAPS">
-      Kaardid
+      Mapy
     </string> 
     <string key="EDIT">
-      Muuda
+      Edituj
     </string> 
     <string key="ADMIN_LOGIN_INFO">
-      Kasutajanimi ja parool on määratud config.php failis.
+      Jmeno a heslo odpovídá nastavení v souboru config.php.
     </string> 
     <string key="VISIBLE">
-      Nähtav
+      Viditelné
     </string> 
     <string key="LOGIN_AS">
-      Sisene kui
+      Přihlásit jako
     </string> 
     <string key="LOGIN_AS_X">
-      Sisene kui %s
+      Přihlásit jako %s
     </string> 
     <string key="LAST_MAP">
-      Viimane kaart
+      Poslední mapa
     </string> 
     <string key="NO_USERS_CREATED">
-      Kasutajaid ei ole veel loodud.
+      Zatím nebyl vytvořen zádný uživatel.
     </string> 
     <string key="CREATE_THE_FIRST_USER">
-      Vajuta siia esimese kasutaja loomiseks.
+      Klekni zde pro vytvoření prvního uživatele.
     </string> 
     <string key="MAP">
-      Kaart
+      Mapa
     </string> 
     <string key="UPDATED">
-      Uuendatud
+      Aktualizováno
     </string> 
     <string key="USERS">
-      Kasutajad
+      Uživatelé
     </string> 
     <string key="LAST_MAPS">
-      Hiljutised kaardid
+      Poslední mapy
     </string> 
     <string key="PUBLIC_CREATE_USER_INFO">
-      Kasutades &lt;a href=&quot;mailto:%adminEmail%&quot;&gt;administraatorilt&lt;/a&gt; saadud koodi, võid &lt;a href=&quot;enter_public_creation_code.php&quot;&gt;luua oma o-kaartide digi-kogu&lt;/a&gt;. 
+      Můžeš &lt;a href=&quot;enter_public_creation_code.php&quot;&gt;vytvořit svůj vlastní digitální archív orienťáckých map&lt;/a&gt; zadáním přistupového kódu poskytnutého &lt;a href=&quot;mailto:%adminEmail%&quot;&gt;administrátorem&lt;/a&gt;.
     </string> 
 
     <!--  edit_user.php ****************************************************************************************************** --> 
     <string key="ADD_USER">
-      Loo uus kasutaja
+      Vytvoř nového uživatele
     </string> 
     <string key="EDIT_USER_X">
-      Muuda kasutajat: %s
+      Edituj uživatele: %s
     </string> 
     <string key="FIRST_NAME">
-      Eesnimi
+      Jméno
     </string> 
     <string key="LAST_NAME">
-      Perenimi
+      Příjmení
     </string> 
     <string key="EMAIL">
-      E-post
+      Email
     </string> 
     <string key="USERNAME_EXISTS">
-      Selle nimega kasutaja on juba olemas, palun vali teine nimi.
+      Uživatel se zadaným jménem už existuje. Vyber jiné jméno.
     </string> 
     <string key="NO_USERNAME_ENTERED">
-      Kasutajanime ei sisestatud.
+      Jmené nebylo zadáno.
     </string> 
     <string key="NO_FIRST_NAME_ENTERED">
-      Eesnime ei sisestatud.
+      Jméno nebylo zadáno.
     </string> 
     <string key="NO_LAST_NAME_ENTERED">
-      Perenime ei sisestatud.
+      Příjmení nebylo zadáno.
     </string> 
     <string key="NO_EMAIL_ENTERED">
-      E-posti aadressi ei sisestatud.
+      Email adresa nebyla zadána.
     </string> 
     <string key="INVALID_EMAIL">
-      E-posti aadress on vigane.
+      Email adresa je neplatná.
     </string> 
     <string key="NO_PASSWORD_ENTERED">
-      Uue kasutaja parool peab olema sisestatud.
+      MUsí být zadáno heslo pro nového uživatele.
     </string> 
     <string key="SHOW_ORGANISER_DESCRIPTION">
-      Kaardi juurde käib info korraldaja kohta; 1 - jah, 0 - ei.
+      Zda přiřadit pořadatele k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_COUNTRY_DESCRIPTION">
-      Kaardi juurde käib info asukohamaa kohta; 1 - jah, 0 - ei.
+      Zda přiřadit zemi k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_DISCIPLINE_DESCRIPTION">
-      Kaardi juurde käib info ala/võistlusformaadi kohta; 1 - jah, 0 - ei.
+      Zda přiřadit disciplínu k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_RELAY_LEG_DESCRIPTION">
-      Kaardi juurde käib info teatevõistluse vahetuse kohta; 1 - jah, 0 - ei.
+      Zda přiřadit štafetový úsek k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_MAP_AREA_NAME_DESCRIPTION">
-      Kaardi juurde käib info piirkonna või kaardi nime kohta; 1 - jah, 0 - ei.
+      Zda přiřadit mapu/název oblasti k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_RESULT_LIST_URL_DESCRIPTION">
-      Kaardi juurde käib viide tulemustele; 1 - jah, 0 - ei.
+      Zda přiřadit odkaz na výsledky k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_COMMENT_DESCRIPTION">
-      Kaardi juurde käib kommentaar; 1 - jah, 0 - ei.
+      Zda přiřadit komentář k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="PAGE_TITLE_DESCRIPTION">
-      Lehe tiitel-tekst. Näidatakse lehitseja akna tiitelribal ja RSS voos.
+      Titulek tvé stránky. Zobrazen v okně prohlížeče a v RSS kanálu.
     </string> 
     <string key="CAPTION_DESCRIPTION">
-      Lehe pealkiri, kuvatakse lehe päises.
+      Hlavička zobrazena nahoře úvodní stránky.
     </string> 
     <string key="INTRO_DESCRIPTION">
-      Lehe kirjeldus, kuvatakse pealkirja all.
+      Popis stránky pod hlavičkou.
     </string> 
     <string key="FOOTER_DESCRIPTION">
-      Lehe jaluses kuvatav tekst.
+      Text zobrazený na konci stránky.
     </string> 
     <string key="RSS_DESCRIPTION_DESCRIPTION">
-      RSS voos kuvatav lehe kirjeldus.
+      Popis stránky zobrazující se v RSS kanálu.
     </string> 
     <string key="USERNAME_DESCRIPTION">
-      Kasutajanimi. Koos parooliga tuvastab siin sinu kasutaja.
+      Uživatelské jméno, které tě spolu s heslem identifikuje.
     </string> 
     <string key="ADMIN_USERNAME_DESCRIPTION">
-      Kasutajanimi ei tohi juba olemas olla.
+      Uživatelské jméno musí být unikátní.
     </string> 
     <string key="ADMIN_PASSWORD_DESCRIPTION_NEW_USER">
-      Sisesta ajutine alg-parool.
+      Zadej dočasné úvodní heslo.
     </string> 
     <string key="ADMIN_PASSWORD_DESCRIPTION_EXISTING_USER">
-      Olemasoleva parooli alles hoidmiseks jäta tühjaks.
+      Nech prázdné pro ponechání dosavadního hesla.
     </string> 
     <string key="PASSWORD_DESCRIPTION">
-      Parool. Koos kasutajanimega tuvastab siin sinu kasutaja. Vana parooli alles hoidmiseks jäta tühjaks.
+      Heslo, které tě spolu s uživatelským jménem identifikuje. Nech prázdné pro ponechání dosavadního hesla.
     </string> 
     <string key="FIRST_NAME_DESCRIPTION">
-      Sinu eesnimi.
+      Jméno.
     </string> 
     <string key="ADMIN_FIRST_NAME_DESCRIPTION">
-      Kasutaja eesnimi.
+      Jméno uživatele.
     </string> 
     <string key="LAST_NAME_DESCRIPTION">
-      Sinu perenimi.
+      Příjmení.
     </string> 
     <string key="ADMIN_LAST_NAME_DESCRIPTION">
-      Kasutaja perenimi.
+      Příjmení uživatele.
     </string> 
     <string key="EMAIL_DESCRIPTION">
-      Sinu e-posti aadress.
+      Email adresa.
     </string> 
     <string key="ADMIN_EMAIL_DESCRIPTION">
-      Kasutaja e-posti aadress.
+      Uživatelova email adresa.
     </string> 
     <string key="ADMIN_VISIBLE_DESCRIPTION">
-      Sea see kogu avalikult nähtavaks ja ligipääsetavaks.
+      Udělej archív veřejně viditelný a dostupný.
     </string> 
     <string key="ADMIN_ADD_USER_INFO">
-      Sisesta uue kasutaja andmed.
+      Zadej detaily nového uživatele.
     </string> 
     <string key="ADMIN_EDIT_USER_INFO">
-      Muuda kasutaja andmeid.
+      Edituj detaily uživatele.
     </string> 
     <string key="EDIT_USER_PROFILE_TITLE">
-      Muuda oma kasutaja andmeid.
+      Edituj svůj uživatelský profil
     </string> 
     <string key="ADD_USER_PROFILE_TITLE">
-      Lisa uus kasutaja.
+      Vytvoř nový uživatelský profil
     </string> 
     <string key="PERSONAL_DETAILS_TITLE">
-      Isiklikud andmed.
+      Osobní detaily
     </string> 
     <string key="PERSONAL_DETAILS_INFO">
-      Sisesta enda isiklikud andmed.
+      Zadej své osobní detaily.
     </string> 
     <string key="ADMIN_PERSONAL_DETAILS_INFO">
-      Sisesta kasutaja isiklikud andmed.
+      Zadej uživatelovy osobní detaily.
     </string> 
     <string key="MAP_CATEGORIES_TITLE">
-      Kaartide kategooriad.
+      Kategorie map
     </string> 
     <string key="ADMIN_MAP_CATEGORIES_INFO">
-      Määra kategooriad, mille vahel jaotatakse kasutaja kaardid.
+      Specifikuj kategorie, do kterých budou uživatelovy mapy rozděleny.
     </string> 
     <string key="MAP_CATEGORIES_INFO">
-      Määra kategooriad, mille vahel jaotatakse sinu kaardid.
+      Specifikuj kategorie, do kterých budou tvé mapy rozděleny.
     </string> 
     <string key="TEXTS_AND_SETTINGS_TITLE">
-      Tekstid ja seaded.
+      Texty a nastavení
     </string> 
     <string key="ADMIN_TEXTS_AND_SETTINGS_INFO">
-      Kasutaja lehel kuvatavad teskid ning valikud, mis määravad iga kaardiga seotud info.
+      Text zobrazený na uživatelových stránkách a nastavení, která data přiřadit ke každé mapě.
     </string> 
     <string key="TEXTS_AND_SETTINGS_INFO">
-      Sinu lehel kuvatavad teskid ning valikud, mis määravad iga kaardiga seotud info.
+      Text zobrazený na tvých stránkách a nastavení, která data přiřadit ke každé mapě.
     </string> 
     <string key="USER_PROFILE">
-      Kasutaja andmed ja seaded
+      Uživatelský profil
     </string> 
     <string key="REQUIRED_FIELDS_INFO">
-      %s tähistab kohustuslikke välju
+      Povinná pole jsou označena %s.
     </string> 
     <string key="MAP_CATEGORIES">
-      Kaartide kategooriad
+      Kategorie map
     </string> 
     <string key="DEFAULT_CATEGORY_NAMES">
-      Võistlus;Treening
+      Závody;Tréninky
     </string> 
     <string key="DEFAULT_CATEGORY">
-      vaikimisi
+      výchozí
     </string> 
     <string key="ADD_CATEGORY">
-      Loo uus kategooria
+      Vytvoř novou kategorii
     </string> 
     <string key="DELETE_CATEGORY">
-      Kustuta kategooria
+      Smaž kategorii
     </string> 
     <string key="CAN_NOT_DELETE_NONEMPTY_CATEGORY">
-      Kategooria %s kustutamine ei õnnestunud, sest see sisaldab veel %d kaarti. Palun kustuta esmalt kaardid.
+      Nemohu smazat mapovou kategorii %s, protože stále obsahuje %d map. Prosím smažte nejprve tyto mapy.
     </string> 
     <string key="CAN_NOT_DELETE_ALL_CATEGORIES">
-      Alati peab jääma vähemalt üks kategooria.
+      Vždy musí existovat alespoň jedna mapová kategorie.
     </string> 
     <string key="CATEGORY_NAME_CANNOT_BE_EMPTY">
-      Kategooria nimi on kohustuslik.
+      Musí být zadán název mapové kategorie.
     </string> 
 
     <!--  create.php ****************************************************************************************************** --> 
     <string key="SITE_ALREADY_CREATED">
-      See leht on juba loodud.
+      Web již byl vytvořen.
     </string> 
     <string key="TOO_OLD_PHP_VERSION">
-      Vajalik PHP versioon on 5.0.0 või uuem. Preagu on kasutuses %s.
+      Je třeba PHP verze 5.0.0 a vyšší. Aktuální verze je %s.
     </string> 
     <string key="MYSQL_ERROR_X">
-      MySQL viga: %s
+      MySQL chyba: %s
     </string> 
     <string key="SITE_SUCCESSFULLY_CREATED_TITLE">
-      Leht edukalt loodud!
+      Web úspěšně vytvořen!
     </string> 
     <string key="SITE_SUCCESSFULLY_CREATED_MESSAGE">
-      Leht on edukalt loodud. Muuda faili config.php lehe seadete muutmiseks.
+      Web byl úspěšně vytvořen. Edituj soubor config.php pro změnu nastavení webu.
     </string> 
     <string key="GOTO_START_PAGE">
-      Liigu esilehele.
+      Jdi na úvodní stránku
     </string> 
     <string key="ERRORS_WHEN_CREATING_SITE_TITLE">
-      Viga lehe loomisel
+      Chyba při vytváření webu
     </string> 
     <string key="ERRORS_WHEN_CREATING_SITE_MESSAGE">
-      Lehte ei õnnestunud luua. Vaata läbi allolevad veateated ja tee vajalikud muudatused config.php failis ja/või andmebaasis.
+      Web nemohl být vytcořen. Zkontrolujte chybová hlášení a prověďtě nezbytné úpravy v souboru config.php a/nebo v databázi.
     </string> 
     <string key="ERRORS_TRY_AGAIN">
-      Proovi uuesti
+      Zkus znovu
     </string> 
 
     <!--  enter_public_creation_code.php ******************************************************************************************** --> 
     <string key="PUBLIC_CREATION_CODE">
-      Sisesta kood
+      Zadej přístupový kód
     </string> 
     <string key="PROCEED">
-      Jätka
+      Zpracováno
     </string> 
     <string key="INVALID_CODE">
-      Vale kood.
+      Chybný kód.
     </string> 
 
     <!--  email sending ****************************************************************************************************** --> 
     <string key="DOMA_ADMIN_EMAIL_NAME">
-      DOMA haldur
+      DOMA Administrator
     </string> 
     <string key="NEW_USER_EMAIL_SUBJECT">
-      Sinu o-kaartide digi-kogu on loodud!
+      Tvůj digitální archív orienťáckých map byl vytvořen!
     </string> 
     <string key="NEW_USER_EMAIL_BODY">
-Tere %s, 
+      
+Ahoj %s, 
 
-See automaatne teade kinnitab, et orienteerumiskaartide digi-kogu on loodud, aadressiks on %s.
+Tohle je automaticky generovaný email potvrzující, že ti byl vytvořen digitální archív orienťáckých map na %s.
 
-Sinu esileht:  %s 
-Sinu kasutaja: %s 
-Sinu parool:   %s
+Tvá výchozí stránka: %s 
+Tvé uživatelské jméno:  %s 
+Tvé heslo:   %s
+
+Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
+    
     </string> 
     <string key="SEND_CONFIRMATION_EMAIL">
-      Kinnitus e-postiga
+      Emailové potvrzení
     </string> 
     <string key="SEND_CONFIRMATION_EMAIL_DESCRIPTION">
-      Saada e-kiri konto andmetega uuele kasutajale
+      Pošli email s informacemi o uživatelském účtu novému uživateli
     </string> 
     <string key="ADMIN_EMAIL_ERROR">
-      E-kirja ei õnnestunud saata. Kontrolli oma e-posti SMTP seadeid php.ini failis ja administraatori aadressi config.php failis (praegune aadress on %s).
+      Email nemohl být poslán. Zkontrolujte nastavení SMTP v souboru php.ini a email adresu administrátora v souboru config.php (stávající adresa je %s).
     </string> 
     <string key="SEND_NEW_PASSWORD_TITLE">
-      Saada uus parool
+      Pošli nové heslo
     </string> 
     <string key="SEND_NEW_PASSWORD_INFO">
-      Unustasid parooli? Ära muretse, uue parooli saab saata sinu profiilis määratud aadressile: %s.
+      Zapomněl jsi heslo? Nepanikař, nové ti bude zasláno na emailovou adresu nastavenou v tvém uživatelském profilu: %s.
     </string> 
     <string key="SEND_NEW_PASSWORD">
-      Saada uus parool
+      Pošli nové heslo
     </string> 
     <string key="EMAIL_ERROR">
-      E-kirja ei õnnestunud saata. Palun võta ühendust administraatoriga.
+      Email nemohl být odeslán. Prosím kontaktujte administrátora.
     </string> 
     <string key="NEW_PASSWORD_EMAIL_SUBJECT">
-      Sinu o-kaartide digi-kogu uus parool
+      Nové heslo pro tvůj digitální archív orienťáckých map
     </string> 
     <string key="NEW_PASSWORD_EMAIL_BODY">
-Tere %s, 
+      
+Ahoj %s, 
 
-See automaatne teade sisaldab uut parooli sinu o-kaartide digi-kogu tarvis aadressil %s.
+Tohle je automaticky generovaný email obsahující nové heslo pro tvůj digitální archív orienťáckých map na %s. 
 
-Sinu esileht:  %s 
-Sinu kasutaja: %s 
-Sinu parool:   %s
+Tvá výchozí stránka:   %s 
+Tvé uživatelské jméno:    %s 
+Tvé nové heslo: %s 
+
+Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
+    
     </string> 
     <string key="NEW_PASSWORD_SENT">
-      Uus parool on saadetud aadressile %s.
+      Nové heslo bylo nastaveno na %s.
     </string> 
     <string key="FORGOT_PASSWORD">
-      Olen unustanud oma parooli
+      Zapomněl jsem své heslo
     </string> 
-    <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
+
+	<!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      Tühja kaardifaili &lt;em&gt;%s&lt;/em&gt; formaat ei sobi. Toetatud on jpeg-, png- ja gif-vormingus pildid. 
+      Formát mapy bez postupů &lt;em&gt;%s&lt;/em&gt; není platný. Pouze formáty jpeg, png a gif jsou podporovány.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      Tühja kaardifaili &lt;em&gt;%s&lt;/em&gt; ei õnnestunud üles laadida.
+      Mapa bez postupů &lt;em&gt;%s&lt;/em&gt; nemohla být nahrána.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Tühi kaardifail
+      Mapa bez postupů
     </string> 
     <string key="MAP_INFO">
-      Kaart, millele joonistatakse sinu rada.
+      Mapa s postupy.
     </string> 
     <string key="BLANK_MAP_INFO">
-      Radadeta kaart. Ei ole kohstuslik.
+      Mapa bez postupů. Není povinná.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Kuvamisviis
+      Zobrazení
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      Nimekiri
+      Seznam
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Ülevaatekaart
+      Google mapy
     </string> 
     <string key="INFORMATION">
-      Info
+      Informace
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Kuva teevalikud
+      Zobrazit postupy
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Peida teevalikud
+      Skrýt postupy
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Klõpsa kaardil teevalikute sisse/välja lülitamiseks
+      Klikni na mapu pro zapnutí/vypnutí postupů
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...või lihtsalt vajuta kaardil...
+      ...nebo stačí pouze kdekoliv na mapě kliknout myší...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Kuva ülevaatlik kaart
+      Zobrazit náhled na Google mapě
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Peida ülevaatlik kaart
+      Skýt náhled na Google mapě
     </string> 
     <string key="KMZ_TOOLTIP">
-      ...Google Earth tarbeks...
+      ...pro Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Kas siduda distants kaardiga; 1 - jah, 0 - ei.
+      Zda přiřadit délku k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Kas siduda kulunud aeg kaardiga; 1 - jah, 0 - ei. 
+      Zda přiřadit čas k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Kas siduda maksimaalne pulsisagedus kaardiga; 1 - jah, 0 - ei.
+      Zda přiřadit maximální TF k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Kas siduda keskmine pulsisagedus kaardiga; 1 - jah, 0 - ei.
-    </string> 
-    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Kas lubada külastajail kaarte kommenteerida; 1 - jah, 0 - ei.
-    </string> 
-    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Kas kaardilehel on kommentaarid vaikimisi kokku keritult; 1 - jah, 0 - ei.      
-    </string> 
-    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Kas külastajate kommentaarid tuleks saata e-postitsi; 1 - jah, 0 - ei.      
+      Zda přiřadit průměrnou TF k mapě; 1 přiřadit, 0 přeskočit.
     </string> 
     <string key="ELAPSEDTIME">
-      Aeg
+      Čas
     </string> 
     <string key="DISTANCE">
-      Distants
+      Skutečná délka
     </string> 
     <string key="AVGHR">
-      Keskmine pulss
+      Prům. tepy
     </string> 
     <string key="MAXHR">
-      Maksimaalne pulss
+      Max. tepy
     </string> 
     <string key="LANGUAGE">
-      Keel
+      Jazyk
     </string> 
     <string key="SHOW_COMMENTS">
-      Kuva kommentaarid
+      Zobrazit komentáře
     </string> 
     <string key="HIDE_COMMENTS">
-      Peida kommentaarid
+      Skrýt komentáře
     </string> 
     <string key="POST_COMMENTS">
-      Lisa kommentaar
+      Napiš komentář
     </string> 
     <string key="NAME">
-      Nimi
+      Jméno
     </string> 
     <string key="MISSING_COMMENT">
-      Nimi ning kommentaar ei tohi jääda tühjaks!
+      Pole Jméno a samotný text komentáře je nutno vyplnit!
+    </string> 
+    <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
+      Povolit návštěvníkům vytvářet komentáře
+    </string> 
+    <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
+      Zobrazit komentáře automaticky sbalené
+    </string> 
+    <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
+      Dostávat komentáře emailem
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Oled kindel, et soovid selle kommetaari kustutada?
+      Opravdu chcete smazat tento komentář?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - uus kommentaar
+      Digitalni archiv orientackych map - novy komentar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Tere, 
+Ahoj, 
 
-Sinu kaardikogus lisati uus kommentaar.
+K mapam ve Tvem archivu byl vlozen novy komentar.
 
-Kaart:  %s 
-Viide: %s
+Mapa:  %s 
+Odkaz: %s
 
-Kommentaar
-Nimi:   %s 
-E-post:  %s
-Sisu:   %s
+Obsah komentare
+Jmeno:  %s 
+Email:  %s
+Text:   %s
     </string>     
     <string key="LAST_COMMENTS">
-      Viimased kommenteeritud kaardid
+      Naposledy komentované mapy
     </string> 
     <string key="COMMENTS_COUNT">
-      Kommentaarid
+      Počet komentářů
     </string> 
     <string key="COMMENT_FROM">
-      Viimane kommenteerija: 
+      Poslední komentář od
     </string> 
     <string key="KMZ">
-      KMZ
-    </string> 
+      Otevřít v Google Earth
+    </string>
     <string key="PROTECTED_UNTIL">
-      Varjatud kuni
+      Skryto do
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Aeg, millal kaart muutub ähtavaks teistele külalistele, formaadiks on aaaa-kk-pp tt:mm:ss. Tühjaks jättes kaarti ei peideta. Võimalust saab kasutada kaartide üles laadimisel enne üritust, nii, et nähtavaks muutuvad need alles peale ürituse lõppu.
+      Datum a čas, odkdy bude mapa dostupná ostatním uživatelům, zadej ve formátu rrrr-mm-dd hh:mm:ss. Ponech prázdné, pokud nechceš mapu skrýt. Tato vlastnost může být použita pro nahrání mapy před závodem tak, aby byla v určitý čas ihned dostupná všem účastníkům.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      Aeg, milleni kaart on peidetud, ei sobi. Sisesta aeg kujul kujul aaaa-kk-pp tt:mm:ss või jäta väli tühjaks.
+      Datum a čas, dokdy má být mapa skryta není platný. Zadej hodnotu ve formátu rrrr-mm-dd hh:mm:ss nebo ponechej pole prázdné.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      See kaart on teistele varjatud kuni %s.
-    </string>
+      Mapa je pro ostatní skryta do %s.
+    </string>    
     <string key="SHOW_ALL">
-      kõik
+      vše
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

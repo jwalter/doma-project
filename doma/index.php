@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
   <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
   <script src="js/overview_map.js" type="text/javascript"></script>
   <?php if($vd["DisplayMode"] == "overviewMap") { ?>
     <script type="text/javascript">
@@ -29,6 +29,7 @@
     </script>
   <?php } ?>
   <script src="js/index.js" type="text/javascript"></script>
+  <script src="js/common.js" type="text/javascript"></script>
 </head>
 
 <body id="indexBody">

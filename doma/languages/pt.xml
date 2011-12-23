@@ -64,11 +64,11 @@
 
   <nonCustomizable>
     <!--  general ****************************************************************************************************** --> 
-    <!--  date format to use, PHP format string --> 
+    <!--  date format to use, PHP format string (Y, m, d, H, i, s can be used) --> 
     <string key="DATE_FORMAT">
       d-m-Y
     </string> 
-    <!--  date and time format to use, PHP format string --> 
+    <!-- date and time format to use, PHP format string (Y, m, d, H, i, s can be used) -->
     <string key="DATETIME_FORMAT">
       d-m-Y H:i
     </string> 

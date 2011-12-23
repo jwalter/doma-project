@@ -19,8 +19,7 @@
   <script type="text/javascript" src="js/show_map.js"></script>
   <script type="text/javascript" src="js/jquery/jquery.timeago.js"></script>
   <?php 
-    $lang = Session::GetLanguageFileShort();
-    $langcode = substr($lang,0,strlen($lang)-4);
+    $lang = Session::GetLanguageCode();
     if(($langcode != "")&&($langcode != "en"))
     {
       ?>
@@ -30,8 +29,9 @@
   ?>
   
   <?php if($vd["OverviewMapData"] != null) { ?>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
     <script src="js/overview_map.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
     <script type="text/javascript">
       <!--
       $(function() { 
@@ -183,7 +183,7 @@ if($map->IsGeocoded)
 	<script type="text/javascript">
 	  var divh = document.getElementById('wrapper').offsetHeight;
     
-    document.write('<a href="http://maps.google.com/maps?q=<?php print $coordinates; ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php print $coordinates; ?>&amp;zoom=6&amp;size=174x'+divh+'&amp;maptype=terrain&amp;markers=color:red%7C<?php print $coordinates; ?>&amp;sensor=false"></a>');
+    document.write('<a href="http://maps.google.com/maps?q=<?php print $coordinates; ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php print $coordinates; ?>&amp;zoom=6&amp;size=174x'+divh+'&amp;maptype=terrain&amp;markers=color:red%7C<?php print $coordinates; ?>&amp;sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>"></a>');
   </script>
 	<?php
 	print '</div>';

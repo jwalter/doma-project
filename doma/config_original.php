@@ -34,23 +34,23 @@
   // The directory is created during creation. Write access to the directory for the server user account under which PHP runs is required.
   define('MAP_IMAGE_PATH', 'map_images');
 
-  // The file that contains the text strings to display on the site.
-  // Language files are in xml format and located in the 'languages' directory.
+  // The default language code of the site according to ISO 639-1 language codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes 
+  // Language files are in xml format, named [language code].xml (e.g. en.xml) and located in the 'languages' directory.
   // You may create your own language file by copying and modifying one of the existing files.
-  // Current language files include
-  //   en.xml     (English, credits to Boris Granovskiy)
-  //   sv.xml     (Swedish)
-  //   no_NB.xml  (Norwegian Bokmål, credits to Bjørge Solli)
-  //   cz.xml     (Czech, credits to Michal Besta)
-  //   de_AT.xml  (German/Austria, credits to Markus Plohn)
-  //   es.xml     (Spanish, credits to Iñaki Larena)
-  //   dk.xml     (Danish, credits to Michael Leth Jess)
-  //   hu.xml     (Hungarian, credits to Csaba Gösswein)
-  //   ee.xml     (Estonian, credits to Margus Lehtme)
-  //   it.xml     (Italian, credits to Davide Miori)
-  //   fr.xml     (French, credits to François Coulier)
-  //   pt.xml     (Portugese, credits to Rui Tavares)
-  define('LANGUAGE_FILE', 'en.xml');
+  // Current languages include
+  //   en     (English, credits to Boris Granovskiy)
+  //   sv     (Swedish)
+  //   no_NB  (Norwegian Bokmål, credits to Bjørge Solli)
+  //   cs     (Czech, credits to Michal Besta)
+  //   de_AT  (German/Austria, credits to Markus Plohn)
+  //   es     (Spanish, credits to Iñaki Larena)
+  //   da     (Danish, credits to Michael Leth Jess)
+  //   hu     (Hungarian, credits to Csaba Gösswein)
+  //   et     (Estonian, credits to Margus Lehtme)
+  //   it     (Italian, credits to Davide Miori)
+  //   fr     (French, credits to François Coulier)
+  //   pt     (Portugese, credits to Rui Tavares)
+  define('LANGUAGE_CODE', 'en');
 
   // The MySQL text sorting order, known as 'collation'.
   // Use utf8_general_ci for English, utf8_swedish_ci for Swedish, and utf8_danish_ci for Norwegian BokmÃ¥l.
@@ -97,12 +97,11 @@
   //Show languages in topbar (1 = yes, 0 = no)
   define('SHOW_LANGUAGES_IN_TOPBAR','1');
 
-  // Available languages, as language name / language file name / flag file name triples separated by semicolons. Each triple is separated by a | character.
+  // Available languages, as language name / language/flag file name pairs separated by semicolons. Each pair is separated by a | character.
   // The first value in each triple is the language name.
-  // The second value is the language file name (stored in /languages directory).
-  // The third value is the flag image file name (stored in /gfx/flag directory).
-  // Example: "English;en;en|svenska;sv;se" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|Deutsch;de_AT;de|español;es;es|italiano;it;it|cesky;cz;cz|norsk;no_NB;no|dansk;dk;dk|Português;pt;pt|magyar;hu;hu|eesti;ee;ee');
+  // The second value is the language file name, (stored in /languages directory),.xml extension omitted, and also the flag image file name (stored in /gfx/flag directory), .png extension omitted.
+  // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
+    define('LANGUAGES_AVAILABLE', 'English;en|Svenska;sv|Deutsch;de_AT|Español;es|Italiano;it|Česky;cs|Norsk;no_NB|Dansk;da|Português;pt|Magyar;hu|Eesti;et');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

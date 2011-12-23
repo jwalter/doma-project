@@ -65,11 +65,11 @@
     <!--  general ****************************************************************************************************** --> 
     <!--  date format to use, PHP format string --> 
     <string key="DATE_FORMAT">
-      Y-m-d
+      d/m/Y
     </string> 
     <!--  date and time format to use, PHP format string --> 
     <string key="DATETIME_FORMAT">
-      Y-m-d H:i
+      d/m/Y H:i
     </string> 
     <!--  day names, semi-colon separated --> 
     <string key="DAY_NAMES">
@@ -220,7 +220,7 @@
       Edit map: %s
     </string> 
     <string key="MAP_DATE_FORMAT">
-      yyyy-mm-dd, and optionally hh:mm:ss
+      dd/mm/yyyy, and optionally hh:mm:ss
     </string> 
     <string key="LINK_TO_RESULT_LIST">
       Link to result list

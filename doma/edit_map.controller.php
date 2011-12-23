@@ -77,13 +77,13 @@
         if(trim($map->Name) == "") $errors[] = __("NO_MAP_NAME_ENTERED");
         // date
         if(trim($map->Date) == "") $errors[] = __("NO_DATE_ENTERED");
-        if(!Helper::StringToTime($map->Date, false)) 
+        if(!Helper::LocalizedStringToTime($map->Date, false)) 
         {
           $errors[] = __("INVALID_DATE");
         }
         else
         {
-          $map->Date = gmdate("Y-m-d H:i:s", Helper::StringToTime($map->Date, false));
+          $map->Date = gmdate("Y-m-d H:i:s", Helper::LocalizedStringToTime($map->Date, false));
         }
 
         // protected until
@@ -91,13 +91,13 @@
         {
           $map->ProtectedUntil = null; 
         }
-        else if(!Helper::StringToTime($map->ProtectedUntil, false)) 
+        else if(!Helper::LocalizedStringToTime($map->ProtectedUntil, false)) 
         {
           $errors[] = __("INVALID_PROTECTED_UNTIL");
         }
         else
         {
-          $map->ProtectedUntil = gmdate("Y-m-d H:i:s", Helper::StringToTime($map->ProtectedUntil, false));
+          $map->ProtectedUntil = gmdate("Y-m-d H:i:s", Helper::LocalizedStringToTime($map->ProtectedUntil, false));
         }
         
         // images

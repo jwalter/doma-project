@@ -9,12 +9,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="style.css" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title><?php print __("PAGE_TITLE")?> :: <?php print $vd["Title"]; ?></title>
-<link rel="icon" type="image/png" href="gfx/favicon.png" />
-<script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="js/edit_map.js"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title><?php print __("PAGE_TITLE")?> :: <?php print $vd["Title"]; ?></title>
+  <link rel="icon" type="image/png" href="gfx/favicon.png" />
+  <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="js/edit_map.js"></script>
+  <script src="js/common.js" type="text/javascript"></script>
 </head>
 
 <body id="editMapBody">
@@ -52,7 +53,7 @@
 <div class="container">
 <label for="date"><?php print __("DATE")?></label>
 <?php
-  if(date("H:i:s", Helper::StringToTime($map->Date, true)) == "00:00:00") $map->Date = date("Y-m-d", Helper::StringToTime($map->Date, true));
+  if(date("H:i:s", Helper::StringToTime($map->Date, true)) == "00:00:00") $map->Date = date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true));
 ?>
 <input type="text" class="text tooltipControl" name="date" id="date" value="<?php print hsc($map->Date)?>" />
 <div class="tooltip hidden"><?php print __("MAP_DATE_FORMAT")?></div> 
@@ -134,7 +135,7 @@
 <?php
   $protectedUntil = $map->ProtectedUntil;
   $protectedUntilTime = $protectedUntil != null ? Helper::StringToTime($protectedUntil, true) : null;
-  if($protectedUntilTime != null) $protectedUntil = date("Y-m-d H:i:s", $protectedUntilTime);
+  if($protectedUntilTime != null) $protectedUntil = date(__("DATETIME_FORMAT"), $protectedUntilTime);
 ?>
 <label for="protectedUntil"><?php print __("PROTECTED_UNTIL")?></label>
 <input type="text" id="protectedUntil" class="text tooltipControl" name="protectedUntil" value="<?php print hsc($protectedUntil); ?>" />

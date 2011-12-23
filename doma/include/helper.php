@@ -53,7 +53,7 @@
     {
       $settings = array();
       $descriptions = array();
-      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->customizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -71,7 +71,7 @@
     private static function GetNonCustomizableStrings()
     {
       $settings = array();
-      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->nonCustomizable->string);
       for($i = 0; $i < $count; $i++) 
@@ -208,14 +208,19 @@
     {
       if($_GET["lang"])
       {
-        if(strrpos(strtolower(LANGUAGES_AVAILABLE), ";". $_GET["lang"] .";") !== false) Session::SetLanguageFileShort(strtolower($_GET["lang"]).".xml");
+        if(strrpos("|" . LANGUAGES_AVAILABLE ."|", ";". $_GET["lang"] ."|") !== false) Session::SetLanguageCode($_GET["lang"]);
       }
       else
       {
-        if(!Session::GetLanguageFileShort()) Session::SetLanguageFileShort(LANGUAGE_FILE);
+        if(!Session::GetLanguageCode()) 
+        {
+           Session::SetLanguageCode(defined('LANGUAGE_CODE') 
+             ? LANGUAGE_CODE : 
+             str_replace(".xml", "", LANGUAGE_FILE)); // handle DOMA 2 config where the setting had a different name);
+        }
       }
       
-      $languageFileName = self::LocalPath("languages/". Session::GetLanguageFileShort());
+      $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $languageFileNameAndDate = $languageFileName ."_". filemtime($languageFileName);
      
       // some caching logic for language strings
@@ -280,6 +285,39 @@
       return strtotime($string . ($utc ? " UTC" : ""));  
     }
 
+    public static function LocalizedStringToTime($string, $utc)
+    {
+      return strtotime(self::ToIso8601DateTime($string) . ($utc ? " UTC" : ""));  
+    }
+
+    private static function ParseDateTime($dateTimeString)
+    {
+      if(function_exists("date_parse_from_format"))
+      {
+        $value = date_parse_from_format(__("DATETIME_FORMAT") .":s", $dateTimeString);
+        return mktime($value["hour"], $value["minute"], $value["second"], $value["month"], $value["day"], $value["year"]);
+      }
+      // fall back to custom function
+      $dateTimeString = str_replace(array(".", "/", ":", " "), "-", $dateTimeString);
+      $format = str_replace(array(".", "/", ":", " "), "-", __("DATETIME_FORMAT") .":s");
+      $dateTimeAtoms = @explode("-", $dateTimeString);
+      $formatAtoms = @explode("-", $format);
+      
+      $value = array("Y" => 0, "m" => 0, "d" => 0, "H" => 0, "i" => 0, "s" => 0);
+      
+      for($i=0; $i<count($formatAtoms); $i++)
+      {
+        if($dateTimeAtoms[$i] != null) $value[$formatAtoms[$i]] = $dateTimeAtoms[$i];
+      }
+      
+      return mktime($value["H"], $value["i"], $value["s"], $value["m"], $value["d"], $value["Y"]);
+    }    
+
+    private static function ToIso8601DateTime($dateTimeString)
+    {
+      return date("Y-m-d H:i:s", self::ParseDateTime($dateTimeString));
+    }    
+    
     private static function ImageIsResizable($fileName)
     {
       if(IMAGE_RESIZING_METHOD == "2") return true;
@@ -571,18 +609,46 @@
       if(is_array($langs))
       {
         print __("LANGUAGE").": ";
-        
-        $get = $_GET;
+        print '<span id="currentLanguage">';
+        $langcode = Session::GetLanguageCode();
+        print self::CreateLanguageImageAndText($langcode);
+        print '<span id="languages">';
         foreach ($langs as $lang)
         {
-          list($languageName, $languageFile, $flagFile) = explode(";", $lang);
-          $get['lang'] = strtolower($languageFile);
-          $queryString = http_build_query($get);
-          print '<a href="?'. $queryString .'">'.
-                '<img src="gfx/flag/'. strtolower($flagFile). '.png" alt="'. hsc($languageName). '" title="'. hsc($languageName) .'">'.
-                '</a>';
+          self::CreateLanguageLink($lang);
+        }
+        print '</span>';
+        print '</span>';
+      }
+    }
+    
+    private static function CreateLanguageLink($lang)
+    {
+      $get = $_GET;
+      list($languageName, $languageCode) = explode(";", $lang);
+      $get['lang'] = $languageCode;
+      $queryString = http_build_query($get);
+      print '<a href="?'. $queryString .'">'. self::CreateLanguageImageAndText($languageCode, $languageName) ."</a>";
+    }
+    
+    private static function CreateLanguageImageAndText($languageCode, $languageName = null)
+    {
+      if($languageName == null)
+      {
+        $items = @explode("|", LANGUAGES_AVAILABLE);
+        foreach($items as $item)
+        {
+          list($ln, $lc) = explode(";", $item);
+          if($lc == $languageCode) 
+          {
+            $languageName = $ln; 
+            break;
+          }
         }
       }
+
+      return '<img src="gfx/flag/'. $languageCode. '.png" alt="'. hsc($languageName). '" title="'. hsc($languageName) .'">'.
+              $languageName;
     }
     
     public static function ConvertToTime($value, $format)

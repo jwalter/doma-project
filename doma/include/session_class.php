@@ -19,13 +19,13 @@
       self::SetValue("LANGUAGE_FILE", $value);
     }    
 
-    public static function GetLanguageFileShort()
+    public static function GetLanguageCode()
     {
-      return self::GetValue("LANGUAGE_FILE_SHORT");
+      return self::GetValue("LANGUAGE_CODE");
     }
-    public static function SetLanguageFileShort($value)
+    public static function SetLanguageCode($value)
     {
-      self::SetValue("LANGUAGE_FILE_SHORT", $value);
+      self::SetValue("LANGUAGE_CODE", $value);
     }    
     
     public static function GetIsLoggedInAdmin()

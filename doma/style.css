@@ -233,9 +233,43 @@ body
   line-height: 15px;
 }
 
-#topbar .right a
+#topbar #languages 
 {
-  padding: 0 0.25em;  
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  left: -0.75em;
+  position: absolute;
+  top: 2em;
+  width: 12em;
+  z-index: 1000;
+  display: none;
+}
+
+#topbar #languages a
+{
+  display: block;
+  padding: 0.25em 0.5em;
+}
+
+#topbar #languages img,
+#topbar #currentLanguage img
+{
+  padding: 0 0.5em 2px 0.25em;
+  vertical-align: middle;
+}
+
+#topbar #currentLanguage
+{
+  position: relative;
+  cursor: pointer;
+  background: url(gfx/dropdown_arrow.png) top right no-repeat;
+  padding-right: 15px;
+  border: 1px solid #9595bf;
+}
+
+#topbar #currentLanguage:hover
+{
+  background-color: #d5d5ff;
 }
 
 /* FORM ELEMENTS ******************************************************************************/

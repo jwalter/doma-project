@@ -15,6 +15,7 @@
 <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="js/edit_user.js"></script>
+  <script src="js/common.js" type="text/javascript"></script>
 </head>
 
 <body id="editUserBody">

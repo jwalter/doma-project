@@ -8,10 +8,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="style.css" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title><?php print (_SITE_TITLE ." :: ". __("ADMIN_LOGIN"))?></title>
-<link rel="icon" type="image/png" href="gfx/favicon.png" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title><?php print (_SITE_TITLE ." :: ". __("ADMIN_LOGIN"))?></title>
+  <link rel="icon" type="image/png" href="gfx/favicon.png" />
+  <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+  <script src="js/common.js" type="text/javascript"></script>
 </head>
 
 <body id="adminLoginBody">
