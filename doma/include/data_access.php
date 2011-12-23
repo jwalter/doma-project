@@ -32,7 +32,7 @@
       return $ids;
     }
     
-    public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $count = 0, $orderBy = "date", $requestingUserID = 0)
+    public static function GetMaps($userID = 0, $startDate = 0, $endDate = 0, $categoryID = 0, $filter = null, $count = 0, $orderBy = "date", $requestingUserID = 0)
     {
       $userID = mysql_real_escape_string($userID);
       $requestingUserID = mysql_real_escape_string($requestingUserID);
@@ -40,6 +40,7 @@
       $endDateString = mysql_real_escape_string(date("Y-m-d", $endDate));
       $categoryID = mysql_real_escape_string($categoryID);
       $now = mysql_real_escape_string(gmdate("Y-m-d H:i:s"));
+      $filter = mysql_real_escape_string($filter);
       $count = (int)$count;
 
       switch($orderBy)
@@ -55,6 +56,7 @@
       if($startDate) $where[] = "DATE(M.Date)>='$startDateString'";
       if($endDate) $where[] = "DATE(M.Date)<='$endDateString'";
       if($categoryID) $where[] = "M.CategoryID='$categoryID'";
+      if($filter != null && $filter != "") $where[] = "(M.Name LIKE '%$filter%' OR M.Comment LIKE '%$filter%' OR M.Organiser LIKE '%$filter%' OR M.Country LIKE '%$filter%' OR M.Discipline LIKE '%$filter%' OR M.MapName LIKE '%$filter%')";
       $where[] = "(M.ProtectedUntil IS NULL OR M.ProtectedUntil<='$now' OR M.UserID='$requestingUserID')";
 
       $sql = "SELECT M.*, M.ID AS MapID, M.Name AS Map_Name, C.*, C.Name AS CategoryName, U.* FROM `". DB_MAP_TABLE ."` M ".

@@ -756,6 +756,9 @@ Text:   %s
     <string key="SHOW_ALL">
       vše
     </string>
+    <string key="SELECT_FILTER">
+      Filtr
+    </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

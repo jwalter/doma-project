@@ -727,6 +727,9 @@ Texto:   %s
     <string key="SHOW_ALL">
       todos
     </string>
+    <string key="SELECT_FILTER">
+      Filtro
+    </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

@@ -377,7 +377,7 @@ form.wide h2 + p
 
 #intro
 {
-  margin: 0 0 1em 13em; 
+  margin: 0 0 1em 11em; 
 }
 
 #intro h1
@@ -415,9 +415,9 @@ form.wide h2 + p
   margin-left: 1em;
 }
 
-#selectCategoryAndYear select
+#indexBody #filter
 {
-  margin-right: 1em;
+  width: 4em;
 }
 
 #indexBody .hideOverviewMap

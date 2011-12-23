@@ -25,7 +25,8 @@
         // default search criteria  
         $searchCriteria = array(
             "selectedYear" => date("Y"),
-            "selectedCategoryID" => getUser()->DefaultCategoryID
+            "selectedCategoryID" => getUser()->DefaultCategoryID,
+            "filter" => null
         );
       }
       
@@ -62,6 +63,7 @@
 
       if(isset($_GET["year"])) $searchCriteria["selectedYear"] = $_GET["year"];
       if(isset($_GET["categoryID"])) $searchCriteria["selectedCategoryID"] = $_GET["categoryID"];
+      if(isset($_GET["filter"])) $searchCriteria["filter"] = $_GET["filter"];
       if(isset($_GET["displayMode"])) 
       {
         $viewData["DisplayMode"] = $_GET["displayMode"];
@@ -76,7 +78,7 @@
       $viewData["SearchCriteria"] = $searchCriteria;
       
       // get map data
-      $viewData["Maps"] = DataAccess::GetMaps(getUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"], 0, "date", Helper::GetLoggedInUserID());  
+      $viewData["Maps"] = DataAccess::GetMaps(getUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"], $searchCriteria["filter"], 0, "date", Helper::GetLoggedInUserID());  
       $viewData["GeocodedMapsExist"] = false;
       
       foreach($viewData["Maps"] as $map)

@@ -711,7 +711,7 @@ Text:   %s
       Last comment by
     </string> 
     <string key="KMZ">
-      KMZ
+      KML
     </string> 
     <string key="PROTECTED_UNTIL">
       Hidden until
@@ -727,6 +727,9 @@ Text:   %s
     </string>
     <string key="SHOW_ALL">
       all
+    </string>
+    <string key="SELECT_FILTER">
+      Filtro
     </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>

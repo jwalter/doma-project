@@ -77,6 +77,7 @@
     }
   ?>
   </select>
+
   <label for="year"><?php print __("SELECT_YEAR")?>:</label>
   <select name="year" id="year">
   <?php
@@ -86,6 +87,9 @@
     }
   ?>
   </select>
+
+  <label for="filter"><?php print __("SELECT_FILTER"); ?>:</label>
+  <input type="text" name="filter" id="filter" value="<?php print hsc($vd["SearchCriteria"]["filter"]); ?>"/>
 
   <?php if($vd["GeocodedMapsExist"]) { ?>
     <label for="displayMode"><?php print __("SELECT_DISPLAY_MODE"); ?>:</label>

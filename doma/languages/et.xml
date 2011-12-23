@@ -749,6 +749,9 @@ Sisu:   %s
     <string key="SHOW_ALL">
       kõik
     </string>
+    <string key="SELECT_FILTER">
+      Filter
+    </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

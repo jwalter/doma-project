@@ -101,7 +101,7 @@
   // The first value in each triple is the language name.
   // The second value is the language file name, (stored in /languages directory),.xml extension omitted, and also the flag image file name (stored in /gfx/flag directory), .png extension omitted.
   // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
-    define('LANGUAGES_AVAILABLE', 'English;en|Svenska;sv|Deutsch;de_AT|Español;es|Italiano;it|Česky;cs|Norsk;no_NB|Dansk;da|Português;pt|Magyar;hu|Eesti;et');
+    define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de_AT|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;no_NB|Português;pt|Svenska;sv');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

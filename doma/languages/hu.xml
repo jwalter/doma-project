@@ -636,6 +636,9 @@ Hozzászólás:   %s
     <string key="SHOW_ALL">
       mindenki
     </string>
+    <string key="SELECT_FILTER">
+      Szűrő
+    </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

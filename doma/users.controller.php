@@ -26,7 +26,7 @@
       $numberOfMaps = isset($_GET["lastMaps"]) && is_numeric($_GET["lastMaps"]) 
         ? (int)$_GET["lastMaps"] 
         : ($_GET["lastMaps"] == "all" ? 999999 : 10);
-      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, $numberOfMaps, "date", Helper::GetLoggedInUserID());
+      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, null, $numberOfMaps, "date", Helper::GetLoggedInUserID());
       
       // last x comments
       $numberOfComments = isset($_GET["lastComments"]) && is_numeric($_GET["lastComments"]) 

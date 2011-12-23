@@ -27,7 +27,7 @@
       <?php
         $atoms = array();
         $d = (__("SHOW_DISCIPLINE") && $map->Discipline) ? $map->Discipline : null;
-        $rl = (__("SHOW_RELAY_LEG") && $map->RelayLeg) ? ($d != null ?  " ,". __("RELAY_LEG_LOWERCASE") : __("RELAY_LEG")) ." ". $map->RelayLeg : null;
+        $rl = (__("SHOW_RELAY_LEG") && $map->RelayLeg) ? ($d != null ?  ", ". __("RELAY_LEG_LOWERCASE") : __("RELAY_LEG")) ." ". $map->RelayLeg : null;
         if($d != null || $rl != null)
         {
           $atoms[] = $d . $rl;
