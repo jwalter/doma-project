@@ -233,6 +233,11 @@ body
   line-height: 15px;
 }
 
+#topbar .right a
+{
+  padding: 0 0.25em;  
+}
+
 /* FORM ELEMENTS ******************************************************************************/
 
 form.wide div.container

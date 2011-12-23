@@ -22,7 +22,7 @@
     'DB_COMMENT_TABLE' => 'doma_comments',
     'TEMP_FILE_PATH' => 'temp',
     'SHOW_LANGUAGES_IN_TOPBAR' => '1',
-    'LANGUAGES_AVAILABLE' => 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no_NB;no',
+    'LANGUAGES_AVAILABLE' => 'English;en;en|svenska;sv;se|Deutsch;de_AT;de|español;es;es|italiano;it;it|cesky;cz;cz|norsk;no_NB;no|dansk;dk;dk|Português;pt;pt|magyar;hu;hu|eesti;ee;ee',    
     'IMAGE_RESIZING_METHOD' => '1'
   );
   while(list($key, $value) = each($newConfigurationSettings))

@@ -46,7 +46,7 @@
   //   es.xml     (Spanish, credits to Iñaki Larena)
   //   dk.xml     (Danish, credits to Michael Leth Jess)
   //   hu.xml     (Hungarian, credits to Csaba Gösswein)
-  //   ee.xml     (Estonian, credits to Margus L)
+  //   ee.xml     (Estonian, credits to Margus Lehtme)
   //   it.xml     (Italian, credits to Davide Miori)
   //   fr.xml     (French, credits to François Coulier)
   //   pt.xml     (Portugese, credits to Rui Tavares)
@@ -102,7 +102,7 @@
   // The second value is the language file name (stored in /languages directory).
   // The third value is the flag image file name (stored in /gfx/flag directory).
   // Example: "English;en;en|svenska;sv;se" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|español;es;es|česky;cz;cz|norsk;no_NB;no');
+  define('LANGUAGES_AVAILABLE', 'English;en;en|svenska;sv;se|Deutsch;de_AT;de|español;es;es|italiano;it;it|cesky;cz;cz|norsk;no_NB;no|dansk;dk;dk|Português;pt;pt|magyar;hu;hu|eesti;ee;ee');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

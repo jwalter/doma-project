@@ -571,12 +571,16 @@
       if(is_array($langs))
       {
         print __("LANGUAGE").": ";
-        $pos = strrpos($_SERVER['REQUEST_URI'], "?");
-        $a = ($pos === false) ? "?" : "&";
+        
+        $get = $_GET;
         foreach ($langs as $lang)
         {
           list($languageName, $languageFile, $flagFile) = explode(";", $lang);
-          print '<a href="'.$_SERVER['REQUEST_URI'].$a.'lang='.strtolower($languageFile).'"><img src="./gfx/flag/'.strtolower($flagFile).'.png" border="0" alt="'.$languageName.'" title="'.$languageName.'"></a>&nbsp;&nbsp;';
+          $get['lang'] = strtolower($languageFile);
+          $queryString = http_build_query($get);
+          print '<a href="?'. $queryString .'">'.
+                '<img src="gfx/flag/'. strtolower($flagFile). '.png" alt="'. hsc($languageName). '" title="'. hsc($languageName) .'">'.
+                '</a>';
         }
       }
     }
