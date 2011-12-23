@@ -28,7 +28,7 @@
         
         if(count($errors) == 0)
         {
-          // create database
+          // create or update database
           $result = executeDatabaseScripts();
           $errors = $result["errors"];
           // chmod only has effext on linux/unix systems
@@ -39,12 +39,15 @@
 
           if($previousDatabaseVersion == "0.0")
           {
+            // created databse
             Helper::LogUsage("createSite", "version=". DOMA_VERSION);
             Helper::LoginAdmin(ADMIN_USERNAME, ADMIN_PASSWORD);
           }
           else
           {
+            // updated database
             Helper::LogUsage("updateSite", "version=". DOMA_VERSION);
+            // redirect to originally requested page
             $redirectUrl = $_GET["redirectUrl"];
             if(!isset($redirectUrl)) $redirectUrl = "users.php";
             Helper::Redirect($redirectUrl);

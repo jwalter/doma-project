@@ -35,6 +35,8 @@
         $viewData["Description"] = __("RSS_DESCRIPTION");
         $viewData["WebsiteUrl"] = Helper::GlobalPath("index.php?". Helper::CreateQuerystring(getUser()));
       }
+      
+      $viewData["Items"] = array();
 
       foreach($maps as $map)
       {

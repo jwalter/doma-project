@@ -66,7 +66,7 @@
     public function Load($primaryKeyValue)
     {
       $className = $this->ClassName;
-      $sql = "SELECT * FROM ". $this->DBTableName ." WHERE `". $this->PrimaryKey ."`='". addslashes($primaryKeyValue) ."'";
+      $sql = "SELECT * FROM ". $this->DBTableName ." WHERE `". $this->PrimaryKey ."`='". mysql_real_escape_string($primaryKeyValue) ."'";
       if($r = mysql_fetch_assoc(self::Query($sql)))
       {
         $this->LoadFromArray($r);
@@ -85,7 +85,7 @@
     
     public function Delete()
     {
-      $sql = "DELETE FROM `". $this->DBTableName ."` WHERE `". $this->PrimaryKey ."`='". addslashes($this->Data[$this->PrimaryKey]) ."'";
+      $sql = "DELETE FROM `". $this->DBTableName ."` WHERE `". $this->PrimaryKey ."`='". mysql_real_escape_string($this->Data[$this->PrimaryKey]) ."'";
       self::Query($sql);
     }
     
@@ -96,7 +96,7 @@
       foreach($values as $key => $val)
       {
         $sql1 .= "`$key`, ";
-        $sql2 .= (is_null($val) ? "NULL, " : "'" . addslashes($val) ."', ");
+        $sql2 .= (is_null($val) ? "NULL, " : "'" . mysql_real_escape_string($val) ."', ");
       }
       if(strlen($sql1) > 1) $sql1 = substr($sql1, 0, strlen($sql1) - 2);
       if(strlen($sql2) > 1) $sql2 = substr($sql2, 0, strlen($sql2) - 2);
