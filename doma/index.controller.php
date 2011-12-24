@@ -32,7 +32,7 @@
       
       $viewData["Errors"] = array();
 
-      if($_GET["error"] == "thumbnailCreationFailure")
+      if(isset($_GET["error"]) && $_GET["error"] == "thumbnailCreationFailure")
       {
         // calculate max image size for auto-generation of thumbnail
         $memoryLimit = ini_get("memory_limit");

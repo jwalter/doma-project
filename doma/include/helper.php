@@ -206,7 +206,7 @@
     // the user as specified by $_GET["user"] / $_POST["user"]
     public static function SetUser($user)
     {
-      if($_GET["lang"])
+      if(isset($_GET["lang"]))
       {
         if(strrpos("|" . LANGUAGES_AVAILABLE ."|", ";". $_GET["lang"] ."|") !== false) Session::SetLanguageCode($_GET["lang"]);
       }
@@ -214,9 +214,7 @@
       {
         if(!Session::GetLanguageCode()) 
         {
-           Session::SetLanguageCode(defined('LANGUAGE_CODE') 
-             ? LANGUAGE_CODE : 
-             str_replace(".xml", "", LANGUAGE_FILE)); // handle DOMA 2 config where the setting had a different name);
+           Session::SetLanguageCode(defined('LANGUAGE_CODE') ? LANGUAGE_CODE : self::GetVersion2DefaulLanguageCode());
         }
       }
       
@@ -235,6 +233,14 @@
         Session::SetLanguageStrings(Helper::GetLanguageStrings($user ? $user->ID : 0));
         Session::SetLanguageFile($languageFileNameAndDate);
       }
+    }
+    
+    private static function GetVersion2DefaulLanguageCode()
+    {
+      // handle DOMA 2 config where the setting had a different name
+      return str_replace(array("no_NB", "ee", "cz", "dk", "de_AT"), 
+                         array("nb", "et", "cs", "da", "de"), 
+                         str_replace(".xml", "", LANGUAGE_FILE));
     }
 
     public static function GetThumbnailImage(Map $map)
@@ -781,14 +787,15 @@
 
       if($includeTooltipMarkup)
       {
+        $hscNameAndDate = hsc($includePersonName ? $map->GetUser()->FirstName ." ". $map->GetUser()->LastName .", " : "").
+          hsc($map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')');
         $data["TooltipMarkup"] = 
           '<div>'.
-            '<img src="'. self::GetThumbnailImage($map) .'" alt="'. hsc($nameAndDate) .'" '.
+            '<img src="'. self::GetThumbnailImage($map) .'" alt="'. $hscNameAndDate .'" '.
                  'height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />'.
           '</div>'.
           '<div>'.
-            hsc($includePersonName ? $map->GetUser()->FirstName ." ". $map->GetUser()->LastName .", " : "").
-            hsc($map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')').
+            $hscNameAndDate.
             $info.
           '</div>';
           

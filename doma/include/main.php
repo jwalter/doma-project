@@ -1,4 +1,6 @@
 <?php
+  error_reporting(E_ALL & ~E_NOTICE);
+  
   include_once(dirname(__FILE__) ."/../config.php");
   include_once(dirname(__FILE__) ."/definitions.php");
 
@@ -12,7 +14,7 @@
   if(!Helper::DatabaseVersionIsValid()) Helper::Redirect("create.php?redirectUrl=". urlencode($_SERVER["REQUEST_URI"]));
   
   // extract current user from querystring
-  if($_GET["user"])
+  if(isset($_GET["user"]))
   {
     $currentUser = getUser();
     if(!$currentUser || 

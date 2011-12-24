@@ -76,7 +76,7 @@
 
     private static function GetValue($key)
     {
-      return $_SESSION["DOMA_". DB_MAP_TABLE ."_$key"];
+      return isset($_SESSION["DOMA_". DB_MAP_TABLE ."_$key"]) ? $_SESSION["DOMA_". DB_MAP_TABLE ."_$key"] : null;
     }
     private static function SetValue($key, $value)
     {

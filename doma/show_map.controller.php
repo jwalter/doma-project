@@ -46,9 +46,9 @@
 
       $viewData["Map"] = $map;
       
-      $viewData["BackUrl"] = (basename($_SERVER["HTTP_REFERER"]) == "users.php"
+      $viewData["BackUrl"] = isset($_SERVER["HTTP_REFERER"]) && basename($_SERVER["HTTP_REFERER"]) == "users.php"
         ? "users.php"
-        : "index.php?". Helper::CreateQuerystring(getUser()));
+        : "index.php?". Helper::CreateQuerystring(getUser());
       
       $viewData["Previous"] = $previous;
       $viewData["Next"] = $next;
@@ -58,7 +58,7 @@
       
       $viewData["QuickRouteJpegExtensionData"] = $map->GetQuickRouteJpegExtensionData();
       
-      if($viewData["QuickRouteJpegExtensionData"]->IsValid)
+      if(isset($viewData["QuickRouteJpegExtensionData"]) && $viewData["QuickRouteJpegExtensionData"]->IsValid)
       {
         $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
         $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, false, false, $categories);

@@ -12,7 +12,7 @@
         Helper::Redirect("users.php");
       }
 
-      if($_GET["action"] == "logout")
+      if(isset($_GET["action"]) && $_GET["action"] == "logout")
       {
         Helper::LogoutAdmin();
         Helper::Redirect("users.php");

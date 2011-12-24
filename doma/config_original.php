@@ -1,5 +1,4 @@
 <?php
-  error_reporting(E_ALL & ~E_NOTICE);
   // This file contains the settings for the digital map archive.
   // Each setting contains a name and a value and is presented in the following way:
   //   define('SETTING_NAME', 'setting value');
@@ -36,20 +35,21 @@
 
   // The default language code of the site according to ISO 639-1 language codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes 
   // Language files are in xml format, named [language code].xml (e.g. en.xml) and located in the 'languages' directory.
+  // Language flag icons are in png format, named [language code].png (e.g. en.png) and located in the 'gfx/flags' directory.
   // You may create your own language file by copying and modifying one of the existing files.
   // Current languages include
-  //   en     (English, credits to Boris Granovskiy)
-  //   sv     (Swedish)
-  //   no_NB  (Norwegian Bokmål, credits to Bjørge Solli)
-  //   cs     (Czech, credits to Michal Besta)
-  //   de_AT  (German/Austria, credits to Markus Plohn)
-  //   es     (Spanish, credits to Iñaki Larena)
-  //   da     (Danish, credits to Michael Leth Jess)
-  //   hu     (Hungarian, credits to Csaba Gösswein)
-  //   et     (Estonian, credits to Margus Lehtme)
-  //   it     (Italian, credits to Davide Miori)
-  //   fr     (French, credits to François Coulier)
-  //   pt     (Portugese, credits to Rui Tavares)
+  //   en  (English, credits to Boris Granovskiy)
+  //   sv  (Swedish)
+  //   nb  (Norwegian Bokmål, credits to Bjørge Solli)
+  //   cs  (Czech, credits to Michal Besta)
+  //   de  (German/Austria, credits to Markus Plohn)
+  //   es  (Spanish, credits to Iñaki Larena)
+  //   da  (Danish, credits to Michael Leth Jess)
+  //   hu  (Hungarian, credits to Csaba Gösswein)
+  //   et  (Estonian, credits to Margus Lehtme)
+  //   it  (Italian, credits to Davide Miori)
+  //   fr  (French, credits to François Coulier)
+  //   pt  (Portugese, credits to Rui Tavares)
   define('LANGUAGE_CODE', 'en');
 
   // The MySQL text sorting order, known as 'collation'.
@@ -98,10 +98,10 @@
   define('SHOW_LANGUAGES_IN_TOPBAR','1');
 
   // Available languages, as language name / language/flag file name pairs separated by semicolons. Each pair is separated by a | character.
-  // The first value in each triple is the language name.
-  // The second value is the language file name, (stored in /languages directory),.xml extension omitted, and also the flag image file name (stored in /gfx/flag directory), .png extension omitted.
+  // The first value in each pair is the language name.
+  // The second value is the language code, see the LANGUAGE_CODE setting above.
   // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
-    define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de_AT|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;no_NB|Português;pt|Svenska;sv');
+  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

@@ -22,9 +22,9 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser(), $vd["MapID"])?>" enctype="multipart/form-data">
+<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]; ?>?<?php print Helper::CreateQuerystring(getUser(), $vd["MapID"]); ?>" enctype="multipart/form-data">
 
-<h1><?php print $vd["Title"]?></h1>
+<h1><?php print $vd["Title"]; ?></h1>
 
 <?php if(count($vd["Errors"]) > 0) { ?>
 <ul class="error">

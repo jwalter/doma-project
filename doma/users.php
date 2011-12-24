@@ -31,7 +31,7 @@
 <div id="wrapper">
 <?php Helper::CreateUserListTopbar(); ?>
 <div id="content">
-<form method="post" action="<?php print $PHP_SELF?>">
+<form method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
 
 <div id="rssIcon"><a href="rss.php"><img src="gfx/feed-icon-28x28.png" alt="<?php print __("RSS_FEED")?>" title="<?php print __("RSS_FEED")?>" /></a></div>
 
@@ -89,6 +89,7 @@
 </thead>
 <tbody>
 <?php
+  $count = 0;
   foreach($vd["Users"] as $u)
   {
     $count++;
@@ -100,16 +101,19 @@
     $url = ($u->Visible ? "index.php?". Helper::CreateQuerystring($u) : "");
     $nameLink = Helper::EncapsulateLink(hsc($u->FirstName ." ". $u->LastName), $url);    
 
-	$lastMap = $vd["LastMapForEachUser"][$u->ID];
-    if($lastMap) 
+	  if(isset($vd["LastMapForEachUser"][$u->ID]))
     {
-      $lastMapLink = '<a href="show_map.php?'. Helper::CreateQuerystring($u, $lastMap->ID) .'" class="thumbnailHoverLink">'. 
-                     hsc($lastMap->Name).
-                     '</a>'; 
+      $lastMap = $vd["LastMapForEachUser"][$u->ID];
+      if($lastMap) 
+      {
+        $lastMapLink = '<a href="show_map.php?'. Helper::CreateQuerystring($u, $lastMap->ID) .'" class="thumbnailHoverLink">'. 
+                       hsc($lastMap->Name).
+                       '</a>'; 
 
-      $lastMapDate = date(__("DATE_FORMAT"), Helper::StringToTime($lastMap->Date, true));
-      $lastMapUpdated = date(__("DATETIME_FORMAT"), Helper::StringToTime($lastMap->LastChangedTime, true));
-      $thumbnailImage = '<img src="'. Helper::GetThumbnailImage($lastMap) .'" alt="'. hsc($lastMap->Name)  .'" height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />';
+        $lastMapDate = date(__("DATE_FORMAT"), Helper::StringToTime($lastMap->Date, true));
+        $lastMapUpdated = date(__("DATETIME_FORMAT"), Helper::StringToTime($lastMap->LastChangedTime, true));
+        $thumbnailImage = '<img src="'. Helper::GetThumbnailImage($lastMap) .'" alt="'. hsc($lastMap->Name)  .'" height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />';
+      }
     }
     
     $url = ($u->Visible ? "users.php?loginAsUser=". urlencode($u->Username) : "");

@@ -20,16 +20,16 @@
   <script type="text/javascript" src="js/jquery/jquery.timeago.js"></script>
   <?php 
     $lang = Session::GetLanguageCode();
-    if(($langcode != "")&&($langcode != "en"))
+    if($lang != "" && $lang != "en")
     {
       ?>
-      <script type="text/javascript" src="js/jquery/jquery.timeago.<?php print $langcode ?>.js"></script>
+      <script type="text/javascript" src="js/jquery/jquery.timeago.<?php print $lang; ?>.js"></script>
       <?php
     }
   ?>
   
-  <?php if($vd["OverviewMapData"] != null) { ?>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
+  <?php if(isset($vd["OverviewMapData"])) { ?>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print $lang; ?>" type="text/javascript"></script>
     <script src="js/overview_map.js" type="text/javascript"></script>
     <script src="js/common.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -40,7 +40,7 @@
       });
       -->
     </script>
-  <?php } ?>
+  <?php } ?> 
   
 
 </head>
@@ -52,12 +52,12 @@
 
 <div id="navigation">
   <div class="left">
-  <?php if($vd["SecondMapImageName"]) {?>
+  <?php if(isset($vd["SecondMapImageName"])) {?>
     <a href="#" id="showSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("SHOW_ROUTE_ON_MAP")?></a>
     <a href="#" id="hideSecondImage" title="<?php print __("TOGGLE_IMAGE_TOOLTIP")?>"><?php print __("HIDE_ROUTE_ON_MAP")?></a>
     <span class="separator">|</span>
   <?php }?>
-  <?php if($QR->IsValid) { ?>
+  <?php if(isset($QR) && $QR->IsValid) { ?>
     <a id="showOverviewMap" href="#"><?php print __("SHOW_OVERVIEW_MAP"); ?></a>
     <a id="hideOverviewMap" href="#"><?php print __("HIDE_OVERVIEW_MAP"); ?></a>
     <span class="separator">|</span>
@@ -76,7 +76,7 @@
 </div>
 
 <div id="content">
-<form id="frm" method="post" action="<?php print $PHP_SELF?>">
+<form id="frm" method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
 <div id="mapInfo">
 <div id="name"><?php print $vd["Name"]?></div>
 
@@ -95,7 +95,7 @@
   if(__("SHOW_RELAY_LEG") && $map->RelayLeg != "") print '<div class="property"><span class="caption">'. __("RELAY_LEG") .':</span> '. $map->RelayLeg .'</div>';
   if(__("SHOW_RESULT_LIST_URL") && $map->ResultListUrl != "") print '<div class="property"><span class="caption"><a href="'. hsc($map->CreateResultListUrl()) .'" target="_blank">'. __("RESULTS") .'</a></span></div>';
 
-if($QR->IsValid)
+if(isset($QR) && $QR->IsValid)
 {
 	$waypoints = $QR->Sessions[0]->Route->Segments[0]->Waypoints;
 	$c1 = 0;
@@ -195,8 +195,8 @@ if($map->IsGeocoded)
 <div id="overviewMapContainer"></div>
 
 <div>
-  <img id="mapImage" src="<?php print $vd["FirstMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>"<?php if($vd["SecondMapImageName"]) print ' title="'. __("TOGGLE_IMAGE_CLICK") .'" class="toggleable"'; ?>/>
-  <?php if($vd["SecondMapImageName"]) { ?>
+  <img id="mapImage" src="<?php print $vd["FirstMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>"<?php if(isset($vd["SecondMapImageName"])) print ' title="'. __("TOGGLE_IMAGE_CLICK") .'" class="toggleable"'; ?>/>
+  <?php if(isset($vd["SecondMapImageName"])) { ?>
   <img id="hiddenMapImage" src="<?php print $vd["SecondMapImageName"]; ?>" alt="<?php print hsc(strip_tags($vd["Name"]))?>" <?php if($vd["SecondMapImageName"]) {?>title="<?php print __("TOGGLE_IMAGE_CLICK")?>"<?php }?>/>
   <?php } ?>
   <input type="hidden" id="id" value="<?php print $map->ID; ?>" />

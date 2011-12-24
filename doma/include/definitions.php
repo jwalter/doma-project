@@ -9,7 +9,7 @@
   }
   
   $projectDirectory = implode('/', array_intersect(explode('/', $_SERVER["REQUEST_URI"]), explode('/', str_replace('\\', '/', $rootPath))));
-  if ($projectDirectory[strlen($projectDirectory)-1] != '/') 
+  if (strlen($projectDirectory) !=0 && $projectDirectory[strlen($projectDirectory)-1] != '/') 
   {
     $projectDirectory .= '/';
   }
@@ -22,7 +22,7 @@
     'DB_COMMENT_TABLE' => 'doma_comments',
     'TEMP_FILE_PATH' => 'temp',
     'SHOW_LANGUAGES_IN_TOPBAR' => '1',
-    'LANGUAGES_AVAILABLE' => 'Česky;cs|Dansk;da|Deutsch;de_AT|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;no_NB|Português;pt|Svenska;sv',    
+    'LANGUAGES_AVAILABLE' => 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv',    
     'IMAGE_RESIZING_METHOD' => '1'
   );
   
