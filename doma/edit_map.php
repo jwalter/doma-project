@@ -22,7 +22,7 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]; ?>?<?php print Helper::CreateQuerystring(getUser(), $vd["MapID"]); ?>" enctype="multipart/form-data">
+<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]; ?>?<?php print Helper::CreateQuerystring(getUser(), isset($vd["MapID"]) ? $vd["MapID"] : null); ?>" enctype="multipart/form-data">
 
 <h1><?php print $vd["Title"]; ?></h1>
 
@@ -116,13 +116,13 @@
 <div class="container">
 <label for="mapImage"><?php print __("MAP_IMAGE_FILE")?></label>
 <input type="file" id="mapImage" name="mapImage" class="tooltipControl" />
-<div class="tooltip hidden"><?php print __("MAP_INFO"); if($vd["MapID"]) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
+<div class="tooltip hidden"><?php print __("MAP_INFO"); if(isset($vd["MapID"])) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
 </div>
 
 <div class="container">
 <label for="blankMapImage"><?php print __("BLANK_MAP_IMAGE_FILE")?></label>
 <input type="file" id="blankMapImage" name="blankMapImage" class="tooltipControl" />
-<div class="tooltip hidden"><?php print __("BLANK_MAP_INFO"); if($vd["MapID"]) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
+<div class="tooltip hidden"><?php print __("BLANK_MAP_INFO"); if(isset($vd["MapID"])) print " ". __("LEAVE_EMPTY_TO_KEEP_EXISTING_MAP"); ?></div>
 </div>
 
 <div class="container">

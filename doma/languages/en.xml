@@ -704,9 +704,6 @@ Consider the password as being temporary. For security reasons, please change it
     <string key="POST_COMMENTS">
       Post new comment
     </string> 
-    <string key="NAME">
-      Name
-    </string> 
     <string key="MISSING_COMMENT">
       Name and comment must be entered!
     </string> 

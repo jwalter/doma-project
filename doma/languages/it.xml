@@ -676,9 +676,6 @@ la tua password: %s
     <string key="POST_COMMENTS">
       Pubblica il nuovo commento
     </string> 
-    <string key="NAME">
-      Nome
-    </string> 
     <string key="MISSING_COMMENT">
       Devi inserire nome e commento!
     </string> 

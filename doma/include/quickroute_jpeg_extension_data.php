@@ -298,7 +298,7 @@
               $handle->PixelLocation->Y = self::ReadDouble(substr($tagData, $subPos, 8));
               $subPos += 8;
               // type
-              $handle->Type = self::ReadInt16(substr($tagData, $subPos, 1));
+              $handle->Type = self::ReadInt16(substr($tagData, $subPos, 2));
               $subPos += 2;
               $session->Handles[] = $handle;
             }
@@ -387,10 +387,10 @@
       $multiplier = 1;
       for($i=0; $i<$byteCount; $i++)
       {
-        $value += $multiplier * ord($data[$i]);
+        if(isset($data[$i])) $value += $multiplier * ord($data[$i]);
         $multiplier *= 1 << 8;
       }
-      if($signed && (ord($data[$byteCount-1]) & (1 << 7)))
+      if($signed && isset($data[$byteCount-1]) && (ord($data[$byteCount-1]) & (1 << 7)))
       {
         $value = -pow(2, $bitCount) + $value;
       }

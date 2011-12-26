@@ -697,9 +697,6 @@ Sinu parool:   %s
     <string key="POST_COMMENTS">
       Lisa kommentaar
     </string> 
-    <string key="NAME">
-      Nimi
-    </string> 
     <string key="MISSING_COMMENT">
       Nimi ning kommentaar ei tohi jääda tühjaks!
     </string> 

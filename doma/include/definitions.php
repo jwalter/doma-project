@@ -9,7 +9,7 @@
   }
   
   $projectDirectory = implode('/', array_intersect(explode('/', $_SERVER["REQUEST_URI"]), explode('/', str_replace('\\', '/', $rootPath))));
-  if (strlen($projectDirectory) !=0 && $projectDirectory[strlen($projectDirectory)-1] != '/') 
+  if (strlen($projectDirectory) == 0 || (strlen($projectDirectory) != 0 && $projectDirectory[strlen($projectDirectory)-1] != '/')) 
   {
     $projectDirectory .= '/';
   }

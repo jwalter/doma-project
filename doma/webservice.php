@@ -316,6 +316,7 @@
   function UploadPartialFile($request)
   {
     $success = false;
+    $errorMessage = null;
     // validate username and password
     $user = DataAccess::GetUserByUsernameAndPassword($request["Username"], $request["Password"]);
     if(!$user)

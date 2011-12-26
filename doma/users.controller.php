@@ -9,7 +9,7 @@
 
       $errors = array();
 
-      if(Helper::IsLoggedInAdmin() && $_GET["loginAsUser"])
+      if(Helper::IsLoggedInAdmin() && isset($_GET["loginAsUser"]))
       {
         // login as a certain user and redirect to his page
         if(Helper::LoginUserByUsername($_GET["loginAsUser"]))
@@ -26,7 +26,7 @@
       $numberOfMaps = isset($_GET["lastMaps"]) && is_numeric($_GET["lastMaps"]) 
         ? (int)$_GET["lastMaps"] 
         : (isset($_GET["lastMaps"]) && $_GET["lastMaps"] == "all" ? 999999 : 10);
-      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, null, $numberOfMaps, "date", Helper::GetLoggedInUserID());
+      $viewData["LastMaps"] = DataAccess::GetMaps(0, 0, 0, 0, null, $numberOfMaps, "createdTime", Helper::GetLoggedInUserID());
       
       // last x comments
       $numberOfComments = isset($_GET["lastComments"]) && is_numeric($_GET["lastComments"]) 

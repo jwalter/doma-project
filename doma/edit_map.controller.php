@@ -15,7 +15,7 @@
 
       if(!Helper::IsLoggedInUser()) Helper::Redirect("users.php");
       
-      if($_GET["map"]) $mapID = $_GET["map"];
+      if(isset($_GET["map"])) $mapID = $_GET["map"];
 
       foreach($_GET as $variable => $value) $$variable = stripslashes($value);
       foreach($_POST as $variable => $value) $$variable = stripslashes($value);
@@ -28,7 +28,7 @@
       if(isset($save) || isset($delete) || isset($deleteConfirmed))
       {
         $map = new Map();
-        if($mapID) 
+        if(isset($mapID)) 
         {
           $map->Load($mapID);
           if($map->UserID != getUser()->ID) die("Access denied");    
@@ -131,9 +131,9 @@
 
           if($error) $errors[] = $error;  
           
-          if($mapImageData["fileName"]) unlink($mapImageData["fileName"]);
-          if($blankMapImageData["fileName"]) unlink($blankMapImageData["fileName"]);
-          if($thumbnailImageData["fileName"]) unlink($thumbnailImageData["fileName"]);
+          if($mapImageData["fileName"] && file_exists($mapImageData["fileName"])) unlink($mapImageData["fileName"]);
+          if($blankMapImageData["fileName"] && file_exists($blankMapImageData["fileName"])) unlink($blankMapImageData["fileName"]);
+          if($thumbnailImageData["fileName"] && file_exists($thumbnailImageData["fileName"])) unlink($thumbnailImageData["fileName"]);
           if(count($errors) == 0) Helper::Redirect("index.php?". Helper::CreateQuerystring(getUser()) . (!$thumbnailCreatedSuccessfully ? "&error=thumbnailCreationFailure" : ""));
         }
       }
@@ -146,9 +146,9 @@
       $viewData["Errors"] = $errors;
       $viewData["Categories"] = getUser()->GetCategories();
       $viewData["Map"] = $map;
-      $viewData["MapID"] = $mapID;
+      if(isset($mapID)) $viewData["MapID"] = $mapID;
       $viewData["ConfirmDeletionButtonVisible"] = isset($delete);
-      $viewData["Title"] = ($mapID ? sprintf(__("EDIT_MAP_X"), $map->Name) : __("ADD_MAP"));
+      $viewData["Title"] = (isset($mapID) ? sprintf(__("EDIT_MAP_X"), $map->Name) : __("ADD_MAP"));
 
       return $viewData;
     }

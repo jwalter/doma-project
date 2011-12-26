@@ -675,9 +675,6 @@ Password:   %s
     <string key="POST_COMMENTS">
       Criar novo comentário
     </string> 
-    <string key="NAME">
-      Nome
-    </string> 
     <string key="MISSING_COMMENT">
       Nome e comentário são obrigatórios!
     </string> 

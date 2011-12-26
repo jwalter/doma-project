@@ -675,9 +675,6 @@ Dein neues Passwort: %s
     <string key="POST_COMMENTS">
       Kommentar veröffentlichen
     </string> 
-    <string key="NAME">
-      Name
-    </string> 
     <string key="MISSING_COMMENT">
       Name und Kommentar müssen eingegeben werden!
     </string> 

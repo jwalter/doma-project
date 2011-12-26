@@ -32,11 +32,11 @@
 
       // previous map in archive
       $previous = DataAccess::GetPreviousMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
-      $viewData["PreviousName"] = $previous->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
+      $viewData["PreviousName"] = $previous == null ? null :$previous->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
 
       // next map in archive
       $next = DataAccess::GetNextMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
-      $viewData["NextName"] = $next->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($next->Date, true)) .')';
+      $viewData["NextName"] = $next == null ? null : $next->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($next->Date, true)) .')';
 
       $size = $map->GetMapImageSize();
       $viewData["ImageWidth"] = $size["Width"];
@@ -62,6 +62,10 @@
       {
         $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
         $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, false, false, $categories);
+        
+        $viewData["GoogleMapsUrl"] = "http://maps.google.com/maps".
+          "?q=". urlencode(Helper::GlobalPath("export_kml.php?id=". $map->ID ."&format=kml")).
+          "&language=". Session::GetLanguageCode();
       }
       return $viewData;
     }

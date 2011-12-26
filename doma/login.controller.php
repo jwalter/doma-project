@@ -15,19 +15,19 @@
       // user is hidden - redirect to user list page
       if(!getUser()->Visible) Helper::Redirect("users.php");
 
-      if($_POST["cancel"])
+      if(isset($_POST["cancel"]))
       {
         Helper::Redirect("index.php?". Helper::CreateQuerystring(getUser()));
       }
 
-      if($_GET["action"] == "logout")
+      if(isset($_GET["action"]) && $_GET["action"] == "logout")
       {
         $location = "index.php?". Helper::CreateQuerystring(getUser());
         Helper::LogoutUser();
         Helper::Redirect($location);
       }
 
-      if($_POST["login"])
+      if(isset($_POST["login"]))
       {
         $currentUserID = getUser()->ID;
         if(Helper::LoginUser(stripslashes($_POST["username"]), stripslashes($_POST["password"])))
@@ -37,7 +37,7 @@
         $errors[] = __("INVALID_USERNAME_OR_PASSWORD");
       }
 
-      if($_POST["forgotPassword"])
+      if(isset($_POST["forgotPassword"]))
       {
         Helper::Redirect("send_new_password.php?". Helper::CreateQuerystring(getUser()));
       }

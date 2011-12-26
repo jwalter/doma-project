@@ -58,8 +58,15 @@
       {
         $viewData["YearsWithText"][$year] = array("value" => $year, "text" => $year);
       }
-      if(!in_array($searchCriteria["selectedYear"], array_keys($viewData["YearsWithText"]))) $searchCriteria["selectedYear"] = $years[0];
-      if(!in_array($searchCriteria["selectedCategoryID"], array_keys($categories))) $searchCriteria["selectedCategoryID"] = $categories[0];
+      if(!in_array($searchCriteria["selectedYear"], array_keys($viewData["YearsWithText"])) && count($years) > 0)
+      {
+        $searchCriteria["selectedYear"] = $years[0];
+      } 
+      $categoryIds = array_keys($categories);
+      if(!in_array($searchCriteria["selectedCategoryID"], $categoryIds) && count($categories) > 0)
+      {
+        $searchCriteria["selectedCategoryID"] = $categoryIds[0];
+      } 
 
       if(isset($_GET["year"])) $searchCriteria["selectedYear"] = $_GET["year"];
       if(isset($_GET["categoryID"])) $searchCriteria["selectedCategoryID"] = $_GET["categoryID"];
@@ -112,7 +119,7 @@
         }
         if($map->IsGeocoded) $viewData["GeocodedMapsExist"] = true;
       }
-      if(!$viewData["GeocodedMapsExist"] && count($viewData["Maps"]) > 0) $viewData["DisplayMode"] = "list";
+      if(!$viewData["GeocodedMapsExist"]) $viewData["DisplayMode"] = "list";
       
       Session::SetSearchCriteria(getUser()->ID, $searchCriteria);
       

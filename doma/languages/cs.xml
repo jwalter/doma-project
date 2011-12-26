@@ -695,9 +695,6 @@ Pokládej heslo za dočasné. Z bezpečnostních důvodů si jej změň.
     <string key="POST_COMMENTS">
       Napiš komentář
     </string> 
-    <string key="NAME">
-      Jméno
-    </string> 
     <string key="MISSING_COMMENT">
       Pole Jméno a samotný text komentáře je nutno vyplnit!
     </string> 

@@ -16,7 +16,9 @@
     $map = new Map();
     $map->Load($id);
     
-    $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+    $user = DAtaAccess::GetUserByID($map->UserID);
+    
+    $categories = DataAccess::GetCategoriesByUserID($user->ID);
     return Helper::GetOverviewMapData($map, true, false, false, $categories);
   }
 ?>

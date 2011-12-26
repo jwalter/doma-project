@@ -24,7 +24,7 @@
 
 <h1><?php print __("LOGIN")?></h1>
 
-<?php if($_GET["action"] == "newPasswordSent") print '<p>'. sprintf(__("NEW_PASSWORD_SENT"), getUser()->Email) .'</p>'; ?>
+<?php if(isset($_GET["action"]) && $_GET["action"] == "newPasswordSent") print '<p>'. sprintf(__("NEW_PASSWORD_SENT"), getUser()->Email) .'</p>'; ?>
 
 <?php if(count($vd["Errors"]) > 0) { ?>
 <ul class="error">

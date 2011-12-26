@@ -452,15 +452,15 @@
           <?php if(!$isLoggedIn) { ?>
             <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("LOGIN")?></a>
           <?php } else { ?>
-            <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("ADD_MAP")?></a>
+            <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("ADD_MAP"); ?></a>
             <span class="separator">|</span>
-            <a href="edit_user.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("USER_PROFILE")?></a>
+            <a href="edit_user.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("USER_PROFILE"); ?></a>
             <span class="separator">|</span>
-            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>&amp;action=logout"><?php print __("LOGOUT")?></a>
+            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>&amp;action=logout"><?php print __("LOGOUT"); ?></a>
           <?php } ?>
         </div>
         <div class="right">
-          <a href="users.php"><?php print __("ALL_USERS")?></a>
+          <a href="users.php"><?php print __("ALL_USERS"); ?></a>
           <span class="separator">|</span>
           <?php 
           if(SHOW_LANGUAGES_IN_TOPBAR=="1") 
@@ -468,7 +468,7 @@
             Helper::ShowLanguages();?>
             <span class="separator">|</span>
           <?php } ?>
-          <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
+          <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION; ?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
         </div>
         <div class="clear"></div>
       </div>
@@ -481,14 +481,14 @@
       ?>
       <div id="topbar">
         <div class="left">
-          <a href="users.php"><?php print _SITE_TITLE?></a>
+          <a href="users.php"><?php print _SITE_TITLE; ?></a>
           <span class="separator">|</span>
           <?php if(!$isLoggedIn) { ?>
-            <a href="admin_login.php"><?php print __("ADMIN_LOGIN")?></a>
+            <a href="admin_login.php"><?php print __("ADMIN_LOGIN"); ?></a>
           <?php } else { ?>
-            <a href="edit_user.php?mode=admin"><?php print __("ADD_USER")?></a>
+            <a href="edit_user.php?mode=admin"><?php print __("ADD_USER"); ?></a>
             <span class="separator">|</span>
-            <a href="admin_login.php?action=logout"><?php print __("ADMIN_LOGOUT")?></a>
+            <a href="admin_login.php?action=logout"><?php print __("ADMIN_LOGOUT"); ?></a>
           <?php } ?>
         </div>
         <div class="right">
@@ -587,6 +587,8 @@
     public static function SaveTemporaryFileFromUploadedFile($uploadedFile)
     {
       $temporaryDirectory = Helper::LocalPath(TEMP_FILE_PATH ."/");
+      $fileName = null;
+      $error = null;
       if($uploadedFile['name'])
       {
         $extension = Helper::GetExtension($uploadedFile['name']);
@@ -659,6 +661,7 @@
     
     public static function ConvertToTime($value, $format)
     {
+      $leading = "";
       if($format=="MM:SS")
       {
         if(is_numeric($value))
@@ -766,6 +769,8 @@
       }
 
       $info = "";
+      $hscNameAndDate = "";
+      $disciplineAndRelayLeg = "";
 
       if(__("SHOW_MAP_AREA_NAME") || __("SHOW_ORGANISER") || __("SHOW_COUNTRY"))
       {

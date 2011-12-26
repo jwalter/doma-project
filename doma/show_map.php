@@ -183,7 +183,7 @@ if($map->IsGeocoded)
 	<script type="text/javascript">
 	  var divh = document.getElementById('wrapper').offsetHeight;
     
-    document.write('<a href="http://maps.google.com/maps?q=<?php print $coordinates; ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php print $coordinates; ?>&amp;zoom=6&amp;size=174x'+divh+'&amp;maptype=terrain&amp;markers=color:red%7C<?php print $coordinates; ?>&amp;sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>"></a>');
+    document.write('<a href="<?php print $vd["GoogleMapsUrl"]; ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php print $coordinates; ?>&amp;zoom=6&amp;size=174x'+divh+'&amp;maptype=terrain&amp;markers=color:red%7C<?php print $coordinates; ?>&amp;sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>"></a>');
   </script>
 	<?php
 	print '</div>';

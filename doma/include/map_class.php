@@ -107,7 +107,7 @@
       if($this->QuickRouteJpegExtensionData != null) return $this->QuickRouteJpegExtensionData; // yes, use it
       // no cached value, get it
       $this->QuickRouteJpegExtensionData = new QuickRouteJpegExtensionData(Helper::LocalPath(MAP_IMAGE_PATH ."/" . $this->MapImage));
-      if($this->QuickRouteJpegExtensionData->IsValid) 
+      if(isset($this->QuickRouteJpegExtensionData) && $this->QuickRouteJpegExtensionData->IsValid) 
       {
         if($calculate) $this->QuickRouteJpegExtensionData->Calculate();
         return $this->QuickRouteJpegExtensionData;
@@ -161,7 +161,7 @@
     public function AddGeocoding()
     {
       $ed = $this->GetQuickRouteJpegExtensionData(true, true);
-      if($ed->IsValid)
+      if(isset($ed) && $ed->IsValid)
       {
         $this->MapCenterLatitude = (
           min($ed->MapCornerPositions["SW"]->Latitude, $ed->MapCornerPositions["SE"]->Latitude) +

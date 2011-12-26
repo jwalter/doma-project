@@ -584,9 +584,6 @@ Biztonsági okokból érdemes a jelszót gyakran változtatni.
     <string key="POST_COMMENTS">
       Hozzásszólás küldése
     </string> 
-    <string key="NAME">
-      Név
-    </string> 
     <string key="MISSING_COMMENT">
       A név és a hozzászólás mező kitöltése kötelező!
     </string> 

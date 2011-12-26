@@ -678,9 +678,6 @@ Ditt nya lösenord: %s
     <string key="POST_COMMENTS">
       Lägg till kommentar
     </string> 
-    <string key="NAME">
-      Namn
-    </string> 
     <string key="MISSING_COMMENT">
       Textfälten för namn och kommentar måste fyllas i!
     </string> 

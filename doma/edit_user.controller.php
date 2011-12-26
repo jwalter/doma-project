@@ -7,17 +7,17 @@
     {
       $viewData = array();  
 
-      $isAdmin = ($_GET["mode"] == "admin" && Helper::IsLoggedInAdmin());
+      $isAdmin = (isset($_GET["mode"]) && $_GET["mode"] == "admin" && Helper::IsLoggedInAdmin());
 
       // no user specified and not admin mode - redirect to user list page
       if(!$isAdmin && !getUser() && !Session::GetPublicCreationCodeEntered()) Helper::Redirect("users.php");
       
       $errors = array();
       $user = getUser();
-      $isNewUser = (!$user->ID);
+      $isNewUser = !isset($user) || !$user->ID;
       if($isNewUser) $user = new User();
       
-      if($_POST["cancel"])
+      if(isset($_POST["cancel"]))
       {
         Helper::Redirect($isAdmin ? "users.php" : "index.php?". Helper::CreateQuerystring($user));
       }
@@ -29,6 +29,8 @@
       }
       
       // any category handling button clicked?
+      $addCategory = null;
+      $deleteCategory = null;
       foreach($_POST as $key=>$value)
       {
         if(substr($key, 0, 15) == "deleteCategory_")
@@ -43,7 +45,7 @@
         }
       }
       
-      if($_POST["save"] || $_POST["delete"] || $deleteCategory || $addCategory)
+      if(isset($_POST["save"]) || isset($_POST["delete"]) || $deleteCategory || $addCategory)
       {
         // populate user object with data from form elements
         $user->Username = stripslashes($_POST["username"]);
@@ -178,7 +180,7 @@
       if($defaultCategoryIndex == -1) $defaultCategoryIndex = 0;
       $defaultCategory = $categoryData[$defaultCategoryIndex]["defaultValue"];
       
-      if($_POST["save"])
+      if(isset($_POST["save"]))
       {
         // validate
         if(DataAccess::UsernameExists($user->Username, $user->ID))
@@ -213,7 +215,7 @@
         {
           if(trim($c->Name) == "") $emptyCategoryNameFound = true;
         }
-        if($emptyCategoryNameFound) $errors[] = __("CATEGORY_NAME_CANNOT_BE_EMPTY");
+        if(isset($emptyCategoryNameFound)) $errors[] = __("CATEGORY_NAME_CANNOT_BE_EMPTY");
         
         if(count($errors) == 0)
         {
@@ -274,11 +276,11 @@
       $viewData["IsAdmin"] = $isAdmin;
       $viewData["IsNewUser"] = $isNewUser;
       $viewData["User"] = $user;
-      $viewData["SendEmail"] = $_POST["sendEmail"];
+      $viewData["SendEmail"] = isset($_POST["sendEmail"]);
       $viewData["CategoryData"] = $categoryData;
       $viewData["DefaultCategory"] = $defaultCategory;
-      $viewData["DeleteButtonClicked"] = $_POST["delete"];
-      $viewData["NoOfCategoriesAdded"] = $noOfCategoriesAdded;
+      $viewData["DeleteButtonClicked"] = isset($_POST["delete"]);
+      $viewData["NoOfCategoriesAdded"] = isset($noOfCategoriesAdded) ? $noOfCategoriesAdded : 0;
       $viewData["CustomizableSettings"] = Helper::GetCustomizableStrings();
 
       return $viewData;

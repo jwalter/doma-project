@@ -13,7 +13,7 @@ class EnterPublicCreationCodeController
     
     if(Session::GetPublicCreationCodeEntered()) Helper::Redirect("edit_user.php");
 
-    if($_POST["proceed"])
+    if(isset($_POST["proceed"]))
     {
       if($_POST["publicCreationCode"] == PUBLIC_USER_CREATION_CODE)
       {
@@ -23,7 +23,7 @@ class EnterPublicCreationCodeController
       $errors[] = __("INVALID_CODE");
     }
 
-    if($_POST["cancel"])
+    if(isset($_POST["cancel"]))
     {
       Helper::Redirect("users.php");
     }  

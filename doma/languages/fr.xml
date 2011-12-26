@@ -675,9 +675,6 @@ Votre nouveau mot de passe : %s
     <string key="POST_COMMENTS">
       Poster un nouveau commentaire
     </string> 
-    <string key="NAME">
-      Nom
-    </string> 
     <string key="MISSING_COMMENT">
       Le nom et le commentaire doivent être saisis !
     </string> 

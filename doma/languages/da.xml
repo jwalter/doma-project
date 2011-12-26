@@ -653,9 +653,6 @@ Dit nye password: %s
     <string key="POST_COMMENTS">
       Indsæt ny kommentar
     </string> 
-    <string key="NAME">
-      Navn
-    </string> 
     <string key="MISSING_COMMENT">
       Navn og kommentar skal angives!
     </string> 

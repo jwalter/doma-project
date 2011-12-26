@@ -676,9 +676,6 @@ Tu nueva contraseña:  %s
     <string key="POST_COMMENTS">
       Post new comment
     </string> 
-    <string key="NAME">
-      Name
-    </string> 
     <string key="MISSING_COMMENT">
       Name and comment must be entered!
     </string> 
