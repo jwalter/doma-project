@@ -10,10 +10,10 @@
       $isAdmin = (isset($_GET["mode"]) && $_GET["mode"] == "admin" && Helper::IsLoggedInAdmin());
 
       // no user specified and not admin mode - redirect to user list page
-      if(!$isAdmin && !getUser() && !Session::GetPublicCreationCodeEntered()) Helper::Redirect("users.php");
+      if(!$isAdmin && !getCurrentUser() && !Session::GetPublicCreationCodeEntered()) Helper::Redirect("users.php");
       
       $errors = array();
-      $user = getUser();
+      $user = getCurrentUser();
       $isNewUser = !isset($user) || !$user->ID;
       if($isNewUser) $user = new User();
       

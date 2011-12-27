@@ -10,23 +10,23 @@
       $errors = array();
 
       // no user specified - redirect to user list page
-      if(!getUser()) Helper::Redirect("users.php");
+      if(!getCurrentUser()) Helper::Redirect("users.php");
 
       // user is hidden - redirect to user list page
-      if(!getUser()->Visible) Helper::Redirect("users.php");
+      if(!getCurrentUser()->Visible) Helper::Redirect("users.php");
       
       // no email address for user is not specified
-      if(!getUser()->Email) Helper::Redirect("users.php");
+      if(!getCurrentUser()->Email) Helper::Redirect("users.php");
 
       if($_POST["cancel"])
       {
-        Helper::Redirect("login.php?". Helper::CreateQuerystring(getUser()));
+        Helper::Redirect("login.php?". Helper::CreateQuerystring(getCurrentUser()));
       }
 
       if($_POST["send"])
       {
         $password = Helper::CreatePassword(6);
-        $user = getUser();
+        $user = getCurrentUser();
         $user->Password = md5($password);
         $user->Save();
         
@@ -37,7 +37,7 @@
         $body = sprintf(__("NEW_PASSWORD_EMAIL_BODY"), $user->FirstName, $baseAddress, $userAddress, $user->Username, $password);  
         $emailSentSuccessfully = Helper::SendEmail($fromName, $user->Email, $subject, $body);
         
-        if($emailSentSuccessfully) Helper::Redirect("login.php?". Helper::CreateQuerystring(getUser()) ."&action=newPasswordSent");
+        if($emailSentSuccessfully) Helper::Redirect("login.php?". Helper::CreateQuerystring(getCurrentUser()) ."&action=newPasswordSent");
         
         $errors[] = __("EMAIL_ERROR");
       }

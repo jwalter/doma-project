@@ -16,7 +16,7 @@
   // extract current user from querystring
   if(isset($_GET["user"]))
   {
-    $currentUser = getUser();
+    $currentUser = getCurrentUser();
     if(!$currentUser || 
        $currentUser->Username != $_GET["user"] || 
        !Session::GetLanguageStrings() || 

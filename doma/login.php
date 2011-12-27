@@ -20,11 +20,11 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
+<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getCurrentUser())?>">
 
 <h1><?php print __("LOGIN")?></h1>
 
-<?php if(isset($_GET["action"]) && $_GET["action"] == "newPasswordSent") print '<p>'. sprintf(__("NEW_PASSWORD_SENT"), getUser()->Email) .'</p>'; ?>
+<?php if(isset($_GET["action"]) && $_GET["action"] == "newPasswordSent") print '<p>'. sprintf(__("NEW_PASSWORD_SENT"), getCurrentUser()->Email) .'</p>'; ?>
 
 <?php if(count($vd["Errors"]) > 0) { ?>
 <ul class="error">
@@ -49,7 +49,7 @@
 
 <div class="buttons">
 <input type="submit" class="submit" name="login" value="<?php print __("LOGIN")?>" />
-<?php if(getUser()->Email) { ?> <input type="submit" class="submit" name="forgotPassword" value="<?php print __("FORGOT_PASSWORD")?>" /> <?php } ?>
+<?php if(getCurrentUser()->Email) { ?> <input type="submit" class="submit" name="forgotPassword" value="<?php print __("FORGOT_PASSWORD")?>" /> <?php } ?>
 <input type="submit" class="submit" name="cancel" value="<?php print __("CANCEL")?>" />
 </div>
 

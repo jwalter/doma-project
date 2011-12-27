@@ -14,7 +14,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="stylesheet" href="style.css" type="text/css" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>" />
   <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
   <script src="js/overview_map.js" type="text/javascript"></script>
@@ -36,8 +36,8 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form method="get" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
-<input type="hidden" name="user" value="<?php print getUser()->Username;?>"/>
+<form method="get" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getCurrentUser())?>">
+<input type="hidden" name="user" value="<?php print getCurrentUser()->Username;?>"/>
 <?php if(count($vd["Errors"]) > 0) { ?>
 <ul class="error">
 <?php
@@ -53,7 +53,7 @@
   <img id="logo" src="gfx/book.png" alt="" />
 </div>
 
-<div id="rssIcon"><a href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>"><img src="gfx/feed-icon-28x28.png" alt="<?php print __("RSS_FEED")?>" title="<?php print __("RSS_FEED")?>" /></a></div>
+<div id="rssIcon"><a href="rss.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>"><img src="gfx/feed-icon-28x28.png" alt="<?php print __("RSS_FEED")?>" title="<?php print __("RSS_FEED")?>" /></a></div>
 
 <div id="intro">
 <h1><?php print __("CAPTION")?></h1>

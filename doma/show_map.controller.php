@@ -9,10 +9,10 @@
       $viewData = array();  
 
       // no user specified - redirect to user list page
-      if(!getUser()) Helper::Redirect("users.php");
+      if(!getCurrentUser()) Helper::Redirect("users.php");
       
       // user is hidden - redirect to user list page
-      if(!getUser()->Visible) Helper::Redirect("users.php");
+      if(!getCurrentUser()->Visible) Helper::Redirect("users.php");
 
       // the requested map
       $map = new Map();
@@ -24,18 +24,18 @@
       
       if(Helper::MapIsProtected($map)) die("The map is protected until ". date("Y-m-d H:i:s", Helper::StringToTime($map->ProtectedUntil, true)) .".");
             
-      if($map->UserID != getUser()->ID) die();
+      if($map->UserID != getCurrentUser()->ID) die();
       
       $viewData["Comments"] = DataAccess::GetCommentsByMapId($map->ID);
 
       $viewData["Name"] = $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')';
 
       // previous map in archive
-      $previous = DataAccess::GetPreviousMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
+      $previous = DataAccess::GetPreviousMap(getCurrentUser()->ID, $map->ID, Helper::GetLoggedInUserID());
       $viewData["PreviousName"] = $previous == null ? null :$previous->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($previous->Date, true)) .')';
 
       // next map in archive
-      $next = DataAccess::GetNextMap(getUser()->ID, $map->ID, Helper::GetLoggedInUserID());
+      $next = DataAccess::GetNextMap(getCurrentUser()->ID, $map->ID, Helper::GetLoggedInUserID());
       $viewData["NextName"] = $next == null ? null : $next->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($next->Date, true)) .')';
 
       $size = $map->GetMapImageSize();
@@ -48,10 +48,11 @@
       
       $viewData["BackUrl"] = isset($_SERVER["HTTP_REFERER"]) && basename($_SERVER["HTTP_REFERER"]) == "users.php"
         ? "users.php"
-        : "index.php?". Helper::CreateQuerystring(getUser());
+        : "index.php?". Helper::CreateQuerystring(getCurrentUser());
       
       $viewData["Previous"] = $previous;
       $viewData["Next"] = $next;
+      $viewData["ShowComments"] = (isset($_GET["showComments"]) && $_GET["showComments"] = true) || !__("COLLAPSE_VISITOR_COMMENTS");
       
       $viewData["FirstMapImageName"] = Helper::GetMapImage($map);
       if($map->BlankMapImage) $viewData["SecondMapImageName"] = Helper::GetBlankMapImage($map);
@@ -60,7 +61,7 @@
       
       if(isset($viewData["QuickRouteJpegExtensionData"]) && $viewData["QuickRouteJpegExtensionData"]->IsValid)
       {
-        $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+        $categories = DataAccess::GetCategoriesByUserID(getCurrentUser()->ID);
         $viewData["OverviewMapData"][] = Helper::GetOverviewMapData($map, true, false, false, $categories);
         
         $viewData["GoogleMapsUrl"] = "http://maps.google.com/maps".

@@ -14,7 +14,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getUser())?>" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>  
   <script type="text/javascript" src="js/show_map.js"></script>
   <script type="text/javascript" src="js/jquery/jquery.timeago.js"></script>
@@ -67,8 +67,8 @@
   <a href="<?php print $vd["BackUrl"]?>"><?php print __("BACK")?></a>
   </div>
   <div class="right">
-  <?php if($vd["Previous"]) { ?><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Previous"]->ID)?>"><?php print "&lt;&lt; ". $vd["PreviousName"]; ?></a><?php } ?>
-  <?php if($vd["Next"]) { ?><span class="separator">|</span><a href="show_map.php?<?php print Helper::CreateQuerystring(getUser(), $vd["Next"]->ID)?>"><?php print $vd["NextName"] ." &gt;&gt;"; ?></a>
+  <?php if($vd["Previous"]) { ?><a href="show_map.php?<?php print Helper::CreateQuerystring(getCurrentUser(), $vd["Previous"]->ID)?>"><?php print "&lt;&lt; ". $vd["PreviousName"]; ?></a><?php } ?>
+  <?php if($vd["Next"]) { ?><span class="separator">|</span><a href="show_map.php?<?php print Helper::CreateQuerystring(getCurrentUser(), $vd["Next"]->ID)?>"><?php print $vd["NextName"] ." &gt;&gt;"; ?></a>
   
   <?php } ?>
   </div>
@@ -132,12 +132,12 @@ if(isset($QR) && $QR->IsValid)
   {
 ?>
 <div class="clear"></div>
-<a id="showPostedComments"<?php if(!__("COLLAPSE_VISITOR_COMMENTS")) print ' class="hidden"'; ?> href="#"><?php print __("SHOW_COMMENTS"); ?></a>
-<a id="hidePostedComments"<?php if(__("COLLAPSE_VISITOR_COMMENTS")) print ' class="hidden"'; ?> href="#"><?php print __("HIDE_COMMENTS"); ?></a>
+<a id="showPostedComments"<?php if($vd["ShowComments"]) print ' class="hidden"'; ?> href="#"><?php print __("SHOW_COMMENTS"); ?></a>
+<a id="hidePostedComments"<?php if(!$vd["ShowComments"]) print ' class="hidden"'; ?> href="#"><?php print __("HIDE_COMMENTS"); ?></a>
 (<span id="comments_count"><?php print count($vd["Comments"]); ?></span>)
 </div>
 
-<div id="postedComments"<?php if(__("COLLAPSE_VISITOR_COMMENTS")) print ' class="hidden"'; ?>">
+<div id="postedComments"<?php if(!$vd["ShowComments"]) print ' class="hidden"'; ?>">
   <?php 
     foreach($vd["Comments"] as $comment) 
     {
@@ -146,10 +146,10 @@ if(isset($QR) && $QR->IsValid)
   ?>
 </div>
   
-<div class="commentBox<?php if(__("COLLAPSE_VISITOR_COMMENTS")) print " hidden"; ?>" id="commentBox">
+<div class="commentBox<?php if(!$vd["ShowComments"]) print " hidden"; ?>" id="commentBox">
   <div id="commentBoxHeader"><?php print __("POST_COMMENTS") ?></a></div>
   <div id="userDetails">
-    <input type="hidden" id="map_user" value="<?php print getUser()->Username ?>">
+    <input type="hidden" id="map_user" value="<?php print getCurrentUser()->Username ?>">
     <label for="user_name"><?php print __("NAME") ?>:</label>
     <input type="text" id="user_name"<?php if(Helper::IsLoggedInUser()) print " value='" . hsc(Helper::GetLoggedInUser()->FirstName. " " .Helper::GetLoggedInUser()->LastName) ."'"; ?> /> 
     <label id="userEmailLabel" for="user_email"><?php print __("EMAIL") ?>:</label>

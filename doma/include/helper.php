@@ -11,7 +11,7 @@
     return Helper::Hsc($string);
   }
   
-  function getUser()
+  function getCurrentUser()
   {
     return Helper::GetUser();  
   }
@@ -443,20 +443,20 @@
     
     public static function CreateTopbar()
     {
-      $isLoggedIn = (Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getUser()->ID);
+      $isLoggedIn = (Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getCurrentUser()->ID);
       ?>
       <div id="topbar">
         <div class="left">
-          <a href="index.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php printf(__("DOMA_FOR_X"), getUser()->FirstName ." ". getUser()->LastName); ?></a>
+          <a href="index.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>"><?php printf(__("DOMA_FOR_X"), getCurrentUser()->FirstName ." ". getCurrentUser()->LastName); ?></a>
           <span class="separator">|</span>
           <?php if(!$isLoggedIn) { ?>
-            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("LOGIN")?></a>
+            <a href="login.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>"><?php print __("LOGIN")?></a>
           <?php } else { ?>
-            <a href="edit_map.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("ADD_MAP"); ?></a>
+            <a href="edit_map.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>"><?php print __("ADD_MAP"); ?></a>
             <span class="separator">|</span>
-            <a href="edit_user.php?<?php print Helper::CreateQuerystring(getUser())?>"><?php print __("USER_PROFILE"); ?></a>
+            <a href="edit_user.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>"><?php print __("USER_PROFILE"); ?></a>
             <span class="separator">|</span>
-            <a href="login.php?<?php print Helper::CreateQuerystring(getUser())?>&amp;action=logout"><?php print __("LOGOUT"); ?></a>
+            <a href="login.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>&amp;action=logout"><?php print __("LOGOUT"); ?></a>
           <?php } ?>
         </div>
         <div class="right">

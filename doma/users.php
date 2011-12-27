@@ -254,7 +254,7 @@
         $count++;
         $url = "index.php?user=". $last_comment["UserName"];
         $nameLink = Helper::EncapsulateLink(hsc($last_comment["UserFLName"]), $url);    
-        $mapLink = '<a href="show_map.php?user='.$last_comment["UserName"].'&map='.$last_comment["ID"] .'" class="thumbnailHoverLink">'. 
+        $mapLink = '<a href="show_map.php?user='. $last_comment["UserName"] .'&map='. $last_comment["ID"] .'&showComments=true" class="thumbnailHoverLink">'. 
                    hsc($last_comment["Name"]).
                    '</a>'; 
         

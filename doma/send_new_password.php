@@ -20,7 +20,7 @@
 <div id="wrapper">
 <?php Helper::CreateTopbar() ?>
 <div id="content">
-<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getUser())?>">
+<form class="wide" method="post" action="<?php print $_SERVER["PHP_SELF"]?>?<?php print Helper::CreateQuerystring(getCurrentUser())?>">
 
 <h1><?php print __("SEND_NEW_PASSWORD_TITLE")?></h1>
 
@@ -35,7 +35,7 @@
 </ul>
 <?php } ?>
 
-<p><?php print sprintf(__("SEND_NEW_PASSWORD_INFO"), getUser()->Email)?></p>
+<p><?php print sprintf(__("SEND_NEW_PASSWORD_INFO"), getCurrentUser()->Email)?></p>
 
 <div class="container">
 <input type="submit" class="submit" name="send" value="<?php print __("SEND_NEW_PASSWORD")?>" />

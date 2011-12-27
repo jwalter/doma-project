@@ -8,7 +8,7 @@
       $viewData = array();  
 
       // check if user is not specified or hidden
-      if(!getUser())
+      if(!getCurrentUser())
       {
         // all maps in archive
         $mode = "all";
@@ -26,14 +26,14 @@
       {
         // specified archive
         $mode = "user";
-        if(!getUser()->Visible) die();
-        $users[getUser()->ID] = getUser();
-        $maps = DataAccess::GetMaps(getUser()->ID);
-        $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+        if(!getCurrentUser()->Visible) die();
+        $users[getCurrentUser()->ID] = getCurrentUser();
+        $maps = DataAccess::GetMaps(getCurrentUser()->ID);
+        $categories = DataAccess::GetCategoriesByUserID(getCurrentUser()->ID);
         $viewData["Title"] = __("PAGE_TITLE");
-        $viewData["LastCreatedTime"] = date("r", DataAccess::GetLastCreatedTime(getUser()->ID));
+        $viewData["LastCreatedTime"] = date("r", DataAccess::GetLastCreatedTime(getCurrentUser()->ID));
         $viewData["Description"] = __("RSS_DESCRIPTION");
-        $viewData["WebsiteUrl"] = Helper::GlobalPath("index.php?". Helper::CreateQuerystring(getUser()));
+        $viewData["WebsiteUrl"] = Helper::GlobalPath("index.php?". Helper::CreateQuerystring(getCurrentUser()));
       }
       
       $viewData["Items"] = array();

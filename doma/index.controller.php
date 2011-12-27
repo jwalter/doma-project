@@ -8,7 +8,7 @@
       $viewData = array();
       // no user specified - redirect to user list page
       
-      if(!getUser()) 
+      if(!getCurrentUser()) 
       {
         $singleUserID = DataAccess::GetSingleUserID();
         if(!$singleUserID) Helper::Redirect("users.php");
@@ -16,16 +16,16 @@
       }
       
       // user is hidden - redirect to user list page
-      if(!getUser()->Visible) Helper::Redirect("users.php");
+      if(!getCurrentUser()->Visible) Helper::Redirect("users.php");
       
-      $searchCriteria = Session::GetSearchCriteria(getUser()->ID);
+      $searchCriteria = Session::GetSearchCriteria(getCurrentUser()->ID);
       
       if(!isset($searchCriteria))
       {
         // default search criteria  
         $searchCriteria = array(
             "selectedYear" => date("Y"),
-            "selectedCategoryID" => getUser()->DefaultCategoryID,
+            "selectedCategoryID" => getCurrentUser()->DefaultCategoryID,
             "filter" => null
         );
       }
@@ -46,12 +46,12 @@
       $allCategoriesItem = new Category();
       $allCategoriesItem->ID = 0;
       $allCategoriesItem->Name = __("ALL_CATEGORIES");
-      $categories = DataAccess::GetCategoriesByUserID(getUser()->ID);
+      $categories = DataAccess::GetCategoriesByUserID(getCurrentUser()->ID);
       $viewData["Categories"] = $categories;
       $viewData["CategoriesWithText"] = array_merge(array(0 => $allCategoriesItem), $categories);
 
       // get all years
-      $years = DataAccess::GetYearsByUserID(getUser()->ID, Helper::GetLoggedInUserID());
+      $years = DataAccess::GetYearsByUserID(getCurrentUser()->ID, Helper::GetLoggedInUserID());
       $years = array_reverse($years);
       $viewData["YearsWithText"][0] = array("value" => 0, "text" => __("ALL_YEARS"));
       foreach($years as $year)
@@ -85,13 +85,13 @@
       $viewData["SearchCriteria"] = $searchCriteria;
       
       // get map data
-      $viewData["Maps"] = DataAccess::GetMaps(getUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"], $searchCriteria["filter"], 0, "date", Helper::GetLoggedInUserID());  
+      $viewData["Maps"] = DataAccess::GetMaps(getCurrentUser()->ID, $startDate, $endDate, $searchCriteria["selectedCategoryID"], $searchCriteria["filter"], 0, "date", Helper::GetLoggedInUserID());  
       $viewData["GeocodedMapsExist"] = false;
       
       foreach($viewData["Maps"] as $map)
       {
         $mapInfo = array();
-        $mapInfo["URL"] = ($map->MapImage ? 'show_map.php?'. Helper::CreateQuerystring(getUser(), $map->ID) : "");
+        $mapInfo["URL"] = ($map->MapImage ? 'show_map.php?'. Helper::CreateQuerystring(getCurrentUser(), $map->ID) : "");
         $mapInfo["Name"] = $map->Name .' ('. date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true)) .')';
         $mapInfo["MapThumbnailHtml"] = Helper::EncapsulateLink('<img src="'. Helper::GetThumbnailImage($map) .'" alt="'. $mapInfo["Name"] .'" height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />', $mapInfo["URL"]);
 
@@ -121,7 +121,7 @@
       }
       if(!$viewData["GeocodedMapsExist"]) $viewData["DisplayMode"] = "list";
       
-      Session::SetSearchCriteria(getUser()->ID, $searchCriteria);
+      Session::SetSearchCriteria(getCurrentUser()->ID, $searchCriteria);
       
       return $viewData;
     }

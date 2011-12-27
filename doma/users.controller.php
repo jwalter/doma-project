@@ -14,7 +14,7 @@
         // login as a certain user and redirect to his page
         if(Helper::LoginUserByUsername($_GET["loginAsUser"]))
         {
-          Helper::Redirect("index.php?". Helper::CreateQuerystring(getUser()));
+          Helper::Redirect("index.php?". Helper::CreateQuerystring(getCurrentUser()));
         }
       }
       
