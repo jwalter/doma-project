@@ -101,7 +101,7 @@
   // The first value in each pair is the language name.
   // The second value is the language code, see the LANGUAGE_CODE setting above.
   // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv');
+  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

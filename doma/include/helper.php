@@ -260,7 +260,12 @@
     
     public static function DatabaseVersionIsValid()
     {
-      $databaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
+      $databaseVersion = Session::GetDatabaseVersion();
+      if(!$databaseVersion)
+      {
+        $databaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
+        Session::SetDatabaseVersion($databaseVersion);
+      }
       return (version_compare($databaseVersion, DOMA_VERSION) >= 0);
     }
 
@@ -498,7 +503,7 @@
             Helper::ShowLanguages();?>
             <span class="separator">|</span>
           <?php } ?>
-          <a href="http://www.matstroeng.se/doma/?<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
+          <a href="http://www.matstroeng.se/doma/?version=<?php print DOMA_VERSION?>"><?php printf(__("DOMA_VERSION_X"), DOMA_VERSION); ?></a>
         </div>
         <div class="clear"></div>
       </div>

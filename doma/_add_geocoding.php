@@ -1,6 +1,7 @@
 <?php
   include_once(dirname(__FILE__) ."/include/main.php");
   $ids = DataAccess::GetAllMapIds();
+  $numberOfSimultaneousRequests = isset($_GET["numberOfSimultaneousRequests"]) ? $_GET["numberOfSimultaneousRequests"] : 5;
 ?>
 
 <?php print '<?xml version="1.0" encoding="UTF-8"?>'; ?>
@@ -15,7 +16,7 @@
   <script src="js/common.js" type="text/javascript"></script>
   <script type="text/javascript">
     
-    var numberOfSimultaneousRequests = 5;
+    var numberOfSimultaneousRequests = <?php print $numberOfSimultaneousRequests; ?>;
     
     $(document).ready(function() 
     {
@@ -43,8 +44,9 @@
           .done(function(data) 
           { 
             if(data == "1") $('#numberOfGeocodedMaps span').text(parseInt($('#numberOfGeocodedMaps span').text())+1);
-            if(data == "2") $('#numberOfFailedMaps span').text(parseInt($('#numberOfFailedMaps span').text())+1);
-            if(data == "3") $('#numberOfAlreadyGeocodedMaps span').text(parseInt($('#numberOfAlreadyGeocodedMaps span').text())+1);
+            else if(data == "2") $('#numberOfFailedMaps span').text(parseInt($('#numberOfFailedMaps span').text())+1);
+            else if(data == "3") $('#numberOfAlreadyGeocodedMaps span').text(parseInt($('#numberOfAlreadyGeocodedMaps span').text())+1);
+            else $('#numberOfFailedMaps span').text(parseInt($('#numberOfFailedMaps span').text())+1);
           })
           .fail(function() 
           { 

@@ -22,7 +22,7 @@
     'DB_COMMENT_TABLE' => 'doma_comments',
     'TEMP_FILE_PATH' => 'temp',
     'SHOW_LANGUAGES_IN_TOPBAR' => '1',
-    'LANGUAGES_AVAILABLE' => 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv',    
+    'LANGUAGES_AVAILABLE' => 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv',
     'IMAGE_RESIZING_METHOD' => '1'
   );
   

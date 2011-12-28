@@ -27,11 +27,10 @@
       <?php
     }
   ?>
-  
+  <script src="js/common.js" type="text/javascript"></script>
   <?php if(isset($vd["OverviewMapData"])) { ?>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print $lang; ?>" type="text/javascript"></script>
     <script src="js/overview_map.js" type="text/javascript"></script>
-    <script src="js/common.js" type="text/javascript"></script>
     <script type="text/javascript">
       <!--
       $(function() { 

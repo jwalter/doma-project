@@ -72,7 +72,15 @@
     {
       self::SetValue("SEARCH_CRITERIA_$userID", $value);
     }
-    
+
+    public static function GetDatabaseVersion()
+    {
+      return self::GetValue("DATABASE_VERSION");
+    }
+    public static function SetDatabaseVersion($value)
+    {
+      self::SetValue("DATABASE_VERSION", $value);
+    }
 
     private static function GetValue($key)
     {

@@ -14,10 +14,10 @@
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+  <script src="js/common.js" type="text/javascript"></script>
   <?php if($vd["OverviewMapData"] != null) { ?>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
     <script src="js/overview_map.js" type="text/javascript"></script>
-    <script src="js/common.js" type="text/javascript"></script>
     <script type="text/javascript">
       <!--
         var overviewMapData = <?php print json_encode($vd["OverviewMapData"]); ?>;        

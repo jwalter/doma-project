@@ -46,7 +46,7 @@
           else
           {
             // updated database
-            Helper::LogUsage("updateSite", "version=". DOMA_VERSION);
+            Helper::LogUsage("updateSite", "oldVersion=$previousDatabaseVersion&newVersion=". DOMA_VERSION);
             // redirect to originally requested page
             $redirectUrl = $_GET["redirectUrl"];
             if(!isset($redirectUrl)) $redirectUrl = "users.php";
