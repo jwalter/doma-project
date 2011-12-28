@@ -742,10 +742,10 @@ Text:   %s
       Hidden until
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Time when the map will be available for other visitors than you, given in the dd/mm/yyyy hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      The time to hide the map until is invalid. Enter a time in given in the dd/mm/yyyy hh:mm:ss format or leave the field empty.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
       The map is hidden for others until %s.

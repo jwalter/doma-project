@@ -586,149 +586,149 @@ Ditt nye passord:  %s
     
     <!-- BEGIN new nonCustomizable strings in version 3.0 ******************************************************************* -->
     <string key="INVALID_BLANK_MAP_IMAGE_FORMAT">
-      The format of the blank map image file &lt;em&gt;%s&lt;/em&gt; is invalid. Only jpeg, png and gif formats are supported.
+      Formatet på den blanke kartfilen &lt;em&gt;%s&lt;/em&gt; er ukjent. Kun jpeg-, png- og gif-formatene er supportert.
     </string> 
     <string key="BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED">
-      The blank map image file &lt;em&gt;%s&lt;/em&gt; could not be uploaded.
+      Den blanke kartfilen &lt;em&gt;%s&lt;/em&gt; kunne ikke lastes opp.
     </string> 
     <string key="BLANK_MAP_IMAGE_FILE">
-      Blank map image file
+      Blank kartfil
     </string> 
     <string key="MAP_INFO">
-      The map where your route line is drawn.
+      Kartet hvor veivalgslinjen din er tegnet.
     </string> 
     <string key="BLANK_MAP_INFO">
-      The map without any route lines. Not mandatory.
+      Kartet uten veivalgslinjer. Ikke obligatorisk.
     </string> 
     <string key="SELECT_DISPLAY_MODE">
-      Display mode
+      Visningsmodus
     </string> 
     <string key="DISPLAY_MODE_LIST">
-      List
+      Liste
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Overview map
+      Oversiktskart
     </string> 
     <string key="INFORMATION">
-      Information
+      Informasjon
     </string> 
     <string key="SHOW_ROUTE_ON_MAP">
-      Show routechoices
+      Vis veivalg
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Skjul veivalg
     </string> 
     <string key="HIDE_ROUTE_ON_MAP">
-      Hide routechoices
+      Skjul veivalg
     </string> 
     <string key="TOGGLE_IMAGE_CLICK">
-      Click on map to turn routechoices on/off
+      Klikk på kartet for å skru veivalg av/på
     </string> 
     <string key="TOGGLE_IMAGE_TOOLTIP">
-      ...or just click somewhere on the map...
+      ...eller bare klikk et sted på kartet...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Show overview map
+      Vis oversiktskart
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Hide overview map
+      Skjul oversiktskart
     </string> 
     <string key="KMZ_TOOLTIP">
       ...for Google Earth...
     </string> 
     <string key="SHOW_DISTANCE_DESCRIPTION">
-      Whether to associate distance with a map; 1 to associate, 0 to skip.
+      Hvorvidt det skal assorsieres distanse med et kart; 1 for å assosiere, 0 for å utelate.
     </string> 
     <string key="SHOW_ELAPSEDTIME_DESCRIPTION">
-      Whether to associate elapsed time with a map; 1 to associate, 0 to skip.
+      Hvorvidt det skal assosieres tid med et kart; 1 for å assosiere, 0 for å utelate.
     </string> 
     <string key="SHOW_MAXHR_DESCRIPTION">
-      Whether to associate maximal heart rate with a map; 1 to associate, 0 to skip.
+      Hvorvidt det skal assosieres maksimal hjerterymte med et kart; 1 for å assosiere, 0 for å utelate.
     </string> 
     <string key="SHOW_AVGHR_DESCRIPTION">
-      Whether to associate average heart rate with a map; 1 to associate, 0 to skip.
+      Hvorvidt det skal assosieres gjennomsnittlig hjerterytme med et kart; 1 for å assosiere, 0 for å utelate.
     </string> 
     <string key="SHOW_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to allow visitors to post comments to a map; 1 to allow, 0 to disallow.
+      Hvorvidt det skal tillates at lesere skal kunne kommentere et kart; 1 for å tillate, 0 for å ikke tillate.
     </string> 
     <string key="COLLAPSE_VISITOR_COMMENTS_DESCRIPTION">
-      Whether to show comments collapsed as default on map page; 1 to collapse, 0 to show.
+      Hvorvidt kommentarer skal kollapses som standard på kartside; 1 for å kollapse, 0 for å vise.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-      Whether new vistor comments should be sent by e-mail; 1 to send, 0 to not send.
+      Hvorvidt nye leserkommentarer skal sendes på e-post; 1 for å sende, 0 for for å ikke sende.
     </string> 
     <string key="ELAPSEDTIME">
-      Time
+      Tid
     </string> 
     <string key="DISTANCE">
-      Distance
+      Distanse
     </string> 
     <string key="AVGHR">
-      Average HR
+      Gj.sn. HR
     </string> 
     <string key="MAXHR">
-      Maximum HR
+      Maksimum HR
     </string>   
     <string key="LANGUAGE">
-      Language
+      Språk
     </string> 
     <string key="SHOW_COMMENTS">
-      Show comments
+      Vis kommentarer
     </string> 
     <string key="HIDE_COMMENTS">
-      Hide comments
+      Skjul kommentarer
     </string> 
     <string key="POST_COMMENTS">
-      Post new comment
+      Skriv ny kommentar
     </string> 
     <string key="MISSING_COMMENT">
-      Name and comment must be entered!
+      Navn og kommentar må fylles ut!
     </string> 
     <string key="COMMENT_DELETE_CONFIRMATION">
-      Do you really want to delete this comment?
+      Vil du virkelig slette denne kommentaren?
     </string> 
     <string key="NEW_COMMENT_EMAIL_SUBJECT">
-      DOMA - new comment
+      DOMA - ny kommentar
     </string> 
     <string key="NEW_COMMENT_EMAIL_BODY">
-Hi, 
+Hei,
 
-A new comment was created in your map archive.
+en ny kommentar ble lagt inn i ditt kartarkiv.
 
-Map:  %s 
+Kart: %s
 Link: %s
 
-Comment's content
-Name:   %s 
-Email:  %s
-Text:   %s
+Kommentarinnhold:
+Navn:   %s
+E-post: %s
+Tekst:  %s
     </string>     
     <string key="LAST_COMMENTS">
-      Last commented maps
+      Siste kommenterte kart
     </string> 
     <string key="COMMENTS_COUNT">
-      Comments
+      Kommentarer
     </string> 
     <string key="COMMENT_FROM">
-      Last comment by
+      Siste kommentar av
     </string> 
     <string key="KMZ">
       KML
     </string> 
     <string key="PROTECTED_UNTIL">
-      Hidden until
+      Skjult inntil
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Time when the map will be available for other visitors than you, given in the yyyy-mm-dd hh:mm:ss format. Leave empty to not hide the map. This feature may be used to upload maps in advance to an event, and make them available to the participants immediately after the event is completed.
+      Tidspunkt for når kartet vil bli tilgjengelig for andre besøkende enn deg, gitt på formatet dd.mm.åååå tt:mm:ss. La stå tomt for å tilgjengeliggjøre med en gang. Denne funksjonen kan brukes til å laste opp kart før et arrangement, og gjøre dem tilgjengelig for deltakerne umiddelbart etter arrangementet er over.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      The time to hide the map until is invalid. Enter a time in given in the yyyy-mm-dd hh:mm:ss format or leave the field empty.
+      Tidspunkt for når kartet skal tilgjengeliggjøres er ikke gyldig. Angi tid i formatet dd.mm.åååå tt:mm:ss eller la feltet stå tomt.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
-      The map is hidden for others until %s.
+      Kartet er skjult for andre inntil %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      alle
     </string>
     <string key="SELECT_FILTER">
       Filter

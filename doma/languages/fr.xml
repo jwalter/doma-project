@@ -713,10 +713,10 @@ Texte:   %s
       Cachée jusqu'au
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      La date à laquelle la carte sera disponible aux autres visiteurs, saisie au format yyyy-mm-dd hh:mm:ss. Laisser vide pour ne pas cacher la carte. Cette propriété peut être utilisée pour télécharger des cartes avant une compétition, et la rendre disponible aux participants dès la fin de la compétition.
+      La date à laquelle la carte sera disponible aux autres visiteurs, saisie au format jj/mm/aaaa hh:mm:ss. Laisser vide pour ne pas cacher la carte. Cette propriété peut être utilisée pour télécharger des cartes avant une compétition, et la rendre disponible aux participants dès la fin de la compétition.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      La date jusqu'à quand cacher la carte est invalide. Saisir une date au format yyyy-mm-dd hh:mm:ss ou laisser le champ vide.
+      La date jusqu'à quand cacher la carte est invalide. Saisir une date au format jj/mm/aaaa hh:mm:ss ou laisser le champ vide.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
       La carte est cachée aux autres jusqu'au %s.

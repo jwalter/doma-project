@@ -38,18 +38,19 @@
   // Language flag icons are in png format, named [language code].png (e.g. en.png) and located in the 'gfx/flags' directory.
   // You may create your own language file by copying and modifying one of the existing files.
   // Current languages include
-  //   en  (English, credits to Boris Granovskiy)
-  //   sv  (Swedish)
-  //   nb  (Norwegian Bokmål, credits to Bjørge Solli)
   //   cs  (Czech, credits to Michal Besta)
-  //   de  (German/Austria, credits to Markus Plohn)
-  //   es  (Spanish, credits to Iñaki Larena)
   //   da  (Danish, credits to Michael Leth Jess)
-  //   hu  (Hungarian, credits to Csaba Gösswein)
+  //   de  (German/Austria, credits to Markus Plohn)
   //   et  (Estonian, credits to Margus Lehtme)
-  //   it  (Italian, credits to Davide Miori)
+  //   en  (English, credits to Boris Granovskiy)
+  //   es  (Spanish, credits to Iñaki Larena)
   //   fr  (French, credits to François Coulier)
+  //   it  (Italian, credits to Davide Miori)
+  //   hu  (Hungarian, credits to Csaba Gösswein)
+  //   nb  (Norwegian Bokmål, credits to Bjørge Solli)
   //   pt  (Portugese, credits to Rui Tavares)
+  //   sv  (Swedish, credits to Mats Troeng)
+  //   tr  (Turkish, credits to Guven Solmaz and Berkay Kılıcoglu)
   define('LANGUAGE_CODE', 'en');
 
   // The MySQL text sorting order, known as 'collation'.
@@ -101,7 +102,7 @@
   // The first value in each pair is the language name.
   // The second value is the language code, see the LANGUAGE_CODE setting above.
   // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv');
+  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv|Türkçe;tr');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.

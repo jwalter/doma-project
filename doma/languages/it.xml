@@ -714,10 +714,10 @@ Contenuto:   %s
       Nascosto fino a quando
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Momento in cui la mappa sarà disponibile per gli altri visitatori, data nel formato yyyy-mm-dd hh:mm:ss . Lascia vuoto per non nascondere la carta. Questa funzione può essere usata per caricare in anticipo le carte per un evento, e renderla disponibile ai partecipanti una volta concluso l'evento.
+      Momento in cui la mappa sarà disponibile per gli altri visitatori, data nel formato aaaa-mm-gg hh:mm:ss . Lascia vuoto per non nascondere la carta. Questa funzione può essere usata per caricare in anticipo le carte per un evento, e renderla disponibile ai partecipanti una volta concluso l'evento.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      La data per nascondere la carta è sbagliato. Inserisci una data con il formato yyyy-mm-dd hh:mm:ss o lascia il campo vuoto.
+      La data per nascondere la carta è sbagliato. Inserisci una data con il formato aaaa-mm-gg hh:mm:ss o lascia il campo vuoto.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
       La carta è nascosta fino al %s.

@@ -742,10 +742,10 @@ Text:   %s
       Skryto do
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      Datum a čas, odkdy bude mapa dostupná ostatním uživatelům, zadej ve formátu rrrr-mm-dd hh:mm:ss. Ponech prázdné, pokud nechceš mapu skrýt. Tato vlastnost může být použita pro nahrání mapy před závodem tak, aby byla v určitý čas ihned dostupná všem účastníkům.
+      Datum a čas, odkdy bude mapa dostupná ostatním uživatelům, zadej ve formátu dd.mm.rrrr hh:mm:ss. Ponech prázdné, pokud nechceš mapu skrýt. Tato vlastnost může být použita pro nahrání mapy před závodem tak, aby byla v určitý čas ihned dostupná všem účastníkům.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      Datum a čas, dokdy má být mapa skryta není platný. Zadej hodnotu ve formátu rrrr-mm-dd hh:mm:ss nebo ponechej pole prázdné.
+      Datum a čas, dokdy má být mapa skryta není platný. Zadej hodnotu ve formátu dd.mm.rrrr hh:mm:ss nebo ponechej pole prázdné.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
       Mapa je pro ostatní skryta do %s.
