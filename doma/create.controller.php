@@ -9,7 +9,7 @@
     {
       $viewData = array();  
 
-      // create new session
+      // load session
       session_start();
 
       $errors = array();
@@ -22,12 +22,12 @@
 
       if(count($errors) == 0)
       {
-        $previousDatabaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
-        
         if(Helper::DatabaseVersionIsValid()) $errors[] = __("SITE_ALREADY_CREATED");
         
         if(count($errors) == 0)
         {
+          $previousDatabaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
+
           // create or update database
           $result = executeDatabaseScripts();
           $errors = $result["errors"];
@@ -46,7 +46,7 @@
           else
           {
             // updated database
-            Helper::LogUsage("updateSite", "oldVersion=$previousDatabaseVersion&newVersion=". DOMA_VERSION);
+            Helper::LogUsage("updateSite", "oldVersion=$previousDatabaseVersion&newVersion=". DOMA_VERSION); 
             // redirect to originally requested page
             $redirectUrl = $_GET["redirectUrl"];
             if(!isset($redirectUrl)) $redirectUrl = "users.php";

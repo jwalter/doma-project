@@ -261,12 +261,13 @@
     public static function DatabaseVersionIsValid()
     {
       $databaseVersion = Session::GetDatabaseVersion();
-      if(!$databaseVersion)
+      if($databaseVersion == null || 
+         version_compare($databaseVersion, DOMA_VERSION) < 0 /* make extra check if not valid to avoid stale data */)
       {
         $databaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
         Session::SetDatabaseVersion($databaseVersion);
       }
-      return (version_compare($databaseVersion, DOMA_VERSION) >= 0);
+      return version_compare($databaseVersion, DOMA_VERSION) >= 0;
     }
 
     public static function EncapsulateLink($linkText, $url)
