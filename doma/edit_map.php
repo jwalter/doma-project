@@ -1,6 +1,6 @@
 <?php
   include_once(dirname(__FILE__) ."/edit_map.controller.php");
-  
+
   $controller = new EditMapController();
   $vd = $controller->Execute();
   $map = $vd["Map"];
@@ -43,20 +43,27 @@
 <?php
   foreach($vd["Categories"] as $c)
   {
-    print '<option value="'. $c->ID .'"'. ($c->ID == $map->CategoryID ? ' selected="selected"' : '') .'>'. $c->Name .'</option>';  
+    print '<option value="'. $c->ID .'"'. ($c->ID == $map->CategoryID ? ' selected="selected"' : '') .'>'. $c->Name .'</option>';
   }
 ?>
 </select>
-<div class="tooltip hidden"><?php print __("CATEGORY_TOOLTIP")?></div> 
+<div class="tooltip hidden"><?php print __("CATEGORY_TOOLTIP")?></div>
 </div>
 
 <div class="container">
 <label for="date"><?php print __("DATE")?></label>
 <?php
-  if(date("H:i:s", Helper::StringToTime($map->Date, true)) == "00:00:00") $map->Date = date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true));
+  if(date("H:i:s", Helper::StringToTime($map->Date, true)) == "00:00:00")
+  {
+    $map->Date = date(__("DATE_FORMAT"), Helper::StringToTime($map->Date, true));
+  }
+  else
+  {
+    $map->Date = date(__("DATE_FORMAT") ." H:i:s", Helper::StringToTime($map->Date, true));
+  }
 ?>
 <input type="text" class="text tooltipControl" name="date" id="date" value="<?php print hsc($map->Date)?>" />
-<div class="tooltip hidden"><?php print __("MAP_DATE_FORMAT")?></div> 
+<div class="tooltip hidden"><?php print __("MAP_DATE_FORMAT")?></div>
 </div>
 
 <div class="container">
@@ -128,7 +135,7 @@
 <div class="container">
 <label for="thumbnailImage"><?php print __("THUMBNAIL_IMAGE_FILE")?></label>
 <input type="file" id="thumbnailImage" name="thumbnailImage" class="tooltipControl" />
-<div class="tooltip hidden"><?php printf(__("THUMBNAIL_INFO"), THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT); ?></div> 
+<div class="tooltip hidden"><?php printf(__("THUMBNAIL_INFO"), THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT); ?></div>
 </div>
 
 <div class="container">
@@ -139,7 +146,7 @@
 ?>
 <label for="protectedUntil"><?php print __("PROTECTED_UNTIL")?></label>
 <input type="text" id="protectedUntil" class="text tooltipControl" name="protectedUntil" value="<?php print hsc($protectedUntil); ?>" />
-<div class="tooltip hidden"><?php print __("PROTECTED_UNTIL_INFO")?></div> 
+<div class="tooltip hidden"><?php print __("PROTECTED_UNTIL_INFO")?></div>
 </div>
 
 <div class="buttons">

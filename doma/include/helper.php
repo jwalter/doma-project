@@ -5,17 +5,17 @@
   {
     return Helper::__($key, $htmlSpecialChars);
   }
-  
+
   function hsc($string)
   {
     return Helper::Hsc($string);
   }
-  
+
   function getCurrentUser()
   {
-    return Helper::GetUser();  
+    return Helper::GetUser();
   }
-  
+
   class Helper
   {
     public static function __($key, $htmlSpecialChars = false)
@@ -31,14 +31,14 @@
     {
       return htmlspecialchars($string, ENT_QUOTES, "UTF-8");
     }
-    
+
     // creates language strings for a certain user
     public static function GetLanguageStrings($userID = 0)
     {
       // 1. application-wide strings
       $cs = self::GetCustomizableStrings();
       $settings = array_merge($cs["settings"], self::GetNonCustomizableStrings());
-      
+
       // 2. user-specific settings
       $userSettings = array();
       if($userID) $userSettings = DataAccess::GetUserSettings($userID);
@@ -48,7 +48,7 @@
       }
       return $settings;
     }
-    
+
     public static function GetCustomizableStrings()
     {
       $settings = array();
@@ -56,7 +56,7 @@
       $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->customizable->string);
-      for($i = 0; $i < $count; $i++) 
+      for($i = 0; $i < $count; $i++)
       {
         $attrs = $xml->customizable->string[$i]->attributes();
         $key = $attrs["key"];
@@ -74,7 +74,7 @@
       $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $xml = simplexml_load_file($languageFileName);
       $count = count($xml->nonCustomizable->string);
-      for($i = 0; $i < $count; $i++) 
+      for($i = 0; $i < $count; $i++)
       {
         $attrs = $xml->nonCustomizable->string[$i]->attributes();
         $key = $attrs["key"];
@@ -85,43 +85,43 @@
       }
       return $settings;
     }
-    
+
     public static function CreateQuerystring($user, $mapID = 0)
     {
       $qs = "user=". urlencode($user->Username);
       if($mapID) $qs .= "&amp;map=". $mapID;
       return $qs;
     }
-    
+
     public static function Redirect($url)
     {
       header("Location: $url");
-      die();   
+      die();
     }
-    
+
     /**
     * Creates a url relative to the server root, e g /subdir/index.php.
-    * 
+    *
     */
     public static function ServerPath($path)
     {
       if(substr($path, 0, 1) == "/") $path = substr($path, 1);
       return PROJECT_DIRECTORY . $path;
     }
-    
+
     /**
     * Creates a rooted path on the local machine e g c:\inetpub\wwwroot\subdir/index.php.
-    * 
+    *
     */
     public static function LocalPath($path)
     {
       if(substr($path, 0, 1) == "/") $path = substr($path, 1);
       return ROOT_PATH . $path;
     }
-    
+
     /**
     * Creates a full url, e g http://www.mymaparchive.com/subdir/index.php.
-    * 
+    *
     */
     public static function GlobalPath($path)
     {
@@ -148,7 +148,7 @@
     {
        Session::SetIsLoggedInAdmin(null);
     }
-    
+
     public static function LoginUser($username, $password)
     {
       $user = DataAccess::GetUserByUsernameAndPassword($username, $password);
@@ -160,7 +160,7 @@
       }
       return false;
     }
-    
+
     public static function LoginUserByUsername($username)
     {
       $user = DataAccess::GetUserByUsername($username);
@@ -172,7 +172,7 @@
       }
       return false;
     }
-    
+
 
     public static function IsLoggedInUser()
     {
@@ -189,20 +189,20 @@
     {
       return Session::GetLoggedInUser();
     }
-    
+
     public static function GetLoggedInUserID()
     {
       $user = self::GetLoggedInUser();
       if(!isset($user)) return 0;
       return $user->ID;
     }
-    
+
     // the user as specified by $_GET["user"] / $_POST["user"]
     public static function GetUser()
     {
       return Session::GetDisplayedUser();
     }
-    
+
     // the user as specified by $_GET["user"] / $_POST["user"]
     public static function SetUser($user)
     {
@@ -212,34 +212,34 @@
       }
       else
       {
-        if(!Session::GetLanguageCode()) 
+        if(Session::GetLanguageCode() == null)
         {
-           Session::SetLanguageCode(defined('LANGUAGE_CODE') ? LANGUAGE_CODE : self::GetVersion2DefaulLanguageCode());
+          Session::SetLanguageCode(defined('LANGUAGE_CODE') ? LANGUAGE_CODE : self::GetVersion2DefaultLanguageCode());
         }
       }
-      
+
       $languageFileName = self::LocalPath("languages/". Session::GetLanguageCode() .".xml");
       $languageFileNameAndDate = $languageFileName ."_". filemtime($languageFileName);
-     
+
       // some caching logic for language strings
       $previousUser = self::GetUser();
-      $loadStrings = ($previousUser || $user || Session::GetLanguageFile() != $languageFileNameAndDate); 
+      $loadStrings = ($previousUser || $user || Session::GetLanguageFile() != $languageFileNameAndDate);
 
       if(!Session::GetLanguageStrings()) $loadStrings = true;
-      
+
       Session::SetDisplayedUser($user);
-      if($loadStrings) 
+      if($loadStrings)
       {
         Session::SetLanguageStrings(Helper::GetLanguageStrings($user ? $user->ID : 0));
         Session::SetLanguageFile($languageFileNameAndDate);
       }
     }
-    
-    private static function GetVersion2DefaulLanguageCode()
+
+    private static function GetVersion2DefaultLanguageCode()
     {
       // handle DOMA 2 config where the setting had a different name
-      return str_replace(array("no_NB", "ee", "cz", "dk", "de_AT"), 
-                         array("nb", "et", "cs", "da", "de"), 
+      return str_replace(array("no_NB", "ee", "cz", "dk", "de_AT"),
+                         array("nb", "et", "cs", "da", "de"),
                          str_replace(".xml", "", LANGUAGE_FILE));
     }
 
@@ -252,16 +252,16 @@
     {
       return self::ServerPath(MAP_IMAGE_PATH ."/". $map->MapImage);
     }
-    
+
     public static function GetBlankMapImage(Map $map)
     {
       return self::ServerPath(MAP_IMAGE_PATH ."/". $map->BlankMapImage);
     }
-    
+
     public static function DatabaseVersionIsValid()
     {
       $databaseVersion = Session::GetDatabaseVersion();
-      if($databaseVersion == null || 
+      if($databaseVersion == null ||
          version_compare($databaseVersion, DOMA_VERSION) < 0 /* make extra check if not valid to avoid stale data */)
       {
         $databaseVersion = DataAccess::GetSetting("DATABASE_VERSION", "0.0");
@@ -291,15 +291,15 @@
              $monthNames[date("n", $d) - 1] ." ".
              date("Y", $d);
     }
-    
+
     public static function StringToTime($string, $utc)
     {
-      return strtotime($string . ($utc ? " UTC" : ""));  
+      return strtotime($string . ($utc ? " UTC" : ""));
     }
 
     public static function LocalizedStringToTime($string, $utc)
     {
-      return strtotime(self::ToIso8601DateTime($string) . ($utc ? " UTC" : ""));  
+      return strtotime(self::ToIso8601DateTime($string) . ($utc ? " UTC" : ""));
     }
 
     private static function ParseDateTime($dateTimeString)
@@ -314,31 +314,31 @@
       $format = str_replace(array(".", "/", ":", " "), "-", __("DATETIME_FORMAT") .":s");
       $dateTimeAtoms = @explode("-", $dateTimeString);
       $formatAtoms = @explode("-", $format);
-      
+
       $value = array("Y" => 0, "m" => 0, "d" => 0, "H" => 0, "i" => 0, "s" => 0);
-      
+
       for($i=0; $i<count($formatAtoms); $i++)
       {
         if($dateTimeAtoms[$i] != null) $value[$formatAtoms[$i]] = $dateTimeAtoms[$i];
       }
-      
+
       return mktime($value["H"], $value["i"], $value["s"], $value["m"], $value["d"], $value["Y"]);
-    }    
+    }
 
     private static function ToIso8601DateTime($dateTimeString)
     {
       return date("Y-m-d H:i:s", self::ParseDateTime($dateTimeString));
-    }    
-    
+    }
+
     private static function ImageIsResizable($fileName)
     {
       if(IMAGE_RESIZING_METHOD == "2") return true;
-      try 
+      try
       {
         $contents = file_get_contents(self::GlobalPath("include/image_is_resizable.php?filename=". $fileName));
         return ($contents == "1");
-      } 
-      catch(Exception $e) 
+      }
+      catch(Exception $e)
       {
         return false;
       }
@@ -366,7 +366,7 @@
       $pathinfo = pathinfo($fileName);
       return $pathinfo["extension"];
     }
-    
+
     public static function GetFilenameWithoutExtension($fileName)
     {
       $extension = self::GetExtension($fileName);
@@ -446,7 +446,7 @@
       }
       return $targetFileName;
     }
-    
+
     public static function CreateTopbar()
     {
       $isLoggedIn = (Helper::IsLoggedInUser() && Helper::GetLoggedInUser()->ID == getCurrentUser()->ID);
@@ -468,8 +468,8 @@
         <div class="right">
           <a href="users.php"><?php print __("ALL_USERS"); ?></a>
           <span class="separator">|</span>
-          <?php 
-          if(SHOW_LANGUAGES_IN_TOPBAR=="1") 
+          <?php
+          if(SHOW_LANGUAGES_IN_TOPBAR=="1")
           {
             Helper::ShowLanguages();?>
             <span class="separator">|</span>
@@ -498,8 +498,8 @@
           <?php } ?>
         </div>
         <div class="right">
-          <?php 
-          if(SHOW_LANGUAGES_IN_TOPBAR=="1") 
+          <?php
+          if(SHOW_LANGUAGES_IN_TOPBAR=="1")
           {
             Helper::ShowLanguages();?>
             <span class="separator">|</span>
@@ -510,12 +510,12 @@
       </div>
       <?php
     }
-    
+
     public static function LogUsage($action, $data)
     {
       @file(DOMA_SERVER ."?url=". urlencode(self::GlobalPath("")) ."&action=". urlencode($action) ."&data=". urlencode($data));
     }
-    
+
     public static function SendEmail($fromName, $toEmail, $subject, $body)
     {
       if(ADMIN_EMAIL == "email@yourdomain.com") return false; // the address is the default one, don't send
@@ -524,12 +524,12 @@
       $result = @mail($toEmail, utf8_decode($subject), utf8_decode($body), $header);
       return $result;
     }
-    
+
     public static function IsValidEmailAddress($emailAddress)
     {
       return preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/', $emailAddress);
     }
-    
+
     public static function CreatePassword($length)
     {
       $password = "";
@@ -560,13 +560,13 @@
         unlink(LOG_FILE_NAME);
       }
     }
-    
+
     public static function DeleteFiles($path, $pattern)
     {
       if(substr($path, strlen($path) - 1, 1) != "/") $path = $path ."/";
       $dirs = glob($path ."*");
       $files = glob($path . $pattern);
-      
+
       if(is_array($files))
       {
         foreach($files as $file)
@@ -589,7 +589,7 @@
         }
       }
     }
-    
+
     public static function SaveTemporaryFileFromUploadedFile($uploadedFile)
     {
       $temporaryDirectory = Helper::LocalPath(TEMP_FILE_PATH ."/");
@@ -606,17 +606,17 @@
       }
       return array("fileName" => $fileName, "error" => $error);
     }
-    
+
     public static function SaveTemporaryFileFromFileData($fileData, $extension)
     {
       $temporaryDirectory = Helper::LocalPath(TEMP_FILE_PATH ."/");
       $fileName = $temporaryDirectory . rand(0, 1000000000) .".". $extension;
       $fp = fopen($fileName, "w");
       fwrite($fp, $fileData);
-      fclose($fp); 
+      fclose($fp);
       return array("fileName" => $fileName, "error" => $error);
     }
-    
+
     public static function ShowLanguages()
     {
       $langs = explode("|", LANGUAGES_AVAILABLE);
@@ -635,7 +635,7 @@
         print '</span>';
       }
     }
-    
+
     private static function CreateLanguageLink($lang)
     {
       $get = $_GET;
@@ -644,7 +644,7 @@
       $queryString = http_build_query($get);
       print '<a href="?'. $queryString .'">'. self::CreateLanguageImageAndText($languageCode, $languageName) ."</a>";
     }
-    
+
     private static function CreateLanguageImageAndText($languageCode, $languageName = null)
     {
       if($languageName == null)
@@ -653,9 +653,9 @@
         foreach($items as $item)
         {
           list($ln, $lc) = explode(";", $item);
-          if($lc == $languageCode) 
+          if($lc == $languageCode)
           {
-            $languageName = $ln; 
+            $languageName = $ln;
             break;
           }
         }
@@ -664,7 +664,7 @@
       return '<img src="gfx/flag/'. $languageCode. '.png" alt="'. hsc($languageName). '" title="'. hsc($languageName) .'">'.
               $languageName;
     }
-    
+
     public static function ConvertToTime($value, $format)
     {
       $leading = "";
@@ -686,13 +686,13 @@
         }
       }
     }
-    
+
     public static function ClickableLink($text = '')
     {
       $text = preg_replace('#(script|about|applet|activex|chrome):#is', "\\1:", $text);
       $ret = ' ' . $text;
       $ret = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" target=\"_blank\">\\2</a>", $ret);
-      
+
       $ret = preg_replace("#(^|[\n ])((www|ftp)\.[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>", $ret);
       $ret = preg_replace("#(^|[\n ])([a-z0-9&\-_.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
       $ret = substr($ret, 1);
@@ -701,7 +701,7 @@
 
     public static function MapIsProtected(Map $map)
     {
-      return !($map->ProtectedUntil == null || $map->ProtectedUntil <= gmdate("Y-m-d H:i:s") || $map->UserID == self::GetLoggedInUserID());  
+      return !($map->ProtectedUntil == null || $map->ProtectedUntil <= gmdate("Y-m-d H:i:s") || $map->UserID == self::GetLoggedInUserID());
     }
 
     public static function GetProtectedFileName($unprotectedFileName, $randomString)
@@ -715,7 +715,7 @@
       }
       return implode(".", $resultAtoms);
     }
-    
+
     public static function GetUnprotectedFileName($unprotectedFileName)
     {
       if($unprotectedFileName == null || strlen($unprotectedFileName) == 0) return $unprotectedFileName;
@@ -730,7 +730,7 @@
         }
         else
         {
-          $resultAtoms[] = $atom;  
+          $resultAtoms[] = $atom;
         }
       }
       return implode(".", $resultAtoms);
@@ -739,14 +739,14 @@
     public static function CreateRandomString($length, $characters = "0123456789abcdef")
     {
       $numberOfCharacters = strlen($characters);
-      $string = "";    
-      for ($i = 0; $i < $length; $i++) 
+      $string = "";
+      for ($i = 0; $i < $length; $i++)
       {
         $string .= $characters[mt_rand(0, $numberOfCharacters)];
       }
       return $string;
-    }    
-    
+    }
+
     public static function GetOverviewMapData(Map $map, $includeRouteCoordinates, $includeTooltipMarkup, $includePersonName, $categories, $selectedCategoryId = 0)
     {
       if(!$map->IsGeocoded) return null;
@@ -768,7 +768,7 @@
       $data["RouteOpacity"] = 1;
       $data["SelectedBorderColor"] = '#0000ff';
       $data["SelectedFillColor"] = '#0000ff';
-      if($includeRouteCoordinates) 
+      if($includeRouteCoordinates)
       {
         $ed = $map->GetQuickRouteJpegExtensionData(false);
         $data["RouteCoordinates"] = $ed->Sessions[0]->Route->GetWaypointPositionsAsArray(5, 6);
@@ -800,7 +800,7 @@
       {
         $hscNameAndDate = hsc($includePersonName ? $map->GetUser()->FirstName ." ". $map->GetUser()->LastName .", " : "").
           hsc($map->Name .' ('. date(__("DATE_FORMAT"), self::StringToTime($map->Date, true)) .')');
-        $data["TooltipMarkup"] = 
+        $data["TooltipMarkup"] =
           '<div>'.
             '<img src="'. self::GetThumbnailImage($map) .'" alt="'. $hscNameAndDate .'" '.
                  'height="'. THUMBNAIL_HEIGHT .'" width="'. THUMBNAIL_WIDTH .'" />'.
@@ -809,11 +809,11 @@
             $hscNameAndDate.
             $info.
           '</div>';
-          
+
         $data["Url"] = $map->MapImage ? 'show_map.php?'. self::CreateQuerystring($map->GetUser(), $map->ID) : "";
       }
-      return $data;      
-    }  
+      return $data;
+    }
   }
 
 ?>

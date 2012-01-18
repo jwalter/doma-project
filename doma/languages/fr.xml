@@ -5,16 +5,16 @@
       Mon archive numérique de cartes d'orientation
     </string> 
     <string key="CAPTION" description="CAPTION_DESCRIPTION">
-      Bienvenue sur mon archive numérique de cartes d'orientation !
+     Bienvenue sur mon archive numérique de cartes d'orientation !
     </string> 
     <string key="INTRO" description="INTRO_DESCRIPTION">
       Je publie sur ce site les cartes et tracés des courses d'orientation auxquelles j'ai participé.
     </string> 
     <string key="FOOTER" description="FOOTER_DESCRIPTION">
-      Êtes-vous le possesseur du droit de copie d'une carte qui ne devrait pas être publiée ici ? &lt;a href="mailto:%userEmail%"&gt;Email me&lt;/a&gt;.
+    Êtes-vous le possesseur du droit de copie d'une carte qui ne devrait pas être publiée ici ? &lt;a href="mailto:%userEmail%"&gt;Email me&lt;/a&gt;.
     </string> 
     <string key="RSS_DESCRIPTION" description="RSS_DESCRIPTION_DESCRIPTION">
-      Cartes et tracés des courses d'orientation auxquelles j'ai participé.
+    Cartes et tracés des courses d'orientation auxquelles j'ai participé.
     </string> 
     <string key="SHOW_ORGANISER" description="SHOW_ORGANISER_DESCRIPTION">
       1
@@ -64,13 +64,13 @@
 
   <nonCustomizable>
     <!--  general ****************************************************************************************************** --> 
-    <!--  date format to use, PHP format string (Y, m, d, H, i, s can be used) --> 
+    <!--  date format to use, PHP format string --> 
     <string key="DATE_FORMAT">
-      d/m/Y
+      d-m-Y
     </string> 
-    <!-- date and time format to use, PHP format string (Y, m, d, H, i, s can be used) -->
+    <!--  date and time format to use, PHP format string --> 
     <string key="DATETIME_FORMAT">
-      d/m/Y H:i
+      d-m-Y H:i
     </string> 
     <!--  day names, semi-colon separated --> 
     <string key="DAY_NAMES">
@@ -102,13 +102,13 @@
       Discipline
     </string> 
     <string key="RELAY_LEG">
-      Leg
+      Relais
     </string> 
     <string key="RELAY_LEG_LONG">
-      Relay leg
+      Relais N°
     </string> 
     <string key="RELAY_LEG_LOWERCASE">
-      leg
+      relais
     </string> 
     <string key="MAP_AREA_NAME">
       Carte/région
@@ -143,16 +143,16 @@
 
     <!--  topbar ****************************************************************************************************** --> 
     <string key="DOMA_FOR_X">
-    Archive numérique de cartes d'orientation de %s
+      Archive numérique de cartes d'orientation de %s
     </string> 
     <string key="ALL_USERS">
       Tous les utilisateurs
     </string> 
     <string key="ADMIN_LOGIN">
-      Administrator log in
+      Connexion administrateur
     </string> 
     <string key="ADMIN_LOGOUT">
-      Administrator log out
+      Deconnexion administrateur
     </string> 
 
     <!--  index.php ****************************************************************************************************** --> 
@@ -172,7 +172,7 @@
       [toutes catégories]
     </string> 
     <string key="NO_MATCHING_MAPS">
-    Il n'y a pas de cartes répondant aux critères de recherche.
+     Il n'y a pas de cartes répondant aux critères de recherche.
     </string> 
     <string key="VIEWS">
       vues
@@ -200,7 +200,7 @@
       Modifier la carte : %s
     </string> 
     <string key="MAP_DATE_FORMAT">
-      jj/mm/aaaa, et éventuellement hh:mm:ss
+      jj-mm-aaaa, et éventuellement hh:mm:ss
     </string> 
     <string key="LINK_TO_RESULT_LIST">
       Lien vers les résultats
@@ -251,7 +251,7 @@
       Aucune date n'a été saisie.
     </string> 
     <string key="INVALID_DATE">
-      La date n'est pas valide. Merci d'entrer une date au format jj/mm/aaaa.
+      La date n'est pas valide. Merci d'entrer une date au format jj-mm-aaaa.
     </string> 
     <string key="CATEGORY">
       Catégorie
@@ -348,10 +348,10 @@
       Pour associer un organisateur avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_COUNTRY_DESCRIPTION">
-    Pour associer un pays avec une carte; 1 pour associer, 0 pour laisser tel quel.
+	  Pour associer un pays avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_DISCIPLINE_DESCRIPTION">
-    Pour associer une discipline avec une carte; 1 pour associer, 0 pour laisser tel quel.
+	  Pour associer une discipline avec une carte; 1 pour associer, 0 pour laisser tel quel.
     </string> 
     <string key="SHOW_RELAY_LEG_DESCRIPTION">
       Pour associer un parcours de relais avec une carte; 1 pour associer, 0 pour laisser tel quel.
@@ -393,7 +393,7 @@
       Laisser vide pour conserver le mot de passe actuel.
     </string> 
     <string key="PASSWORD_DESCRIPTION">
-    Votre mot de passe, qui, avec votre nom d'utilisateur, vous identifie. Laisser vide pour conserver le mot de passe actuel.
+      Votre mot de passe, qui, avec votre nom d'utilisateur, vous identifie. Laisser vide pour conserver le mot de passe actuel.
     </string> 
     <string key="FIRST_NAME_DESCRIPTION">
       Votre prénom.
@@ -546,7 +546,7 @@ Votre mot de passe :   %s
       Envoi de courriel de confirmation
     </string> 
     <string key="SEND_CONFIRMATION_EMAIL_DESCRIPTION">
-      Envoyer un courriel au nouvel utilisateur avec les informations de compte
+      Envoyer un courriel au nouvel utilisateur avec les informations du compte
     </string> 
     <string key="ADMIN_EMAIL_ERROR">
       Le courriel n'a pu être envoyé. Vérifier vos paramètres SMTP dans le fichier php.ini et l'adresse de courriel de l'administrateur dans le fichier config.php (l'adresse actuelle est %s)
@@ -604,7 +604,7 @@ Votre nouveau mot de passe : %s
       Liste
     </string> 
     <string key="DISPLAY_MODE_OVERVIEW_MAP">
-      Vue générale de la carte
+      Vue d'ensemble
     </string> 
     <string key="INFORMATION">
       Information
@@ -622,10 +622,10 @@ Votre nouveau mot de passe : %s
       ...ou cliquer quelque part sur la carte...
     </string> 
     <string key="SHOW_OVERVIEW_MAP">
-      Montrer la vue générale de la carte
+      Montrer la vue d'ensemble
     </string> 
     <string key="HIDE_OVERVIEW_MAP">
-      Cacher la vue générale de la carte
+      Cacher la vue d'ensemble
     </string> 
     <string key="KMZ_TOOLTIP">
       ...pour Google Earth...
@@ -649,7 +649,7 @@ Votre nouveau mot de passe : %s
       Montrer ou réduire les commentaires par défaut sur la page de la carte; 1 pour réduire, 0 pour montrer.
     </string> 
     <string key="EMAIL_VISITOR_COMMENTS_DESCRIPTION">
-  Les commentaires des nouveaux visiteurs sont envoyés ou pas par courriel ?; 1 pour envoyer, 0 pour ne pas envoyer.      
+	Les commentaires des nouveaux visiteurs sont envoyés ou pas par courriel ; 1 pour envoyer, 0 pour ne pas envoyer.      
     </string> 
     <string key="ELAPSEDTIME">
       Temps
@@ -667,7 +667,7 @@ Votre nouveau mot de passe : %s
       Langue
     </string> 
     <string key="SHOW_COMMENTS">
-      Montrer les commenatires
+      Montrer les commentaires
     </string> 
     <string key="HIDE_COMMENTS">
       Cacher les commentaires
@@ -713,16 +713,16 @@ Texte:   %s
       Cachée jusqu'au
     </string>
     <string key="PROTECTED_UNTIL_INFO">
-      La date à laquelle la carte sera disponible aux autres visiteurs, saisie au format jj/mm/aaaa hh:mm:ss. Laisser vide pour ne pas cacher la carte. Cette propriété peut être utilisée pour télécharger des cartes avant une compétition, et la rendre disponible aux participants dès la fin de la compétition.
+      Date de publication aux autres visiteurs, saisie au format jj-mm-aaaa hh:mm:ss. Laisser vide pour ne pas cacher la carte. Cette propriété peut être utilisée pour télécharger des cartes avant une compétition, et la rendre disponible aux participants dès la fin de la compétition.
     </string>
     <string key="INVALID_PROTECTED_UNTIL">
-      La date jusqu'à quand cacher la carte est invalide. Saisir une date au format jj/mm/aaaa hh:mm:ss ou laisser le champ vide.
+      La date de publication est invalide. Saisir une date au format jj-mm-aaaa hh:mm:ss ou laisser le champ vide.
     </string>
     <string key="MAP_IS_PROTECTED_UNTIL_X">
       La carte est cachée aux autres jusqu'au %s.
     </string>
     <string key="SHOW_ALL">
-      all
+      tout
     </string>
     <string key="SELECT_FILTER">
       Filtre
@@ -730,3 +730,4 @@ Texte:   %s
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>
+
