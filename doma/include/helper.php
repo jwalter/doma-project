@@ -319,7 +319,7 @@
 
       for($i=0; $i<count($formatAtoms); $i++)
       {
-        if($dateTimeAtoms[$i] != null) $value[$formatAtoms[$i]] = $dateTimeAtoms[$i];
+        if(isset($dateTimeAtoms[$i])) $value[$formatAtoms[$i]] = $dateTimeAtoms[$i];
       }
 
       return mktime($value["H"], $value["i"], $value["s"], $value["m"], $value["d"], $value["Y"]);

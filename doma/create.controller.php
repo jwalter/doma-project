@@ -33,7 +33,7 @@
           // create or update database
           $result = executeDatabaseScripts();
           $errors = $result["errors"];
-          // chmod only has effext on linux/unix systems
+          // chmod only has effect on linux/unix systems
           @mkdir(Helper::LocalPath(MAP_IMAGE_PATH));
           @chmod(Helper::LocalPath(MAP_IMAGE_PATH), 0777);
           @mkdir(Helper::LocalPath(TEMP_FILE_PATH));

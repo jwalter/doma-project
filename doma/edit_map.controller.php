@@ -1,25 +1,25 @@
 <?php
   include_once(dirname(__FILE__) ."/include/main.php");
-  
+
   class EditMapController
   {
     public function Execute()
     {
 
-      $viewData = array();  
-  
+      $viewData = array();
+
       $errors = array();
-      
+
       // no user specified - redirect to user list page
       if(!getCurrentUser()) Helper::Redirect("users.php");
 
       if(!Helper::IsLoggedInUser()) Helper::Redirect("users.php");
-      
+
       if(isset($_GET["map"])) $mapID = $_GET["map"];
 
       foreach($_GET as $variable => $value) $$variable = stripslashes($value);
       foreach($_POST as $variable => $value) $$variable = stripslashes($value);
-      
+
       if(isset($cancel))
       {
         Helper::Redirect("index.php?". Helper::CreateQuerystring(getCurrentUser()));
@@ -28,24 +28,24 @@
       if(isset($save) || isset($delete) || isset($deleteConfirmed))
       {
         $map = new Map();
-        if(isset($mapID)) 
+        if(isset($mapID))
         {
           $map->Load($mapID);
-          if($map->UserID != getCurrentUser()->ID) die("Access denied");    
+          if($map->UserID != getCurrentUser()->ID) die("Access denied");
           $isNewMap = false;
         }
         else
         {
           $isNewMap = true;
         }
-        $map->UserID = getCurrentUser()->ID;    
+        $map->UserID = getCurrentUser()->ID;
         $map->CategoryID = $categoryID;
         $map->Date = $date;
-        $map->Name = $name; 
-        $map->Organiser = $organiser;     
-        $map->Country = $country;     
-        $map->Discipline = $discipline;     
-        $map->RelayLeg = $relayLeg;     
+        $map->Name = $name;
+        $map->Organiser = $organiser;
+        $map->Country = $country;
+        $map->Discipline = $discipline;
+        $map->RelayLeg = $relayLeg;
         $map->MapName = $mapName;
         $map->ResultListUrl = $resultListUrl;
         $map->Comment = $comment;
@@ -58,18 +58,18 @@
         {
           $map = new Map();
           $map->Load($mapID);
-          if($map->UserID != getCurrentUser()->ID) die("Access denied");    
+          if($map->UserID != getCurrentUser()->ID) die("Access denied");
           $isNewMap = false;
         }
         else
         {
           $map = new Map();
-          $map->Date = date(__("DATE_FORMAT"));
+          $map->Date = date("Y-m-d");
           $map->CategoryID = getCurrentUser()->DefaultCategoryID;
           $isNewMap = true;
         }
       }
-      
+
       if(isset($save))
       {
         // validate
@@ -77,7 +77,7 @@
         if(trim($map->Name) == "") $errors[] = __("NO_MAP_NAME_ENTERED");
         // date
         if(trim($map->Date) == "") $errors[] = __("NO_DATE_ENTERED");
-        if(!Helper::LocalizedStringToTime($map->Date, false)) 
+        if(!Helper::LocalizedStringToTime($map->Date, false))
         {
           $errors[] = __("INVALID_DATE");
         }
@@ -89,9 +89,9 @@
         // protected until
         if(trim($map->ProtectedUntil) == "")
         {
-          $map->ProtectedUntil = null; 
+          $map->ProtectedUntil = null;
         }
-        else if(!Helper::LocalizedStringToTime($map->ProtectedUntil, false)) 
+        else if(!Helper::LocalizedStringToTime($map->ProtectedUntil, false))
         {
           $errors[] = __("INVALID_PROTECTED_UNTIL");
         }
@@ -99,7 +99,7 @@
         {
           $map->ProtectedUntil = gmdate("Y-m-d H:i:s", Helper::LocalizedStringToTime($map->ProtectedUntil, false));
         }
-        
+
         // images
         $validMimeTypes = array("image/jpeg", "image/gif", "image/png");
         // map image
@@ -115,22 +115,22 @@
         $thumbnailImageUploaded = ($_FILES["thumbnailImage"]["tmp_name"] != "");
         if($thumbnailImageUploaded) $thumbnailImageInfo = getimagesize($_FILES["thumbnailImage"]["tmp_name"]);
         if($thumbnailImageUploaded && !in_array($thumbnailImageInfo["mime"], $validMimeTypes)) $errors[] = sprintf(__("INVALID_THUMBNAIL_IMAGE_FORMAT"), $_FILES["thumbnailImage"]["name"]);
-        
+
         if(count($errors) == 0)
         {
           $thumbnailCreatedSuccessfully = false;
           $mapImageData = Helper::SaveTemporaryFileFromUploadedFile($_FILES["mapImage"]);
-          if($mapImageData["error"] == "couldNotCopyUploadedFile") $errors[] = sprintf(__("MAP_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["mapImage"]["name"]);  
+          if($mapImageData["error"] == "couldNotCopyUploadedFile") $errors[] = sprintf(__("MAP_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["mapImage"]["name"]);
           $blankMapImageData = Helper::SaveTemporaryFileFromUploadedFile($_FILES["blankMapImage"]);
-          if($blankMapImageData["error"] == "couldNotCopyUploadedFile") $errors[] = sprintf(__("BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["blankMapImage"]["name"]);  
+          if($blankMapImageData["error"] == "couldNotCopyUploadedFile") $errors[] = sprintf(__("BLANK_MAP_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["blankMapImage"]["name"]);
           $thumbnailImageData = Helper::SaveTemporaryFileFromUploadedFile($_FILES["thumbnailImage"]);
-          if($thumbnailImageData["error"] ==  "couldNotCopyUploadedFile") $errors[] = sprintf(__("THUMBNAIL_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["thumbnailImage"]["name"]);  
+          if($thumbnailImageData["error"] ==  "couldNotCopyUploadedFile") $errors[] = sprintf(__("THUMBNAIL_IMAGE_COULD_NOT_BE_UPLOADED"), $_FILES["thumbnailImage"]["name"]);
 
           $error = null;
           if(count($errors) == 0) DataAccess::SaveMapAndThumbnailImage($map, $mapImageData["fileName"], $blankMapImageData["fileName"], $thumbnailImageData["fileName"], $error, $thumbnailCreatedSuccessfully);
 
-          if($error) $errors[] = $error;  
-          
+          if($error) $errors[] = $error;
+
           if($mapImageData["fileName"] && file_exists($mapImageData["fileName"])) unlink($mapImageData["fileName"]);
           if($blankMapImageData["fileName"] && file_exists($blankMapImageData["fileName"])) unlink($blankMapImageData["fileName"]);
           if($thumbnailImageData["fileName"] && file_exists($thumbnailImageData["fileName"])) unlink($thumbnailImageData["fileName"]);

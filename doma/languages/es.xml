@@ -70,11 +70,11 @@
     </string>
     <!-- date and time format to use, PHP format string (Y, m, d, H, i, s can be used) -->
     <string key="DATETIME_FORMAT">
-      Y-m-d H:m
+      Y-m-d H:i
     </string>
     <!-- day names, semi-colon separated -->
     <string key="DAY_NAMES">
-      Domingo;Lunes:Martes;Miércoles;Jueves;Viernes;Sábado
+      Domingo;Lunes;Martes;Miércoles;Jueves;Viernes;Sábado
     </string>
     <!-- month names, semi-colon separated -->
     <string key="MONTH_NAMES">
