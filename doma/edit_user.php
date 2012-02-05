@@ -109,6 +109,10 @@
 <label for="categoryContainer"><?php print __("MAP_CATEGORIES")?></label>
 
 <div id="categoryContainer">
+  <div class="category">
+    <span id="allCategoriesText"><?php print __("ALL_CATEGORIES"); ?></span>
+    <input type="radio" class="radio" name="defaultCategory" id="categoryDefault_0" value="0"<?php if($vd["DefaultCategory"] == 0) print ' checked="checked"'; ?> />
+    <label for="categoryDefault_0"><?php print __("DEFAULT_CATEGORY")?></label>        
 <?php
   foreach($vd["CategoryData"] as $d)
   {

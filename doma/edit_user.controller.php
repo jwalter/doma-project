@@ -177,8 +177,7 @@
         if($defaultCategory == $d["defaultValue"]) $defaultCategoryIndex = count($categoryData);
         $categoryData[] = $d;
       }
-      if($defaultCategoryIndex == -1) $defaultCategoryIndex = 0;
-      $defaultCategory = $categoryData[$defaultCategoryIndex]["defaultValue"];
+      $defaultCategory = $defaultCategoryIndex == -1 ? 0 : $categoryData[$defaultCategoryIndex]["defaultValue"];
       
       if(isset($_POST["save"]))
       {

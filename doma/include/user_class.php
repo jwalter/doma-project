@@ -19,12 +19,6 @@
     private $DefaultCategory;
     private $Categories;
     
-    public function GetDefaultCategory()
-    {
-      if(!$this->DefaultCategory) $this->DefaultCategory = DataAccess::GetCategoryByID($this->DefaultCategoryID);
-      return $this->DefaultCategory;
-    }    
-
     public function GetCategories()
     {
       if(!$this->Categories) $this->Categories = DataAccess::GetCategoriesByUserID($this->ID);

@@ -611,12 +611,9 @@
 
       self::SaveUserCategories($user->ID, $categories);
       $categoriesIndexed = array_values($categories);
-      $defaultCategoryID = $categoriesIndexed[$defaultCategoryIndex]->ID;
-      if($defaultCategoryID)
-      {
-        $user->DefaultCategoryID = $defaultCategoryID;
-        $user->Save();
-      }
+      $defaultCategoryID = $defaultCategoryIndex == -1 ? 0 : $categoriesIndexed[$defaultCategoryIndex]->ID;
+      $user->DefaultCategoryID = $defaultCategoryID;
+      $user->Save();
 
       self::SaveUserSettings($user->ID, $userSettings);
       if($newUser) Helper::LogUsage("createUser", "user=". urlencode($user->Username));
