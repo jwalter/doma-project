@@ -9,7 +9,7 @@
       }
       ?></span>:
   <span>
-    <?php print Helper::ClickableLink(nl2br($comment->Comment)); ?>
+    <?php print Helper::ClickableLink(nl2br(stripslashes($comment->Comment))); ?>
   </span>
   <div class="postedTime">
     <abbr class="timeago" title="<?php print $comment->DateCreated?>"></abbr>
