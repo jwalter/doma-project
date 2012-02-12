@@ -63,7 +63,7 @@
         $searchCriteria["selectedYear"] = $years[0];
       } 
       $categoryIds = array_keys($categories);
-      if(!in_array($searchCriteria["selectedCategoryID"], $categoryIds) && count($categories) > 0)
+      if($searchCriteria["selectedCategoryID"] != 0 && !in_array($searchCriteria["selectedCategoryID"], $categoryIds) && count($categories) > 0)
       {
         $searchCriteria["selectedCategoryID"] = $categoryIds[0];
       } 
