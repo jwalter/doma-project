@@ -175,17 +175,12 @@ if(isset($QR) && $QR->IsValid)
 <?php
 if($map->IsGeocoded)
 {
-	print '<div id="gmap">';
   $coordinates = $map->MapCenterLatitude .",". $map->MapCenterLongitude;
-  
-	?>
-	<script type="text/javascript">
-	  var divh = document.getElementById('wrapper').offsetHeight;
-    
-    document.write('<a href="<?php print $vd["GoogleMapsUrl"]; ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php print $coordinates; ?>&amp;zoom=6&amp;size=174x'+divh+'&amp;maptype=terrain&amp;markers=color:red%7C<?php print $coordinates; ?>&amp;sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>"></a>');
-  </script>
-	<?php
-	print '</div>';
+  print '<div id="gmap_coordinates" style="display:none;">'.$coordinates.'</div>';
+  print '<div id="gmap_url" style="display:none;">'.$vd["GoogleMapsUrl"].'</div>';
+  print '<div id="gmap_lang" style="display:none;">'.Session::GetLanguageCode().'</div>';
+  print '<div id="gmap">';
+  print '</div>';
 }
 ?>
 </div>

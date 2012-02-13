@@ -21,6 +21,7 @@ $(document).ready(function()
     $("#commentBox").hide();
     $('#hidePostedComments').toggle();
     $('#showPostedComments').toggle();
+    reloadGM();
     return false;
   });	
 
@@ -31,6 +32,7 @@ $(document).ready(function()
     $("#commentBox").children("a#submitComment").show();    
     $('#showPostedComments').toggle();
     $('#hidePostedComments').toggle();
+    reloadGM();
     return false;
   });	
   
@@ -96,6 +98,8 @@ $(document).ready(function()
 				}
 			});
 		});
+    
+    reloadGM();
   
 });
 
@@ -156,6 +160,14 @@ function toggleOverviewMap(mapContainer)
   }
   $("#showOverviewMap").toggle();
   $("#hideOverviewMap").toggle();
+}
+
+function reloadGM()
+{
+  if($("#gmap").size())
+  {
+    $("#gmap").html("<a href='"+$("#gmap_url").html()+"' target='_blank'><img src='http://maps.googleapis.com/maps/api/staticmap?center="+$("#gmap_coordinates").html()+"&amp;zoom=6&amp;size=174x"+$("#wrapper").height()+"&amp;maptype=terrain&amp;markers=color:red%7C"+$("#gmap_coordinates").html()+"&amp;sensor=false&amp;language="+$("#gmap_lang").html()+"'></a>");
+  }
 }
 
 $(function() {
