@@ -283,5 +283,6 @@
 </form>
 </div>
 </div>
+<?php Helper::GoogleAnalytics() ?>
 </body>
 </html>

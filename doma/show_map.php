@@ -203,5 +203,6 @@ if($map->IsGeocoded)
   <input type="hidden" id="imageHeight" value="<?php print $vd["ImageHeight"] ?>" />
 </div>
 </center>
+<?php Helper::GoogleAnalytics() ?>
 </body>
 </html>

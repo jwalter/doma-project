@@ -111,4 +111,10 @@
   // 2. Always treat the image as resizable, and resize using GD. If memory problems occur, the upload will probably hang or crash.
   define('IMAGE_RESIZING_METHOD', '1');
   
+  //include Google Analytics script (1 = yes, 0 = no) / creates in index.php, users.php, show_map.php
+  define('USE_GA', '0');
+  define('GA_TRACKER', 'UA-1234567-8');
+  
+  
+  
 ?>
