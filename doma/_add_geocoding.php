@@ -11,9 +11,9 @@
   <title>Add geocoding to DOMA database</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
-  <link rel="stylesheet" href="style.css" type="text/css" />  
+  <link rel="stylesheet" href="style.css?v=<?php print DOMA_VERSION; ?>" type="text/css" />  
   <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-  <script src="js/common.js" type="text/javascript"></script>
+  <script src="js/common.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
   <script type="text/javascript">
     
     var numberOfSimultaneousRequests = <?php print $numberOfSimultaneousRequests; ?>;

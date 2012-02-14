@@ -12,11 +12,11 @@
 <head>
   <title><?php print __("PAGE_TITLE")?> :: <?php print strip_tags($vd["Name"])?></title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css?v=<?php print DOMA_VERSION; ?>" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>  
-  <script type="text/javascript" src="js/show_map.js"></script>
+  <script type="text/javascript" src="js/show_map.js?v=<?php print DOMA_VERSION; ?>"></script>
   <script type="text/javascript" src="js/jquery/jquery.timeago.js"></script>
   <?php 
     $lang = Session::GetLanguageCode();
@@ -27,7 +27,7 @@
       <?php
     }
   ?>
-  <script src="js/common.js" type="text/javascript"></script>
+  <script src="js/common.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
   <?php if(isset($vd["OverviewMapData"])) { ?>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print $lang; ?>" type="text/javascript"></script>
     <script src="js/overview_map.js" type="text/javascript"></script>

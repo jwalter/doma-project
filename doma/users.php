@@ -10,21 +10,21 @@
 <head>
   <title><?php print _SITE_TITLE; ?></title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css?v=<?php print DOMA_VERSION; ?>" type="text/css" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
   <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
-  <script src="js/common.js" type="text/javascript"></script>
+  <script src="js/common.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
   <?php if($vd["OverviewMapData"] != null) { ?>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
-    <script src="js/overview_map.js" type="text/javascript"></script>
+    <script src="js/overview_map.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
     <script type="text/javascript">
       <!--
         var overviewMapData = <?php print json_encode($vd["OverviewMapData"]); ?>;        
       -->
     </script>
   <?php } ?>  
-  <script type="text/javascript" src="js/users.js"></script>
+  <script type="text/javascript" src="js/users.js?v=<?php print DOMA_VERSION; ?>"></script>
 </head>
 
 <body id="usersBody">

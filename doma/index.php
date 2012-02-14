@@ -13,11 +13,11 @@
   <title><?php print __("PAGE_TITLE")?></title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <link rel="icon" type="image/png" href="gfx/favicon.png" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet" href="style.css?v=<?php print DOMA_VERSION; ?>" type="text/css" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php?<?php print Helper::CreateQuerystring(getCurrentUser())?>" />
   <script src="js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=<?php print Session::GetLanguageCode(); ?>" type="text/javascript"></script>
-  <script src="js/overview_map.js" type="text/javascript"></script>
+  <script src="js/overview_map.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
   <?php if($vd["DisplayMode"] == "overviewMap") { ?>
     <script type="text/javascript">
       <!--
@@ -28,8 +28,8 @@
       -->
     </script>
   <?php } ?>
-  <script src="js/index.js" type="text/javascript"></script>
-  <script src="js/common.js" type="text/javascript"></script>
+  <script src="js/index.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
+  <script src="js/common.js?v=<?php print DOMA_VERSION; ?>" type="text/javascript"></script>
 </head>
 
 <body id="indexBody">
