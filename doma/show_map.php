@@ -176,9 +176,9 @@ if(isset($QR) && $QR->IsValid)
 if($map->IsGeocoded)
 {
   $coordinates = $map->MapCenterLatitude .",". $map->MapCenterLongitude;
-  print '<div id="gmap_coordinates" style="display:none;">'.$coordinates.'</div>';
-  print '<div id="gmap_url" style="display:none;">'.$vd["GoogleMapsUrl"].'</div>';
-  print '<div id="gmap_lang" style="display:none;">'.Session::GetLanguageCode().'</div>';
+  print '<input id="gmap_coordinates" type="hidden" value="'.$coordinates.'" />';
+  print '<input id="gmap_url" type="hidden" value="'.$vd["GoogleMapsUrl"].'" />';
+  print '<input id="gmap_lang" type="hidden" value="'.Session::GetLanguageCode().'" />';
   print '<div id="gmap">';
   print '</div>';
 }
