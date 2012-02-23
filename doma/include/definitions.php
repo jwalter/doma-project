@@ -23,13 +23,19 @@
     'TEMP_FILE_PATH' => 'temp',
     'SHOW_LANGUAGES_IN_TOPBAR' => '1',
     'LANGUAGES_AVAILABLE' => 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv|Türkçe;tr',
-    'IMAGE_RESIZING_METHOD' => '1'
+    'IMAGE_RESIZING_METHOD' => '1',
+    'USE_GA' => '0',
+    'GA_TRACKER' => '',
+    'TIME_ZONE' => ''
   );
   
   while(list($key, $value) = each($newConfigurationSettings))
   {
     if(!defined($key)) define($key, $value);  
   }
+
+  // set time zone
+  if(function_exists("date_default_timezone_set") && TIME_ZONE != "") date_default_timezone_set(TIME_ZONE);
   
   include_once(dirname(__FILE__) ."/db_connect.php");
   include_once(dirname(__FILE__) ."/helper.php");

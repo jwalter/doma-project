@@ -72,7 +72,7 @@
     </div>
 
     <?php
-      if(__("SHOW_COMMENT") && $map->Comment) 
+      if(__("SHOW_COMMENT") && $map->Comment)
       {
         if(!$mapInfo["IsExpandableComment"])
         {

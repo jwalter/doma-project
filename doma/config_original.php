@@ -95,7 +95,7 @@
   // The directory is created during creation. Write access to the directory for the server user account under which PHP runs is required.
   define('TEMP_FILE_PATH', 'temp');
 
-  //Show languages in topbar (1 = yes, 0 = no)
+  // Show languages in topbar (1 = yes, 0 = no)
   define('SHOW_LANGUAGES_IN_TOPBAR','1');
 
   // Available languages, as language name / language/flag file name pairs separated by semicolons. Each pair is separated by a | character.
@@ -111,10 +111,12 @@
   // 2. Always treat the image as resizable, and resize using GD. If memory problems occur, the upload will probably hang or crash.
   define('IMAGE_RESIZING_METHOD', '1');
   
-  //include Google Analytics script (1 = yes, 0 = no) / creates in index.php, users.php, show_map.php
+  // Include Google Analytics script (1 = yes, 0 = no) / creates in index.php, users.php, show_map.php
   define('USE_GA', '0');
   define('GA_TRACKER', 'UA-1234567-8');
   
-  
+  // If you want a different time zone than the server's time zone, specify it here. An empty string means that the server's default time zone is used.
+  // see http://www.php.net/manual/en/timezones.php for available time zones.
+  define('TIME_ZONE', '');
   
 ?>

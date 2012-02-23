@@ -742,7 +742,7 @@
       $string = "";
       for ($i = 0; $i < $length; $i++)
       {
-        $string .= $characters[mt_rand(0, $numberOfCharacters)];
+        $string .= $characters[mt_rand(0, $numberOfCharacters-1)];
       }
       return $string;
     }
@@ -814,7 +814,8 @@
       }
       return $data;
     }
-     public static function GoogleAnalytics()
+     
+    public static function GoogleAnalytics()
     {
       if(USE_GA == "1")
       {

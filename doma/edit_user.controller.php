@@ -22,7 +22,7 @@
         Helper::Redirect($isAdmin ? "users.php" : "index.php?". Helper::CreateQuerystring($user));
       }
 
-      if($isAdmin && $_POST["deleteConfirmed"])
+      if($isAdmin && isset($_POST["deleteConfirmed"]))
       {
         DataAccess::DeleteUserByID($user->ID);
         Helper::Redirect($isAdmin ? "users.php" : "index.php?". Helper::CreateQuerystring($user));
