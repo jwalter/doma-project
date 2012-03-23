@@ -1,5 +1,5 @@
 <?php
-  define('DOMA_VERSION', '3.0.4');
+  define('DOMA_VERSION', '3.0.5');
   define('DOMA_SERVER', 'http://www.matstroeng.se/doma/domaserver.php');
   
   $rootPath =  dirname(dirname(__FILE__));
@@ -26,14 +26,18 @@
     'IMAGE_RESIZING_METHOD' => '1',
     'USE_GA' => '0',
     'GA_TRACKER' => '',
-    'TIME_ZONE' => ''
+    'TIME_ZONE' => '',
+    'USE_3DRERUN' => '0',
+    'RERUN_MAX_TRIES' => '5',
+    'RERUN_FREQUENCY' => '6',
+    'RERUN_APIKEY' => 'xxxxxx'
   );
   
   while(list($key, $value) = each($newConfigurationSettings))
   {
     if(!defined($key)) define($key, $value);  
   }
-
+  
   // set time zone
   if(function_exists("date_default_timezone_set") && TIME_ZONE != "") date_default_timezone_set(TIME_ZONE);
   

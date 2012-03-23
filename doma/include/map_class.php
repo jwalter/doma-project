@@ -39,7 +39,9 @@
       "Distance" => null,
       "StraightLineDistance" => null,
       "ElapsedTime" => null,
-      "ProtectedUntil" => null
+      "ProtectedUntil" => null,
+      "RerunID" => 0,
+      "RerunTries" => 0
     );
     private $User;
     private $Category;

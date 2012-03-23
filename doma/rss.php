@@ -12,6 +12,7 @@
       <link><?php print Helper::GlobalPath("")?></link>
       <description><?php print $vd["Description"]?></description>
       <lastBuildDate><?php print $vd["LastCreatedTime"]?></lastBuildDate>
+      <generator>DOMA <?php print DOMA_VERSION;?></generator>
       <image>
         <url>gfx/book.png</url>
         <title><?php print __("PAGE_TITLE")?></title>

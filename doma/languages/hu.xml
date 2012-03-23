@@ -636,6 +636,9 @@ Hozzászólás:   %s
     <string key="SELECT_FILTER">
       Szűrő
     </string>
+    <string key="3DRERUN">
+      3D Rerun
+    </string>
     <!-- END new nonCustomizable strings in version 3.0 ********************************************************** -->
   </nonCustomizable>
 </strings>

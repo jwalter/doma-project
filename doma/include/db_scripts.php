@@ -74,6 +74,12 @@
               "ALTER TABLE `". DB_MAP_TABLE ."` ADD INDEX `Maps_UserID` (`UserID`), ADD INDEX `Maps_Date` (`Date`), ADD INDEX `Maps_CreatedTime` (`CreatedTime`), ADD INDEX `Maps_LastChangedTime` (`LastChangedTime`)",
               // protected maps
               "ALTER TABLE `". DB_MAP_TABLE ."` ADD `ProtectedUntil` DATETIME NULL")
+           ),
+      array("version" => "3.0.5", 
+            "scripts" => array(
+              // 3drerun.worldofo.com ID
+              "ALTER TABLE `". DB_MAP_TABLE ."` ADD `RerunID` INT ",
+              "ALTER TABLE `". DB_MAP_TABLE ."` ADD `RerunTries` INT ")
            )
     );
     return array_filter($allScripts, "filter");

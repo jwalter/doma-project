@@ -68,6 +68,14 @@
           "?q=". urlencode(Helper::GlobalPath("export_kml.php?id=". $map->ID ."&format=kml")).
           "&language=". Session::GetLanguageCode();
       }
+      
+      if(USE_3DRERUN=='1' && DataAccess::GetSetting("LAST_WORLDOFO_CHECK_DOMA_TIME", "0")+RERUN_FREQUENCY*3600<time())
+      {
+        $viewData["RerunMaps"] = Helper::GetMapsForRerunRequest();
+        $viewData["TotalRerunMaps"] = count(explode(",",$viewData["RerunMaps"]));
+        $viewData["ProcessRerun"] = true;
+      }
+
       return $viewData;
     }
   }

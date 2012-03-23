@@ -40,6 +40,15 @@
       -->
     </script>
   <?php } ?> 
+  <?php if(isset($vd["ProcessRerun"])) {?>
+    <?php if($vd["RerunMaps"]!="") {?>
+      <script type="text/javascript" src="js/rerun.js?v=<?php print DOMA_VERSION; ?>"></script>
+    <?php } else { ?>
+      <script type="text/javascript">
+        $.get("ajax_server.php?action=saveLastRerunCheck");
+      </script>
+    <?php }?>
+  <?php }?>
   
 
 </head>
@@ -76,6 +85,13 @@
 
 <div id="content">
 <form id="frm" method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
+<?php if(isset($vd["ProcessRerun"]) && $vd["RerunMaps"]!="") {?>
+  <input id="rerun_maps" type="hidden" value="<?php print $vd["RerunMaps"]; ?>" />
+  <input id="base_url" type="hidden" value="<?php print BASE_URL; ?>" />
+  <input id="rerun_apikey" type="hidden" value="<?php print RERUN_APIKEY; ?>" />
+  <input id="total_rerun_maps" type="hidden" value="<?php print $vd["TotalRerunMaps"]; ?>" />
+  <input id="processed_rerun_maps" type="hidden" value="0" />
+<?php }?>
 <div id="mapInfo">
 <div id="name"><?php print $vd["Name"]?></div>
 
@@ -121,6 +137,8 @@ if(isset($QR) && $QR->IsValid)
 		if(__("SHOW_AVGHR")) print '<div class="property"><span class="caption">'. __("AVGHR") .':</span> '. round($c1/$c2,0).'</div>';
 		if(__("SHOW_MAXHR")) print '<div class="property"><span class="caption">'. __("MAXHR") .':</span> '. round($max1,0).'</div>';
 	}
+    if($map->RerunID && $map->RerunID != 0 && USE_3DRERUN == "1") print '<div class="property"><a href="http://3drerun.worldofo.com/?id='.$map->RerunID.'&type=info" target="_blank">'. __("3DRERUN") .'</a></div>';
+
 }
 ?>
 </div>

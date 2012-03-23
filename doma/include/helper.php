@@ -836,6 +836,33 @@
         <?php
       }
     }
+    public static function GetMapsForRerunRequest()
+    {
+      if(USE_3DRERUN == "1")
+      {
+        $maps = DataAccess::GetAllMaps();
+        $ret = array();
+        foreach($maps as $map)
+        {
+          if((is_null($map->RerunID) || $map->RerunID==0) && $map->RerunTries < RERUN_MAX_TRIES && $map->IsGeocoded)
+          {
+            $user = new User();
+            $user->Load($map->UserID);
+            $ret[]=$map->ID.";".$user->Username; 
+          }
+        }
+        if(count($ret)>0)
+        {
+          return implode(",",$ret);
+        }
+        else
+        {
+          return null;
+        }
+    
+      }
+    }
+    
   }
 
 ?>
