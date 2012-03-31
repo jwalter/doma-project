@@ -42,13 +42,13 @@
         $map->CategoryID = $categoryID;
         $map->Date = $date;
         $map->Name = $name;
-        $map->Organiser = $organiser;
-        $map->Country = $country;
-        $map->Discipline = $discipline;
-        $map->RelayLeg = $relayLeg;
-        $map->MapName = $mapName;
-        $map->ResultListUrl = $resultListUrl;
-        $map->Comment = $comment;
+        if(__("SHOW_ORGANISER")) $map->Organiser = $organiser;
+        if(__("SHOW_COUNTRY")) $map->Country = $country;
+        if(__("SHOW_DISCIPLINE")) $map->Discipline = $discipline;
+        if(__("SHOW_RELAY_LEG")) $map->RelayLeg = $relayLeg;
+        if(__("SHOW_MAP_AREA_NAME")) $map->MapName = $mapName;
+        if(__("SHOW_RESULT_LIST_URL")) $map->ResultListUrl = $resultListUrl;
+        if(__("SHOW_COMMENT")) $map->Comment = $comment;
         $map->ProtectedUntil = $protectedUntil;
       }
       else
