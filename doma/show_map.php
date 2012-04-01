@@ -89,6 +89,7 @@
   <input id="rerun_maps" type="hidden" value="<?php print $vd["RerunMaps"]; ?>" />
   <input id="base_url" type="hidden" value="<?php print BASE_URL; ?>" />
   <input id="rerun_apikey" type="hidden" value="<?php print RERUN_APIKEY; ?>" />
+  <input id="rerun_apiurl" type="hidden" value="<?php print RERUN_APIURL; ?>" />  
   <input id="total_rerun_maps" type="hidden" value="<?php print $vd["TotalRerunMaps"]; ?>" />
   <input id="processed_rerun_maps" type="hidden" value="0" />
 <?php }?>

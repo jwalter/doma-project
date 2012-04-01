@@ -30,7 +30,8 @@
     'USE_3DRERUN' => '0',
     'RERUN_MAX_TRIES' => '5',
     'RERUN_FREQUENCY' => '6',
-    'RERUN_APIKEY' => 'xxxxxx'
+    'RERUN_APIKEY' => 'xxxxxx',
+    'RERUN_APIURL' => 'http://omaps.worldofo.com/apicall.php?apikey={0}&link={1}'
   );
   
   while(list($key, $value) = each($newConfigurationSettings))

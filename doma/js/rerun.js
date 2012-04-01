@@ -4,7 +4,7 @@ $(document).ready(function()
   
   function getRerun() 
   {
-    var apiurl = 'http://omaps.worldofo.com/apicall.php?apikey='+$("#rerun_apikey").val()+'&link='
+    var apiurl = $("#rerun_apiurl").val().replace("{0}",$("#rerun_apikey").val());
     if($("#rerun_maps").val().length>0)
     {
       var maps = $("#rerun_maps").val().split(",");
@@ -15,7 +15,7 @@ $(document).ready(function()
         $.ajax({
           dataType: 'json',
           crossDomain: true,
-          url: apiurl+url+'&callback=?',
+          url: apiurl.replace("{1}",url)+'&callback=?',
           success: function(data) {
             var ind = data.link.lastIndexOf("=");
             var mapid = data.link.substring(ind+1);

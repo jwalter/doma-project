@@ -126,9 +126,12 @@
   // Frequency of retry to get 3DRerun id - in hours 
   // Keep 6 hours since worldofo.com grab data from DOMA archives in the same interval
   define('RERUN_FREQUENCY','6');
+  // Worldofo.com api url
+  define('RERUN_APIURL','http://omaps.worldofo.com/apicall.php?apikey={0}&link={1}');
   // Worldofo.com api key - please ask Jan Kocbach jan.kocbach@gmail.com to get it 
   // By this procedure you also recheck that your maps are collected
   define('RERUN_APIKEY','xxxxxx');
+
   
   
 ?>
