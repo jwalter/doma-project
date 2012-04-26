@@ -50,4 +50,14 @@
   include_once(dirname(__FILE__) ."/session_class.php");
   include_once(dirname(__FILE__) ."/category_class.php");
   include_once(dirname(__FILE__) ."/comment_class.php");
+  
+  // check that config.php is valid (no garbage characters in the beginning)
+  $fp = fopen(dirname(__FILE__) ."/../config.php", "r");
+  $char = fread($fp, 1);
+  fclose($fp);
+  if($char != "<")
+  {
+    print "ERROR: Invalid character in the beginning of the config.php file. Please make sure that the file begins with &lt;?php and save it in UTF-8 encoding using a proper text editor.";
+    die();
+  }
 ?>

@@ -15,7 +15,7 @@
       // no user specified - redirect to user list page
       if(isset($_POST["comment_text"])) 
       {
-        $comment->Comment = strip_tags(urldecode($_POST["comment_text"]));
+        $comment->Comment = stripslashes(strip_tags(urldecode($_POST["comment_text"])));
       } 
       else 
       {
@@ -24,7 +24,7 @@
       
       if(isset($_POST["user_name"]))
       {
-        $comment->Name = strip_tags(urldecode($_POST["user_name"]));
+        $comment->Name = stripslashes(strip_tags(urldecode($_POST["user_name"])));
       } 
       else 
       {
@@ -40,7 +40,7 @@
         die("No valid map ID");
       }
       
-      if(isset($_POST["user_email"])) $comment->Email = strip_tags($_POST["user_email"]);
+      if(isset($_POST["user_email"])) $comment->Email = stripslashes(strip_tags($_POST["user_email"]));
       $comment->UserIP = $_SERVER['REMOTE_ADDR'];
       $comment->DateCreated = date("Y-m-d H:i:s");
       

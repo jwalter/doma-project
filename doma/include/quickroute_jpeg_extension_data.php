@@ -484,8 +484,8 @@
       $bitCount = $byteCount  * 8;
       if($signed)
       {
-        if($value < -pow(2, $bitCount-1)) $value = -pow(2,$bitCount-1);
-        if($value > pow(2, $bitCount-1)-1) $value = pow(2, bitCount-1)-1;
+        if($value < -pow(2, $bitCount-1)) $value = -pow(2, $bitCount-1);
+        if($value > pow(2, $bitCount-1)-1) $value = pow(2, $bitCount-1)-1;
       }
       else
       {
@@ -497,7 +497,7 @@
       for($i=0; $i<$byteCount; $i++)
       {
         fwrite($fp, chr($value % 256));
-        $value = $value >> 8;
+        $value = ($value - $value % 256) / 256;
       }
     }
 
