@@ -48,7 +48,9 @@
   //   it  (Italian, credits to Davide Miori)
   //   hu  (Hungarian, credits to Csaba Gösswein)
   //   nb  (Norwegian Bokmål, credits to Bjørge Solli)
+  //   pl  (Polish, credits to Sławomir Cygler)
   //   pt  (Portugese, credits to Rui Tavares)
+  //   ru  (Russian, credits to Yuri Mikhaylovskiy)
   //   sv  (Swedish, credits to Mats Troeng)
   //   tr  (Turkish, credits to Guven Solmaz and Berkay Kılıcoglu)
   define('LANGUAGE_CODE', 'en');
@@ -102,7 +104,7 @@
   // The first value in each pair is the language name.
   // The second value is the language code, see the LANGUAGE_CODE setting above.
   // Example: "English;en|Svenska;sv" makes English and Swedish available, and shows English and Swedish flags in topbar.
-  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Português;pt|Svenska;sv|Türkçe;tr');
+  define('LANGUAGES_AVAILABLE', 'Česky;cs|Dansk;da|Deutsch;de|Eesti;et|English;en|Español;es|Français;fr|Italiano;it|Magyar;hu|Norsk;nb|Polski;pl|Português;pt|русский язык;ru|Svenska;sv|Türkçe;tr');
 
   // The image resizing method to use when generating thumbnails for map images.
   // Select a suitable method depending on server configuration and available memory. If thumbnail generation fails, try to change this value.
@@ -114,7 +116,7 @@
   // Include Google Analytics script (1 = yes, 0 = no) / creates in index.php, users.php, show_map.php
   define('USE_GA', '0');
   define('GA_TRACKER', 'UA-1234567-8');
-
+  
   // If you want a different time zone than the server's time zone, specify it here. An empty string means that the server's default time zone is used.
   // see http://www.php.net/manual/en/timezones.php for available time zones.
   define('TIME_ZONE', '');
@@ -131,7 +133,4 @@
   // Worldofo.com api key - please ask Jan Kocbach jan.kocbach@gmail.com to get it 
   // By this procedure you also recheck that your maps are collected
   define('RERUN_APIKEY','xxxxxx');
-
-  
-  
 ?>
